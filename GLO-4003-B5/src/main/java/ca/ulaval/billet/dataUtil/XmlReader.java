@@ -1,3 +1,10 @@
+/**
+ * 
+ * @author CP
+ *	La javadoc, la javadoc !
+ */
+
+
 package ca.ulaval.billet.dataUtil;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -9,10 +16,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
 import ca.ulaval.billet.model.Event;
+import ca.ulaval.billet.model.Ticket;
+import ca.ulaval.billet.model.Ticket.ticketType;
+import ca.ulaval.billet.model.User;
 
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class XmlReader {
@@ -40,24 +52,16 @@ public class XmlReader {
 		return true;
 	}
 
-	private boolean disconnect() {
-		return false;
-	}
-
-	public void loadEvents() {
+	public List<Event> loadEvents() {
 		if (!connect()) {
 			System.out.println("Could not connect!");
-			return;
-		} else {
-			System.out.println("File found!");
+			return null;
 		}
-		System.out.println("Root element :"	+ doc.getDocumentElement().getNodeName());
+		List<Event> returnList = new ArrayList<Event>();
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		Event tempEvent;
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Node nNode = EventNodeList.item(eventIter);
-	 
-			System.out.println("\nCurrent Element :" + nNode.getNodeName());
 	 
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
@@ -81,8 +85,32 @@ public class XmlReader {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
+				//Load Section List
+				NodeList sNodeList = ((Element)eElement.getElementsByTagName("SectionList").item(0)).getElementsByTagName("Section");
+				for (int secIter = 0; secIter < sNodeList.getLength(); secIter++) {
+					Element sElement = (Element)sNodeList.item(secIter);
+					tempEvent.getSectionList().add(sElement.getTextContent());
+				}
 				
-				System.out.println("Event id : " + eElement.getAttribute("id"));
+				//Load Ticket List
+				NodeList tNodeList = ((Element)eElement.getElementsByTagName("TicketList").item(0)).getElementsByTagName("Ticket");
+				Ticket tempTicket;
+				for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
+					Element tElement = (Element)tNodeList.item(tickIter);
+					tempTicket = new Ticket(Integer.parseInt(tElement.getAttribute("id")),tempEvent);
+					tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type").toUpperCase()));
+					tempTicket.setSection(tElement.getAttribute("section"));
+					if (!tElement.getAttribute("seat").isEmpty())
+					tempTicket.setSeat(Integer.parseInt((tElement.getAttribute("seat"))));
+					tempTicket.setOwner(tElement.getAttribute("owner"));
+					tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
+					tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
+					tempEvent.getTicketList().add(tempTicket);	
+				}
+				
+				
+				// Debug info
+				/*System.out.println("Event id : " + eElement.getAttribute("id"));
 				System.out.println("Event open : " + eElement.getAttribute("open"));
 				System.out.println("Event ticketsTotal : " + eElement.getAttribute("ticketsTotal"));
 				System.out.println("Event ticketsAvailable : " + eElement.getAttribute("ticketsAvailable"));
@@ -94,19 +122,54 @@ public class XmlReader {
 				System.out.println("Event Location Stadium : " + ((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("stadium"));
 				System.out.println("Event Date : " + ((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("date"));
 				System.out.println("Event Date : " + tempEvent.getTime().toString());
+				System.out.println("Event Section List" + tempEvent.getSectionList().toString());
+				System.out.println("Event Ticket List" + tempEvent.getTicketList().toString());*/
 
-
-
-				
+				//add tempEvent to EventList
+				returnList.add(tempEvent);
 			}
 		}
+		return returnList;
 		
 	}
 
+	public List<User> loadUsers() {
+		if (!connect()) {
+			System.out.println("Could not connect!");
+			return null;
+		} 
+		
+		NodeList UserNodeList = doc.getElementsByTagName("User");
+		List<User> returnList = new ArrayList<User>();
+		User tempuser;
+		for (int userIter = 0; userIter < UserNodeList.getLength(); userIter++) {
+			// Load User Attributes
+			Element uElement = (Element) UserNodeList.item(userIter);
+			tempuser = new User(uElement.getAttribute("username"));
+			tempuser.setPassword(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("password"));
+			tempuser.setFirstName(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("firstName"));
+			tempuser.setLastName(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("lastName"));
+			tempuser.setEmail(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("email"));
+			tempuser.setAccessLevel(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("firstName"));
+			tempuser.setFavSport(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("sport"));
+			tempuser.setFavGender(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("gender"));
+			tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type").toUpperCase()));
+			tempuser.setFavLocation(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("city"));
+
+			NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");
+			for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
+				Element tElement = (Element)tNodeList.item(tickIter);
+				tempuser.getUserTickets().put(Integer.parseInt(tElement.getAttribute("matchId")), Integer.parseInt(tElement.getAttribute("ticketId")));
+			}
+			returnList.add(tempuser);
+		}
+		return returnList;
+	}
+	
 	public static void main(String[] args) {
 		XmlReader xmlreader = new XmlReader();
 		xmlreader.loadEvents();
-
+		xmlreader.loadUsers();
 	}
 
 }

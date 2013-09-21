@@ -24,7 +24,8 @@ public class Ticket {
 	private double resellprice;
 	
 	public Ticket(int _id, Event _event){
-		
+		id = _id;
+		event = _event;
 	}
 	
 	public int getId() {
@@ -68,6 +69,10 @@ public class Ticket {
 	}
 	public void setResellprice(double resellprice) {
 		this.resellprice = resellprice;
+	}
+	
+	public String toString(){
+		return  "\n id: " + id +  " type: " + type.name() + " section: " + section + " seat: " + seat + " owner: " + owner + " price: " + price + " resellPrice: " + resellprice;
 	}
 	
 }
