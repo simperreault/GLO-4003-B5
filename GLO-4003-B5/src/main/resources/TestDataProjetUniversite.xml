@@ -2,9 +2,9 @@
 	<EventList>
 		<Event id ="1" open="true" ticketsTotal="4" ticketsAvailable ="2">
 			<SectionList>A2;B2;C2;D2</SectionList>
-			<Sport name="Football" sex="M" />
+			<Sport name="Football" gender="M" />
 			<Teams home="nutSacks" visitors="Scumbags" />
-			<Location city="Québec" stade="Bell" date="02/03/2014" time="18:00" /> 
+			<Location city="Québec" stadium="Bell" date="02/03/2014" time="18:00" /> 
 			<TicketList>
 				<Ticket id="1" type="single" section="A2" seat="34" owner="" price="80.00" resellPrice="0" />
 				<Ticket id="2" type="season" section="B2" seat="78" owner="DieHardFanboy" price="70.00" resellPrice="0" />
@@ -20,7 +20,7 @@
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4" />
 			</UserTickets>
-			<SearchPreferences sport="football" sex="M" type="season" city="québec"/>
+			<SearchPreferences sport="football" gender="M" type="season" city="québec"/>
 		</User>
 	</UserList>
 </Data>
