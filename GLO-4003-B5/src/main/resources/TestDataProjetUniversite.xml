@@ -339,10 +339,10 @@
       </TicketList>
     </Event>
   </EventList>
-	
 	<UserList>
 		<User username="CarloBoutet">
-			<PersonalData accessLevel="admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123IKnowHowToCount"/>
+			<PersonalData password="123IKnowHowToCount" firstName="Charl"
+				lastName="Boutet" email="carloboutet@hotmail.com" accessLevel="admin" />
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>

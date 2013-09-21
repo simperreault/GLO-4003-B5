@@ -71,4 +71,8 @@ public class Ticket {
 		this.resellprice = resellprice;
 	}
 	
+	public String toString(){
+		return  "\n id: " + id +  " type: " + type.name() + " section: " + section + " seat: " + seat + " owner: " + owner + " price: " + price + " resellPrice: " + resellprice;
+	}
+	
 }
