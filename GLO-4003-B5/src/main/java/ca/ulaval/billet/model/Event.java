@@ -27,6 +27,7 @@ public class Event {
 	private List<String> sectionList;
 	
 	public Event(int _id){
+		id = _id;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
 	}
