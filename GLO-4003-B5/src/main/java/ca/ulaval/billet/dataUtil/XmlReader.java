@@ -101,7 +101,7 @@ public class XmlReader {
 					tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type").toUpperCase()));
 					tempTicket.setSection(tElement.getAttribute("section"));
 					if (!tElement.getAttribute("seat").isEmpty())
-					tempTicket.setSeat(Integer.parseInt((tElement.getAttribute("seat"))));
+					tempTicket.setSeat(tElement.getAttribute("seat"));
 					tempTicket.setOwner(tElement.getAttribute("owner"));
 					tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
 					tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
