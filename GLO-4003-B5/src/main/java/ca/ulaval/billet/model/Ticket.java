@@ -18,13 +18,14 @@ public class Ticket {
 	private Event event;
 	private ticketType type;
 	private String section;
-	private int seat;
+	private String seat;
 	private String owner;
 	private double price;
 	private double resellprice;
 	
 	public Ticket(int _id, Event _event){
-		
+		id = _id;
+		event = _event;
 	}
 	
 	public int getId() {
@@ -45,10 +46,10 @@ public class Ticket {
 	public void setSection(String section) {
 		this.section = section;
 	}
-	public int getSeat() {
+	public String getSeat() {
 		return seat;
 	}
-	public void setSeat(int seat) {
+	public void setSeat(String seat) {
 		this.seat = seat;
 	}
 	public String getOwner() {

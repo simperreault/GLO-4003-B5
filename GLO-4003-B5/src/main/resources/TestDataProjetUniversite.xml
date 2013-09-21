@@ -1,26 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList>
-		<Event id ="1" open="true" ticketsTotal="4" ticketsAvailable ="2">
+		<Event id="1" open="true" ticketsAvailable="2" ticketsTotal="4">
 			<SectionList>A2;B2;C2;D2</SectionList>
-			<Sport name="Football" gender="M" />
-			<Teams home="nutSacks" visitors="Scumbags" />
-			<Location city="Québec" stadium="Bell" date="02/03/2014" time="18:00" /> 
+			<Sport gender="M" name="Football"/>
+			<Teams home="nutSacks" visitors="Scumbags"/>
+			<Location city="Québec" date="02/03/2014" stadium="Bell" time="18:00"/> 
 			<TicketList>
-				<Ticket id="1" type="single" section="A2" seat="34" owner="" price="80.00" resellPrice="0" />
-				<Ticket id="2" type="season" section="B2" seat="78" owner="DieHardFanboy" price="70.00" resellPrice="0" />
-				<Ticket id="3" type="reserved" section="C2" seat="109" owner="MrRichGuy" price="100.00" resellPrice="0" />
-				<Ticket id="4" type="general" section="D2" seat="" owner="CarloBoutet" price="80.00" resellPrice="60.00" />
+				<Ticket id="1" owner="" price="80.00" resellPrice="0" seat="34" section="A2" type="single"/>
+				<Ticket id="2" owner="DieHardFanboy" price="70.00" resellPrice="0" seat="78" section="B2" type="season"/>
+				<Ticket id="3" owner="MrRichGuy" price="100.00" resellPrice="0" seat="109" section="C2" type="reserved"/>
+				<Ticket id="4" owner="CarloBoutet" price="80.00" resellPrice="60.00" seat="" section="D2" type="general"/>
 			</TicketList>
 		</Event>
-	</EventList>
+  <Event id="2" open="true" ticketsAvailable="200" ticketsTotal="200">
+      <SectionList>
+        <Section>A1</Section>
+        <Section>B6</Section>
+        <Section>F7</Section>
+      </SectionList>
+      <Sport gender="M" name="Football"/>
+      <Teams home="Rouge et or" visitors="Vert et or"/>
+      <Location city="Québec" date="21/58/2013" stadium="Laval" time="16:58"/>
+      <TicketList>
+        <Ticket id="1" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="2" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="3" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="4" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="5" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="6" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="7" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="8" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="9" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="10" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="11" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="12" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="13" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="14" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="15" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="16" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="17" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="18" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="19" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="20" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="21" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="22" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="23" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="24" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="25" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="26" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="27" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="28" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="29" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="30" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="31" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="32" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="33" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="34" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="35" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="36" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="37" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="38" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="39" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="40" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="41" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="42" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="43" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="44" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="45" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="46" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="47" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="48" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="49" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="50" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="51" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="52" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="53" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="54" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="55" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="56" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="57" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="58" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="59" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="60" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="61" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="62" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="63" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="64" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="65" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="66" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="67" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="68" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="69" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="70" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="71" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="72" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="73" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="74" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="75" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="76" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="77" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="78" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="79" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="80" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="81" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="82" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="83" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="84" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="85" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="86" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="87" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="88" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="89" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="90" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="91" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="92" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="93" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="94" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="95" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="96" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="97" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="98" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="99" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+        <Ticket id="100" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
+      <Ticket id="101" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="102" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="103" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="104" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="105" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="106" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="107" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="108" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="109" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="110" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="111" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="112" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="113" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="114" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="115" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="116" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="117" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="118" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="119" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="120" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="121" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="122" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="123" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="124" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="125" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="126" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="127" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="128" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="129" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="130" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="131" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="132" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="133" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="134" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="135" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="136" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="137" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="138" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="139" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="140" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="141" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="142" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="143" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="144" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="145" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="146" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="147" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="148" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="149" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="150" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="151" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="152" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="153" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="154" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="155" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="156" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="157" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="158" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="159" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="160" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="161" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="162" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="163" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="164" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="165" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="166" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="167" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="168" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="169" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="170" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="171" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="172" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="173" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="174" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="175" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="176" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="177" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="178" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="179" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="180" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="181" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="182" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="183" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="184" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="185" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="186" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="187" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="188" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="189" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="190" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="191" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="192" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="193" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="194" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="195" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="196" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="197" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="198" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="199" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="200" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+      </TicketList>
+    </Event>
+  <Event id="3" open="true" ticketsAvailable="100" ticketsTotal="100">
+      <SectionList>
+        <Section>A1</Section>
+        <Section>B6</Section>
+        <Section>F7</Section>
+      </SectionList>
+      <Sport gender="M" name="Football"/>
+      <Teams home="Rouge et or" visitors="Vert et or"/>
+      <Location city="Québec" date="21/09/2013" stadium="Laval" time="17:07"/>
+      <TicketList>
+        <Ticket id="0" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="1" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="2" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="3" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="4" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="5" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="6" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="7" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="8" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="9" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="10" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="11" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="12" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="13" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="14" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="15" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="16" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="17" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="18" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="19" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="20" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="21" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="22" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="23" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="24" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="25" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="26" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="27" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="28" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="29" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="30" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="31" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="32" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="33" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="34" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="35" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="36" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="37" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="38" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="39" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="40" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="41" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="42" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="43" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="44" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="45" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="46" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="47" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="48" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="49" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="50" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="51" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="52" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="53" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="54" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="55" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="56" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="57" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="58" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="59" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="60" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="61" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="62" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="63" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="64" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="65" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="66" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="67" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="68" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="69" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="70" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="71" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="72" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="73" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="74" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="75" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="76" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="77" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="78" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="79" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="80" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="81" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="82" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="83" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="84" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="85" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="86" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="87" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="88" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="89" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="90" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="91" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="92" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="93" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="94" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="95" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="96" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="97" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="98" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="99" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="100" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+      </TicketList>
+    </Event>
+  </EventList>
 	
 	<UserList>
 		<User username="CarloBoutet">
-			<PersonalData password="123IKnowHowToCount" firstName="Charl" lastName="Boutet" email="carloboutet@hotmail.com" accessLevel="admin" />
+			<PersonalData accessLevel="admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123IKnowHowToCount"/>
 			<UserTickets>
-				<Ticket matchId="1" ticketId="4" />
+				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>
-			<SearchPreferences sport="football" gender="M" type="season" city="québec"/>
+			<SearchPreferences city="québec" gender="M" sport="football" type="season"/>
 		</User>
 	</UserList>
 </Data>
