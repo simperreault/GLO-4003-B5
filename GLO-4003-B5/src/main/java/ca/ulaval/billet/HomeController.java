@@ -45,7 +45,7 @@ public class HomeController {
 		e1.setLocation("ULAVAL");
 		Ticket t1 = new Ticket(1,e1);
 		t1.setSection("A");
-		t1.setSeat(22);
+		t1.setSeat("22");
 		t1.setPrice(14.99);
 		
 		Event e2 = new Event(2);
@@ -57,7 +57,7 @@ public class HomeController {
 		e2.setLocation("ULAVAL2");
 		Ticket t2 = new Ticket(2,e2);
 		t2.setSection("Z");
-		t2.setSeat(5);
+		t2.setSeat("5");
 		t2.setPrice(1);
 		
 		
@@ -82,7 +82,7 @@ public class HomeController {
 		e1.setLocation("ULAVAL");
 		Ticket t1 = new Ticket(1,e1);
 		t1.setSection("A");
-		t1.setSeat(22);
+		t1.setSeat("22");
 		t1.setPrice(14.99);
 		
 		model.addAttribute("ticket", t1);

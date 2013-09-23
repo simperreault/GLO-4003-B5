@@ -27,6 +27,24 @@ public class Event {
 	private List<String> sectionList;
 	
 	public Event(int _id){
+		id = _id;
+		ticketList = new ArrayList<Ticket>();
+		sectionList= new ArrayList<String>();
+	}
+	
+	public Event(int _id, boolean _open, int _ticketsTotal, int _ticketsAvailable, String _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
+		id = _id;
+		open = _open;
+		ticketsTotal = _ticketsTotal;
+		ticketsAvailable = _ticketsAvailable;
+		sport = _sport;
+		gender = _gender;
+		homeTeam = _homeTeam;
+		visitorsTeam = _visitorsTeam;
+		location = _location;
+		stadium = _stadium;
+		date = _date;
+		time = _time;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
 	}
