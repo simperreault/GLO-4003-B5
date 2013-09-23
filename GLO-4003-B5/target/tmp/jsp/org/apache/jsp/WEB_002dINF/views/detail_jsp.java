@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class detail_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -59,11 +59,49 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\" />\n");
       out.write("\n");
       out.write("</head>\n");
-      out.write("\t<h1>Accueil</h1><hr>\n");
-      out.write("\t<div>\n");
-      out.write("\t<p>Sup ! Bienvenue !\n");
-      out.write("\t</p>\n");
-      out.write("\t</div>\n");
+      out.write("\t<h1>Details</h1><hr>\n");
+      out.write("\t<table id=\"hor-minimalist-b\">\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Date : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.date}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Sport : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.sport}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" &nbsp; ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.gender}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Équipe domicile : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.homeTeam}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Équipe visiteurs : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.visitorsTeam}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Endroit : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(' ');
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.stadium}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Siege : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.section}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t\t<tr>\n");
+      out.write("\t\t\t<td>Prix : </td><td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" $</td>\n");
+      out.write("\t\t</tr>\n");
+      out.write("\t</table>\n");
+      out.write("\t<br>\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

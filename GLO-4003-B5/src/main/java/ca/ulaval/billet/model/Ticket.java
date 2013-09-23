@@ -24,7 +24,8 @@ public class Ticket {
 	private double resellprice;
 	
 	public Ticket(int _id, Event _event){
-		
+		this.id = _id;
+		this.event = _event;
 	}
 	
 	public int getId() {
@@ -69,5 +70,10 @@ public class Ticket {
 	public void setResellprice(double resellprice) {
 		this.resellprice = resellprice;
 	}
-	
+	public Event getEvent() {
+		return event;
+	}
+	public void setEvent(Event event) {
+		this.event = event;
+	}
 }

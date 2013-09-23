@@ -24,5 +24,4 @@
 	<context:component-scan base-package="ca.ulaval.billet" />
 	
 	
-	
 </beans:beans>
