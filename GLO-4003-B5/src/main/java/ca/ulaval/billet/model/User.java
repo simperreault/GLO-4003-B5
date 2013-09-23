@@ -42,6 +42,12 @@ public class User {
 		favGender = _favGender;
 		favType = _favType;
 		favLocation = _favLocation;
+		userTickets = new HashMap<Integer,Integer>();
+	}
+	
+	public String toString(){
+		return "\n Username: " + username +" password: "+ password + " firstName: " + firstName + " lastName: " + lastName + " email: " + email + " access level: " + accessLevel ;
+		
 	}
 	
 	public String getUsername() {

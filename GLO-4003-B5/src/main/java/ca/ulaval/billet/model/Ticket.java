@@ -28,6 +28,10 @@ public class Ticket {
 		event = _event;
 	}
 	
+	public Ticket(int _id){
+		id = _id;
+	}
+	
 	public int getId() {
 		return id;
 	}

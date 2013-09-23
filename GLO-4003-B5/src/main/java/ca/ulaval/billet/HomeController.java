@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ca.ulaval.billet.dataUtil.DataManager;
 import ca.ulaval.billet.model.Event;
 import ca.ulaval.billet.model.Ticket;
+import ca.ulaval.billet.model.Event.Sport;
 
 /**
  * Handles requests for the application home page.
@@ -23,6 +25,11 @@ import ca.ulaval.billet.model.Ticket;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private DataManager datamanager;
+	
+	public HomeController(){
+		 datamanager = new DataManager();
+	}
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -37,7 +44,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		Event e1 = new Event(1);
-		e1.setSport("Ballon-balais");
+		e1.setSport(Sport.Football);
 		e1.setGender("Masculin");
 		e1.setDate(new Date(2013,9,22));
 		e1.setVisitorsTeam("BISHOP");
@@ -49,7 +56,7 @@ public class HomeController {
 		t1.setPrice(14.99);
 		
 		Event e2 = new Event(2);
-		e2.setSport("Basket");
+		e2.setSport(Sport.Basketball);
 		e2.setGender("Feminin");
 		e2.setDate(new Date(2013,9,22));
 		e2.setVisitorsTeam("BISHOP2");
@@ -63,8 +70,11 @@ public class HomeController {
 		
 		
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
-		list.add(t1);
-		list.add(t2);
+		/*list.add(t1);
+		list.add(t2);*/
+		for(int i = 0; i < datamanager.getEventList().size(); ++i){
+			list.addAll(datamanager.getEventList().get(i).getTicketList());
+		}
 		
 		model.addAttribute("Ticketlist", list );
 		model.addAttribute("currentPage", "list.jsp");
@@ -74,7 +84,7 @@ public class HomeController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String detail(@PathVariable int id, Model model) {
 		Event e1 = new Event(1);
-		e1.setSport("Ballon-balais");
+		e1.setSport(Sport.Football);
 		e1.setGender("Masculin");
 		e1.setDate(new Date(2013,9,22));
 		e1.setVisitorsTeam("BISHOP");

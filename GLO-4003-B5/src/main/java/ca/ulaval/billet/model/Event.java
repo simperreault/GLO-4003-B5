@@ -11,11 +11,15 @@ import java.util.Date;
 import java.util.List;
 
 public class Event {
+	
+	public enum Sport {
+		Football, Basketball, Rugby, Soccer, Volleyball
+	}
 	private int id;
 	private boolean open;
 	private int ticketsTotal;
 	private int ticketsAvailable;
-	private String sport;
+	private Sport sport;
 	private String gender;
 	private String homeTeam;
 	private String visitorsTeam;
@@ -32,7 +36,7 @@ public class Event {
 		sectionList= new ArrayList<String>();
 	}
 	
-	public Event(int _id, boolean _open, int _ticketsTotal, int _ticketsAvailable, String _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
+	public Event(int _id, boolean _open, int _ticketsTotal, int _ticketsAvailable, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
 		id = _id;
 		open = _open;
 		ticketsTotal = _ticketsTotal;
@@ -47,6 +51,10 @@ public class Event {
 		time = _time;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
+	}
+	
+	public String toString(){
+		return "\n id: "+ id + " Sport: " + sport + " Gender: " + gender + " HomeTeam: " + homeTeam + " Visitors: " + visitorsTeam + " Location: " + location + " Stadium: " + stadium + " @ " + date;
 	}
 
 	public List<Ticket> getTicketList() {
@@ -79,10 +87,10 @@ public class Event {
 	public void setTicketsAvailable(int ticketsAvailable) {
 		this.ticketsAvailable = ticketsAvailable;
 	}
-	public String getSport() {
+	public Sport getSport() {
 		return sport;
 	}
-	public void setSport(String sport) {
+	public void setSport(Sport sport) {
 		this.sport = sport;
 	}
 	public String getGender() {
