@@ -20,7 +20,7 @@
 			<td>Équipe visiteurs : </td><td>${ticket.event.visitorsTeam}</td>
 		</tr>
 		<tr>
-			<td>Endroit : </td><td>${ticket.event.location} ${ticket.event.stadium}</td>
+			<td>Endroit : </td><td>${ticket.event.location}, ${ticket.event.stadium}</td>
 		</tr>
 		<tr>
 			<td>Siege : </td><td>${ticket.section}</td>

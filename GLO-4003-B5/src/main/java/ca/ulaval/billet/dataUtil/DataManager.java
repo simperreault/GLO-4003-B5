@@ -94,8 +94,8 @@ public class DataManager {
 		return false;
 	}
 	
-	public boolean loadAllTickets(int _eventId){
-		return false;
+	public List<Ticket> loadAllTickets(int _eventId){
+		return getEvent(_eventId).getTicketList();
 	}
 	
 	public boolean loadUser(){
