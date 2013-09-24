@@ -10,4 +10,9 @@
 	<p>Sup ! Bienvenue !
 	</p>
 	</div>
+		
+	<c:if test='${currentPage == "Home.jsp"}'>
+    	<c:out value="TEST"></c:out>
+    	<c:set value="someclass" var="cssClass"></c:set>
+    </c:if>
 </html>

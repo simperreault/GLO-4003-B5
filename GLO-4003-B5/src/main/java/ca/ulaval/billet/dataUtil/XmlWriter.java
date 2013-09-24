@@ -24,6 +24,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ca.ulaval.billet.model.Event;
 import ca.ulaval.billet.model.Ticket;
+import ca.ulaval.billet.model.Event.Sport;
 import ca.ulaval.billet.model.Ticket.ticketType;
 import ca.ulaval.billet.model.User;
 
@@ -46,7 +47,7 @@ private Document xmlDoc;
 	
 	public static void main(String [] args)
 	{
-		Event event = new Event(4,true,100,100,"Football","M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
+		Event event = new Event(4,true,100,100,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
@@ -186,7 +187,7 @@ private Document xmlDoc;
 			rootEventElement.appendChild(sectionListElement);
 			//sport
 			Element sportElement = xmlDoc.createElement("Sport");
-			sportElement.setAttribute("name", _event.getSport());
+			sportElement.setAttribute("name", _event.getSport().toString());
 			sportElement.setAttribute("gender", _event.getGender());
 			rootEventElement.appendChild(sportElement);
 			//teams 
@@ -314,7 +315,7 @@ private Document xmlDoc;
 			}
 			//sport
 			Element sportElement = (Element)(myEventElement.getElementsByTagName("Sport").item(0));
-			sportElement.setAttribute("name", _event.getSport());
+			sportElement.setAttribute("name", _event.getSport().toString());
 			sportElement.setAttribute("gender", _event.getGender());
 			//teams 
 			Element teamElement = (Element)(myEventElement.getElementsByTagName("Teams").item(0));

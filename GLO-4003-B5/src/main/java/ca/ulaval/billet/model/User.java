@@ -47,6 +47,11 @@ public class User {
 		userTickets = new ArrayList<Pair<Integer,Integer>>();
 	}
 	
+	public String toString(){
+		return "\n Username: " + username +" password: "+ password + " firstName: " + firstName + " lastName: " + lastName + " email: " + email + " access level: " + accessLevel ;
+		
+	}
+	
 	public String getUsername() {
 		return username;
 	}

@@ -2,44 +2,41 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Liste de billets en vente</title>
+	<title>Liste des événements à venir</title>
 	<!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
 	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 
-	
 </head>
 <body>
 
 <div class="container">
 <h1>
-	Liste de billets en vente 
+	Liste des événements à venir
 </h1>
 	<div class="row">
 		<table  id="hor-minimalist-b">
 			<thead>
 				<tr>
 					<th>Sport</th>
+					<th>Sexe</th>
 					<th>Endroit</th>
 					<th>Date</th>
-					<th>Prix</th>
-					<th colspan="3"></th>
+					<th colspan="2"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="ticket" items="${ticketList}">
-					<c:url var="ticketUrl" value="/${ticket.id}" />
+				<c:forEach var="event" items="${EventList}">
+					<c:url var="eventUrl" value="/Event${event.id}" />
 					<tr>
-						<td>${ticket.event.sport}</td>
-						<td>${ticket.event.location}</td>
-						<td>${ticket.event.date}</td>
-						<td>${ticket.price}$</td>
+						<td>${event.sport}</td>
+						<td>${event.gender}</td>
+						<td>${event.location},  ${event.stadium}</td>
+						<td>${event.date}</td>
 						<td>
-							<a href="${ticketUrl}">Details</a>
+							<a href="${eventUrl}">Voir les billets disponibles</a>
 						</td>
 						<td>
-							<a href="">Ajouter au panier</a>
-						</td>
-						<td>
+							<!-- ADMIN FUNCTION -->
 							<a href="">Retirer</a>
 						</td>
 				</c:forEach>

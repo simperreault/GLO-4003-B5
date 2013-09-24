@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList>
+	<EventList lastId="3" total="3">
 		<Event id="1" open="true" ticketsAvailable="2" ticketsTotal="4">
-			<SectionList>A2;B2;C2;D2</SectionList>
+			<SectionList>
+		<Section>A2</Section>
+		<Section>B2</Section>
+        <Section>C2</Section>
+        <Section>D2</Section>
+			</SectionList>
 			<Sport gender="M" name="Football"/>
 			<Teams home="nutSacks" visitors="Scumbags"/>
 			<Location city="Québec" date="02/03/2014" stadium="Bell" time="18:00"/> 
@@ -339,7 +344,7 @@
       </TicketList>
     </Event>
   </EventList>
-	<UserList>
+	<UserList total="1">
 		<User username="CarloBoutet">
 			<PersonalData password="123IKnowHowToCount" firstName="Charl"
 				lastName="Boutet" email="carloboutet@hotmail.com" accessLevel="admin" />

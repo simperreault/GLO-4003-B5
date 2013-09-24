@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class EventList_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -59,7 +59,7 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<html>\n");
       out.write("<head>\n");
-      out.write("\t<title>Liste de billets en vente</title>\n");
+      out.write("\t<title>Liste des événements à venir</title>\n");
       out.write("\t<!-- <link rel=\"stylesheet\" type=\"text/css\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css\" /> -->\n");
       out.write("\t<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_url_0(_jspx_page_context))
@@ -72,17 +72,17 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<div class=\"container\">\n");
       out.write("<h1>\n");
-      out.write("\tListe de billets en vente \n");
+      out.write("\tListe des événements à venir\n");
       out.write("</h1>\n");
       out.write("\t<div class=\"row\">\n");
       out.write("\t\t<table  id=\"hor-minimalist-b\">\n");
       out.write("\t\t\t<thead>\n");
       out.write("\t\t\t\t<tr>\n");
       out.write("\t\t\t\t\t<th>Sport</th>\n");
+      out.write("\t\t\t\t\t<th>Sexe</th>\n");
       out.write("\t\t\t\t\t<th>Endroit</th>\n");
       out.write("\t\t\t\t\t<th>Date</th>\n");
-      out.write("\t\t\t\t\t<th>Prix</th>\n");
-      out.write("\t\t\t\t\t<th colspan=\"3\"></th>\n");
+      out.write("\t\t\t\t\t<th colspan=\"2\"></th>\n");
       out.write("\t\t\t\t</tr>\n");
       out.write("\t\t\t</thead>\n");
       out.write("\t\t\t<tbody>\n");
@@ -141,8 +141,8 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("ticket");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticketList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("event");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${EventList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -155,26 +155,26 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\n");
           out.write("\t\t\t\t\t<tr>\n");
           out.write("\t\t\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.sport}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${event.sport}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
           out.write("\t\t\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${event.gender}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
           out.write("\t\t\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.date}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${event.location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(",  ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${event.stadium}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
           out.write("\t\t\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("$</td>\n");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${event.date}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
           out.write("\t\t\t\t\t\t<td>\n");
           out.write("\t\t\t\t\t\t\t<a href=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticketUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\">Details</a>\n");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${eventUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">Voir les billets disponibles</a>\n");
           out.write("\t\t\t\t\t\t</td>\n");
           out.write("\t\t\t\t\t\t<td>\n");
-          out.write("\t\t\t\t\t\t\t<a href=\"\">Ajouter au panier</a>\n");
-          out.write("\t\t\t\t\t\t</td>\n");
-          out.write("\t\t\t\t\t\t<td>\n");
+          out.write("\t\t\t\t\t\t\t<!-- ADMIN FUNCTION -->\n");
           out.write("\t\t\t\t\t\t\t<a href=\"\">Retirer</a>\n");
           out.write("\t\t\t\t\t\t</td>\n");
           out.write("\t\t\t\t");
@@ -205,8 +205,8 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_url_1.setPageContext(_jspx_page_context);
     _jspx_th_c_url_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_url_1.setVar("ticketUrl");
-    _jspx_th_c_url_1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("/${ticket.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_url_1.setVar("eventUrl");
+    _jspx_th_c_url_1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("/Event${event.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_url_1 = _jspx_th_c_url_1.doStartTag();
     if (_jspx_th_c_url_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_url_var_value_nobody.reuse(_jspx_th_c_url_1);

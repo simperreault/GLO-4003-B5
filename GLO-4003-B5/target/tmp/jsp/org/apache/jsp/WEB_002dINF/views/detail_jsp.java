@@ -86,6 +86,7 @@ public final class detail_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<tr>\n");
       out.write("\t\t\t<td>Endroit : </td><td>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(',');
       out.write(' ');
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ticket.event.stadium}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</td>\n");
