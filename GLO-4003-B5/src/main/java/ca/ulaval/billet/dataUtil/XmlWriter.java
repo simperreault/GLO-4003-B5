@@ -11,29 +11,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import ca.ulaval.billet.model.Event;
 import ca.ulaval.billet.model.Ticket;
 import ca.ulaval.billet.model.Ticket.ticketType;
+import ca.ulaval.billet.model.User;
 
 public class XmlWriter {
-public static final String DATA_FILE="src/main/resources/TestDataProjetUniversite.xml";
+public static final String DATA_FILE="test.xml"; //"src/main/resources/TestDataProjetUniversite.xml";
 private File xmlFile;
 private Document xmlDoc;
 
@@ -51,7 +46,7 @@ private Document xmlDoc;
 	
 	public static void main(String [] args)
 	{
-		Event event = new Event(3,true,100,100,"Football","M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
+		Event event = new Event(4,true,100,100,"Football","M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
@@ -66,10 +61,36 @@ private Document xmlDoc;
 		}
 		event.setSectionList(sectionList);
 		event.setTicketList(ticketList);
+		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com","user","Basketball","M",ticketType.GENERAL,"Sherbrooke");
+		List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer, Integer>>();
+		userTickets.add(new Pair<Integer,Integer>(1,1));
+		userTickets.add(new Pair<Integer,Integer>(1,8));
+		userTickets.add(new Pair<Integer,Integer>(2,5));
+		userTickets.add(new Pair<Integer,Integer>(2,14));
+		userTickets.add(new Pair<Integer,Integer>(3,58));
+		user.setUserTickets(userTickets);
 		XmlWriter writer = new XmlWriter();
 		writer.connect();
 		//writer.writeEvent(event);
+		//writer.writeUser(user);
+		//List<Pair<Integer,Integer>> userTickets2 = new ArrayList<Pair<Integer, Integer>>();
+		//userTickets2.add(new Pair<Integer,Integer>(6,7));
+		//user.setEmail("wowttttttbo@barnak.ca");
+		//user.setPassword("bro");
+		//user.setUserTickets(userTickets2);
+		//writer.modifyUser(user);
 		//writer.writeTicketsToEvent(2, ticketList);
+		//writer.deleteUser("CarloBoutet");
+		//writer.deleteEvent(2);
+		//writer.deleteTicket(1, 1);
+		//Ticket test = event.getTicketList().get(0);
+		//test.setOwner("carloBoutet");
+		//test.setResellprice(50);
+		//writer.modifyTicket(test);
+		//event.setGender("F");
+		//event.setSport("Basketball");
+		//event.setStadium("Honco");
+		//writer.modifyEvent(event);
 	}
 	
 	private void writeTicket(Ticket _ticket, Element _ticketListElement){
@@ -86,21 +107,13 @@ private Document xmlDoc;
 	
 	public boolean writeTicketsToEvent(int _eventId, List<Ticket> _ticketsToAdd){
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		dbFactory.setIgnoringElementContentWhitespace(true);
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			//xmlDoc = dBuilder.newDocument();
 			xmlDoc = dBuilder.parse(xmlFile);
 			//Trouver l'emplacement pour ajouter les tickets
-			NodeList EventNodeList = xmlDoc.getElementsByTagName("Event");
-			Element myEventElement = null;
-			int eventIter = 0;
-			while (eventIter < EventNodeList.getLength()) {
-				Element elem = (Element)EventNodeList.item(eventIter);
-				if( Integer.parseInt(elem.getAttribute("id")) == _eventId ){
-					myEventElement = elem;
-				}
-				eventIter++;
-			}
+			Element myEventElement = findEvent(_eventId);
 			if(myEventElement == null){
 				throw new Exception("Event non existant dans le fichier");
 			}
@@ -111,10 +124,7 @@ private Document xmlDoc;
 				writeTicket(it.next(),ticketListElement);
 			}
 			//changer le nombre total et disponible de billets dans le fichier
-			int tickeTotalValue = Integer.parseInt(myEventElement.getAttribute("ticketsTotal")) + _ticketsToAdd.size();
-			int ticketAvailableValue = Integer.parseInt(myEventElement.getAttribute("ticketsAvailable")) + _ticketsToAdd.size();
-			myEventElement.setAttribute("ticketsTotal", Integer.toString(tickeTotalValue));
-			myEventElement.setAttribute("ticketsAvailable", Integer.toString(ticketAvailableValue));
+			updateTicketCounts(myEventElement,_ticketsToAdd.size());
 			//écrire le contenu au fichier xml physique
 			saveDataToFile();
 			
@@ -136,6 +146,7 @@ private Document xmlDoc;
 			//propriétées pour l'indentation du fichier
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			
 			//transformer le stream en écriture sur le fichier
 			transformer.transform(source, result);
 		} catch (Exception e) {
@@ -192,7 +203,6 @@ private Document xmlDoc;
 			rootEventElement.appendChild(locationElement);
 			//TicketList
 			Element ticketListElement = xmlDoc.createElement("TicketList");
-			//TODO Boucle de gestion
 			for(Iterator<Ticket> it = _event.getTicketList().iterator(); it.hasNext();)
 			{
 				writeTicket(it.next(),ticketListElement);
@@ -200,6 +210,11 @@ private Document xmlDoc;
 			rootEventElement.appendChild(ticketListElement);
 			//ajouter l,event à la liste
 			rootElementList.appendChild(rootEventElement);
+			
+			//update du nombre total d'event et du dernier id
+			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
+			rootElementList.setAttribute("total",Integer.toString(newTotal));
+			rootElementList.setAttribute("lastId",Integer.toString(_event.getId()));
 			//écrire le contenu au fichier xml physique
 			saveDataToFile();
 			
@@ -211,4 +226,332 @@ private Document xmlDoc;
 		return true;
 	}
 	
+	public boolean writeUser(User _user){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver l'emplacement pour ajouter le user
+			Element rootElementList = (Element)(xmlDoc.getElementsByTagName("UserList").item(0));
+			//Créer le header de l'événement
+			Element rootUserElement = xmlDoc.createElement("User");
+			rootUserElement.setAttribute("username", _user.getUsername());
+			rootElementList.appendChild(rootUserElement);
+			//Créer le contenu du user
+			//personal data
+			Element dataElement = xmlDoc.createElement("PersonalData");
+			dataElement.setAttribute("accessLevel", _user.getAccessLevel());
+			dataElement.setAttribute("email", _user.getEmail());
+			dataElement.setAttribute("firstname", _user.getFirstName());
+			dataElement.setAttribute("lastName", _user.getLastName());
+			dataElement.setAttribute("password", _user.getPassword());
+			rootUserElement.appendChild(dataElement);
+			Element userTicketListElement = xmlDoc.createElement("UserTickets");
+			//liste des tickets appartenant au user
+			for(Iterator<Pair<Integer, Integer>> it = _user.getUserTickets().iterator(); it.hasNext();)
+			{
+				Pair<Integer, Integer> pair = it.next();
+				Element ticketElement = xmlDoc.createElement("Ticket");
+				ticketElement.setAttribute("matchId",Integer.toString(pair.getLeft()));
+				ticketElement.setAttribute("ticketId",Integer.toString(pair.getRight()));
+				userTicketListElement.appendChild(ticketElement);
+			}
+			rootUserElement.appendChild(userTicketListElement);
+			//search preferences
+			Element searchElement = xmlDoc.createElement("SearchPreferences");
+			searchElement.setAttribute("city", _user.getFavLocation());
+			searchElement.setAttribute("gender", _user.getFavGender());
+			searchElement.setAttribute("sport", _user.getFavSport());
+			searchElement.setAttribute("type", _user.getFavType().toString());
+			rootUserElement.appendChild(searchElement);
+			//update du nombre total de user
+			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
+			rootElementList.setAttribute("total",Integer.toString(newTotal));
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	private void removeAllNodes(Node _node) 
+    {
+		NodeList nl = _node.getChildNodes();
+        while(nl.getLength() > 0){
+        	Node n = nl.item(0);
+            if(n.hasChildNodes()){
+              removeAllNodes(n);
+              _node.removeChild(n);
+            }
+            else
+              _node.removeChild(n);
+        }
+    }
+	
+	public boolean modifyEvent(Event _event){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver l'event que l'on cherche
+			Element myEventElement = findEvent(_event.getId());
+			if(myEventElement == null){
+				throw new Exception("Event non existant dans le fichier");
+			}
+			//Modifier le contenu de l'event
+			myEventElement.setAttribute("open", Boolean.toString(_event.isOpen()));
+			Element sectionListElement = (Element)(myEventElement.getElementsByTagName("SectionList").item(0));
+			//liste de sections
+			//enlever les anicennes sections et remplace par les nouvelles
+			removeAllNodes((Node)sectionListElement);
+			for(Iterator<String> it = _event.getSectionList().iterator(); it.hasNext();)
+			{
+				Element sectionElement = xmlDoc.createElement("Section");
+				sectionElement.appendChild(xmlDoc.createTextNode(it.next()));
+				sectionListElement.appendChild(sectionElement);
+			}
+			//sport
+			Element sportElement = (Element)(myEventElement.getElementsByTagName("Sport").item(0));
+			sportElement.setAttribute("name", _event.getSport());
+			sportElement.setAttribute("gender", _event.getGender());
+			//teams 
+			Element teamElement = (Element)(myEventElement.getElementsByTagName("Teams").item(0));
+			teamElement.setAttribute("home", _event.getHomeTeam());
+			teamElement.setAttribute("visitors", _event.getVisitorsTeam());
+			//location
+			Element locationElement = (Element)(myEventElement.getElementsByTagName("Location").item(0));
+			locationElement.setAttribute("city", _event.getLocation());
+			locationElement.setAttribute("stadium", _event.getStadium());
+			locationElement.setAttribute("date", new SimpleDateFormat("dd/MM/yyyy").format(_event.getDate()));
+			locationElement.setAttribute("time", new SimpleDateFormat("H:mm").format(_event.getTime()));
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean modifyTicket(Ticket _ticket){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver l'event que l'on cherche
+			Element myEventElement = findEvent(_ticket.getEvent().getId());
+			if(myEventElement == null){
+				throw new Exception("Event non existant dans le fichier");
+			}
+			//Trouver le ticket à l'intérieur de l'event
+			Element myTicketElement = findTicketInEvent(myEventElement,_ticket.getId());
+			if(myTicketElement == null){
+				throw new Exception("Ticket non existant dans le fichier");
+			}
+			myTicketElement.setAttribute("type", _ticket.getType().name());
+			myTicketElement.setAttribute("section", _ticket.getSection());
+			myTicketElement.setAttribute("seat", _ticket.getSeat());
+			myTicketElement.setAttribute("owner", _ticket.getOwner());
+			myTicketElement.setAttribute("price", Double.toString(_ticket.getPrice()));
+			myTicketElement.setAttribute("resellPrice", Double.toString(_ticket.getResellprice()));
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean modifyUser(User _user){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver le user que l'on cherche
+			Element myUserElement = findUser(_user.getUsername());
+			if(myUserElement == null){
+				throw new Exception("User non existant dans le fichier");
+			}
+			//Modifier le contenu du user
+			//personal data
+			Element dataElement = (Element)(myUserElement.getElementsByTagName("PersonalData").item(0));
+			dataElement.setAttribute("accessLevel", _user.getAccessLevel());
+			dataElement.setAttribute("email", _user.getEmail());
+			dataElement.setAttribute("firstname", _user.getFirstName());
+			dataElement.setAttribute("lastName", _user.getLastName());
+			dataElement.setAttribute("password", _user.getPassword());
+			
+			Element userTicketListElement = (Element)(myUserElement.getElementsByTagName("UserTickets").item(0));
+			if(userTicketListElement.hasChildNodes()){
+				removeAllNodes((Node)userTicketListElement);
+			}
+			//ajouter la liste des tickets appartenant au user
+			for(Iterator<Pair<Integer, Integer>> it = _user.getUserTickets().iterator(); it.hasNext();)
+			{
+				Pair<Integer, Integer> pair = it.next();
+				Element ticketElement = xmlDoc.createElement("Ticket");
+				ticketElement.setAttribute("matchId",Integer.toString(pair.getLeft()));
+				ticketElement.setAttribute("ticketId",Integer.toString(pair.getRight()));
+				userTicketListElement.appendChild(ticketElement);
+			}
+			//search preferences
+			Element searchElement = (Element)(myUserElement.getElementsByTagName("SearchPreferences").item(0));
+			searchElement.setAttribute("city", _user.getFavLocation());
+			searchElement.setAttribute("gender", _user.getFavGender());
+			searchElement.setAttribute("sport", _user.getFavSport());
+			searchElement.setAttribute("type", _user.getFavType().toString());
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean deleteUser(String _username){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver le user que l'on cherche
+			Element myUserElement = findUser(_username);
+			if(myUserElement == null){
+				throw new Exception("User non existant dans le fichier");
+			}
+			//Supprimmer le user
+			Node userListNode = xmlDoc.getElementsByTagName("UserList").item(0);
+			removeEmptyLines(myUserElement);
+			userListNode.removeChild((Node)myUserElement);
+			//update du nombre total de user
+			int newTotal = Integer.parseInt(((Element)userListNode).getAttribute("total")) - 1;
+			((Element)userListNode).setAttribute("total",Integer.toString(newTotal));
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean deleteEvent(int _eventId){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver l'event que l'on cherche
+			Element myEventElement = findEvent(_eventId);
+			if(myEventElement == null){
+				throw new Exception("Event non existant dans le fichier");
+			}
+			//Supprimmer l'event
+			Node eventListNode = xmlDoc.getElementsByTagName("EventList").item(0);
+			removeEmptyLines(myEventElement);
+			eventListNode.removeChild((Node)myEventElement);
+			//update du nombre total d'event
+			int newTotal = Integer.parseInt(((Element)eventListNode).getAttribute("total")) - 1;
+			((Element)eventListNode).setAttribute("total",Integer.toString(newTotal));
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean deleteTicket(int _eventId, int _ticketId){
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		try {
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			xmlDoc = dBuilder.parse(xmlFile);
+			//Trouver l'event que l'on cherche
+			Element myEventElement = findEvent(_eventId);
+			if(myEventElement == null){
+				throw new Exception("Event non existant dans le fichier");
+			}
+			//Trouver le ticket à l'intérieur de l'event
+			Element myTicketElement = findTicketInEvent(myEventElement,_ticketId);
+			if(myTicketElement == null){
+				throw new Exception("Ticket non existant dans le fichier");
+			}
+			Node ticketListNode = myEventElement.getElementsByTagName("TicketList").item(0);
+			removeEmptyLines(myTicketElement);
+			ticketListNode.removeChild((Node)myTicketElement);
+			//changer le nombre total et disponible de billets dans le fichier
+			updateTicketCounts(myEventElement,-1);
+			//écrire le contenu au fichier xml physique
+			saveDataToFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	private Element findUser(String _username){
+		//Trouver le user que l'on cherche
+		Element rootElementList = (Element)(xmlDoc.getElementsByTagName("UserList").item(0));
+		NodeList userNodeList = rootElementList.getElementsByTagName("User");
+		Element myUserElement = null;
+		int userIter = 0;
+		while (userIter < userNodeList.getLength()) {
+			Element elem = (Element)userNodeList.item(userIter);
+			if( elem.getAttribute("username").equals(_username)){
+				myUserElement = elem;
+			}
+			userIter++;
+		}
+		return myUserElement;
+	}
+	
+	private Element findEvent(int _eventId){
+		Element rootElementList = (Element)(xmlDoc.getElementsByTagName("EventList").item(0));
+		NodeList eventNodeList = rootElementList.getElementsByTagName("Event");
+		Element myEventElement = null;
+		int eventIter = 0;
+		while (eventIter < eventNodeList.getLength()) {
+			Element elem = (Element)eventNodeList.item(eventIter);
+			if( Integer.parseInt(elem.getAttribute("id")) == _eventId ){
+				myEventElement = elem;
+			}
+			eventIter++;
+		}
+		return myEventElement;
+	}
+	
+	private Element findTicketInEvent(Element _event, int _ticketId){
+		Element rootTicketList = (Element)(_event.getElementsByTagName("TicketList").item(0));
+		NodeList ticketNodeList = rootTicketList.getElementsByTagName("Ticket");
+		Element myTicketElement = null;
+		int ticketIter = 0;
+		while (ticketIter < ticketNodeList.getLength()) {
+			Element elem = (Element)ticketNodeList.item(ticketIter);
+			if( Integer.parseInt(elem.getAttribute("id")) == _ticketId ){
+				myTicketElement = elem;
+			}
+			ticketIter++;
+		}
+		return myTicketElement;
+	}
+	
+	private void updateTicketCounts(Element _event , int _value){
+		int tickeTotalValue = Integer.parseInt(_event.getAttribute("ticketsTotal")) + _value;
+		int ticketAvailableValue = Integer.parseInt(_event.getAttribute("ticketsAvailable")) + _value;
+		_event.setAttribute("ticketsTotal", Integer.toString(tickeTotalValue));
+		_event.setAttribute("ticketsAvailable", Integer.toString(ticketAvailableValue));
+	}
+	
+	private void removeEmptyLines(Element _curElement){
+		Node prev = _curElement.getPreviousSibling();
+		 if (prev != null && 
+		     prev.getNodeType() == Node.TEXT_NODE &&
+		     prev.getNodeValue().trim().length() == 0) {
+			 _curElement.getParentNode().removeChild(prev);
+		 }
+	}
 }
