@@ -6,7 +6,6 @@
 	<!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
 	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
 
-	
 </head>
 <body>
 
