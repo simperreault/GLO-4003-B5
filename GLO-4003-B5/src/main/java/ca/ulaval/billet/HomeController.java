@@ -36,42 +36,15 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String list(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
 		
-		Event e1 = new Event(1);
-		e1.setSport(Sport.Football);
-		e1.setGender("Masculin");
-		e1.setDate(new Date(2013,9,22));
-		e1.setVisitorsTeam("BISHOP");
-		e1.setHomeTeam("ULAVAL");
-		e1.setLocation("ULAVAL");
-		Ticket t1 = new Ticket(1,e1);
-		t1.setSection("A");
-		t1.setSeat("22");
-		t1.setPrice(14.99);
-		
-		Event e2 = new Event(2);
-		e2.setSport(Sport.Basketball);
-		e2.setGender("Feminin");
-		e2.setDate(new Date(2013,9,22));
-		e2.setVisitorsTeam("BISHOP2");
-		e2.setHomeTeam("ULAVAL2");
-		e2.setLocation("ULAVAL2");
-		Ticket t2 = new Ticket(2,e2);
-		t2.setSection("Z");
-		t2.setSeat("5");
-		t2.setPrice(1);
-		
-		
-		
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
 		/*list.add(t1);
 		list.add(t2);*/
+		System.out.println(datamanager.getEventList().size());
 		for(int i = 0; i < datamanager.getEventList().size(); ++i){
 			list.addAll(datamanager.getEventList().get(i).getTicketList());
 		}
@@ -81,21 +54,26 @@ public class HomeController {
 		return "MainFrame";
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String detail(@PathVariable int id, Model model) {
-		Event e1 = new Event(1);
-		e1.setSport(Sport.Football);
-		e1.setGender("Masculin");
-		e1.setDate(new Date(2013,9,22));
-		e1.setVisitorsTeam("BISHOP");
-		e1.setHomeTeam("ULAVAL");
-		e1.setLocation("ULAVAL");
-		Ticket t1 = new Ticket(1,e1);
-		t1.setSection("A");
-		t1.setSeat("22");
-		t1.setPrice(14.99);
+	@RequestMapping(value = "/EventList", method = RequestMethod.GET)
+	public String detail(Model model) {
 		
-		model.addAttribute("ticket", t1);
+		model.addAttribute("EventList", datamanager.getEventList());
+		model.addAttribute("currentPage", "EventList.jsp");
+		return "MainFrame";
+	}
+	
+	@RequestMapping(value = "/Event{id}", method = RequestMethod.GET)
+	public String Event(@PathVariable int id, Model model) {
+		
+		model.addAttribute("ticketList", datamanager.loadAllTickets(id));
+		model.addAttribute("currentPage", "TicketList.jsp");
+		return "MainFrame";
+	}
+	
+	@RequestMapping(value = "/Event{id1}/Ticket{id2}", method = RequestMethod.GET)
+	public String detail(@PathVariable int id1,@PathVariable int id2, Model model) {
+		
+		model.addAttribute("ticket", datamanager.getTicket(id1, id2));
 		model.addAttribute("currentPage", "detail.jsp");
 		return "MainFrame";
 	}
