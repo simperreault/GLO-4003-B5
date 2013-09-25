@@ -2,9 +2,11 @@ package ca.ulaval.ticketmaster.web.viewmodels;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import ca.ulaval.ticketmaster.model.Event;
+
 public class TicketViewModel {
 	//public int id;
-	//public Event event;
+	public Event event;
 	//public ticketType type;
 	@NotEmpty(message="Section Must Not Be Empty")
 	public String section;
@@ -13,6 +15,13 @@ public class TicketViewModel {
 	public String owner;
 	public double price;
 	public double resellprice;
+	
+	public TicketViewModel() {
+	}
+	
+	public TicketViewModel(Event event) {
+		this.event = event;
+	}
 	
 	public String getSection() {
 		return section;
@@ -43,5 +52,13 @@ public class TicketViewModel {
 	}
 	public void setResellprice(double resellprice) {
 		this.resellprice = resellprice;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 }

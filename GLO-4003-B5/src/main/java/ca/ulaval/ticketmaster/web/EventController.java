@@ -35,6 +35,7 @@ public class EventController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String Event(@PathVariable int id, Model model) {
 		
+		model.addAttribute("eventID", id);
 		model.addAttribute("ticketList", datamanager.loadAllTickets(id));
 		model.addAttribute("currentPage", "TicketList.jsp");
 		return "MainFrame";

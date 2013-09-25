@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList lastId="3" total="3">
-		<Event id="1" open="true" ticketsAvailable="2" ticketsTotal="4">
+		<Event id="1" open="true" ticketsAvailable="3" ticketsTotal="5">
 			<SectionList>
 		<Section>A2</Section>
 		<Section>B2</Section>
@@ -16,7 +16,8 @@
 				<Ticket id="2" owner="DieHardFanboy" price="70.00" resellPrice="0" seat="78" section="B2" type="season"/>
 				<Ticket id="3" owner="MrRichGuy" price="100.00" resellPrice="0" seat="109" section="C2" type="reserved"/>
 				<Ticket id="4" owner="CarloBoutet" price="80.00" resellPrice="60.00" seat="" section="D2" type="general"/>
-			</TicketList>
+			<Ticket id="5" owner="test" price="43.0" resellPrice="34.0" seat="test" section="test" type="season"/>
+      </TicketList>
 		</Event>
   <Event id="2" open="true" ticketsAvailable="200" ticketsTotal="200">
       <SectionList>
@@ -346,8 +347,7 @@
   </EventList>
 	<UserList total="1">
 		<User username="CarloBoutet">
-			<PersonalData password="123IKnowHowToCount" firstName="Charl"
-				lastName="Boutet" email="carloboutet@hotmail.com" accessLevel="admin" />
+			<PersonalData accessLevel="admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123IKnowHowToCount"/>
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>
