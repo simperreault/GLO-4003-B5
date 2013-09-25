@@ -56,18 +56,6 @@ public class HomeController {
 		return "MainFrame";
 	}
 	
-	@RequestMapping(value = "/addTicket", method = RequestMethod.GET)
-	public String showAddTicket(Locale locale, Model model, Ticket ticket) {
-		model.addAttribute("currentPage", "addTicket.jsp");
-		model.addAttribute("ticket", new Ticket());
-		return "MainFrame";
-	}
-	
-	@RequestMapping(value = "/addTicket", method = RequestMethod.POST)
-	public String validateAddTicket(Model model) {
-		return "redirect:/event/list";
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String MainFrame(Locale locale, Model model) {
 		model.addAttribute("currentPage", "Home.jsp");

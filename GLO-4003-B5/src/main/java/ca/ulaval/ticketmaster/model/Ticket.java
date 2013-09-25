@@ -31,9 +31,6 @@ public class Ticket {
 		id = _id;
 	}
 	
-	public Ticket(){
-	}
-	
 	public int getId() {
 		return id;
 	}
