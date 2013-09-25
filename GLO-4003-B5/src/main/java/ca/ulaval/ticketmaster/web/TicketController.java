@@ -41,16 +41,13 @@ public class TicketController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String create(@Valid TicketViewModel viewModel, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
-	    if (result.hasErrors()) {  
-	        logger.error("HAS ERROR");
-	        
+	    if (result.hasErrors()) {  	        
 	        model.addAttribute("error", result.getAllErrors());
 	        model.addAttribute("ticket", viewModel);
 			model.addAttribute("currentPage", "TicketAdd.jsp");
 			return "MainFrame";
 	    }
 		
-	    logger.error("GG");
 		Ticket ticket = TicketConverter.convert(viewModel);
 		// TODO Add it to XML
 		return "redirect:/event/list";
