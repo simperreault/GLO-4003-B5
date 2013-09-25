@@ -4,13 +4,15 @@
  *	La javadoc, la javadoc !
  */
 
-package ca.ulaval.billet.model;
+package ca.ulaval.ticketmaster.model;
 
 
-import java.util.Map;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
 
-import ca.ulaval.billet.model.Ticket.ticketType;
+import ca.ulaval.ticketmaster.dao.util.Pair;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 public class User {
 
@@ -24,11 +26,11 @@ public class User {
 	private String favGender;
 	private ticketType favType;
 	private String favLocation;
-	private Map<Integer,Integer> userTickets;
+	private List<Pair<Integer,Integer>> userTickets;
 	
 	public User (String _username) {
 		username = _username;
-		userTickets = new HashMap<Integer,Integer>();
+		userTickets = new ArrayList<Pair<Integer,Integer>>();
 	}
 	
 	public User (String _username,  String _password, String _firstName, String _lastName, String _email, String _accessLevel, String _favSport, String _favGender, ticketType _favType, String _favLocation ) {
@@ -42,6 +44,12 @@ public class User {
 		favGender = _favGender;
 		favType = _favType;
 		favLocation = _favLocation;
+		userTickets = new ArrayList<Pair<Integer,Integer>>();
+	}
+	
+	public String toString(){
+		return "\n Username: " + username +" password: "+ password + " firstName: " + firstName + " lastName: " + lastName + " email: " + email + " access level: " + accessLevel ;
+		
 	}
 	
 	public String getUsername() {
@@ -92,11 +100,11 @@ public class User {
 		this.accessLevel = accessLevel;
 	}
 
-	public Map<Integer,Integer> getUserTickets() {
+	public List<Pair<Integer,Integer>> getUserTickets() {
 		return userTickets;
 	}
 
-	public void setUserTickets(HashMap<Integer,Integer> userTickets) {
+	public void setUserTickets(List<Pair<Integer,Integer>> userTickets) {
 		this.userTickets = userTickets;
 	}
 

@@ -19,19 +19,21 @@
 			<thead>
 				<tr>
 					<th>Sport</th>
-					<th>Endroit</th>
 					<th>Date</th>
+					<th>Endroit</th>
+					<th>Type</th>
 					<th>Prix</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="ticket" items="${ticketList}">
-					<c:url var="ticketUrl" value="/${ticket.id}" />
+					<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
 					<tr>
 						<td>${ticket.event.sport}</td>
-						<td>${ticket.event.location}</td>
 						<td>${ticket.event.date}</td>
+						<td>${ticket.event.location}, ${ticket.event.stadium}</td>
+						<td>${ticket.type}</td>
 						<td>${ticket.price}$</td>
 						<td>
 							<a href="${ticketUrl}">Details</a>
@@ -40,6 +42,7 @@
 							<a href="">Ajouter au panier</a>
 						</td>
 						<td>
+							<!-- ADMIN FUNCTION -->
 							<a href="">Retirer</a>
 						</td>
 				</c:forEach>
