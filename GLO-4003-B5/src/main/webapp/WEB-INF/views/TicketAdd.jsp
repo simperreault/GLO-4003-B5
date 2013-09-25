@@ -3,8 +3,6 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
 </head>
 	<h1>Ajouter un Billet</h1><hr>
 	<p style="color:red;"> 
@@ -19,23 +17,23 @@
 				<td><form:input path="section" /></td>
 			</tr>
 			<tr>
-				<td>Seat :</td>
+				<td>Siège :</td>
 				<td><form:input path="seat" /></td>
 			</tr>
 			<tr>
-				<td>Owner :</td>
+				<td>Propriétaire :</td>
 				<td><form:input path="owner" /></td>
 			</tr>
 			<tr>
-				<td>Price :</td>
+				<td>Prix :</td>
 				<td><form:input path="price" /></td>
 			</tr>
 			<tr>
-				<td>Resell Price :</td>
+				<td>Prix de revente :</td>
 				<td><form:input path="resellprice" /></td>
 			</tr>
 		</table>
-
-        <p><button type="submit">Submit</button></p>
+		<br>
+        <p><button class="btn" type="submit">Submit</button></p>
     </form:form>
 </html>

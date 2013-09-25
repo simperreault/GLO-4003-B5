@@ -3,8 +3,6 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
 </head>
 	<h1>'<c:out value="${firstName}"/>' 
 		'<c:out value="${lastname}"/>' connected as '<c:out value="${username}"/>'</h1><hr>

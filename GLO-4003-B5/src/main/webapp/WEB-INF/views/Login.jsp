@@ -2,37 +2,32 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false" %>
 <html>
-<head>
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
-</head>
-	<h1>Login</h1><hr>
-	<div>
-		<form name="loginForm" method="post" action="Connect">
+		<form name="loginForm" method="post" action="connect">
 			<table>
-				<thead>Entrez vos info D: !2</thead>
 				<tr>
 					<td>
-						<label>Username :</label>
+						Pseudo :
 					</td>
-					<td>
+					<td align="right">
 						<input type="text" name="username"/>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label>Password :</label>
+						Mot de passe :
 					</td>
-					<td>
+					<td align="right">
 						<input type="password" name="password"/>
 					</td>
 				</tr>
 				<tr>
-			        <td colspan="2">
-			            <input type="submit" value="Connect"/>
+			        <td colspan="2" align="right">
+			            <input class="btn" style="width:155px" type="submit" value="Se connecter"/>
 					</td>
+				</tr>
+				<tr>
+					 <td></td><td><a href="/CreateUser" style="text-align:right;font-size:11px;">Pas de compte ?</a></td> 
 				</tr>
 			</table>
 		</form>
-	</div>
 </html>

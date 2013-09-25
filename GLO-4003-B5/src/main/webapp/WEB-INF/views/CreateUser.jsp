@@ -3,14 +3,11 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
 </head>
-	<h1>Create User</h1><hr>
+	<h1>Créer un compte utilisateur</h1><hr>
 	<div>
 		<form name="createUserForm" method="post" action="AddUser">
 			<table>
-				<thead>Entrez vos info D: !2</thead>
 				<tr>
 					<td>
 						<label>Username :</label>
@@ -27,12 +24,9 @@
 						<input type="password" name="password"/>
 					</td>
 				</tr>
-				<tr>
-			        <td colspan="2">
-			            <input type="submit" value="Add User"/>
-					</td>
-				</tr>
 			</table>
+			 <br>
+			<input class="btn" type="submit" value="Add User"/>
 		</form>
 	</div>
 </html>

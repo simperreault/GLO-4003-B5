@@ -3,8 +3,6 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
 </head>
 	<h1>FÉLICITATION BRO '<c:out value="${username}"/>', TU AS ÉTÉ AJOUTER</h1><hr>
 	<div>

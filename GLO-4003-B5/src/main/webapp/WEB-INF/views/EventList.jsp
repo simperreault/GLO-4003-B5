@@ -3,9 +3,6 @@
 <html>
 <head>
 	<title>Liste des événements à venir</title>
-	<!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
 </head>
 <body>
 
@@ -13,6 +10,7 @@
 <h1>
 	Liste des événements à venir
 </h1>
+<hr>
 	<div class="row">
 		<table  id="hor-minimalist-b">
 			<thead>
@@ -44,7 +42,8 @@
 		</table>
 	</div>
 	<div class="row">
-		<a href="<c:url value="/ticket/add" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
+		<!-- TODO: /event/add -->
+		<a href="<c:url value="" />" class="btn">Ajouter un événement</a>
 	</div>
 </div>
 </body>

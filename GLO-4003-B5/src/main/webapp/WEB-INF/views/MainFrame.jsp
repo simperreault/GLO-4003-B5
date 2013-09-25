@@ -3,26 +3,31 @@
 <html>
 <head>
 	<title>Home</title>
-	<!-- 
-	 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/styleSheet.css" />" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
+<!-- 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
  -->
 </head>
 <body>
 <div id="background">
 		<div id="page">
 			<div id="header">
-				<div id="logo">
-					<a href="/Home"><img src="<c:url value="/resources/images/logo.png" />" alt="LOGO" height="112" width="118"></a>
-				</div>
+				<div id="logo" style="width:56%;float:left;align:bottom"><a href="/Home"><img src="<c:url value="/resources/images/logo.png" />" alt="LOGO" height="112" width="118"></a></div>
+					<div id="login" style="float:left;">
+						<jsp:include page="Login.jsp" />
+					</div>
 				<div id="navigation">
 					<ul>
-						<li>
+						<li class="<c:if test='${currentPage == "Home.jsp"}'>
+					    	<c:out value="selected"></c:out>
+					    </c:if>">
 							<a href="/Home">Accueil</a>
 						</li>
-						<li>
+						<li class="<c:if test='${currentPage == "EventList.jsp"}'>
+					    	<c:out value="selected"></c:out>
+					    </c:if>">
 							<a href="/event/list">Événements</a>
 						</li>
-						<li class="selected">
+						<li class="">
 							<a href="">TODO</a>
 						</li>
 						<li>
@@ -45,6 +50,7 @@
 					<div>
 						<div class="body">
 							<jsp:include page="${currentPage}" />
+							<br>
 						</div>
 					</div>
 				</div>
@@ -53,13 +59,17 @@
 		<div id="footer">
 			<div>
 				<ul class="navigation">
-					<li>
+					<li class="<c:if test='${currentPage == "Home.jsp"}'>
+					    	<c:out value="active"></c:out>
+					    </c:if>">
 						<a href="/Home">Accueil</a>
 					</li>
-					<li>
+					<li class="<c:if test='${currentPage == "EventList.jsp"}'>
+					    	<c:out value="active"></c:out>
+					    </c:if>">
 						<a href="/event/list">Événements</a>
 					</li>
-					<li class="active">
+					<li class="">
 						<a href="">TODO</a>
 					</li>
 					<li>
@@ -73,12 +83,6 @@
 					</li>
 					<li>
 						<a href="">Panier</a>
-					</li>
-					<li>
-						<a href="/CreateUser">S'enregistrer</a><!-- Possibly put it as include somewhere in the futur -->
-					</li>
-					<li>
-						<a href="/Login">Login</a><!-- Possibly put it as include somewhere in the futur -->
 					</li>
 				</ul>
 			</div>

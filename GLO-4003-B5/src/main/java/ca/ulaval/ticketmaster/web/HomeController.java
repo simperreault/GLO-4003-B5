@@ -105,7 +105,8 @@ public class HomeController {
 	}
 	
 	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
-	@RequestMapping(value = "/Connect", method = RequestMethod.POST)
+	//TODO:trouve comment pas hardcoder tous les paths possibles
+	@RequestMapping(value = {"/connect","/event/connect","/event/{id}/connect"}, method = RequestMethod.POST)
 	public String Login(Locale locale, 
 			@RequestParam("username")String username, 
 			@RequestParam("password")String password,

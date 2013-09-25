@@ -3,10 +3,6 @@
 <html>
 <head>
 	<title>Liste de billets en vente</title>
-	<!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
-	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-
-	
 </head>
 <body>
 
@@ -14,6 +10,7 @@
 <h1>
 	Liste de billets en vente 
 </h1>
+<hr>
 	<div class="row">
 		<table  id="hor-minimalist-b">
 			<thead>
