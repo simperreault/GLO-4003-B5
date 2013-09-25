@@ -4,15 +4,14 @@
  *	La javadoc, la javadoc !
  */
 
-package ca.ulaval.billet.model;
+package ca.ulaval.ticketmaster.model;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 
-import ca.ulaval.billet.dataUtil.Pair;
-import ca.ulaval.billet.model.Ticket.ticketType;
+import ca.ulaval.ticketmaster.dao.util.Pair;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 public class User {
 
@@ -31,6 +30,14 @@ public class User {
 	public User (String _username) {
 		username = _username;
 		userTickets = new ArrayList<Pair<Integer,Integer>>();
+		firstName = "";
+		lastName = "";
+		email = "";
+		accessLevel = "user";
+		favSport = "";
+		favGender = "";
+		favType = Ticket.ticketType.GENERAL;
+		favLocation = "";
 	}
 	
 	public User (String _username,  String _password, String _firstName, String _lastName, String _email, String _accessLevel, String _favSport, String _favGender, ticketType _favType, String _favLocation ) {

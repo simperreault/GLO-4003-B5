@@ -3,13 +3,15 @@
  * @author CP & Mathieu Bolduc
  *	Class repo soon™
  */
-package ca.ulaval.billet.dataUtil;
+package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import ca.ulaval.billet.model.*;
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
 
 public class DataManager {
 

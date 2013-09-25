@@ -4,13 +4,14 @@
  *	
  */
 
-package ca.ulaval.billet.dataUtil;
+package ca.ulaval.ticketmaster.dao.util;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -18,23 +19,25 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import ca.ulaval.billet.model.Event;
-import ca.ulaval.billet.model.Ticket;
-import ca.ulaval.billet.model.Event.Sport;
-import ca.ulaval.billet.model.Ticket.ticketType;
-import ca.ulaval.billet.model.User;
+
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.Event.Sport;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 public class XmlWriter {
-public static final String DATA_FILE="test.xml"; //"src/main/resources/TestDataProjetUniversite.xml";
+public static final String DATA_FILE="src/main/resources/TestDataProjetUniversite.xml";
 private File xmlFile;
 private Document xmlDoc;
 
 	public XmlWriter(){
-		
+		connect();
 	}
 	
 	private boolean connect(){

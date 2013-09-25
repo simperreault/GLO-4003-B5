@@ -20,7 +20,7 @@
 							<a href="/Home">Accueil</a>
 						</li>
 						<li>
-							<a href="/EventList">Événements</a>
+							<a href="/event/list">Événements</a>
 						</li>
 						<li class="selected">
 							<a href="">TODO</a>
@@ -57,7 +57,7 @@
 						<a href="/Home">Accueil</a>
 					</li>
 					<li>
-						<a href="/EventList">Événements</a>
+						<a href="/event/list">Événements</a>
 					</li>
 					<li class="active">
 						<a href="">TODO</a>
@@ -73,6 +73,12 @@
 					</li>
 					<li>
 						<a href="">Panier</a>
+					</li>
+					<li>
+						<a href="/CreateUser">S'enregistrer</a><!-- Possibly put it as include somewhere in the futur -->
+					</li>
+					<li>
+						<a href="/Login">Login</a><!-- Possibly put it as include somewhere in the futur -->
 					</li>
 				</ul>
 			</div>
