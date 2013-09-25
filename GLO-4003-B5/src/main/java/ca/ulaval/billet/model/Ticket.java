@@ -6,6 +6,10 @@
 
 package ca.ulaval.billet.model;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
+
 
 
 public class Ticket {
@@ -30,6 +34,9 @@ public class Ticket {
 	
 	public Ticket(int _id){
 		id = _id;
+	}
+	
+	public Ticket(){
 	}
 	
 	public int getId() {
@@ -82,7 +89,7 @@ public class Ticket {
 	}
 	
 	public String toString(){
-		return  "\n id: " + id +  " type: " + type.name() + " section: " + section + " seat: " + seat + " owner: " + owner + " price: " + price + " resellPrice: " + resellprice;
+		return  "TOSTRING Ticket"; //"\n id: " + id +  " type: " +  type.name() + " section: " + section + " seat: " + seat + " owner: " + owner + " price: " + price + " resellPrice: " + resellprice;
 	}
 	
 }

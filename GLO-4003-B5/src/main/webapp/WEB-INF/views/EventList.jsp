@@ -44,7 +44,7 @@
 		</table>
 	</div>
 	<div class="row">
-		<a href="<c:url value="add" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
+		<a href="<c:url value="addTicket" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
 	</div>
 </div>
 </body>

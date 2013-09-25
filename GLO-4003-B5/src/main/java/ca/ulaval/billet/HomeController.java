@@ -5,18 +5,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ca.ulaval.billet.dataUtil.DataManager;
 import ca.ulaval.billet.model.Event;
 import ca.ulaval.billet.model.Ticket;
 import ca.ulaval.billet.model.Event.Sport;
+import ca.ulaval.billet.model.User;
 
 /**
  * Handles requests for the application home page.
@@ -76,6 +82,18 @@ public class HomeController {
 		model.addAttribute("ticket", datamanager.getTicket(id1, id2));
 		model.addAttribute("currentPage", "detail.jsp");
 		return "MainFrame";
+	}
+	
+	@RequestMapping(value = "/addTicket", method = RequestMethod.GET)
+	public String showAddTicket(Locale locale, Model model, Ticket ticket) {
+		model.addAttribute("currentPage", "addTicket.jsp");
+		model.addAttribute("ticket", new Ticket());
+		return "MainFrame";
+	}
+	
+	@RequestMapping(value = "/addTicket", method = RequestMethod.POST)
+	public String validateAddTicket(Model model) {
+		return "redirect:/EventList";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
