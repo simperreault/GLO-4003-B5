@@ -10,11 +10,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.XmlReader;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
 
 /**
  * Handles requests for the application home page.
@@ -89,7 +92,7 @@ public class HomeController {
 		return "MainFrame";
 	}
 	
-	//Msemble ça va être à mettre ailleurs
+	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
 	@RequestMapping(value = "/AddUser", method = RequestMethod.POST)
 	public String AddUser(Locale locale, @RequestParam("username")String username, Model model) {
 
@@ -105,7 +108,7 @@ public class HomeController {
 		//return "forward:/MainFrame";
 	}
 	
-	//Msemble ça va être à mettre ailleurs
+	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
 	@RequestMapping(value = "/Connect", method = RequestMethod.POST)
 	public String Login(Locale locale, 
 			@RequestParam("username")String username, 
@@ -116,7 +119,7 @@ public class HomeController {
 		String firstName = "";
 		String lastName = "";
 		
-		//Pour l'instant on créé le XmlReader comme un gros attardé :D
+		//Pour l'instant on crﾃｩﾃｩ le XmlReader comme un gros attardﾃｩ :D
 		List<User> users;
 		users = new XmlReader().loadUsers();
 		System.out.println("SIZE = " + users.size());
