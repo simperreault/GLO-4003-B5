@@ -74,6 +74,12 @@
 					<li>
 						<a href="">Panier</a>
 					</li>
+					<li>
+						<a href="/CreateUser">S'enregistrer</a><!-- Possibly put it as include somewhere in the futur -->
+					</li>
+					<li>
+						<a href="/Login">Login</a><!-- Possibly put it as include somewhere in the futur -->
+					</li>
 				</ul>
 			</div>
 		</div>
