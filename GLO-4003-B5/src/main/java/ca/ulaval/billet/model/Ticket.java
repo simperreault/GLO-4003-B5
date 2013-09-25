@@ -6,6 +6,8 @@
 
 package ca.ulaval.billet.model;
 
+import java.util.Iterator;
+
 
 
 public class Ticket {
@@ -85,4 +87,12 @@ public class Ticket {
 		return  "\n id: " + id +  " type: " + type.name() + " section: " + section + " seat: " + seat + " owner: " + owner + " price: " + price + " resellPrice: " + resellprice;
 	}
 	
+	public void changeValuesFromTicketObject(Ticket _ticket){
+		type = _ticket.getType();
+		section = _ticket.getSection();
+		seat = _ticket.getSeat();
+		owner = _ticket.getOwner();
+		price = _ticket.getPrice();
+		resellprice = _ticket.getResellprice();
+	}
 }

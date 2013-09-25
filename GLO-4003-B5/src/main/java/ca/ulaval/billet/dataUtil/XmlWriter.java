@@ -106,6 +106,12 @@ private Document xmlDoc;
 		_ticketListElement.appendChild(ticketElement);
 	}
 	
+	public boolean writeTicketToEvent(int _eventId, Ticket _ticket){
+		List<Ticket> list = new ArrayList<Ticket>();
+		list.add(_ticket);
+		return writeTicketsToEvent(_eventId , list);
+	}
+	
 	public boolean writeTicketsToEvent(int _eventId, List<Ticket> _ticketsToAdd){
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		dbFactory.setIgnoringElementContentWhitespace(true);
@@ -357,6 +363,8 @@ private Document xmlDoc;
 			myTicketElement.setAttribute("owner", _ticket.getOwner());
 			myTicketElement.setAttribute("price", Double.toString(_ticket.getPrice()));
 			myTicketElement.setAttribute("resellPrice", Double.toString(_ticket.getResellprice()));
+			//mofifer le count des tickets
+			updateTicketCounts(myEventElement,_ticket.getEvent());
 			//écrire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
@@ -545,6 +553,13 @@ private Document xmlDoc;
 		int ticketAvailableValue = Integer.parseInt(_event.getAttribute("ticketsAvailable")) + _value;
 		_event.setAttribute("ticketsTotal", Integer.toString(tickeTotalValue));
 		_event.setAttribute("ticketsAvailable", Integer.toString(ticketAvailableValue));
+	}
+	
+	private void updateTicketCounts(Element _elemEvent , Event _event){
+		int tickeTotalValue = _event.getTicketsTotal();
+		int ticketAvailableValue = _event.getTicketsAvailable();
+		_elemEvent.setAttribute("ticketsTotal", Integer.toString(tickeTotalValue));
+		_elemEvent.setAttribute("ticketsAvailable", Integer.toString(ticketAvailableValue));
 	}
 	
 	private void removeEmptyLines(Element _curElement){

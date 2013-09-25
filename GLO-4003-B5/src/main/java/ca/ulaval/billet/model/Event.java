@@ -8,6 +8,7 @@ package ca.ulaval.billet.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class Event {
@@ -144,4 +145,53 @@ public class Event {
 		this.sectionList = sectionList;
 	}
 	
+	public void addTicketToList(Ticket _ticket){
+		ticketList.add(_ticket);
+		this.ticketsTotal++;
+		//si le owner est vide cela signifie un billet disponible
+		if(_ticket.getOwner().equals("")){
+			this.ticketsAvailable++;
+		}
+		else if(_ticket.getResellprice() != 0){
+			this.ticketsAvailable++;
+		}
+	}
+	
+	public void removeTicketFromList(int _ticketId){
+		Ticket ticket = null;
+		for(Iterator<Ticket> it = this.ticketList.iterator(); it.hasNext();){
+			Ticket itTicket = it.next();
+			if(itTicket.getId() == _ticketId){
+				ticket = itTicket;
+			}
+		}
+		if(ticket != null){
+			ticketList.remove(ticket);
+			this.ticketsTotal--;
+			this.ticketsAvailable--;
+		}
+	}
+	
+	public void changeValuesFromEventObject(Event _event){
+		open = _event.isOpen();
+		sport = _event.getSport();
+		gender = _event.getGender();
+		homeTeam = _event.getHomeTeam();
+		visitorsTeam = _event.getVisitorsTeam();
+		location = _event.getLocation();
+		stadium = _event.getStadium();
+		date = _event.getDate();
+		time = _event.getTime();
+	}
+	
+	public boolean findAndEditTicket(Ticket _ticket){
+		for(Iterator<Ticket> it = this.ticketList.iterator(); it.hasNext();){
+			Ticket old = it.next();
+			if(old.getId() == _ticket.getId()){
+				old.changeValuesFromTicketObject(_ticket);
+				return true;
+			}
+		}
+		return false;
+	}
 }
