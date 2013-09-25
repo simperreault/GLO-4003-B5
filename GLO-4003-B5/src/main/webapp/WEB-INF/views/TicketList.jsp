@@ -28,7 +28,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="ticket" items="${ticketList}">
-					<c:url var="ticketUrl" value="/Event${ticket.event.id}/Ticket${ticket.id}" />
+					<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
 					<tr>
 						<td>${ticket.event.sport}</td>
 						<td>${ticket.event.date}</td>
@@ -50,7 +50,7 @@
 		</table>
 	</div>
 	<div class="row">
-		<a href="<c:url value="add" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
+		<a href="<c:url value="/addTicket" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
 	</div>
 </div>
 </body>

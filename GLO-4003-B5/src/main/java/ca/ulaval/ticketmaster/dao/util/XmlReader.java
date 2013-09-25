@@ -5,7 +5,7 @@
  */
 
 
-package ca.ulaval.billet.dataUtil;
+package ca.ulaval.ticketmaster.dao.util;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -15,11 +15,11 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-import ca.ulaval.billet.model.Event;
-import ca.ulaval.billet.model.Event.Sport;
-import ca.ulaval.billet.model.Ticket;
-import ca.ulaval.billet.model.Ticket.ticketType;
-import ca.ulaval.billet.model.User;
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.Event.Sport;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 import java.io.File;
 import java.text.ParseException;

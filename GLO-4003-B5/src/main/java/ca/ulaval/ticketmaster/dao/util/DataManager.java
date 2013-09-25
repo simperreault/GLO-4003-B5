@@ -3,11 +3,13 @@
  * @author CP
  *	La javadoc, la javadoc !
  */
-package ca.ulaval.billet.dataUtil;
+package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.List;
 
-import ca.ulaval.billet.model.*;
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
 
 public class DataManager {
 

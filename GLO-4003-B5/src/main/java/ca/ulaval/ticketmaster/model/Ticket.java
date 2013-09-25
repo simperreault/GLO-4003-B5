@@ -4,7 +4,7 @@
  *	La javadoc, la javadoc !
  */
 
-package ca.ulaval.billet.model;
+package ca.ulaval.ticketmaster.model;
 
 
 public class Ticket {

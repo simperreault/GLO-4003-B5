@@ -1,4 +1,4 @@
-package ca.ulaval.billet;
+package ca.ulaval.ticketmaster.web;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ca.ulaval.billet.dataUtil.DataManager;
-import ca.ulaval.billet.model.Event;
-import ca.ulaval.billet.model.Ticket;
-import ca.ulaval.billet.model.Event.Sport;
-import ca.ulaval.billet.model.User;
+import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.Event.Sport;
 
 /**
  * Handles requests for the application home page.
@@ -58,30 +58,6 @@ public class HomeController {
 		return "MainFrame";
 	}
 	
-	@RequestMapping(value = "/EventList", method = RequestMethod.GET)
-	public String detail(Model model) {
-		
-		model.addAttribute("EventList", datamanager.getEventList());
-		model.addAttribute("currentPage", "EventList.jsp");
-		return "MainFrame";
-	}
-	
-	@RequestMapping(value = "/Event{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable int id, Model model) {
-		
-		model.addAttribute("ticketList", datamanager.loadAllTickets(id));
-		model.addAttribute("currentPage", "TicketList.jsp");
-		return "MainFrame";
-	}
-	
-	@RequestMapping(value = "/Event{id1}/Ticket{id2}", method = RequestMethod.GET)
-	public String detail(@PathVariable int id1,@PathVariable int id2, Model model) {
-		
-		model.addAttribute("ticket", datamanager.getTicket(id1, id2));
-		model.addAttribute("currentPage", "detail.jsp");
-		return "MainFrame";
-	}
-	
 	@RequestMapping(value = "/addTicket", method = RequestMethod.GET)
 	public String showAddTicket(Locale locale, Model model, Ticket ticket) {
 		model.addAttribute("currentPage", "addTicket.jsp");
@@ -91,7 +67,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/addTicket", method = RequestMethod.POST)
 	public String validateAddTicket(Model model) {
-		return "redirect:/EventList";
+		return "redirect:/event/list";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

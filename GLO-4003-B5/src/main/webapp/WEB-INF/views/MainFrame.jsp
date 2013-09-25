@@ -20,7 +20,7 @@
 							<a href="/Home">Accueil</a>
 						</li>
 						<li>
-							<a href="/EventList">Événements</a>
+							<a href="/event/list">Événements</a>
 						</li>
 						<li class="selected">
 							<a href="">TODO</a>
@@ -57,7 +57,7 @@
 						<a href="/Home">Accueil</a>
 					</li>
 					<li>
-						<a href="/EventList">Événements</a>
+						<a href="/event/list">Événements</a>
 					</li>
 					<li class="active">
 						<a href="">TODO</a>

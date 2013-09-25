@@ -1,4 +1,4 @@
-package ca.ulaval.billet.dataUtil;
+package ca.ulaval.ticketmaster.dao.util;
 
 public class Pair<L,R> {
 
