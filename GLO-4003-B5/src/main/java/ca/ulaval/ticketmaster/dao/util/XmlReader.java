@@ -311,7 +311,7 @@ public class XmlReader {
 				tempuser.setFirstName(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("firstName"));
 				tempuser.setLastName(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("lastName"));
 				tempuser.setEmail(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("email"));
-				tempuser.setAccessLevel(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("firstName"));
+				tempuser.setAccessLevel(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("accessLevel"));
 				tempuser.setFavSport(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("sport"));
 				tempuser.setFavGender(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("gender"));
 				tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type").toUpperCase()));

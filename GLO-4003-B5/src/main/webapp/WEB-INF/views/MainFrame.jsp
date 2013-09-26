@@ -4,15 +4,17 @@
 <head>
 	<title>Home</title>
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-<!-- 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
- -->
 </head>
 <body>
 <div id="background">
 		<div id="page">
 			<div id="header">
-				<div id="logo" style="width:56%;float:left;align:bottom"><a href="/Home"><img src="<c:url value="/resources/images/logo.png" />" alt="LOGO" height="112" width="118"></a></div>
-					<div id="login" style="float:left;">
+				<div id="logo">
+					<a href="/Home">
+						<img src="<c:url value="/resources/images/logo.png" />" alt="LOGO" height="112" width="118">
+					</a>
+					</div>
+					<div id="login">
 						<jsp:include page="Login.jsp" />
 					</div>
 				<div id="navigation">
@@ -55,8 +57,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="footer">
+			<div id="footer">
 			<div>
 				<ul class="navigation">
 					<li class="<c:if test='${currentPage == "Home.jsp"}'>
@@ -87,6 +88,7 @@
 				</ul>
 			</div>
 		</div>
+	</div>	
 	</div>
 
 </body>
