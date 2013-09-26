@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.XmlReader;
@@ -110,7 +115,7 @@ public class HomeController {
 	public String Login(Locale locale, 
 			@RequestParam("username")String username, 
 			@RequestParam("password")String password,
-			Model model) {
+			Model model,HttpSession session) {
 		
 		//Get XML List, check if user is in, then PW, then get its name
 		String firstName = "";
@@ -127,9 +132,12 @@ public class HomeController {
 				userIsOk = true;
 				firstName = user.getFirstName();
 				lastName = user.getLastName();
+				session.setAttribute("sesacceslevel",user.getAccessLevel());
+				session.setAttribute("sesusername", username);
+			
 			}
 		}
-		
+		String test = user.getAccessLevel();
 		if ( userIsOk ) //login OK
 		{
 			model.addAttribute("firstName", firstName);

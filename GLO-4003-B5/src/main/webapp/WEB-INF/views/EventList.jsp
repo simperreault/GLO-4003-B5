@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>Liste des événements à venir</title>
@@ -41,10 +41,12 @@
 			</tbody>
 		</table>
 	</div>
+	<c:if test="${sesacceslevel == 'Charl'}">
 	<div class="row">
 		<!-- TODO: /event/add -->
 		<a href="<c:url value="" />" class="btn">Ajouter un événement</a>
 	</div>
+	</c:if>
 </div>
 </body>
 </html>

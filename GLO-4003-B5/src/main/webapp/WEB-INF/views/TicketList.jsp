@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>Liste de billets en vente</title>
@@ -46,9 +46,11 @@
 			</tbody>
 		</table>
 	</div>
+	<c:if test="${sesacceslevel == 'Charl'}">
 	<div class="row">
 		<a href="<c:url value="/ticket/add/${eventID}" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
 	</div>
+	</c:if>
 </div>
 </body>
 </html>
