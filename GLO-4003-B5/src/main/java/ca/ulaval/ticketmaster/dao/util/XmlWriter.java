@@ -196,7 +196,7 @@ private Document xmlDoc;
 			rootEventElement.appendChild(sectionListElement);
 			//sport
 			Element sportElement = xmlDoc.createElement("Sport");
-			sportElement.setAttribute("name", _event.getSport().toString());
+			sportElement.setAttribute("name", /*_event.getSport().toString()*/ Sport.Rugby.toString());
 			sportElement.setAttribute("gender", _event.getGender());
 			rootEventElement.appendChild(sportElement);
 			//teams 

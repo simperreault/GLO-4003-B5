@@ -16,6 +16,8 @@ public class TicketViewModel {
 	public double price;
 	public double resellprice;
 	
+	public int howMany = 1;
+	
 	public TicketViewModel() {
 	}
 	
@@ -61,4 +63,13 @@ public class TicketViewModel {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+
+	public int getHowMany() {
+		return howMany;
+	}
+
+	public void setHowMany(int howMany) {
+		this.howMany = howMany;
+	}
+	
 }
