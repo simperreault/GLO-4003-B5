@@ -61,7 +61,7 @@ public class HomeController {
 		model.addAttribute("currentPage", "Login.jsp");
 		return "MainFrame";
 	}
-	@RequestMapping(value = "/disconnect", method = RequestMethod.GET)
+	@RequestMapping(value = {"/disconnect","/event/disconnect","/event/{id}/disconnect"}, method = RequestMethod.GET)
 	public String Disconnect(Locale locale, Model model, HttpSession session) {
 		model.addAttribute("currentPage", "Home.jsp");
 		session.setAttribute("sesacceslevel",null);
