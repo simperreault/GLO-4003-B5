@@ -34,15 +34,15 @@
 				<td><form:input path="email" /></td>
 			</tr>
 			<tr>
-				<td>Sport favori :</td>
+				<td>Sport préféré :</td>
 				<td><form:input path="favSport" /></td>
 			</tr>
 			<tr>
-				<td>Genre favori :</td>
+				<td>Genre préféré :</td>
 				<td><form:input path="favGender" /></td>
 			</tr>
 			<tr>
-				<td>Type favori :</td>
+				<td>Type préféré :</td>
 				<td><form:input path="favType" /></td>
 			</tr>
 			<tr>
@@ -51,6 +51,6 @@
 			</tr>
 		</table>
 		<br>
-        <p><button class="btn" type="submit">Submit</button></p>
+        <p><button class="btn" type="submit">Soumettre</button></p>
     </form:form>
 </html>
