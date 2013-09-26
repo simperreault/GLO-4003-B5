@@ -364,7 +364,7 @@ public class XmlReader {
 		}
 		return returnList;
 	}
-
+/*
 	public static void main(String[] args) {
 		XmlReader xmlreader = new XmlReader();
 		xmlreader.loadEvents();
@@ -372,6 +372,6 @@ public class XmlReader {
 		xmlreader.userAuthenticate("carloboutet");
 		xmlreader.loadEvent(2);
 		xmlreader.loadTicket(2, 4);
-	}
+	}*/
 
 }
