@@ -50,8 +50,10 @@ public class TicketController {
 		}
 
 		viewmodel.setEvent(new Event(eventId));
-		Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
-		datamanager.saveTicket(ticket); // TODO What if save failed ?
-		return "redirect:/event/list";
+		for (int i= 0; i < viewmodel.howMany; ++i) {
+			Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
+			datamanager.saveTicket(ticket); // TODO What if save failed ?
+		}
+		return "redirect:/event/" + eventId;
 	}
 }

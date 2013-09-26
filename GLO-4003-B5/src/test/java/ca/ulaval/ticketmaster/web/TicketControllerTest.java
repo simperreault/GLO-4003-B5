@@ -68,7 +68,7 @@ public class TicketControllerTest {
 		String redirect = controller.create(DEFAULT_EVENT_ID, viewModel,
 				result, model);
 		
-		assertEquals("redirect:/event/list", redirect);
+		assertEquals("redirect:/event/" + DEFAULT_EVENT_ID, redirect);
 	}
 
 }

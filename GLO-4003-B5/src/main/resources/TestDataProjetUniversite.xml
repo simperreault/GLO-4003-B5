@@ -344,12 +344,43 @@
         <Ticket id="100" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
       </TicketList>
     </Event>
-  <Event id="4" open="false" ticketsAvailable="0" ticketsTotal="0">
+  <Event id="4" open="false" ticketsAvailable="30" ticketsTotal="30">
       <SectionList/>
       <Sport gender="Gars" name="Rugby"/>
       <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
       <Location city="UL" date="09/06/2015" stadium="Telus" time="1:00"/>
-      <TicketList/>
+      <TicketList>
+        <Ticket id="1" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="2" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="3" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="4" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="5" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="6" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="7" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="8" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="9" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="10" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="11" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="12" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="13" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="14" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="15" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="16" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="17" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="18" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="19" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="20" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
+      <Ticket id="21" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="22" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="23" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="24" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="25" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="26" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="27" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="28" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="29" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      <Ticket id="30" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
+      </TicketList>
     </Event>
   </EventList>
 	<UserList total="1">

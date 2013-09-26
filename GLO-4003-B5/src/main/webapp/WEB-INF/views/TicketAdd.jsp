@@ -32,6 +32,10 @@
 				<td>Prix de revente :</td>
 				<td><form:input path="resellprice" /></td>
 			</tr>
+			<tr>
+				<td>Combien de billets :</td>
+				<td><form:input path="howMany" /></td>
+			</tr>
 		</table>
 		<br>
         <p><button class="btn" type="submit">Submit</button></p>
