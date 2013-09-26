@@ -115,7 +115,7 @@ public class HomeController {
 	public String Login(Locale locale, 
 			@RequestParam("username")String username, 
 			@RequestParam("password")String password,
-			Model model,HttpSession session) {
+			Model model, HttpSession session) {
 		
 		//Get XML List, check if user is in, then PW, then get its name
 		String firstName = "";
