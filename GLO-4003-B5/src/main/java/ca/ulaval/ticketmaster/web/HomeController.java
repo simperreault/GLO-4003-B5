@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,28 +106,26 @@ public class HomeController {
 			@RequestParam("password")String password,
 			Model model, HttpSession session) {
 		
-		//check user login petit refactor :D¸
-		//TODO terminer pour mettre sa beau mais le principe est la
+		boolean userIsOk = false;
+		
 		User user = datamanager.getUser(username);
 		if(user != null){
 			if(user.getPassword().equals(password)){
+				userIsOk = true;
 				session.setAttribute("sesacceslevel",user.getAccessLevel().toString());
 				session.setAttribute("sesusername", username);
+			
 			}
 		}
-		else
+		
+		if (!userIsOk)
 		{
 			model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
 		}
+
+		model.addAttribute("currentPage", "Home.jsp");
 		
-		return "redirect:/";
+		return "MainFrame";
 	}
 	
-	public String error(HttpStatus status) {
-		if (status == HttpStatus.BAD_REQUEST || status == HttpStatus.NOT_FOUND)
-		{
-			return "redirect:/";
-		}
-		return null;
-	}
 }
