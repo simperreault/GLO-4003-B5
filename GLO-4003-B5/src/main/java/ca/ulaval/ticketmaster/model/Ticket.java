@@ -16,11 +16,11 @@ public class Ticket {
 	private int id;
 	private Event event;
 	private ticketType type;
-	private String section;
-	private String seat;
-	private String owner;
-	private double price;
-	private double resellprice;
+	private String section = "";
+	private String seat = "";
+	private String owner = "";
+	private double price = 0.0;
+	private double resellprice = 0.0;
 	
 	public Ticket(int _id, Event _event){
 		id = _id;
