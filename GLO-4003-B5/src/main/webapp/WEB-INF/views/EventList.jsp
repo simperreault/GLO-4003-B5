@@ -16,7 +16,7 @@
 			<thead>
 				<tr>
 					<th>Sport</th>
-					<th>Sexe</th>
+					<th>Catégorie</th>
 					<th>Endroit</th>
 					<th>Date</th>
 					<th colspan="2"></th>
