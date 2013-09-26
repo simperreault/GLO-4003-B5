@@ -9,6 +9,7 @@ public class EventViewModel {
 	}
 
 	//public Sport sport;
+	public String sport;
 	public String gender;
 	public String homeTeam;
 	public String visitorsTeam;
@@ -60,6 +61,12 @@ public class EventViewModel {
 	}
 	public void setTime(Date time) {
 		this.time = time;
+	}
+	public String getSport() {
+		return sport;
+	}
+	public void setSport(String sport) {
+		this.sport = sport;
 	}
 	
 	

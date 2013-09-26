@@ -17,6 +17,10 @@
 				<td><form:input path="gender" /></td>
 			</tr>
 			<tr>
+				<td>Sport :</td>
+				<td><form:input path="sport" /></td>
+			</tr>
+			<tr>
 				<td>Équipe maison :</td>
 				<td><form:input path="homeTeam" /></td>
 			</tr>

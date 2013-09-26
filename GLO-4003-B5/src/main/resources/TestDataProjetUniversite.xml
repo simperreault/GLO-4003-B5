@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="4" total="3">
+	<EventList lastId="6" total="5">
 		<Event id="1" open="true" ticketsAvailable="2" ticketsTotal="4">
 			<SectionList>
 		<Section>A2</Section>
@@ -265,6 +265,24 @@
       <Ticket id="29" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
       <Ticket id="30" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
       </TicketList>
+    </Event>
+  <Event id="5" open="false" ticketsAvailable="3" ticketsTotal="3">
+      <SectionList/>
+      <Sport gender="Male" name="Rugby"/>
+      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
+      <Location city="UL" date="25/06/2015" stadium="Telus" time="10:00"/>
+      <TicketList>
+        <Ticket id="1" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
+      <Ticket id="2" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
+      <Ticket id="3" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
+      </TicketList>
+    </Event>
+  <Event id="6" open="false" ticketsAvailable="0" ticketsTotal="0">
+      <SectionList/>
+      <Sport gender="Male" name="Rugby"/>
+      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
+      <Location city="UL" date="09/06/2015" stadium="Telus" time="10:00"/>
+      <TicketList/>
     </Event>
   </EventList>
 	<UserList total="2">
