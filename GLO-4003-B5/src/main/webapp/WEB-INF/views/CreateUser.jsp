@@ -51,6 +51,7 @@
 			</tr>
 		</table>
 		<br>
-        <p><button class="btn" type="submit">S'enregistrer</button></p>
+
+        <p><button class="btn" type="submit">Soumettre</button></p>
     </form:form>
 </html>
