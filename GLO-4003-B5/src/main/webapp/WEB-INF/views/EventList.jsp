@@ -33,10 +33,12 @@
 						<td>
 							<a href="${eventUrl}">Voir les billets disponibles</a>
 						</td>
+						<c:if test="${sesacceslevel == 'admin'}">
 						<td>
 							<!-- ADMIN FUNCTION -->
 							<a href="">Retirer</a>
 						</td>
+						</c:if>
 				</c:forEach>
 			</tbody>
 		</table>

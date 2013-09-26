@@ -38,10 +38,12 @@
 						<td>
 							<a href="">Ajouter au panier</a>
 						</td>
+				<c:if test="${sesacceslevel == 'admin'}">		
 						<td>
 							<!-- ADMIN FUNCTION -->
 							<a href="">Retirer</a>
 						</td>
+						</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
