@@ -164,7 +164,6 @@ public class DataManager {
 	public boolean saveUser(User _user){
 		//v駻ifier que le user n'existe pas d駛�
 		if(xmlReader.userAuthenticate(_user.getUsername()) == null){
-			System.out.println("a");
 			if(xmlWriter.writeUser(_user)){
 				totalUsers++;
 				userMap.put(_user.getUsername(), _user);

@@ -71,8 +71,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
 	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model) {
-
-		System.out.println("!HEYHO! " + viewmodel.username);
 		
 		//model.addAttribute("currentPage", "AddUser.jsp");
 		model.addAttribute("username", viewmodel.username);
