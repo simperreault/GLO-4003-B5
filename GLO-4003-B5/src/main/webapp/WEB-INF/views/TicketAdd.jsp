@@ -21,6 +21,10 @@
 				<td><form:input path="seat" /></td>
 			</tr>
 			<tr>
+				<td>Type :</td>
+				<td><form:input path="type" /></td>
+			</tr>
+			<tr>
 				<td>Propriétaire :</td>
 				<td><form:input path="owner" /></td>
 			</tr>

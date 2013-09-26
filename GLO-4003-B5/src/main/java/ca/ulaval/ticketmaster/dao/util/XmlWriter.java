@@ -100,7 +100,7 @@ private Document xmlDoc;
 	private void writeTicket(Ticket _ticket, Element _ticketListElement){
 		Element ticketElement = xmlDoc.createElement("Ticket");
 		ticketElement.setAttribute("id", Integer.toString(_ticket.getId()));
-		ticketElement.setAttribute("type", /*_ticket.getType().name() TODO Fix this*/ "season");
+		ticketElement.setAttribute("type", _ticket.getType().name());
 		ticketElement.setAttribute("section", _ticket.getSection());
 		ticketElement.setAttribute("seat", _ticket.getSeat());
 		ticketElement.setAttribute("owner", _ticket.getOwner());

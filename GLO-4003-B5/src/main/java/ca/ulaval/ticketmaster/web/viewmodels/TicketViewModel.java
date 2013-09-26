@@ -8,6 +8,7 @@ public class TicketViewModel {
 	//public int id;
 	public Event event;
 	//public ticketType type;
+	public String type;
 	@NotEmpty(message="Section Must Not Be Empty")
 	public String section;
 	@NotEmpty(message="Seat Must Not Be Empty")
@@ -70,6 +71,14 @@ public class TicketViewModel {
 
 	public void setHowMany(int howMany) {
 		this.howMany = howMany;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }
