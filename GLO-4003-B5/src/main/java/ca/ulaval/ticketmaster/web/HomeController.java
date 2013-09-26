@@ -11,13 +11,19 @@ import javax.servlet.http.HttpSession;
 import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.XmlReader;
@@ -63,10 +69,9 @@ public class HomeController {
 	}
 	@RequestMapping(value = {"/disconnect","/event/disconnect","/event/{id}/disconnect"}, method = RequestMethod.GET)
 	public String Disconnect(Locale locale, Model model, HttpSession session) {
-		model.addAttribute("currentPage", "Home.jsp");
 		session.setAttribute("sesacceslevel",null);
 		session.setAttribute("sesusername", null);
-		return "MainFrame";
+		return "redirect:/";
 	
 	}
 	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
@@ -102,44 +107,28 @@ public class HomeController {
 			@RequestParam("password")String password,
 			Model model, HttpSession session) {
 		
-		//Get XML List, check if user is in, then PW, then get its name
-		String firstName = "";
-		String lastName = "";
-		
-		//Pour l'instant on crﾃｩﾃｩ le XmlReader comme un gros attardﾃｩ :D
-		boolean userIsOk = false; //hell shit need to put this somewhere else
-		
 		//check user login petit refactor :D�
 		//TODO terminer pour mettre sa beau mais le principe est la
 		User user = datamanager.getUser(username);
 		if(user != null){
 			if(user.getPassword().equals(password)){
-				userIsOk = true;
-				firstName = user.getFirstName();
-				lastName = user.getLastName();
 				session.setAttribute("sesacceslevel",user.getAccessLevel().toString());
 				session.setAttribute("sesusername", username);
-			
 			}
-		}
-		
-		if ( userIsOk ) //login OK
-		{
-			model.addAttribute("firstName", firstName);
-			model.addAttribute("lastName", lastName);
-			model.addAttribute("username", username);
 		}
 		else
 		{
 			model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
-			model.addAttribute("firstName", "y faudrait un message");
-			model.addAttribute("lastName", "msemble");
-			model.addAttribute("username", "FAILURE");
 		}
-
-		model.addAttribute("currentPage", "Home.jsp");
 		
-		return "MainFrame";
+		return "redirect:/";
 	}
 	
+	public String error(HttpStatus status) {
+		if (status == HttpStatus.BAD_REQUEST || status == HttpStatus.NOT_FOUND)
+		{
+			return "redirect:/";
+		}
+		return null;
+	}
 }

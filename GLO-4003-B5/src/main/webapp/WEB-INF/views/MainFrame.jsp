@@ -51,7 +51,14 @@
 				<div class="box">
 					<div>
 						<div class="body">
-							<jsp:include page="${currentPage}" />
+						<c:choose>
+							<c:when test="${ empty currentPage }">
+								<jsp:include page="error.jsp" />
+							</c:when>
+					    	<c:when test='${currentPage != ""}'>
+					    		<jsp:include page="${currentPage}" />
+					    	</c:when>
+					    </c:choose>
 							<br>
 						</div>
 					</div>

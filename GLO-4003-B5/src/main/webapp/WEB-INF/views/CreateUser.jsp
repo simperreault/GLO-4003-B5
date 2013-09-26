@@ -26,7 +26,7 @@
 				</tr>
 			</table>
 			 <br>
-			<input class="btn" type="submit" value="Add User"/>
+			<input class="btn" type="submit" value="S'enregistrer"/>
 		</form>
 	</div>
 </html>

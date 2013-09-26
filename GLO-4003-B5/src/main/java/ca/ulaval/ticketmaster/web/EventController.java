@@ -1,5 +1,8 @@
 package ca.ulaval.ticketmaster.web;
 
+import java.text.DateFormat;
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -31,7 +34,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String detail(Model model) {
+	public String detail(Model model) { 
 		
 		model.addAttribute("EventList", datamanager.getEventList());
 		model.addAttribute("currentPage", "EventList.jsp");

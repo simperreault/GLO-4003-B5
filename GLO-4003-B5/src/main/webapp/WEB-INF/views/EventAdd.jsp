@@ -37,11 +37,11 @@
 				<td><form:input path="date" /></td>
 			</tr>
 			<tr>
-				<td>Time :</td>
+				<td>Heure :</td>
 				<td><form:input path="time" /></td>
 			</tr>
 		</table>
 		<br>
-        <p><button class="btn" type="submit">Submit</button></p>
+        <p><button class="btn" type="submit">Créer l'événement</button></p>
     </form:form>
 </html>
