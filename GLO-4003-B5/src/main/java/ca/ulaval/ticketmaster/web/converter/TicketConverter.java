@@ -2,6 +2,7 @@ package ca.ulaval.ticketmaster.web.converter;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
 public class TicketConverter {
@@ -14,6 +15,7 @@ public class TicketConverter {
 		entry.setPrice(viewModel.getPrice());
 		entry.setResellprice(viewModel.getResellprice());
 		entry.setEvent(viewModel.getEvent());
+		entry.setType(ticketType.valueOf(viewModel.getType()));
 		
 		return entry;
 	}
@@ -26,6 +28,7 @@ public class TicketConverter {
 		viewModel.setPrice(entry.getPrice());
 		viewModel.setResellprice(entry.getResellprice());
 		viewModel.setEvent(entry.getEvent());
+		viewModel.setType(entry.getType().toString());
 		
 		return viewModel;
 	}

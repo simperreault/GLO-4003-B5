@@ -49,7 +49,7 @@ public class TicketController {
 			return "MainFrame";
 		}
 
-		viewmodel.setEvent(new Event(eventId));
+		viewmodel.setEvent(datamanager.getEvent(eventId));
 		for (int i= 0; i < viewmodel.howMany; ++i) {
 			Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
 			datamanager.saveTicket(ticket); // TODO What if save failed ?
