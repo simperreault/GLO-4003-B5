@@ -14,15 +14,20 @@
 					<td >
 						<input type="text" name="username"/>
 					</td>
+				</tr>
+				<tr>
 					<td>
 						Mot de passe :
 					</td>
 					<td>
 						<input type="password" name="password"/>
 					</td>
+									</tr>
+				<tr>
 					<td id="errorMsg">
 						${errorMsg}
 					</td>
+
 			        <td>
 			            <input class="btn" type="submit" value="Se connecter"/>
 					</td>

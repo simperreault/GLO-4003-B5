@@ -114,7 +114,7 @@ public class HomeController {
 			
 			}
 		}
-		String test = user.getAccessLevel();
+		
 		if ( userIsOk ) //login OK
 		{
 			model.addAttribute("firstName", firstName);
@@ -129,7 +129,7 @@ public class HomeController {
 			model.addAttribute("username", "FAILURE");
 		}
 
-		model.addAttribute("currentPage", "Connect.jsp");
+		model.addAttribute("currentPage", "Home.jsp");
 		
 		return "MainFrame";
 	}
