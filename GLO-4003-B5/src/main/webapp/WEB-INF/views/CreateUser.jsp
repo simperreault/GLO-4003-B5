@@ -46,7 +46,7 @@
 				<td><form:input path="favType" /></td>
 			</tr>
 			<tr>
-				<td>Place préférée :</td>
+				<td>Endroit préféré :</td>
 				<td><form:input path="favLocation" /></td>
 			</tr>
 		</table>
