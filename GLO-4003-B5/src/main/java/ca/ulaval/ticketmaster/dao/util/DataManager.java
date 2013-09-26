@@ -110,6 +110,7 @@ public class DataManager {
 			lastEventId ++;
 			totalEvents ++;
 			eventMap.put(_event.getId(), _event);
+			System.out.println(eventMap.get(_event.getId()));
 			return true;
 		}
 		return false;
@@ -122,7 +123,9 @@ public class DataManager {
 	public boolean saveTicket(Ticket _ticket){
 		//gestion de l'ajout local et au fichier
 		if(_ticket.getEvent() != null){
-			Event event = eventMap.get(_ticket.getEvent().getId());
+			//TODO fix this  map event null // Event event = eventMap.get(_ticket.getEvent().getId());
+			Event event = _ticket.getEvent();
+
 			//générer un nouvel id pour le ticket
 			int newId = event.getTicketsTotal() + 1;
 			_ticket.setId(newId);

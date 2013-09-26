@@ -35,6 +35,8 @@ public class Event {
 		id = _id;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
+	     ticketsTotal = 0;
+		 ticketsAvailable = 0;
 	}
 	
 	public Event(int _id, boolean _open, int _ticketsTotal, int _ticketsAvailable, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
@@ -52,10 +54,12 @@ public class Event {
 		time = _time;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
+	     ticketsTotal = 0;
+		 ticketsAvailable = 0;
 	}
 	
 	public String toString(){
-		return "\n id: "+ id + " Sport: " + sport + " Gender: " + gender + " HomeTeam: " + homeTeam + " Visitors: " + visitorsTeam + " Location: " + location + " Stadium: " + stadium + " @ " + date;
+		return "\n id: "+ id + " Sport: " + sport + " Gender: " + gender + " HomeTeam: " + homeTeam + " Visitors: " + visitorsTeam + " Location: " + location + " Stadium: " + stadium + " @ " + date + "tick total" + ticketsTotal + "tick avail" + ticketsAvailable;
 	}
 
 	public List<Ticket> getTicketList() {
