@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="3" total="3">
+	<EventList lastId="4" total="4">
 		<Event id="1" open="true" ticketsAvailable="3" ticketsTotal="5">
 			<SectionList>
 		<Section>A2</Section>
@@ -343,6 +343,13 @@
         <Ticket id="99" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
         <Ticket id="100" owner="" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
       </TicketList>
+    </Event>
+  <Event id="4" open="false" ticketsAvailable="0" ticketsTotal="0">
+      <SectionList/>
+      <Sport gender="Gars" name="Rugby"/>
+      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
+      <Location city="UL" date="09/06/2015" stadium="Telus" time="1:00"/>
+      <TicketList/>
     </Event>
   </EventList>
 	<UserList total="1">
