@@ -71,7 +71,7 @@ public class HomeController {
 	}
 	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
 	@RequestMapping(value = "/AddUser", method = RequestMethod.POST)
-	public String AddUser(Locale locale, @RequestParam("username")String username, Model model) {
+	public String AddUser(Locale locale, @RequestParam("username")String username,@RequestParam("password")String password, Model model) {
 
 		System.out.println("HEYHO " + username);
 		//@TODO Add l'username
@@ -80,6 +80,7 @@ public class HomeController {
 		model.addAttribute("username", username);
 		
 		User user = new User(username);
+		user.setPassword(password);
 		if(datamanager.saveUser(user)){
 			//blahblah user create sucessfull
 		}
