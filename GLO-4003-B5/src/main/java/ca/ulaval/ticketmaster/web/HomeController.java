@@ -117,7 +117,7 @@ public class HomeController {
 				userIsOk = true;
 				firstName = user.getFirstName();
 				lastName = user.getLastName();
-				session.setAttribute("sesacceslevel",user.getAccessLevel());
+				session.setAttribute("sesacceslevel",user.getAccessLevel().toString());
 				session.setAttribute("sesusername", username);
 			
 			}

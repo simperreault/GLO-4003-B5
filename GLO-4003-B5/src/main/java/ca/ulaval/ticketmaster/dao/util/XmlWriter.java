@@ -65,7 +65,7 @@ private Document xmlDoc;
 		}
 		event.setSectionList(sectionList);
 		event.setTicketList(ticketList);
-		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com","user","Basketball","M",ticketType.GENERAL,"Sherbrooke");
+		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com",User.AccessLevel.User,"Basketball","M",ticketType.GENERAL,"Sherbrooke");
 		List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer, Integer>>();
 		userTickets.add(new Pair<Integer,Integer>(1,1));
 		userTickets.add(new Pair<Integer,Integer>(1,8));
@@ -250,7 +250,7 @@ private Document xmlDoc;
 			//Créer le contenu du user
 			//personal data
 			Element dataElement = xmlDoc.createElement("PersonalData");
-			dataElement.setAttribute("accessLevel", _user.getAccessLevel());
+			dataElement.setAttribute("accessLevel", _user.getAccessLevel().toString());
 			dataElement.setAttribute("email", _user.getEmail());
 			dataElement.setAttribute("firstname", _user.getFirstName());
 			dataElement.setAttribute("lastName", _user.getLastName());
@@ -390,7 +390,7 @@ private Document xmlDoc;
 			//Modifier le contenu du user
 			//personal data
 			Element dataElement = (Element)(myUserElement.getElementsByTagName("PersonalData").item(0));
-			dataElement.setAttribute("accessLevel", _user.getAccessLevel());
+			dataElement.setAttribute("accessLevel", _user.getAccessLevel().toString());
 			dataElement.setAttribute("email", _user.getEmail());
 			dataElement.setAttribute("firstname", _user.getFirstName());
 			dataElement.setAttribute("lastName", _user.getLastName());

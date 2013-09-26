@@ -15,12 +15,16 @@ import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 public class User {
 
+	public enum AccessLevel{
+		Admin , User
+	}
+	
 	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String accessLevel;
+	private AccessLevel accessLevel;
 	private String favSport;
 	private String favGender;
 	private ticketType favType;
@@ -33,14 +37,14 @@ public class User {
 		firstName = "";
 		lastName = "";
 		email = "";
-		accessLevel = "user";
+		accessLevel = AccessLevel.User;
 		favSport = "";
 		favGender = "";
 		favType = Ticket.ticketType.GENERAL;
 		favLocation = "";
 	}
 	
-	public User (String _username,  String _password, String _firstName, String _lastName, String _email, String _accessLevel, String _favSport, String _favGender, ticketType _favType, String _favLocation ) {
+	public User (String _username,  String _password, String _firstName, String _lastName, String _email, AccessLevel _accessLevel, String _favSport, String _favGender, ticketType _favType, String _favLocation ) {
 		username = _username;
 		password = _password;
 		firstName = _firstName;
@@ -99,11 +103,11 @@ public class User {
 		this.email = email;
 	}
 	
-	public String getAccessLevel() {
+	public AccessLevel getAccessLevel() {
 		return accessLevel;
 	}
 	
-	public void setAccessLevel(String accessLevel) {
+	public void setAccessLevel(AccessLevel accessLevel) {
 		this.accessLevel = accessLevel;
 	}
 

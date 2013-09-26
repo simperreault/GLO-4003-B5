@@ -345,13 +345,18 @@
       </TicketList>
     </Event>
   </EventList>
-	<UserList total="1">
+	<UserList total="2">
 		<User username="CarloBoutet">
-			<PersonalData accessLevel="admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="football" type="season"/>
 		</User>
-	</UserList>
+	<User username="testuser">
+      <PersonalData accessLevel="User" email="" firstname="" lastName="" password="lol"/>
+      <UserTickets/>
+      <SearchPreferences city="" gender="" sport="" type="GENERAL"/>
+    </User>
+  </UserList>
 </Data>

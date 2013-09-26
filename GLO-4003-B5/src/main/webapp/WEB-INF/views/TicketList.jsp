@@ -48,7 +48,7 @@
 			</tbody>
 		</table>
 	</div>
-	<c:if test="${sesacceslevel == 'admin'}">
+	<c:if test="${sesacceslevel == 'Admin'}">
 	<div class="row">
 		<a href="<c:url value="/ticket/add/${eventID}" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>
 	</div>

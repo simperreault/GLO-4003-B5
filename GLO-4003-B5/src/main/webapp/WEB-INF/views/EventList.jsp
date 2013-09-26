@@ -43,7 +43,7 @@
 			</tbody>
 		</table>
 	</div>
-	<c:if test="${sesacceslevel == 'admin'}">
+	<c:if test="${sesacceslevel == 'Admin'}">
 	<div class="row">
 		<!-- TODO: /event/add -->
 		<a href="<c:url value="" />" class="btn">Ajouter un événement</a>
