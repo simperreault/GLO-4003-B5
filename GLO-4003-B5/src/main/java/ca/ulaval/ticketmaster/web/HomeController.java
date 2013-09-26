@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -31,29 +33,6 @@ public class HomeController {
 	
 	public HomeController(){
 		 datamanager = new DataManager();
-	}
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/List", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		ArrayList<Ticket> list = new ArrayList<Ticket>();
-		/*list.add(t1);
-		list.add(t2);*/
-		System.out.println(datamanager.getEventList().size());
-		for(int i = 0; i < datamanager.getEventList().size(); ++i){
-			list.addAll(datamanager.getEventList().get(i).getTicketList());
-		}
-		
-		model.addAttribute("Ticketlist", list );
-		model.addAttribute("currentPage", "list.jsp");
-		return "MainFrame";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -87,7 +66,7 @@ public class HomeController {
 		System.out.println("HEYHO " + username);
 		//@TODO Add l'username
 		
-		model.addAttribute("currentPage", "AddUser.jsp");
+		//model.addAttribute("currentPage", "AddUser.jsp");
 		model.addAttribute("username", username);
 		
 		User user = new User(username);
@@ -95,7 +74,7 @@ public class HomeController {
 			//blahblah user create sucessfull
 		}
 		else{
-			//fail
+			
 		}
 		//model.addAttribute("currentPage", "Home.jsp"); //wtf j'peux pas redirect sur AddUser ? D:
 		
@@ -138,6 +117,7 @@ public class HomeController {
 		}
 		else
 		{
+			model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
 			model.addAttribute("firstName", "y faudrait un message");
 			model.addAttribute("lastName", "msemble");
 			model.addAttribute("username", "FAILURE");

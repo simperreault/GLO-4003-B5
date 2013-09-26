@@ -8,7 +8,7 @@
 					<td>
 						Pseudo :
 					</td>
-					<td align="right">
+					<td >
 						<input type="text" name="username"/>
 					</td>
 				</tr>
@@ -16,13 +16,16 @@
 					<td>
 						Mot de passe :
 					</td>
-					<td align="right">
+					<td>
 						<input type="password" name="password"/>
 					</td>
 				</tr>
 				<tr>
-			        <td colspan="2" align="right">
-			            <input class="btn" style="width:155px" type="submit" value="Se connecter"/>
+					<td id="errorMsg">
+						${errorMsg}
+					</td>
+			        <td>
+			            <input class="btn" type="submit" value="Se connecter"/>
 					</td>
 				</tr>
 				<tr>
