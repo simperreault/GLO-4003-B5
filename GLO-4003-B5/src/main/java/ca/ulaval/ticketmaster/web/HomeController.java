@@ -80,7 +80,8 @@ public class HomeController {
 		if(datamanager.saveUser(user)){
 			//blahblah user create sucessfull
 		}
-		else{
+		else
+		{
 			
 		}
 
@@ -93,6 +94,7 @@ public class HomeController {
 		model.addAttribute("currentPage", "Login.jsp");
 		return "MainFrame";
 	}
+	
 	@RequestMapping(value = {"/disconnect","/event/disconnect","/event/{id}/disconnect"}, method = RequestMethod.GET)
 	public String Disconnect(Locale locale, Model model, HttpSession session) {
 		session.setAttribute("sesacceslevel",null);
@@ -124,11 +126,14 @@ public class HomeController {
 		if (!userIsOk)
 		{
 			model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
+			model.addAttribute("currentPage", "Home.jsp");
+			return "Mainframe";
+		}
+		else
+		{
+			return "redirect:/";
 		}
 
-		model.addAttribute("currentPage", "Home.jsp");
-		
-		return "MainFrame";
 	}
 	
 }
