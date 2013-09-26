@@ -4,7 +4,7 @@
 <html>
 <head>
 </head>
-	<h1>Ajouter un Billet</h1><hr>
+	<h1>Ajouter un Évènement</h1><hr>
 	<p style="color:red;"> 
 		<c:forEach var="objectError" items="${error}">
 			<c:out value="${objectError.getDefaultMessage()}"></c:out> <br />
@@ -13,7 +13,7 @@
 	<form:form method="post" class="form-horizontal" modelAttribute="event">
 		<table>
 			<tr>
-				<td>Sexe :</td>
+				<td>Catégorie :</td>
 				<td><form:input path="gender" /></td>
 			</tr>
 			<tr>
