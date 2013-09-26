@@ -59,7 +59,10 @@ public class User {
 	}
 	
 	public String toString(){
-		return "\n Username: " + username +" password: "+ password + " firstName: " + firstName + " lastName: " + lastName + " email: " + email + " access level: " + accessLevel ;
+		return "\n Username: " + username +" password: "+ password + " "
+				+ "\nfirstName: " + firstName + " lastName: " + lastName 
+				+ " \nemail: " + email + " access level: " + accessLevel 
+				+ "\nFAVSCONCAT: " + favSport + favGender+ favType.toString() + favLocation;
 		
 	}
 	

@@ -1,7 +1,7 @@
 /**
  * 
  * @author CP & Mathieu Bolduc
- *	Class repo soon™
+ *	Class repo soonï¿½
  */
 package ca.ulaval.ticketmaster.dao.util;
 
@@ -54,14 +54,14 @@ public class DataManager {
 	private void LoadStartupInformation(){
 		xmlWriter = new XmlWriter();
 		xmlReader = new XmlReader();
-		// Loader les id d'event pour ne pas écraser un event existant dans le cas de la création d'un nouvel event
+		// Loader les id d'event pour ne pas é¦—raser un event existant dans le cas de la cré¥Œtion d'un nouvel event
 		int output[] = xmlReader.readStartupInformation();
 		totalEvents = output[0];
 		lastEventId = output[1];
 		totalUsers = output[2];
 		
 		// pour le moment on va loader tous les events dans la eventList et les users aussi
-		// TODO faire un pattern de repository pis mettre ça clean
+		// TODO faire un pattern de repository pis mettre è»‹ clean
 		
 		List<Event> eventList = xmlReader.loadEvents();
 		eventMap = new HashMap<Integer, Event>();
@@ -83,7 +83,7 @@ public class DataManager {
 	 * Returns an event if it exists, null otherwise
 	 */
 	public Event getEvent(int _eventId){
-		// implémentation sujet à changement
+		// implé§‘entation sujet ï¿½changement
 		return xmlReader.loadEvent(_eventId);
 	}
 	
@@ -91,7 +91,7 @@ public class DataManager {
 	 * Returns a ticket from a specific event if it exists, null otherwise
 	 */
 	public Ticket getTicket(int _eventId, int _ticketId){
-		// implémentation sujet à changement
+		// implé§‘entation sujet ï¿½changement
 		return xmlReader.loadTicket(_eventId, _ticketId);
 	}
 
@@ -99,12 +99,12 @@ public class DataManager {
 	 * Returns a user if it exists, null otherwise
 	 */
 	public User getUser(String _username) {
-		// implémentation sujet à changement
+		// implé§‘entation sujet ï¿½changement
 		return xmlReader.userAuthenticate(_username);
 	}
 	
 	public boolean saveEvent(Event _event){
-		//gestion des ids pour s'assrurer de suivre les ids du fichier de données
+		//gestion des ids pour s'assrurer de suivre les ids du fichier de donné¦¥s
 		_event.setId(lastEventId + 1);
 		if(xmlWriter.writeEvent(_event)){
 			lastEventId ++;
@@ -126,7 +126,7 @@ public class DataManager {
 			//TODO fix this  map event null // Event event = eventMap.get(_ticket.getEvent().getId());
 			Event event = _ticket.getEvent();
 
-			//générer un nouvel id pour le ticket
+			//gé§­é§»er un nouvel id pour le ticket
 			int newId = event.getTicketsTotal() + 1;
 			_ticket.setId(newId);
 			//add
@@ -150,7 +150,7 @@ public class DataManager {
 		for(Iterator<Ticket> it = _ticketsToAdd.iterator(); it.hasNext();)
 		{
 			Ticket toAdd = it.next();
-			//générer un nouvel id pour le ticket
+			//gé§­é§»er un nouvel id pour le ticket
 			int newId = event.getTicketsTotal() + 1;
 			toAdd.setId(newId);
 			//add
@@ -162,8 +162,9 @@ public class DataManager {
 	}
 	
 	public boolean saveUser(User _user){
-		//vérifier que le user n'existe pas déjà
+		//vé§»ifier que le user n'existe pas dé§›ï¿½
 		if(xmlReader.userAuthenticate(_user.getUsername()) == null){
+			System.out.println("a");
 			if(xmlWriter.writeUser(_user)){
 				totalUsers++;
 				userMap.put(_user.getUsername(), _user);
