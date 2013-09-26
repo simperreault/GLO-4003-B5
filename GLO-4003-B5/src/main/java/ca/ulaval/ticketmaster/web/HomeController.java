@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.junit.runner.Request;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,8 +28,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.XmlReader;
+import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.web.converter.UserConverter;
+import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
 /**
  * Handles requests for the application home page.
@@ -57,7 +64,29 @@ public class HomeController {
 	
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
 	public String CreateUser(Locale locale, Model model) {
+		model.addAttribute("user", new UserViewModel());
 		model.addAttribute("currentPage", "CreateUser.jsp");
+		return "MainFrame";
+	}
+	
+	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
+	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model) {
+
+		System.out.println("!HEYHO! " + viewmodel.username);
+		
+		//model.addAttribute("currentPage", "AddUser.jsp");
+		model.addAttribute("username", viewmodel.username);
+		
+		User user = UserConverter.convert(viewmodel);
+
+		if(datamanager.saveUser(user)){
+			//blahblah user create sucessfull
+		}
+		else{
+			
+		}
+
+		model.addAttribute("currentPage", "Home.jsp");
 		return "MainFrame";
 	}
 	
@@ -72,30 +101,6 @@ public class HomeController {
 		session.setAttribute("sesusername", null);
 		return "redirect:/";
 	
-	}
-	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
-	@RequestMapping(value = "/AddUser", method = RequestMethod.POST)
-	public String AddUser(Locale locale, @RequestParam("username")String username,@RequestParam("password")String password, Model model) {
-
-		System.out.println("HEYHO " + username);
-		//@TODO Add l'username
-		
-		//model.addAttribute("currentPage", "AddUser.jsp");
-		model.addAttribute("username", username);
-		
-		User user = new User(username);
-		user.setPassword(password);
-		if(datamanager.saveUser(user)){
-			//blahblah user create sucessfull
-		}
-		else{
-			
-		}
-		//model.addAttribute("currentPage", "Home.jsp"); //wtf j'peux pas redirect sur AddUser ? D:
-		
-		return "MainFrame";
-		//return "redirect:/MainFrame";
-		//return "forward:/MainFrame";
 	}
 	
 	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
