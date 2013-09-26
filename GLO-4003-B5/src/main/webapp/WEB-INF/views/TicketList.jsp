@@ -38,10 +38,9 @@
 						<td>
 							<a href="">Ajouter au panier</a>
 						</td>
-				<c:if test="${sesacceslevel == 'admin'}">		
+				<c:if test="${sesacceslevel == 'Admin'}">		
 						<td>
-							<!-- ADMIN FUNCTION -->
-							<a href="">Retirer</a>
+							<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
 						</td>
 						</c:if>
 				</c:forEach>

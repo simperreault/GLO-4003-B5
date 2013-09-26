@@ -33,10 +33,9 @@
 						<td>
 							<a href="${eventUrl}">Voir les billets disponibles</a>
 						</td>
-						<c:if test="${sesacceslevel == 'admin'}">
+						<c:if test="${sesacceslevel == 'Admin'}">
 						<td>
-							<!-- ADMIN FUNCTION -->
-							<a href="">Retirer</a>
+							<a href="/event/delete/${event.id}">Retirer</a>
 						</td>
 						</c:if>
 				</c:forEach>

@@ -56,4 +56,10 @@ public class TicketController {
 		}
 		return "redirect:/event/" + eventId;
 	}
+	
+	@RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
+	public String delete(@PathVariable int eventId, @PathVariable int ticketId, Model model) {
+		datamanager.deleteTicket(eventId,ticketId);
+		return "redirect:/event/{eventId}";
+	}
 }

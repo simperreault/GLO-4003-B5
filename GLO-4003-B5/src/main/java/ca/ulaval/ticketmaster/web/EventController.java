@@ -76,4 +76,10 @@ public class EventController {
 		return "redirect:/event/list";
 	}
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable int id, Model model) {
+		datamanager.deleteEvent(id);
+		return "redirect:/event/list";
+	}
+	
 }
