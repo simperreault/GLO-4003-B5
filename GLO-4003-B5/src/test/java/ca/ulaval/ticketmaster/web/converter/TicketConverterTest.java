@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
 public class TicketConverterTest {
@@ -19,6 +20,7 @@ public class TicketConverterTest {
 		t.setResellprice(1.0);
 		t.setSeat("seat");
 		t.setSection("section");
+		t.setType(ticketType.SEASON);
 		
 		TicketViewModel viewmodel = TicketConverter.convert(t);
 		
@@ -39,6 +41,7 @@ public class TicketConverterTest {
 		viewmodel.setResellprice(1.0);
 		viewmodel.setSeat("seat");
 		viewmodel.setSection("section");
+		viewmodel.setType("SEASON");
 		
 		Ticket t = TicketConverter.convert(viewmodel, new DataManager());
 		
@@ -48,5 +51,6 @@ public class TicketConverterTest {
 		assertEquals(t.getResellprice(), viewmodel.getResellprice(), 0.001);
 		assertEquals(t.getSeat(), viewmodel.getSeat());
 		assertEquals(t.getSection(), viewmodel.getSection());
+		assertEquals(t.getType().toString(), viewmodel.getType());
 	}
 }
