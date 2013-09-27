@@ -11,6 +11,7 @@ body {
 	width: 960px;
 	margin: 0 auto;
 }
+
 img {
 	border: 0;
 }
@@ -24,6 +25,11 @@ input:focus {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
+}
+
+.error {	
+	color:red;
+	text-align:left;
 }
 
 /*------------------------------ Sprites ------------------------------*/
@@ -184,17 +190,15 @@ box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
 }
 
 #login table {
-text-align:right;
+	text-align:right;
+}
+
+#login table td.error {
+	font-size: 10px;
 }
 
 #login input {
 width:155px;
-}
-
-#errorMsg {
-	font-size: 10px;
-	color:red;
-	text-align:left;
 }
 
 /*------------------------------ FOOTER ------------------------------*/
@@ -301,7 +305,7 @@ width:155px;
   border-bottom-color: #ffffff;
 }
 
-/****************************** TABLE ******************************/
+/*------------------------------ TABLE ------------------------------*/
 #hor-minimalist-b {
 font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 font-size:12px;
@@ -338,7 +342,7 @@ border-collapse:collapse;
 margin:30px 30px 30px 15px;
 }
 
-/****************************** BUTTON ******************************/
+/*------------------------------ BUTTON ------------------------------*/
 .btn {
 -webkit-user-select: none;
 background-color: rgb(66, 139, 202);

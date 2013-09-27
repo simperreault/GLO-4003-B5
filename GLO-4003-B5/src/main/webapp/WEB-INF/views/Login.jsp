@@ -24,7 +24,7 @@
 					</td>
 									</tr>
 				<tr>
-					<td id="errorMsg">
+					<td class="error" >
 						${errorMsg}
 					</td>
 
@@ -44,7 +44,7 @@
 	<c:when test = "${not empty sesusername }">
 	
 		Bonjour, <%= session.getAttribute( "sesusername" ) %>
-		<a href="<c:url value="/disconnect" />" class="col-lg-offset=2 btn btn-primary">Déconnexion</a>
+		<a href="<c:url value="/disconnect" />" class="btn">Déconnexion</a>
 		
 	</c:when>
 </c:choose>

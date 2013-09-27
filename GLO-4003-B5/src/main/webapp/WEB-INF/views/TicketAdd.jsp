@@ -5,11 +5,12 @@
 <head>
 </head>
 	<h1>Ajouter un Billet</h1><hr>
-	<p style="color:red;"> 
+	<div class="error"> 
 		<c:forEach var="objectError" items="${error}">
 			<c:out value="${objectError.getDefaultMessage()}"></c:out> <br />
 		</c:forEach>
-	</p>
+	</div>
+	<br>
 	<form:form method="post" class="form-horizontal" modelAttribute="ticket">
 		<table>
 			<tr>
@@ -42,6 +43,6 @@
 			</tr>
 		</table>
 		<br>
-        <p><button class="btn" type="submit">Submit</button></p>
+        <p><button class="btn" type="submit">Ajouter un billet</button></p>
     </form:form>
 </html>

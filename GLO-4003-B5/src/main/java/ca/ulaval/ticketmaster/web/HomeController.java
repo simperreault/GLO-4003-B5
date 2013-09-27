@@ -95,7 +95,7 @@ public class HomeController {
 		return "MainFrame";
 	}
 	
-	@RequestMapping(value = {"/disconnect","/event/disconnect","/event/{id}/disconnect"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/disconnect"}, method = RequestMethod.GET)
 	public String Disconnect(Locale locale, Model model, HttpSession session) {
 		session.setAttribute("sesacceslevel",null);
 		session.setAttribute("sesusername", null);
@@ -119,7 +119,6 @@ public class HomeController {
 				userIsOk = true;
 				session.setAttribute("sesacceslevel",user.getAccessLevel().toString());
 				session.setAttribute("sesusername", username);
-			
 			}
 		}
 		
