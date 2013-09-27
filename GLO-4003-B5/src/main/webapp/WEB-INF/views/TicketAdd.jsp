@@ -1,9 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 </head>
+	<c:if test="${sesacceslevel == 'Admin'}">
 	<h1>Ajouter un Billet</h1><hr>
 	<div class="error"> 
 		<c:forEach var="objectError" items="${error}">
@@ -45,4 +46,8 @@
 		<br>
         <p><button class="btn" type="submit">Ajouter un billet</button></p>
     </form:form>
+    </c:if>
+    <c:if test="${sesacceslevel != 'Admin'}">
+    	get out hacker!
+    </c:if>
 </html>

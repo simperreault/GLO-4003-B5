@@ -4,6 +4,7 @@
 <html>
 <head>
 </head>
+<c:if test="${sesacceslevel == 'Admin'}">
 	<h1>Ajouter un Évènement</h1><hr>
 	<p style="color:red;"> 
 		<c:forEach var="objectError" items="${error}">
@@ -48,4 +49,8 @@
 		<br>
         <p><button class="btn" type="submit">Créer l'événement</button></p>
     </form:form>
+    </c:if>
+       <c:if test="${sesacceslevel != 'Admin'}">
+    	get out hacker!
+   	 </c:if>
 </html>
