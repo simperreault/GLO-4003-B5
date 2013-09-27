@@ -33,11 +33,13 @@ public class XmlReader {
 	private File fXmlFile;
 	private Document doc;
 
-	public XmlReader() {}
+	public XmlReader() {
+		connect(DATA_FILE);
+	}
 
-	private boolean connect() {
+	private boolean connect(String _file) {
 		try {
-			fXmlFile = new File(DATA_FILE);
+			fXmlFile = new File(_file);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -59,7 +61,7 @@ public class XmlReader {
 	 */
 	public int[] readStartupInformation(){
 		int output[] = new int[] {-1,-1,-1};
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return output;
 		}
@@ -75,7 +77,7 @@ public class XmlReader {
 	 * Loads a single event with or without tickets if it exists, returns null otherwise
 	 */
 	public Event loadEvent(int _eventId, Boolean _andTickets){
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return null;
 		}
@@ -150,7 +152,7 @@ public class XmlReader {
 	 * Note that the Event linked to the ticket will only contain this ticket in his ticket list
 	 */
 	public Ticket loadTicket(int _eventId, int _ticketId){
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return null;
 		}
@@ -211,7 +213,7 @@ public class XmlReader {
 
 
 	public List<Event> loadEvents() {
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return null;
 		}
@@ -295,7 +297,7 @@ public class XmlReader {
 	 * Returns a user if it exists, null otherwise
 	 */
 	public User userAuthenticate(String _username){
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return null;
 		} 
@@ -333,7 +335,7 @@ public class XmlReader {
 	}
 
 	public List<User> loadUsers() {
-		if (!connect()) {
+		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return null;
 		} 

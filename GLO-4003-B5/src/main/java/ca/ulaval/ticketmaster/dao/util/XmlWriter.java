@@ -37,11 +37,11 @@ private File xmlFile;
 private Document xmlDoc;
 
 	public XmlWriter(){
-		connect();
+		connect(DATA_FILE);
 	}
 	
-	private boolean connect(){
-		xmlFile = new File(DATA_FILE);
+	public boolean connect(String _filePath){
+		xmlFile = new File(_filePath);
 		if (xmlFile.canRead() & xmlFile.canWrite()){
 			return true;
 		}
@@ -50,7 +50,7 @@ private Document xmlDoc;
 	
 	public static void main(String [] args)
 	{
-		Event event = new Event(4,true,100,100,Event.Sport.Football,"M","Rouge et or","Vert et or","Qu饕ec","Laval",new Date(),new Date());
+		Event event = new Event(4,true,100,100,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
@@ -74,7 +74,6 @@ private Document xmlDoc;
 		userTickets.add(new Pair<Integer,Integer>(3,58));
 		user.setUserTickets(userTickets);
 		XmlWriter writer = new XmlWriter();
-		writer.connect();
 		//writer.writeEvent(event);
 		//writer.writeUser(user);
 		//List<Pair<Integer,Integer>> userTickets2 = new ArrayList<Pair<Integer, Integer>>();
@@ -127,7 +126,7 @@ private Document xmlDoc;
 			if(myEventElement == null){
 				throw new Exception("Event non existant dans le fichier");
 			}
-			//on a trouv�un event valide alors on ajoute les billets
+			//on a trouvï¿½un event valide alors on ajoute les billets
 			Element ticketListElement = (Element) myEventElement.getElementsByTagName("TicketList").item(0);
 			for(Iterator<Ticket> it = _ticketsToAdd.iterator(); it.hasNext();)
 			{
@@ -135,7 +134,7 @@ private Document xmlDoc;
 			}
 			//changer le nombre total et disponible de billets dans le fichier
 			updateTicketCounts(myEventElement,_ticketsToAdd.size());
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 			
 		} catch (Exception e) {
@@ -146,18 +145,18 @@ private Document xmlDoc;
 	}
 	
 	private boolean saveDataToFile(){
-		//馗rire le contenu au fichier xml physique
+		//é¦—rire le contenu au fichier xml physique
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer;
 		try {
 			transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(xmlDoc);
 			StreamResult result = new StreamResult(xmlFile);
-			//propri騁馥s pour l'indentation du fichier
+			//proprié¨�é¦¥s pour l'indentation du fichier
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			
-			//transformer le stream en 馗riture sur le fichier
+			//transformer le stream en é¦—riture sur le fichier
 			transformer.transform(source, result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -177,14 +176,14 @@ private Document xmlDoc;
 			xmlDoc = dBuilder.parse(xmlFile);
 			//Trouver l'emplacement pour ajouter l'event
 			Element rootElementList = (Element)(xmlDoc.getElementsByTagName("EventList").item(0));
-			//Cr馥r le header de l'騅駭ement
+			//Cré¦¥r le header de l'é¨…é§­ement
 			Element rootEventElement = xmlDoc.createElement("Event");
 			rootEventElement.setAttribute("id", Integer.toString(_event.getId()));
 			rootEventElement.setAttribute("open", Boolean.toString(_event.isOpen()));
 			rootEventElement.setAttribute("ticketsTotal", Integer.toString(_event.getTicketsTotal()));
 			rootEventElement.setAttribute("ticketsAvailable",Integer.toString(_event.getTicketsAvailable()));
 			
-			//Cr馥r le contenu de l'event
+			//Cré¦¥r le contenu de l'event
 			Element sectionListElement = xmlDoc.createElement("SectionList");
 			//liste de sections
 			for(Iterator<String> it = _event.getSectionList().iterator(); it.hasNext();)
@@ -218,14 +217,14 @@ private Document xmlDoc;
 				writeTicket(it.next(),ticketListElement);
 			}
 			rootEventElement.appendChild(ticketListElement);
-			//ajouter l,event �la liste
+			//ajouter l,event ï¿½la liste
 			rootElementList.appendChild(rootEventElement);
 			
 			//update du nombre total d'event et du dernier id
 			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
 			rootElementList.setAttribute("total",Integer.toString(newTotal));
 			rootElementList.setAttribute("lastId",Integer.toString(_event.getId()));
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 			
 		} catch (Exception e) {
@@ -243,11 +242,11 @@ private Document xmlDoc;
 			xmlDoc = dBuilder.parse(xmlFile);
 			//Trouver l'emplacement pour ajouter le user
 			Element rootElementList = (Element)(xmlDoc.getElementsByTagName("UserList").item(0));
-			//Cr馥r le header de l'騅駭ement
+			//Cré¦¥r le header de l'é¨…é§­ement
 			Element rootUserElement = xmlDoc.createElement("User");
 			rootUserElement.setAttribute("username", _user.getUsername());
 			rootElementList.appendChild(rootUserElement);
-			//Cr馥r le contenu du user
+			//Cré¦¥r le contenu du user
 			//personal data
 			Element dataElement = xmlDoc.createElement("PersonalData");
 			dataElement.setAttribute("accessLevel", _user.getAccessLevel().toString());
@@ -277,7 +276,7 @@ private Document xmlDoc;
 			//update du nombre total de user
 			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
 			rootElementList.setAttribute("total",Integer.toString(newTotal));
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -336,7 +335,7 @@ private Document xmlDoc;
 			locationElement.setAttribute("stadium", _event.getStadium());
 			locationElement.setAttribute("date", new SimpleDateFormat("dd/MM/yyyy").format(_event.getDate()));
 			locationElement.setAttribute("time", new SimpleDateFormat("H:mm").format(_event.getTime()));
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -355,7 +354,7 @@ private Document xmlDoc;
 			if(myEventElement == null){
 				throw new Exception("Event non existant dans le fichier");
 			}
-			//Trouver le ticket �l'int駻ieur de l'event
+			//Trouver le ticket ï¿½l'inté§»ieur de l'event
 			Element myTicketElement = findTicketInEvent(myEventElement,_ticket.getId());
 			if(myTicketElement == null){
 				throw new Exception("Ticket non existant dans le fichier");
@@ -368,7 +367,7 @@ private Document xmlDoc;
 			myTicketElement.setAttribute("resellPrice", Double.toString(_ticket.getResellprice()));
 			//mofifer le count des tickets
 			updateTicketCounts(myEventElement,_ticket.getEvent());
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -415,7 +414,7 @@ private Document xmlDoc;
 			searchElement.setAttribute("gender", _user.getFavGender());
 			searchElement.setAttribute("sport", _user.getFavSport());
 			searchElement.setAttribute("type", _user.getFavType().toString());
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -441,7 +440,7 @@ private Document xmlDoc;
 			//update du nombre total de user
 			int newTotal = Integer.parseInt(((Element)userListNode).getAttribute("total")) - 1;
 			((Element)userListNode).setAttribute("total",Integer.toString(newTotal));
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -467,7 +466,7 @@ private Document xmlDoc;
 			//update du nombre total d'event
 			int newTotal = Integer.parseInt(((Element)eventListNode).getAttribute("total")) - 1;
 			((Element)eventListNode).setAttribute("total",Integer.toString(newTotal));
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -486,7 +485,7 @@ private Document xmlDoc;
 			if(myEventElement == null){
 				throw new Exception("Event non existant dans le fichier");
 			}
-			//Trouver le ticket �l'int駻ieur de l'event
+			//Trouver le ticket ï¿½l'inté§»ieur de l'event
 			Element myTicketElement = findTicketInEvent(myEventElement,_ticketId);
 			if(myTicketElement == null){
 				throw new Exception("Ticket non existant dans le fichier");
@@ -496,7 +495,7 @@ private Document xmlDoc;
 			ticketListNode.removeChild((Node)myTicketElement);
 			//changer le nombre total et disponible de billets dans le fichier
 			updateTicketCounts(myEventElement,-1);
-			//馗rire le contenu au fichier xml physique
+			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
