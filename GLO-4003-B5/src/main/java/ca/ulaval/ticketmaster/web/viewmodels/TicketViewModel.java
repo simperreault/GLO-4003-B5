@@ -9,9 +9,9 @@ public class TicketViewModel {
 	public Event event;
 	//public ticketType type;
 	public String type;
-	@NotEmpty(message="Section Must Not Be Empty")
+	@NotEmpty(message="Section ne doit pas etre vide")
 	public String section;
-	@NotEmpty(message="Seat Must Not Be Empty")
+	@NotEmpty(message="Siege ne doit pas etre vide")
 	public String seat;
 	public String owner;
 	public double price;
