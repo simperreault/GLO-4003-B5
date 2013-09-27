@@ -51,19 +51,19 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String MainFrame(Locale locale, Model model) {
+	public String MainFrame(Model model) {
 		model.addAttribute("currentPage", "Home.jsp");
 		return "MainFrame";
 	}
 	
 	@RequestMapping(value = "/Home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Model model) {
 		model.addAttribute("currentPage", "Home.jsp");
 		return "MainFrame";
 	}
 	
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
-	public String CreateUser(Locale locale, Model model) {
+	public String CreateUser(Model model) {
 		model.addAttribute("user", new UserViewModel());
 		model.addAttribute("currentPage", "CreateUser.jsp");
 		return "MainFrame";
@@ -90,13 +90,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
-	public String Login(Locale locale, Model model) {
+	public String Login(Model model) {
 		model.addAttribute("currentPage", "Login.jsp");
 		return "MainFrame";
 	}
 	
 	@RequestMapping(value = {"/disconnect"}, method = RequestMethod.GET)
-	public String Disconnect(Locale locale, Model model, HttpSession session) {
+	public String Disconnect(Model model, HttpSession session) {
 		session.setAttribute("sesacceslevel",null);
 		session.setAttribute("sesusername", null);
 		return "redirect:/";
@@ -106,8 +106,7 @@ public class HomeController {
 	//Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
 	//TODO:trouve comment pas hardcoder tous les paths possibles
 	@RequestMapping(value = {"/connect","/event/connect","/event/{id}/connect"}, method = RequestMethod.POST)
-	public String Login(Locale locale, 
-			@RequestParam("username")String username, 
+	public String Login(@RequestParam("username")String username, 
 			@RequestParam("password")String password,
 			Model model, HttpSession session) {
 		
