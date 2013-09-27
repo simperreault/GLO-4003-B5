@@ -15,7 +15,7 @@ public class Ticket {
 	
 	private int id;
 	private Event event;
-	private ticketType type;
+	private ticketType type = ticketType.SEASON;
 	private String section = "";
 	private String seat = "";
 	private String owner = "";

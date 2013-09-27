@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.web.converter.EventConverter;
+import ca.ulaval.ticketmaster.web.converter.EventConverterTest;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 
 /**
