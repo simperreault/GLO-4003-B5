@@ -44,7 +44,7 @@ public class EventControllerTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void listEvent() {
-		List<Event> list = new LinkedList<>();
+		List<Event> list = new LinkedList<Event>();
 		list.add(new Event(1));
 		list.add(new Event(2));
 		list.add(new Event(3));
@@ -61,7 +61,7 @@ public class EventControllerTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void listTicketFormEvent() {
-		List<Ticket> list = new LinkedList<>();
+		List<Ticket> list = new LinkedList<Ticket>();
 		list.add(new Ticket(1));
 		list.add(new Ticket(2));
 		list.add(new Ticket(3));
