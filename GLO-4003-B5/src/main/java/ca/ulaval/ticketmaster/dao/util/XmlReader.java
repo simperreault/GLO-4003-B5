@@ -38,7 +38,7 @@ public class XmlReader {
 		connect(DATA_FILE);
 	}
 
-	private boolean connect(String _file) {
+	public boolean connect(String _file) {
 		try {
 			fXmlFile = new File(_file);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
@@ -47,7 +47,6 @@ public class XmlReader {
 			doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 
@@ -62,10 +61,6 @@ public class XmlReader {
 	 */
 	public int[] readStartupInformation(){
 		int output[] = new int[] {-1,-1};
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return output;
-		}
 		Element elElement = ((Element)doc.getElementsByTagName("EventList").item(0));
 		output[0] = Integer.parseInt(elElement.getAttribute("total"));
 		output[1] = Integer.parseInt(((Element)doc.getElementsByTagName("UserList").item(0)).getAttribute("total"));
@@ -77,10 +72,6 @@ public class XmlReader {
 	 * Loads a single event with or without tickets if it exists, returns null otherwise
 	 */
 	public Event loadEvent(UUID _eventId, Boolean _andTickets){
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return null;
-		}
 
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
@@ -119,8 +110,7 @@ public class XmlReader {
 						tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
 						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
 						tempTicket.setSection(tElement.getAttribute("section"));
-						if (!tElement.getAttribute("seat").isEmpty())
-							tempTicket.setSeat(tElement.getAttribute("seat"));
+						tempTicket.setSeat(tElement.getAttribute("seat"));
 						tempTicket.setOwner(tElement.getAttribute("owner"));
 						tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
 						tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
@@ -152,10 +142,7 @@ public class XmlReader {
 	 * Note that the Event linked to the ticket will only contain this ticket in his ticket list
 	 */
 	public Ticket loadTicket(UUID _eventId, UUID _ticketId){
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return null;
-		}
+		
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
@@ -213,10 +200,6 @@ public class XmlReader {
 
 
 	public List<Event> loadEvents() {
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return null;
-		}
 		List<Event> returnList = new ArrayList<Event>();
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		Event tempEvent;
@@ -297,10 +280,6 @@ public class XmlReader {
 	 * Returns a user if it exists, null otherwise
 	 */
 	public User userAuthenticate(String _username){
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return null;
-		} 
 
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		for (int userIter = 0; userIter < UserNodeList.getLength(); userIter++) {
@@ -335,10 +314,6 @@ public class XmlReader {
 	}
 
 	public List<User> loadUsers() {
-		if (!connect(DATA_FILE)) {
-			System.out.println("Could not connect!");
-			return null;
-		} 
 
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		List<User> returnList = new ArrayList<User>();

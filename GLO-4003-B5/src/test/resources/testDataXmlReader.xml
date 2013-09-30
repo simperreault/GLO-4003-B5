@@ -2,7 +2,9 @@
 <Data>
 	<EventList lastId="1" total="1">
 		<Event id="1" open="false" ticketsAvailable="3" ticketsTotal="3">
-			<SectionList />
+				<SectionList>
+		<Section>B</Section>
+			</SectionList>
 			<Sport gender="Male" name="Rugby" />
 			<Teams home="Simon d'ameique" visitors="Ben B-Baller" />
 			<Location city="UL" date="25/06/2015" stadium="Telus" time="10:00" />
@@ -12,7 +14,7 @@
 				<Ticket id="2" owner="asdas" price="45.0" resellPrice="45.0"
 					seat="qweqweqw" section="B" type="season" />
 				<Ticket id="3" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="season" />
+					seat="qweqweqw" section="B" type="general" />
 			</TicketList>
 		</Event>
 	</EventList>
