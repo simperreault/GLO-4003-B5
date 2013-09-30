@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.UUID;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +29,7 @@ public class TicketControllerTest {
 	@InjectMocks
 	public TicketController controller = new TicketController();
 
-	public static final int DEFAULT_EVENT_ID = 1;
+	public static final UUID DEFAULT_EVENT_ID = UUID.randomUUID();
 
 	private BindingAwareModelMap model;
 
@@ -63,7 +65,7 @@ public class TicketControllerTest {
 		
 		BindingResult result = mock(BindingResult.class);
 		when(result.hasErrors()).thenReturn(false);
-		when(datamanager.saveTicket(new Ticket(1))).thenReturn(true);
+		when(datamanager.saveTicket(new Ticket())).thenReturn(true);
 
 		String redirect = controller.create(DEFAULT_EVENT_ID, viewModel,
 				result, model);

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -50,31 +51,32 @@ private Document xmlDoc;
 	
 	public static void main(String [] args)
 	{
-		Event event = new Event(4,true,100,100,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
+		Event event = new Event(true,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
-			Ticket t = new Ticket(i,event);
+			Ticket t = new Ticket(event);
 			t.setOwner("");
-			t.setPrice(80.69);
+			t.setPrice(30.00);
 			t.setResellprice(0);
-			t.setSection("L01");
-			t.setSeat("90");
-			t.setType(ticketType.SEASON);
+			t.setType(ticketType.AdmissionGenerale);
 			ticketList.add(t);
+			event.setTicketsTotal(event.getTicketsTotal()+ 1);
+			event.setTicketsAvailable(event.getTicketsAvailable()+ 1);
 		}
 		event.setSectionList(sectionList);
 		event.setTicketList(ticketList);
-		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com",User.AccessLevel.User,"Basketball","M",ticketType.GENERAL,"Sherbrooke");
+		/*
+		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com",User.AccessLevel.User,"Basketball","M",ticketType.AdmissionGenerale,"Sherbrooke");
 		List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer, Integer>>();
 		userTickets.add(new Pair<Integer,Integer>(1,1));
 		userTickets.add(new Pair<Integer,Integer>(1,8));
 		userTickets.add(new Pair<Integer,Integer>(2,5));
 		userTickets.add(new Pair<Integer,Integer>(2,14));
 		userTickets.add(new Pair<Integer,Integer>(3,58));
-		user.setUserTickets(userTickets);
+		user.setUserTickets(userTickets);*/
 		XmlWriter writer = new XmlWriter();
-		//writer.writeEvent(event);
+		writer.writeEvent(event);
 		//writer.writeUser(user);
 		//List<Pair<Integer,Integer>> userTickets2 = new ArrayList<Pair<Integer, Integer>>();
 		//userTickets2.add(new Pair<Integer,Integer>(6,7));
@@ -98,7 +100,7 @@ private Document xmlDoc;
 	
 	private void writeTicket(Ticket _ticket, Element _ticketListElement){
 		Element ticketElement = xmlDoc.createElement("Ticket");
-		ticketElement.setAttribute("id", Integer.toString(_ticket.getId()));
+		ticketElement.setAttribute("id", _ticket.getId().toString());
 		ticketElement.setAttribute("type", _ticket.getType().name());
 		ticketElement.setAttribute("section", _ticket.getSection());
 		ticketElement.setAttribute("seat", _ticket.getSeat());
@@ -108,13 +110,13 @@ private Document xmlDoc;
 		_ticketListElement.appendChild(ticketElement);
 	}
 	
-	public boolean writeTicketToEvent(int _eventId, Ticket _ticket){
+	public boolean writeTicketToEvent(UUID _eventId, Ticket _ticket){
 		List<Ticket> list = new ArrayList<Ticket>();
 		list.add(_ticket);
 		return writeTicketsToEvent(_eventId , list);
 	}
 	
-	public boolean writeTicketsToEvent(int _eventId, List<Ticket> _ticketsToAdd){
+	public boolean writeTicketsToEvent(UUID _eventId, List<Ticket> _ticketsToAdd){
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		dbFactory.setIgnoringElementContentWhitespace(true);
 		try {
@@ -178,7 +180,7 @@ private Document xmlDoc;
 			Element rootElementList = (Element)(xmlDoc.getElementsByTagName("EventList").item(0));
 			//Cré¦¥r le header de l'é¨…é§­ement
 			Element rootEventElement = xmlDoc.createElement("Event");
-			rootEventElement.setAttribute("id", Integer.toString(_event.getId()));
+			rootEventElement.setAttribute("id", _event.getId().toString());
 			rootEventElement.setAttribute("open", Boolean.toString(_event.isOpen()));
 			rootEventElement.setAttribute("ticketsTotal", Integer.toString(_event.getTicketsTotal()));
 			rootEventElement.setAttribute("ticketsAvailable",Integer.toString(_event.getTicketsAvailable()));
@@ -223,7 +225,6 @@ private Document xmlDoc;
 			//update du nombre total d'event et du dernier id
 			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
 			rootElementList.setAttribute("total",Integer.toString(newTotal));
-			rootElementList.setAttribute("lastId",Integer.toString(_event.getId()));
 			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 			
@@ -449,7 +450,7 @@ private Document xmlDoc;
 		return true;
 	}
 	
-	public boolean deleteEvent(int _eventId){
+	public boolean deleteEvent(UUID _eventId){
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -475,7 +476,7 @@ private Document xmlDoc;
 		return true;
 	}
 	
-	public boolean deleteTicket(int _eventId, int _ticketId){
+	public boolean deleteTicket(UUID _eventId, UUID _ticketId){
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -520,14 +521,14 @@ private Document xmlDoc;
 		return myUserElement;
 	}
 	
-	private Element findEvent(int _eventId){
+	private Element findEvent(UUID _eventId){
 		Element rootElementList = (Element)(xmlDoc.getElementsByTagName("EventList").item(0));
 		NodeList eventNodeList = rootElementList.getElementsByTagName("Event");
 		Element myEventElement = null;
 		int eventIter = 0;
 		while (eventIter < eventNodeList.getLength()) {
 			Element elem = (Element)eventNodeList.item(eventIter);
-			if( Integer.parseInt(elem.getAttribute("id")) == _eventId ){
+			if( UUID.fromString(elem.getAttribute("id")) == _eventId ){
 				myEventElement = elem;
 			}
 			eventIter++;
@@ -535,14 +536,14 @@ private Document xmlDoc;
 		return myEventElement;
 	}
 	
-	private Element findTicketInEvent(Element _event, int _ticketId){
+	private Element findTicketInEvent(Element _event, UUID _ticketId){
 		Element rootTicketList = (Element)(_event.getElementsByTagName("TicketList").item(0));
 		NodeList ticketNodeList = rootTicketList.getElementsByTagName("Ticket");
 		Element myTicketElement = null;
 		int ticketIter = 0;
 		while (ticketIter < ticketNodeList.getLength()) {
 			Element elem = (Element)ticketNodeList.item(ticketIter);
-			if( Integer.parseInt(elem.getAttribute("id")) == _ticketId ){
+			if( UUID.fromString(elem.getAttribute("id")) == _ticketId ){
 				myTicketElement = elem;
 			}
 			ticketIter++;

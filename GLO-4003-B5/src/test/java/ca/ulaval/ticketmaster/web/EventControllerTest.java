@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class EventControllerTest {
 	@InjectMocks
 	public EventController controller;
 
-	public static final int DEFAULT_EVENT_ID = 1;
+	public static final UUID DEFAULT_EVENT_ID = UUID.randomUUID();
 
 	private BindingAwareModelMap model;
 
@@ -44,10 +45,10 @@ public class EventControllerTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void listEvent() {
-		List<Event> list = new LinkedList<>();
-		list.add(new Event(1));
-		list.add(new Event(2));
-		list.add(new Event(3));
+		List<Event> list = new LinkedList<Event>();
+		list.add(new Event());
+		list.add(new Event());
+		list.add(new Event());
 		when(datamanager.getEventList()).thenReturn(list);
 		
 		String view = controller.detail(model);
@@ -61,16 +62,17 @@ public class EventControllerTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void listTicketFormEvent() {
-		List<Ticket> list = new LinkedList<>();
-		list.add(new Ticket(1));
-		list.add(new Ticket(2));
-		list.add(new Ticket(3));
-		when(datamanager.loadAllTickets(1)).thenReturn(list);
+		List<Ticket> list = new LinkedList<Ticket>();
+		list.add(new Ticket());
+		list.add(new Ticket());
+		list.add(new Ticket());
+		UUID id = UUID.randomUUID();
+		when(datamanager.loadAllTickets(id)).thenReturn(list);
 		
-		String view = controller.Event(1, model);
+		String view = controller.Event(id, model);
 		
 		assertEquals(((List<Ticket>)model.get("ticketList")).size(), 3);
-		assertEquals(model.get("eventID"), 1);
+		assertEquals(model.get("eventID"), id);
 		assertNotNull(model.get("currentPage"));
 		assertEquals(model.get("currentPage"), "TicketList.jsp");
 		assertEquals(view, "MainFrame");
@@ -78,9 +80,10 @@ public class EventControllerTest {
 	
 	@Test
 	public void detailTicket() {
-		when(datamanager.getTicket(1, 1)).thenReturn(new Ticket(1));
+		UUID idTicket = UUID.randomUUID();
+		when(datamanager.getTicket(DEFAULT_EVENT_ID, idTicket)).thenReturn(new Ticket(idTicket));
 		
-		String view = controller.detail(1, 1, model);
+		String view = controller.detail(DEFAULT_EVENT_ID, idTicket, model);
 	
 		assertEquals(((Ticket)model.get("ticket")).getId(), 1);
 		assertNotNull(model.get("currentPage"));
@@ -112,7 +115,7 @@ public class EventControllerTest {
 
 		BindingResult result = mock(BindingResult.class);
 		when(result.hasErrors()).thenReturn(false);
-		when(datamanager.saveEvent(new Event(1))).thenReturn(true);
+		when(datamanager.saveEvent(new Event(DEFAULT_EVENT_ID))).thenReturn(true);
 
 		String redirect = controller.create(viewModel, result, model);
 

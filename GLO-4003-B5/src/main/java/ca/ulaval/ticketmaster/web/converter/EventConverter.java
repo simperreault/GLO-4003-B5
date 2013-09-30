@@ -8,7 +8,7 @@ import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 public class EventConverter {
 
 	static public Event convert(EventViewModel viewmodel, DataManager datamanager) {
-		Event entry = new Event(datamanager.getLastEventId() + 1);
+		Event entry = new Event();
 		entry.setGender(viewmodel.getGender());
 		entry.setHomeTeam(viewmodel.getHomeTeam());
 		entry.setVisitorsTeam(viewmodel.getVisitorsTeam());

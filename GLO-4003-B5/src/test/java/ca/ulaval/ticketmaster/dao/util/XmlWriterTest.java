@@ -72,17 +72,15 @@ public class XmlWriterTest {
 	@Test
 	public void TestWriteNewEventToXml(){
 		//Créer une event de test
-		Event event = new Event(1,true,100,100,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
+		Event event = new Event(true,Event.Sport.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
-			Ticket t = new Ticket(i,event);
+			Ticket t = new Ticket(event);
 			t.setOwner("");
-			t.setPrice(80.69);
+			t.setPrice(30.00);
 			t.setResellprice(0);
-			t.setSection("L01");
-			t.setSeat("90");
-			t.setType(ticketType.SEASON);
+			t.setType(ticketType.AdmissionGenerale);
 			ticketList.add(t);
 		}
 		event.setSectionList(sectionList);

@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 public class Event {
 	
 	public enum Sport {
 		Football, Basketball, Rugby, Soccer, Volleyball
 	}
-	private int id;
+	private UUID id;
 	private boolean open;
 	private int ticketsTotal;
 	private int ticketsAvailable;
@@ -31,19 +32,27 @@ public class Event {
 	private List<Ticket> ticketList;
 	private List<String> sectionList;
 	
-	public Event(int _id){
+	public Event(){
+		id = UUID.randomUUID();
+		ticketList = new ArrayList<Ticket>();
+		sectionList= new ArrayList<String>();
+	    ticketsTotal = 0;
+		ticketsAvailable = 0;
+	}
+	
+	public Event(UUID _id){
 		id = _id;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
-	     ticketsTotal = 0;
-		 ticketsAvailable = 0;
+	    ticketsTotal = 0;
+		ticketsAvailable = 0;
 	}
 	
-	public Event(int _id, boolean _open, int _ticketsTotal, int _ticketsAvailable, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
-		id = _id;
+	public Event(boolean _open, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
+		id = UUID.randomUUID();
 		open = _open;
-		ticketsTotal = _ticketsTotal;
-		ticketsAvailable = _ticketsAvailable;
+		ticketsTotal = 0;
+		ticketsAvailable = 0;
 		sport = _sport;
 		gender = _gender;
 		homeTeam = _homeTeam;
@@ -54,8 +63,8 @@ public class Event {
 		time = _time;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
-	     ticketsTotal = 0;
-		 ticketsAvailable = 0;
+	    ticketsTotal = 0;
+		ticketsAvailable = 0;
 	}
 	
 	public String toString(){
@@ -68,10 +77,10 @@ public class Event {
 	public void setTicketList(List<Ticket> ticketList) {
 		this.ticketList = ticketList;
 	}
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public boolean isOpen() {
@@ -161,7 +170,7 @@ public class Event {
 		}
 	}
 	
-	public void removeTicketFromList(int _ticketId){
+	public void removeTicketFromList(UUID _ticketId){
 		Ticket ticket = null;
 		for(Iterator<Ticket> it = this.ticketList.iterator(); it.hasNext();){
 			Ticket itTicket = it.next();

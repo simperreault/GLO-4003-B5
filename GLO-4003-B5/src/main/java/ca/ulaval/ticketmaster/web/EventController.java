@@ -2,6 +2,7 @@ package ca.ulaval.ticketmaster.web;
 
 import java.text.DateFormat;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -38,31 +39,31 @@ public class EventController {
 	public String detail(Model model) { 
 		
 		model.addAttribute("EventList", datamanager.getEventList());
-		model.addAttribute("currentPage", "EventList.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "EventList.jsp");
+		return "EventList";
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable int id, Model model) {
+	public String Event(@PathVariable UUID id, Model model) {
 		
 		model.addAttribute("eventID", id);
 		model.addAttribute("ticketList", datamanager.loadAllTickets(id));
-		model.addAttribute("currentPage", "TicketList.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "TicketList.jsp");
+		return "TicketList";
 	}
 	
 	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
-	public String detail(@PathVariable int id1 ,@PathVariable int id2, Model model) {
+	public String detail(@PathVariable UUID id1 ,@PathVariable UUID id2, Model model) {
 		model.addAttribute("ticket", datamanager.getTicket(id1, id2));
-		model.addAttribute("currentPage", "detail.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "detail.jsp");
+		return "detail";
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String create(Model model) {
 		model.addAttribute("event", new EventViewModel());
-		model.addAttribute("currentPage", "EventAdd.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "EventAdd.jsp");
+		return "EventAdd";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -70,8 +71,8 @@ public class EventController {
 		if (result.hasErrors()) {  	        
 			model.addAttribute("error", result.getAllErrors());
 			model.addAttribute("event", viewmodel);
-			model.addAttribute("currentPage", "EventAdd.jsp");
-			return "MainFrame";
+			//model.addAttribute("currentPage", "EventAdd.jsp");
+			return "EventAdd";
 		}
 
 		// Save
@@ -81,7 +82,7 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable int id, Model model) {
+	public String delete(@PathVariable UUID id, Model model) {
 		datamanager.deleteEvent(id);
 		return "redirect:/event/list";
 	}

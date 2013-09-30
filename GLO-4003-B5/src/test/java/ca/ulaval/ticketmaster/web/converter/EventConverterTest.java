@@ -14,7 +14,7 @@ import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 public class EventConverterTest {
 	@Test
 	public void convertEntryToviewmodel() {
-		Event e = new Event(1);
+		Event e = new Event();
 		e.setSport(Sport.Football);
 		e.setGender("gender");
 		e.setHomeTeam("hometeam");

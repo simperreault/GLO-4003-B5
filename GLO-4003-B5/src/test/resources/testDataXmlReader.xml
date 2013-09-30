@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Data>
+	<EventList lastId="1" total="1">
+		<Event id="1" open="false" ticketsAvailable="3" ticketsTotal="3">
+			<SectionList />
+			<Sport gender="Male" name="Rugby" />
+			<Teams home="Simon d'ameique" visitors="Ben B-Baller" />
+			<Location city="UL" date="25/06/2015" stadium="Telus" time="10:00" />
+			<TicketList>
+				<Ticket id="1" owner="asdas" price="45.0" resellPrice="45.0"
+					seat="qweqweqw" section="B" type="season" />
+				<Ticket id="2" owner="asdas" price="45.0" resellPrice="45.0"
+					seat="qweqweqw" section="B" type="season" />
+				<Ticket id="3" owner="asdas" price="45.0" resellPrice="45.0"
+					seat="qweqweqw" section="B" type="season" />
+			</TicketList>
+		</Event>
+	</EventList>
+	<UserList total="2">
+		<User username="CarloBoutet">
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com"
+				firstName="Charl" lastName="Boutet" password="123" />
+			<UserTickets>
+				<Ticket matchId="1" ticketId="1" />
+			</UserTickets>
+			<SearchPreferences city="québec" gender="M" sport="football"
+				type="season" />
+		</User>
+		<User username="testuser">
+			<PersonalData accessLevel="User" email="" firstname=""
+				lastName="" password="lol" />
+			<UserTickets />
+			<SearchPreferences city="" gender="" sport=""
+				type="GENERAL" />
+		</User>
+	</UserList>
+</Data>

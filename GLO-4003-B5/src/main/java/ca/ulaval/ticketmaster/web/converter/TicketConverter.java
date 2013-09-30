@@ -8,7 +8,7 @@ import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 public class TicketConverter {
 
 	static public Ticket convert(TicketViewModel viewModel, DataManager datamanager) {
-		Ticket entry = new Ticket(12); // TODO Generate random id (Passing data manager)
+		Ticket entry = new Ticket();
 		entry.setSection(viewModel.getSection());
 		entry.setSeat(viewModel.getSeat());
 		entry.setOwner(viewModel.getOwner());

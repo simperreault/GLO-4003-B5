@@ -6,35 +6,57 @@
 
 package ca.ulaval.ticketmaster.model;
 
+import java.util.UUID;
+
 
 public class Ticket {
 
 	public enum ticketType {
-		SINGLE, GENERAL, SEASON, RESERVED
+		Simple, AdmissionGenerale, Saison, Reserve
 	}
 	
-	private int id;
+	private UUID id;
 	private Event event;
-	private ticketType type = ticketType.SEASON;
+	private ticketType type = ticketType.Saison;
 	private String section = "";
 	private String seat = "";
 	private String owner = "";
 	private double price = 0.0;
 	private double resellprice = 0.0;
 	
-	public Ticket(int _id, Event _event){
-		id = _id;
+	public Ticket(UUID _id, Event _event){
+		id = UUID.randomUUID();
 		event = _event;
 	}
 	
-	public Ticket(int _id){
-		id = _id;
+	public Ticket(Event _event){
+		id = UUID.randomUUID();
+		event = _event;
 	}
 	
-	public int getId() {
+	public Ticket(UUID _id){
+		id =_id;
+	}
+	
+	public Ticket(){
+		id = UUID.randomUUID();
+	}
+	
+	public Ticket(Event _event, ticketType _type, String _section, String _seat, String _owner, double _price){
+		id = UUID.randomUUID();
+		event = _event;
+		type = _type;
+		section = _section;
+		seat = _seat;
+		owner = _owner;
+		price = _price;
+	}
+	
+	public UUID getId() {
 		return id;
 	}
-	public void setId(int id) {
+	
+	private void setId(UUID id) {
 		this.id = id;
 	}
 	public ticketType getType() {

@@ -1,5 +1,7 @@
 package ca.ulaval.ticketmaster.web;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -33,20 +35,20 @@ public class TicketController {
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
-	public String create(@PathVariable int eventId, Model model) {
+	public String create(@PathVariable UUID eventId, Model model) {
 		model.addAttribute("ticket", new TicketViewModel(new Event(eventId)));
-		model.addAttribute("currentPage", "TicketAdd.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "TicketAdd.jsp");
+		return "TicketAdd";
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
-	public String create(@PathVariable int eventId,
+	public String create(@PathVariable UUID eventId,
 			@Valid TicketViewModel viewmodel, BindingResult result, Model model) {
 		if (result.hasErrors()) {  	        
 			model.addAttribute("error", result.getAllErrors());
 			model.addAttribute("ticket", viewmodel);
-			model.addAttribute("currentPage", "TicketAdd.jsp");
-			return "MainFrame";
+			//model.addAttribute("currentPage", "TicketAdd.jsp");
+			return "TicketAdd";
 		}
 
 		viewmodel.setEvent(datamanager.getEvent(eventId));
@@ -58,7 +60,7 @@ public class TicketController {
 	}
 	
 	@RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
-	public String delete(@PathVariable int eventId, @PathVariable int ticketId, Model model) {
+	public String delete(@PathVariable UUID eventId, @PathVariable UUID ticketId, Model model) {
 		datamanager.deleteTicket(eventId,ticketId);
 		return "redirect:/event/{eventId}";
 	}

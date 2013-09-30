@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,8 @@ public class DataManager {
 	private int totalEvents;
 	//private List<User> userList;
 	//private List<Event> eventList;
-	private HashMap<String,User> userMap;
-	private HashMap<Integer,Event> eventMap;
+	//private HashMap<String,User> userMap;
+	//private HashMap<Integer,Event> eventMap;
 	
 	public int getTotalUsers() {
 		return totalUsers;
@@ -64,25 +65,13 @@ public class DataManager {
 		// TODO faire un pattern de repository pis mettre 軋 clean
 		
 		List<Event> eventList = xmlReader.loadEvents();
-		eventMap = new HashMap<Integer, Event>();
-		for(Iterator<Event> it = eventList.iterator(); it.hasNext();)
-		{
-			Event event = it.next();
-			eventMap.put(event.getId(), event);
-		}
 		List<User> userList = xmlReader.loadUsers();
-		userMap = new HashMap<String,User>();
-		for(Iterator<User> it = userList.iterator(); it.hasNext();)
-		{
-			User user = it.next();
-			userMap.put(user.getUsername(), user);
-		}
 	}
 	
 	/*
 	 * Returns an event if it exists, null otherwise
 	 */
-	public Event getEvent(int _eventId){
+	public Event getEvent(UUID _eventId){
 		// impl駑entation sujet �changement
 		return xmlReader.loadEvent(_eventId);
 	}
@@ -90,7 +79,7 @@ public class DataManager {
 	/*
 	 * Returns a ticket from a specific event if it exists, null otherwise
 	 */
-	public Ticket getTicket(int _eventId, int _ticketId){
+	public Ticket getTicket(UUID _eventId, UUID _ticketId){
 		// impl駑entation sujet �changement
 		return xmlReader.loadTicket(_eventId, _ticketId);
 	}
@@ -104,13 +93,8 @@ public class DataManager {
 	}
 	
 	public boolean saveEvent(Event _event){
-		//gestion des ids pour s'assrurer de suivre les ids du fichier de donn馥s
-		_event.setId(lastEventId + 1);
 		if(xmlWriter.writeEvent(_event)){
-			lastEventId ++;
 			totalEvents ++;
-			eventMap.put(_event.getId(), _event);
-			System.out.println(eventMap.get(_event.getId()));
 			return true;
 		}
 		return false;
@@ -125,20 +109,14 @@ public class DataManager {
 		if(_ticket.getEvent() != null){
 			//TODO fix this  map event null // Event event = eventMap.get(_ticket.getEvent().getId());
 			Event event = _ticket.getEvent();
-
-			//g駭駻er un nouvel id pour le ticket
-			int newId = event.getTicketsTotal() + 1;
-			_ticket.setId(newId);
 			//add
 			event.addTicketToList(_ticket);
-			eventMap.put(event.getId(), event);
 			return xmlWriter.writeTicketToEvent(event.getId(), _ticket);
 		}
 		return false;
 	}
 	
-	public boolean saveTicketsToEvent(int _eventId ,List<Ticket> _ticketsToAdd){
-		//gestion de l'ajout local et au fichier
+	public boolean saveTicketsToEvent(UUID _eventId ,List<Ticket> _ticketsToAdd){
 		for(Iterator<Ticket> it = _ticketsToAdd.iterator(); it.hasNext();)
 		{
 			Ticket ticket = it.next();
@@ -146,18 +124,13 @@ public class DataManager {
 				return false;
 			}
 		}
-		Event event = eventMap.get(_eventId);
+		Event event = this.getEvent(_eventId);
 		for(Iterator<Ticket> it = _ticketsToAdd.iterator(); it.hasNext();)
 		{
 			Ticket toAdd = it.next();
-			//g駭駻er un nouvel id pour le ticket
-			int newId = event.getTicketsTotal() + 1;
-			toAdd.setId(newId);
-			//add
 			event.addTicketToList(toAdd);
 			xmlWriter.writeTicketToEvent(it.next().getEvent().getId(), toAdd);
 		}
-		eventMap.put(_eventId, event);
 		return true;
 	}
 	
@@ -166,7 +139,6 @@ public class DataManager {
 		if(xmlReader.userAuthenticate(_user.getUsername()) == null){
 			if(xmlWriter.writeUser(_user)){
 				totalUsers++;
-				userMap.put(_user.getUsername(), _user);
 				return true;
 			}
 		}
@@ -174,106 +146,43 @@ public class DataManager {
 	}
 	
 	public boolean editUser(User _user){
-		if(xmlWriter.modifyUser(_user)){
-			editUserInLocalData(_user);
-			return true;
-		}
-		return false;
+		return xmlWriter.modifyUser(_user);
 	}
 	
 	public boolean editEvent(Event _event){
-		if(xmlWriter.modifyEvent(_event)){
-			editEventInLocalData(_event);
-			return true;
-		}
-		return false;
+		return xmlWriter.modifyEvent(_event);
 	}
 	
 	public boolean editTicket(Ticket _ticket){
-		if(xmlWriter.modifyTicket(_ticket)){
-			editTicketInLocalData(_ticket);
-			return true;
-		}
-		return false;
+		return xmlWriter.modifyTicket(_ticket);
 	}
 	
-	public boolean deleteTicket(int _eventId , int _ticketId){
-		if (xmlWriter.deleteTicket(_eventId, _ticketId)){
-			Event event = eventMap.get(_eventId);
-			if(event != null){
-				deleteTicketInLocalData(_ticketId,event);
-				return true;
-			}
-		}
-		return false;
+	public boolean deleteTicket(UUID _eventId , UUID _ticketId){
+		return xmlWriter.deleteTicket(_eventId, _ticketId);
 	}
 	
 	public boolean deleteTicket(Ticket _ticket){
-		if(xmlWriter.deleteTicket(_ticket.getEvent().getId(), _ticket.getId())){
-			deleteTicketInLocalData(_ticket.getId(),_ticket.getEvent());
-			return true;
-		}
-		return false;
+		return xmlWriter.deleteTicket(_ticket.getEvent().getId(), _ticket.getId());
 	}
 	
 	public boolean deleteUser(String _username){
-		if(xmlWriter.deleteUser(_username)){
-			User user = userMap.get(_username);
-			if(user != null){
-				deleteUserInLocalData(user);
-			}
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean deleteUser(User _user){
-		if(xmlWriter.deleteUser(_user.getUsername())){
-			deleteUserInLocalData(_user);
-			return true;
-		}
-		return false;
+		return xmlWriter.deleteUser(_username);
 	}
 	
 	public boolean deleteEvent(Event _event){
-		if( xmlWriter.deleteEvent(_event.getId())){
-			deleteEventInLocalData(_event);
-			return true;
-		}
-		return false;
+		return xmlWriter.deleteEvent(_event.getId());
 	}
 	
-	public boolean deleteEvent(int _eventId){
-		if( xmlWriter.deleteEvent(_eventId)){
-			Event event = eventMap.get(_eventId);
-			if(event != null){
-				deleteEventInLocalData(event);
-			}
-			return true;
-		}
-		return false;
+	public boolean deleteEvent(UUID _eventId){
+		return xmlWriter.deleteEvent(_eventId);
 	}
 	
-	/*
-	public boolean loadAllEvents(){
-		return false;
-	}
-	*/
-	public List<Ticket> loadAllTickets(int _eventId){
+	public List<Ticket> loadAllTickets(UUID _eventId){
 		return getEvent(_eventId).getTicketList();
 	}
 	
-	public int getLastEventId() {
-		return lastEventId;
-	}
-
-	public void setLastEventId(int lastEventId) {
-		this.lastEventId = lastEventId;
-	}
-
 	public List<User> getUserList() {
-		List<User> list = new ArrayList<User>(userMap.values());
-		return list;
+		return xmlReader.loadUsers();
 	}
 /*
 	public void setUserList(List<User> userList) {
@@ -281,14 +190,14 @@ public class DataManager {
 	}
 */
 	public List<Event> getEventList() {
-		List<Event> list = new ArrayList<Event>(eventMap.values());
-		return list;
+		return xmlReader.loadEvents();
 	}
 	/*
 	public void setEventList(List<Event> eventList) {
 		this.eventList = eventList;
 	}
 	*/
+	/*
 	private boolean deleteTicketInLocalData(int _ticketId, Event _event){
 		if(eventMap.containsKey(_event.getId())){
 			_event.removeTicketFromList(_ticketId);
@@ -343,5 +252,5 @@ public class DataManager {
 			return true;
 		}
 		return false;
-	}
+	}*/
 }

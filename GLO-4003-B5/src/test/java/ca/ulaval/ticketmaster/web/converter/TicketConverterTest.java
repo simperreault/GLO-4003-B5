@@ -13,14 +13,14 @@ public class TicketConverterTest {
 	
 	@Test
 	public void convertEntryToviewmodel() {
-		Ticket t = new Ticket(1);
+		Ticket t = new Ticket();
 		t.setEvent(null);
 		t.setOwner("owner");
 		t.setPrice(1.0);
 		t.setResellprice(1.0);
 		t.setSeat("seat");
 		t.setSection("section");
-		t.setType(ticketType.SEASON);
+		t.setType(ticketType.Saison);
 		
 		TicketViewModel viewmodel = TicketConverter.convert(t);
 		

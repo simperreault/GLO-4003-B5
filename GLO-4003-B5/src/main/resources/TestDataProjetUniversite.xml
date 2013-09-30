@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="6" total="5">
-		<Event id="1" open="true" ticketsAvailable="25" ticketsTotal="27">
-			<SectionList>
-		<Section>A2</Section>
-		<Section>B2</Section>
-        <Section>C2</Section>
-        <Section>D2</Section>
-			</SectionList>
-			<Sport gender="M" name="Football"/>
-			<Teams home="nutSacks" visitors="Scumbags"/>
-			<Location city="Québec" date="02/03/2014" stadium="Bell" time="18:00"/> 
-			<TicketList>
-				<Ticket id="1" owner="" price="80.00" resellPrice="0" seat="34" section="A2" type="single"/>
-				<Ticket id="2" owner="DieHardFanboy" price="70.00" resellPrice="0" seat="78" section="B2" type="season"/>
-				<Ticket id="3" owner="MrRichGuy" price="100.00" resellPrice="0" seat="109" section="C2" type="reserved"/>
-				<Ticket id="4" owner="CarloBoutet" price="80.00" resellPrice="60.00" seat="" section="D2" type="general"/>
-      <Ticket id="5" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="6" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="7" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="8" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="9" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="10" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="11" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="12" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="13" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="14" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="15" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="16" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="17" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="18" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="19" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="20" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="21" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="22" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="23" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="24" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="25" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="26" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      <Ticket id="27" owner=" Simon" price="23.0" resellPrice="4.0" seat="qweqweqw" section="asdasd" type="season"/>
-      </TicketList>
-		</Event>
-  <Event id="2" open="true" ticketsAvailable="198" ticketsTotal="198">
+	<EventList total="2">
+	<Event id="f295a8f5-767c-4c16-993f-671f5f0a5ae1" open="true" ticketsAvailable="100" ticketsTotal="100">
       <SectionList>
         <Section>A1</Section>
         <Section>B6</Section>
@@ -49,266 +9,112 @@
       </SectionList>
       <Sport gender="M" name="Football"/>
       <Teams home="Rouge et or" visitors="Vert et or"/>
-      <Location city="Québec" date="21/58/2013" stadium="Laval" time="16:58"/>
+      <Location city="Québec" date="30/09/2013" stadium="Laval" time="12:31"/>
       <TicketList>
-        <Ticket id="3" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="4" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="5" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="6" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="7" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="8" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="9" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="10" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="11" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="12" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="13" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="14" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="15" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="16" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="17" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="18" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="19" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="20" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="21" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="22" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="23" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="24" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="25" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="26" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="27" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="28" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="29" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="30" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="31" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="32" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="33" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="34" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="35" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="36" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="37" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="38" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="39" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="40" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="41" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="42" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="43" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="44" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="45" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="46" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="47" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="48" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="49" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="50" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="51" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="52" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="53" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="54" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="55" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="56" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="57" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="58" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="59" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="60" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="61" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="62" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="63" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="64" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="65" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="66" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="67" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="68" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="69" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="70" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="71" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="72" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="73" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="74" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="75" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="76" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="77" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="78" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="79" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="80" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="81" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="82" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="83" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="84" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="85" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="86" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="87" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="88" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="89" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="90" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="91" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="92" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="93" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="94" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="95" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="96" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="97" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="98" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="99" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-        <Ticket id="100" owner="testUser" price="69.69" resellPrice="0.0" seat="90" section="L01" type="GENERAL"/>
-      <Ticket id="101" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="102" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="103" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="104" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="105" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="106" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="107" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="108" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="109" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="110" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="111" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="112" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="113" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="114" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="115" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="116" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="117" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="118" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="119" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="120" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="121" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="122" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="123" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="124" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="125" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="126" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="127" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="128" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="129" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="130" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="131" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="132" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="133" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="134" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="135" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="136" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="137" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="138" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="139" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="140" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="141" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="142" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="143" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="144" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="145" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="146" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="147" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="148" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="149" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="150" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="151" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="152" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="153" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="154" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="155" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="156" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="157" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="158" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="159" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="160" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="161" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="162" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="163" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="164" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="165" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="166" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="167" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="168" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="169" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="170" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="171" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="172" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="173" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="174" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="175" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="176" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="177" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="178" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="179" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="180" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="181" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="182" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="183" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="184" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="185" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="186" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="187" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="188" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="189" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="190" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="191" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="192" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="193" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="194" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="195" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="196" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="197" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="198" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="199" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
-        <Ticket id="200" owner="testUser" price="80.69" resellPrice="0.0" seat="90" section="L01" type="SEASON"/>
+        <Ticket id="108417d5-d0b4-4005-a357-0cf82ebd066d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="35552428-cf10-45f1-83d5-3fffc2a2e512" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="fe40ef04-8ecc-44b4-8663-fdbf90ed894a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d05696d9-8cae-4aca-a088-1501576e8187" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ca5822ed-4683-47e3-9377-7621e3dd0834" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="aceedb63-33c5-42ec-944d-cb4ec3c4fd77" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="80729dc9-e910-4c22-9636-0d716296aa92" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b7e51083-9358-4546-9da5-80d37d86cdcf" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="fd26ce02-77f8-4648-a3bf-705d22ba7372" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a2a4cf35-94f8-4711-8a6a-caa193c8c665" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7a070ba3-434b-4658-8d10-718689f8109d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4623c86a-8c58-46e7-863f-ecd9b3ca399c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="9fb02db4-49ae-40e6-b2e1-d8fe4d630fd2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="0b118f89-89e2-4578-b29c-a41e83aced2a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1d132ae8-f7aa-4332-9601-85f445b4f6d2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8a6273ca-5e78-4629-93ac-da21349bd4db" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="493ebce4-5442-48fd-8713-321197f814a2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="46120f68-5c45-465e-a966-2ffc91678c3c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ecc7d354-a0fc-4e70-a0b7-2ace41ee0e46" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4f147a01-77fd-4384-8a59-f70ac93c4613" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cc0472d0-aa0b-4559-9b72-4a47f346a57d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="984ca4fc-288a-4b93-af19-ad16b1a69067" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ee112604-bc76-4070-a780-42e18ee10595" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4948c547-28ec-4df5-beae-7df5a0476f93" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="84e03a44-36e6-4d45-b56c-8b47fc9598d1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="342825de-a036-4797-985b-dd83f7493334" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="0d04ad1b-8642-466b-9d03-411e4ecf5eeb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d31e2f3e-5f9f-4e80-8290-66b1f25ae402" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4b17be6f-e47c-436b-bbf7-2620332f3c92" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8f2c0507-16be-4f1f-b967-268fe30ee98f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="100b68bf-13cc-4f2d-94f9-5d8ca1f98828" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="6d798f86-8a5c-4481-8fff-f983a68afe33" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1dd9ca14-4755-4072-b81b-ec6c5a94de22" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="dcf26e06-75ff-4952-b70e-ce8562a8d91c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5963bf9a-be76-4d6c-a46c-5d15f0a143d9" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1b8674e8-2e3e-4e33-a771-09d45a66a8c4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="9e23201a-5a5e-4697-8a3a-65de7b8f1ce2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="6ec42875-c70e-46b7-9acd-8c7875904203" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ea5a795a-c4f3-4043-859c-3ee7aaeddb3d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="028edae0-8495-4141-97ef-bbe5f11e6364" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="761de67d-c59c-4229-8887-f31eacd90e7e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="132854ed-0f3f-4684-a8c9-6edc9b6288fd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="48a3d066-f4d6-4111-a654-c2c36e65031c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="01b1664b-3462-4290-b939-37e1b3145438" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="9204b179-667f-49af-aaa1-23c3a87eee49" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c4957ed4-00c2-42b6-a1fb-e0f2f94a048c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d74f2a7a-3307-4048-a772-6354fb982beb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="79abf78c-21b1-4e5b-8511-92875fc04537" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="2bd6b725-c2a4-4833-b6f4-d3666bf463d4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="563e162b-4e22-4850-a00b-081032ddcf5a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="bbf966d8-1739-44f0-94f5-20cbfaae1722" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="332770f3-4ad0-4ca2-a98d-5ed0faed670b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="77680781-1b1e-4afa-a421-7973f162ce31" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="97357835-3f01-4565-be1e-ca17a1fcbd64" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3801bb83-f2d2-42ee-b052-f2a591b53829" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="eae2fb79-1a69-4b41-bded-de08c461bf7a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="397e9f23-039b-4c80-bd51-d1137d535e7f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4f1e08af-8ebb-4d2f-a7d2-2997c48fc57e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ce5e2af5-3b93-4e35-b4b3-8fa0ca57756b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ac6388f7-a86f-4e74-b088-a07f14e787e7" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="33d85ed4-6820-44e3-a810-2ac26da687e4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="81fcbe3e-5f2a-4104-949a-8ba68c2a33fc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="94871a5c-13e0-4840-8e67-8e0632214ffa" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="775a6514-72a9-4633-ae61-2641c37a7761" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="0133c905-a9c7-4d8b-a0d2-4330fb8068cf" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ba10ea2b-2558-4fe7-b890-ca51f5f545b0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="bcfef467-13fe-4a31-9c3b-2113b6c98a0e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5836506d-7485-40fe-a35b-0797083dfaad" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c9630191-8d34-4f29-8a9a-435ff3d14130" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cf7e5cb9-d03d-4026-8c1b-943497202f55" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="2a027d0a-d176-4bc7-847e-35e58592bb81" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b374f2ab-41a2-444b-81a1-6d3021c0ad6e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d7def4f0-27a1-4822-a5f5-9833cfae406e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1421450b-23a5-4cd3-bb85-05a88605338d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="84eeff91-9a13-4b5f-b8b1-66291466da71" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="505e80dc-7b46-4657-b36d-f896931f9773" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f00d7488-b7bc-4d45-90ef-3b98ac4b421f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="287d196d-3ee2-4a25-86ce-cec574fdafa6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="0ed499a7-15e2-4b03-b0ab-1741698b3500" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c1986586-c103-430b-a510-bb3533eb061a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="941b670b-b4c3-48a5-878c-0367171ccfd7" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="326c9697-ada8-4013-a7f0-dcc118b0098d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="aa2e4c41-fd85-419b-b1e5-480e1137f519" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="93575adb-17fc-44f6-be87-2ba1d6080914" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f9c38d9c-bbde-45a0-b747-0ce61298bdac" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="e23a5310-ea00-4aa5-a789-3b1c3f69fa7a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="e433e4b3-3d55-4ae6-828a-5400fe51c3ef" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c4ef68fb-fa5a-4567-b9c7-42522c71dbff" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="58039bf9-1c28-4852-a9a6-b452fe0aa861" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8e8cd7d4-99f1-4aa1-8a3b-325220dbc467" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="87fee6a4-1852-4413-98c9-1d7c47fc58f2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c7410847-f34d-4a57-b18b-f62cf83add97" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="553ea7d8-97f5-4926-be76-7a6c7ebdab90" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3bd72ebd-813e-46a1-840a-55bd7cf8392e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d29bb30e-2fef-4b65-bc11-3108852d6ca0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="317d13d1-4211-4e87-89ea-71d1b0bc7c36" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ec4c36ea-0d03-4565-85f7-66ed97e46fc2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a72bf155-cb88-4bc1-a571-ce1c3ed91231" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4efb7a21-e9f2-4fdf-bab4-2cc780e61961" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ec524fc6-fa62-4f0b-85f3-a1fad7c0ed73" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
       </TicketList>
-    </Event>
-  <Event id="4" open="false" ticketsAvailable="30" ticketsTotal="30">
-      <SectionList/>
-      <Sport gender="Gars" name="Rugby"/>
-      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
-      <Location city="UL" date="09/06/2015" stadium="Telus" time="1:00"/>
-      <TicketList>
-        <Ticket id="1" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="2" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="3" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="4" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="5" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="6" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="7" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="8" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="9" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="10" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="11" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="12" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="13" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="14" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="15" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="16" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="17" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="18" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="19" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="20" owner="Martin" price="56.0" resellPrice="50.0" seat="2" section="HighSkill" type="season"/>
-      <Ticket id="21" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="22" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="23" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="24" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="25" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="26" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="27" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="28" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="29" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      <Ticket id="30" owner="Simon" price="20.0" resellPrice="18.0" seat="B" section="NotCool" type="season"/>
-      </TicketList>
-    </Event>
-  <Event id="5" open="false" ticketsAvailable="3" ticketsTotal="3">
-      <SectionList/>
-      <Sport gender="Male" name="Rugby"/>
-      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
-      <Location city="UL" date="25/06/2015" stadium="Telus" time="10:00"/>
-      <TicketList>
-        <Ticket id="1" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
-      <Ticket id="2" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
-      <Ticket id="3" owner="asdas" price="45.0" resellPrice="45.0" seat="qweqweqw" section="B" type="season"/>
-      </TicketList>
-    </Event>
-  <Event id="6" open="false" ticketsAvailable="0" ticketsTotal="0">
-      <SectionList/>
-      <Sport gender="Male" name="Rugby"/>
-      <Teams home="Simon d'ameique" visitors="Ben B-Baller"/>
-      <Location city="UL" date="09/06/2015" stadium="Telus" time="10:00"/>
-      <TicketList/>
     </Event>
   </EventList>
-	<UserList total="2">
+	<UserList total="3">
 		<User username="CarloBoutet">
 			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets>
@@ -320,6 +126,11 @@
       <PersonalData accessLevel="User" email="" firstname="" lastName="" password="lol"/>
       <UserTickets/>
       <SearchPreferences city="" gender="" sport="" type="GENERAL"/>
+    </User>
+  <User username="admin">
+      <PersonalData accessLevel="Admin" email="bensport0007@gmail.com" firstname="admin" lastName="admin" password="admin"/>
+      <UserTickets/>
+      <SearchPreferences city="Canada" gender="Masculin" sport="Football" type="GENERAL"/>
     </User>
   </UserList>
 </Data>
