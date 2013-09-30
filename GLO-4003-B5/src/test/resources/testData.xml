@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="0" total="0">
+	<EventList total="0">
 	</EventList>
-	<UserList total="2">
-		<User username="CarloBoutet">
-			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+	<UserList total="1">
+		<User username="admin">
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="admin"/>
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>
-			<SearchPreferences city="québec" gender="M" sport="football" type="season"/>
+			<SearchPreferences city="québec" gender="M" sport="football" type="Saison"/>
 		</User>
 	</UserList>
 </Data>
