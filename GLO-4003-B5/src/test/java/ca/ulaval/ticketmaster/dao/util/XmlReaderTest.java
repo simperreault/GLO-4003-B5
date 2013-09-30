@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,35 +42,34 @@ public class XmlReaderTest {
 		assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"),true);
 		int[] result = x.readStartupInformation();
 		assertEquals(result[0],1);
-		assertEquals(result[1],1);
-		assertEquals(result[2],2);
+		assertEquals(result[1],2);
 	}
 	@Test
 	public void TestLoadEvent(){
 		XmlReader x = new XmlReader();
 		assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"),true);
-		Event e = x.loadEvent(1, false);
+		Event e = x.loadEvent(UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"), false);
 		assertNotNull(e);
-		assertEquals(e.getId(),1);
+		assertEquals(e.getId(),UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"));
 		assertEquals(e.getStadium(),"Telus");
 		assertEquals(e.getTicketList().size(),0);
-		e = x.loadEvent(1);
+		e = x.loadEvent(UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"));
 		assertEquals(e.getTicketList().get(2).getSeat(),"qweqweqw");
 		assertEquals(e.getSectionList().size(),1);
 		assertEquals(e.getSectionList().get(0),"B");
 		assertEquals(e.getTicketList().size(),3);
-		e = x.loadEvent(0);
+		e = x.loadEvent(UUID.randomUUID());
 		assertNull(e);
 	}
 	@Test
 	public void TestLoadTicket(){
 		XmlReader x = new XmlReader();
 		assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"),true);
-		Ticket t = x.loadTicket(1, 1);
+		Ticket t = x.loadTicket(UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"), UUID.fromString("108417d5-d0b4-4005-a357-0cf82ebd066d"));
 		assertNotNull(t);
-		assertEquals(t.getId(),1);
+		assertEquals(t.getId(),UUID.fromString("108417d5-d0b4-4005-a357-0cf82ebd066d"));
 		assertEquals(t.getEvent().getSectionList().get(0),"B");
-		 t = x.loadTicket(0, 1);
+		 t = x.loadTicket(UUID.randomUUID(), UUID.randomUUID());
 		 assertNull(t);
 	}
 	

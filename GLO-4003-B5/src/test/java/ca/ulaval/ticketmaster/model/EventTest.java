@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,14 +17,14 @@ public class EventTest {
 
 	@Test
 	public void testEventInt() {
-		Event e = new Event(1);
+		Event e = new Event(UUID.randomUUID());
 		assertNotNull(e);
 	}
 
 	@Test
 	public void testEventIntBooleanIntIntSportStringStringStringStringStringDateDate() {
 		Date date = new Date();
-		Event e = new Event(1, false, 0, 0, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
+		Event e = new Event( false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
 		assertNotNull(e);
 		assertEquals(e.getSport(),Sport.Football);
 	}
@@ -31,173 +32,87 @@ public class EventTest {
 	@Test
 	public void testToString() {
 		Date date = new Date();
-		Event e = new Event(1, false, 0, 0, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
+		Event e = new Event(false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
 		assertNotNull(e.toString());		
 	}
 
 	@Test
-	public void testGetTicketList() {
+	public void testGettersSetters() {
 		Date date = new Date();
-		Event e = new Event(1, false, 0, 0, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
+		Event e = new Event( false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
 		ArrayList<Ticket> a = new ArrayList<Ticket>();
-		a.add(new Ticket(1));
+		//Test ticket list
+		a.add(new Ticket());
 		e.setTicketList(a);
 		assertEquals(e.getTicketList(),a);
-	}
-
-	@Test
-	public void testSetTicketList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIsOpen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetOpen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTicketsTotal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetTicketsTotal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTicketsAvailable() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetTicketsAvailable() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSport() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSport() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetGender() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetGender() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetHomeTeam() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetHomeTeam() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetVisitorsTeam() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetVisitorsTeam() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetLocation() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetLocation() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetStadium() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetStadium() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDate() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetDate() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTime() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetTime() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSectionList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSectionList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAddTicketToList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRemoveTicketFromList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testChangeValuesFromEventObject() {
-		fail("Not yet implemented");
+		// id
+		UUID u = UUID.randomUUID();
+		e.setId(u);
+		assertEquals(e.getId(),u);
+		// open
+		e.setOpen(true);
+		assertTrue(e.isOpen());
+		// tick total
+		e.setTicketsTotal(1);
+		assertEquals(e.getTicketsTotal(),1);
+		// tick avail
+		e.setTicketsAvailable(1);
+		assertEquals(e.getTicketsAvailable(),1);
+		// sport
+		e.setSport(Sport.Soccer);
+		assertEquals(e.getSport(),Sport.Soccer);
+		// gender
+		e.setGender("F");
+		assertEquals(e.getGender(),"F");
+		//home
+		e.setHomeTeam("A");
+		assertEquals(e.getHomeTeam(),"A");
+		//visit
+		e.setVisitorsTeam("V");
+		assertEquals(e.getVisitorsTeam(),"V");
+		//loc
+		e.setLocation("HUH");
+		assertEquals(e.getLocation(),"HUH");
+		//stad
+		e.setStadium("luls");
+		assertEquals(e.getStadium(),"luls");
+		//datetime
+		date = new Date();
+		e.setDate(date);
+		assertEquals(e.getDate(),date);
+		e.setTime(date);
+		assertEquals(e.getTime(),date);
+		//section
+		e.setSectionList(new ArrayList<String>());
+		assertNotNull(e.getSectionList());
+		//add
+		e.addTicketToList(new Ticket(UUID.randomUUID()));
+		assertEquals(e.getTicketsTotal(),2);
+		assertEquals(e.getTicketsAvailable(),2);
+		UUID u2 = UUID.randomUUID();
+		Ticket tick = new Ticket(u2);
+		tick.setOwner("aaa");
+		tick.setResellprice(3);
+		e.addTicketToList(tick);
+		assertEquals(e.getTicketsAvailable(),3);
+		//remove
+		e.removeTicketFromList(u2);
+		assertEquals(e.getTicketList().size(), 2);
+		//change event obj
+		Event ee = new Event(false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
+		e.changeValuesFromEventObject(ee);
+		assertEquals(e.isOpen(),false);
+		
 	}
 
 	@Test
 	public void testFindAndEditTicket() {
-		fail("Not yet implemented");
+		Date date = new Date();
+		Event e = new Event( false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
+		Ticket t = new Ticket(UUID.randomUUID());
+		e.addTicketToList(t);
+		assertEquals(e.findAndEditTicket(t),true);
+		assertEquals(e.findAndEditTicket(new Ticket(UUID.randomUUID())),false);
 	}
 
 }
