@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,21 +53,21 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String MainFrame(Model model) {
-		model.addAttribute("currentPage", "Home.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "Home.jsp");
+		return "Home";
 	}
 	
 	@RequestMapping(value = "/Home", method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("currentPage", "Home.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "Home.jsp");
+		return "Home";
 	}
 	
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
 	public String CreateUser(Model model) {
 		model.addAttribute("user", new UserViewModel());
-		model.addAttribute("currentPage", "CreateUser.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "CreateUser.jsp");
+		return "CreateUser";
 	}
 	
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
@@ -85,21 +86,21 @@ public class HomeController {
 			
 		}
 
-		model.addAttribute("currentPage", "Home.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "Home.jsp");
+		return "Home";
 	}
 	
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
 	public String Login(Model model) {
-		model.addAttribute("currentPage", "Login.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "Login.jsp");
+		return "Home";
 	}
 	
 	@RequestMapping(value = {"/disconnect"}, method = RequestMethod.GET)
 	public String Disconnect(Model model, HttpSession session) {
 		session.setAttribute("sesacceslevel",null);
 		session.setAttribute("sesusername", null);
-		return "redirect:/";
+		return "Home";
 	
 	}
 	
@@ -129,9 +130,14 @@ public class HomeController {
 		}
 		else
 		{
-			return "redirect:/";
+			return "Home";
 		}
-
+	}
+	
+	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
+	public String Basket(Model model) {
+		model.addAttribute("currentPage", "Basket.jsp");
+		return "Basket";
 	}
 	
 }

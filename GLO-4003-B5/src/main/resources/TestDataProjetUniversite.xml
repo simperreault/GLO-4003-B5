@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="6" total="5">
+	<EventList lastId="7" total="6">
 		<Event id="1" open="true" ticketsAvailable="25" ticketsTotal="27">
 			<SectionList>
 		<Section>A2</Section>
@@ -307,8 +307,17 @@
       <Location city="UL" date="09/06/2015" stadium="Telus" time="10:00"/>
       <TicketList/>
     </Event>
+  <Event id="7" open="false" ticketsAvailable="1" ticketsTotal="1">
+      <SectionList/>
+      <Sport gender="Masculin" name="Football"/>
+      <Teams home="ULAVAL" visitors="BISHOP"/>
+      <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
+      <TicketList>
+      <Ticket id="1" owner="" price="32.0" resellPrice="232.0" seat="22" section="tao" type="GENERAL"/>
+      </TicketList>
+    </Event>
   </EventList>
-	<UserList total="2">
+	<UserList total="3">
 		<User username="CarloBoutet">
 			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets>
@@ -320,6 +329,11 @@
       <PersonalData accessLevel="User" email="" firstname="" lastName="" password="lol"/>
       <UserTickets/>
       <SearchPreferences city="" gender="" sport="" type="GENERAL"/>
+    </User>
+  <User username="admin">
+      <PersonalData accessLevel="User" email="bensport0007@gmail.com" firstname="admin" lastName="admin" password="admin"/>
+      <UserTickets/>
+      <SearchPreferences city="Canada" gender="Masculin" sport="Football" type="GENERAL"/>
     </User>
   </UserList>
 </Data>

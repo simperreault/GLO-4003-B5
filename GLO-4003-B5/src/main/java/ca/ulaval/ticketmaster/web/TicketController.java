@@ -35,8 +35,8 @@ public class TicketController {
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
 	public String create(@PathVariable int eventId, Model model) {
 		model.addAttribute("ticket", new TicketViewModel(new Event(eventId)));
-		model.addAttribute("currentPage", "TicketAdd.jsp");
-		return "MainFrame";
+		//model.addAttribute("currentPage", "TicketAdd.jsp");
+		return "TicketAdd";
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
@@ -45,8 +45,8 @@ public class TicketController {
 		if (result.hasErrors()) {  	        
 			model.addAttribute("error", result.getAllErrors());
 			model.addAttribute("ticket", viewmodel);
-			model.addAttribute("currentPage", "TicketAdd.jsp");
-			return "MainFrame";
+			//model.addAttribute("currentPage", "TicketAdd.jsp");
+			return "TicketAdd";
 		}
 
 		viewmodel.setEvent(datamanager.getEvent(eventId));

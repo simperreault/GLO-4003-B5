@@ -44,8 +44,6 @@ public class HomeControllerTest {
 
 		assertEquals(model.get("currentPage"), "Home.jsp");
 		assertEquals(ret, "MainFrame");
-		
-		
 	}
 
 	@Test
