@@ -58,14 +58,7 @@ public class DataManager {
 		// Loader les id d'event pour ne pas 馗raser un event existant dans le cas de la cr饌tion d'un nouvel event
 		int output[] = xmlReader.readStartupInformation();
 		totalEvents = output[0];
-		lastEventId = output[1];
-		totalUsers = output[2];
-		
-		// pour le moment on va loader tous les events dans la eventList et les users aussi
-		// TODO faire un pattern de repository pis mettre 軋 clean
-		
-		List<Event> eventList = xmlReader.loadEvents();
-		List<User> userList = xmlReader.loadUsers();
+		totalUsers = output[1];
 	}
 	
 	/*

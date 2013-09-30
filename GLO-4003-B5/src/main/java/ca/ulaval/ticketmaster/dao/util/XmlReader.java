@@ -61,15 +61,14 @@ public class XmlReader {
 	 *  2 is total of users
 	 */
 	public int[] readStartupInformation(){
-		int output[] = new int[] {-1,-1,-1};
+		int output[] = new int[] {-1,-1};
 		if (!connect(DATA_FILE)) {
 			System.out.println("Could not connect!");
 			return output;
 		}
 		Element elElement = ((Element)doc.getElementsByTagName("EventList").item(0));
 		output[0] = Integer.parseInt(elElement.getAttribute("total"));
-		output[1] = Integer.parseInt(elElement.getAttribute("lastId"));
-		output[2] = Integer.parseInt(((Element)doc.getElementsByTagName("UserList").item(0)).getAttribute("total"));
+		output[1] = Integer.parseInt(((Element)doc.getElementsByTagName("UserList").item(0)).getAttribute("total"));
 		return output;
 	}
 	
@@ -86,7 +85,7 @@ public class XmlReader {
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
-			if(UUID.fromString(eElement.getAttribute("id")) == _eventId ){ // if event exists
+			if(UUID.fromString(eElement.getAttribute("id")).equals(_eventId) ){ // if event exists
 				// load event and returns it
 				Event tempEvent = new Event(UUID.fromString(eElement.getAttribute("id")));
 				tempEvent.setOpen(Boolean.parseBoolean(eElement.getAttribute("open")));
@@ -118,7 +117,7 @@ public class XmlReader {
 					for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 						Element tElement = (Element)tNodeList.item(tickIter);
 						tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type").toUpperCase()));
+						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
 						tempTicket.setSection(tElement.getAttribute("section"));
 						if (!tElement.getAttribute("seat").isEmpty())
 							tempTicket.setSeat(tElement.getAttribute("seat"));
@@ -160,12 +159,12 @@ public class XmlReader {
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
-			if(UUID.fromString(eElement.getAttribute("id")) == _eventId ){ 
+			if(UUID.fromString(eElement.getAttribute("id")).equals(_eventId) ){ 
 				// if event exists, check if ticket exists
 				NodeList tNodeList = ((Element)eElement.getElementsByTagName("TicketList").item(0)).getElementsByTagName("Ticket");
 				for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 					Element tElement = (Element)tNodeList.item(tickIter);
-					if (UUID.fromString(tElement.getAttribute("id")) == _ticketId){
+					if (UUID.fromString(tElement.getAttribute("id")).equals(_ticketId)){
 						//ticket exists, load data
 						//Event data to link to ticket
 						Event tempEvent = new Event(UUID.fromString(eElement.getAttribute("id")));
@@ -192,7 +191,7 @@ public class XmlReader {
 						}
 						// Single ticket data
 						Ticket tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type").toUpperCase()));
+						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
 						tempTicket.setSection(tElement.getAttribute("section"));
 						if (!tElement.getAttribute("seat").isEmpty())
 							tempTicket.setSeat(tElement.getAttribute("seat"));
@@ -259,7 +258,7 @@ public class XmlReader {
 				for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 					Element tElement = (Element)tNodeList.item(tickIter);
 					tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-					tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type").toUpperCase()));
+					tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
 					tempTicket.setSection(tElement.getAttribute("section"));
 					if (!tElement.getAttribute("seat").isEmpty())
 						tempTicket.setSeat(tElement.getAttribute("seat"));
@@ -317,7 +316,7 @@ public class XmlReader {
 				tempuser.setAccessLevel(User.AccessLevel.valueOf(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("accessLevel")));
 				tempuser.setFavSport(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("sport"));
 				tempuser.setFavGender(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("gender"));
-				tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type").toUpperCase()));
+				tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type")));
 				tempuser.setFavLocation(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("city"));
 
 				NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");
@@ -373,8 +372,7 @@ public class XmlReader {
 		xmlreader.loadEvents();
 		xmlreader.loadUsers();
 		xmlreader.userAuthenticate("carloboutet");
-		xmlreader.loadEvent(2);
 		xmlreader.loadTicket(2, 4);
-	}*/
-
+	}
+*/
 }

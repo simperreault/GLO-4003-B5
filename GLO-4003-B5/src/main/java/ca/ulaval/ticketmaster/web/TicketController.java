@@ -35,14 +35,14 @@ public class TicketController {
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
-	public String create(@PathVariable UUID eventId, Model model) {
-		model.addAttribute("ticket", new TicketViewModel(new Event(eventId)));
+	public String create(@PathVariable String eventId, Model model) {
+		model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
 		//model.addAttribute("currentPage", "TicketAdd.jsp");
 		return "TicketAdd";
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
-	public String create(@PathVariable UUID eventId,
+	public String create(@PathVariable String eventId,
 			@Valid TicketViewModel viewmodel, BindingResult result, Model model) {
 		if (result.hasErrors()) {  	        
 			model.addAttribute("error", result.getAllErrors());
@@ -51,7 +51,7 @@ public class TicketController {
 			return "TicketAdd";
 		}
 
-		viewmodel.setEvent(datamanager.getEvent(eventId));
+		viewmodel.setEvent(datamanager.getEvent(UUID.fromString(eventId)));
 		for (int i= 0; i < viewmodel.howMany; ++i) {
 			Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
 			datamanager.saveTicket(ticket); // TODO What if save failed ?
@@ -60,8 +60,8 @@ public class TicketController {
 	}
 	
 	@RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
-	public String delete(@PathVariable UUID eventId, @PathVariable UUID ticketId, Model model) {
-		datamanager.deleteTicket(eventId,ticketId);
+	public String delete(@PathVariable String eventId, @PathVariable String ticketId, Model model) {
+		datamanager.deleteTicket(UUID.fromString(eventId),UUID.fromString(ticketId));
 		return "redirect:/event/{eventId}";
 	}
 }

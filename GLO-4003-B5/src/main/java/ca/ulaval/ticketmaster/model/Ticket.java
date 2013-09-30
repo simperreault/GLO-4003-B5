@@ -25,7 +25,7 @@ public class Ticket {
 	private double resellprice = 0.0;
 	
 	public Ticket(UUID _id, Event _event){
-		id = UUID.randomUUID();
+		id = _id;
 		event = _event;
 	}
 	
@@ -56,7 +56,7 @@ public class Ticket {
 		return id;
 	}
 	
-	private void setId(UUID id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public ticketType getType() {

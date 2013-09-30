@@ -44,17 +44,17 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable UUID id, Model model) {
-		
-		model.addAttribute("eventID", id);
-		model.addAttribute("ticketList", datamanager.loadAllTickets(id));
+	public String Event(@PathVariable String id, Model model) {
+		System.out.println(id);
+		model.addAttribute("eventID", UUID.fromString(id));
+		model.addAttribute("ticketList", datamanager.loadAllTickets(UUID.fromString(id)));
 		//model.addAttribute("currentPage", "TicketList.jsp");
 		return "TicketList";
 	}
 	
 	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
-	public String detail(@PathVariable UUID id1 ,@PathVariable UUID id2, Model model) {
-		model.addAttribute("ticket", datamanager.getTicket(id1, id2));
+	public String detail(@PathVariable String id1 ,@PathVariable String id2, Model model) {
+		model.addAttribute("ticket", datamanager.getTicket(UUID.fromString(id1), UUID.fromString(id2)));
 		//model.addAttribute("currentPage", "detail.jsp");
 		return "detail";
 	}
@@ -82,8 +82,8 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable UUID id, Model model) {
-		datamanager.deleteEvent(id);
+	public String delete(@PathVariable String id, Model model) {
+		datamanager.deleteEvent(UUID.fromString(id));
 		return "redirect:/event/list";
 	}
 	
