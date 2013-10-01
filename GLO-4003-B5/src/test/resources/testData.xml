@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="15">
+	<EventList total="16">
     <Event id="f295a8f5-767c-4c16-993f-671f5f0a5ae1" open="true" ticketsAvailable="100" ticketsTotal="100">
       <SectionList>
         <Section>A1</Section>
@@ -1679,6 +1679,118 @@
         <Ticket id="38f31d90-c1eb-4551-adb3-59348c2ca03c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
         <Ticket id="5fbab494-c63e-4c75-8228-b4b240cfc25b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
         <Ticket id="6033c3a1-0536-48ad-aaa1-f738ff93feb8" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+      </TicketList>
+    </Event>
+  <Event id="f295a8f5-767c-4c16-993f-671f5f0a5ae1" open="true" ticketsAvailable="100" ticketsTotal="100">
+      <SectionList>
+        <Section>A1</Section>
+        <Section>B6</Section>
+        <Section>F7</Section>
+      </SectionList>
+      <Sport gender="M" name="Football"/>
+      <Teams home="Rouge et or" visitors="Vert et or"/>
+      <Location city="Québec" date="30/09/2013" stadium="Bell" time="13:30"/>
+      <TicketList>
+        <Ticket id="ea8812c5-de9b-4982-b1fe-1970fe2e0673" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7e0a50b3-f619-4f5e-a0de-af73c1a9bb23" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3dd665a6-5241-43eb-a9aa-de6bae3f203a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="11a2eb25-edf5-41c9-813d-7eeea2c119fa" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ae667ecd-da95-42dd-8f73-d3e7b4e4af6d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c1375aaa-4775-4e1f-be6a-12f3418d21c9" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ab0ab452-cc57-4c15-9b0d-a3054014c3fe" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c0de344f-720b-45ed-b349-75baa7c723f4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="01c60302-c9e2-4365-90e5-290778d9cfb0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5e443c1e-88a7-46ae-bd0b-7cd45efb9af7" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3234e5c4-cad2-402c-a2de-1e3a484cf386" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a4895ab5-3838-4968-bc1d-e9331faade59" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="e9b58aaf-00a6-45a2-8264-bfdcd04c9320" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="969c313d-ef88-4853-87a5-596fbcb2d1e4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cc15fb84-74b8-40ce-be9d-3970ef5ad057" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="298674e8-512b-4d51-b7a6-a67df757c2aa" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f52a7aab-90eb-43de-a4ac-fac3e4845dfc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7a694d26-b650-4da6-97e5-dbe75738606f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cabde219-1ae1-48ef-8a82-b1a8341cfd1b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="18381d6a-9d38-42bd-a6cd-7d765d038288" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="223673da-a643-424e-8109-3951207266a3" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4db1a4fb-7ae9-46fb-ad6f-de494115e98f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="33b219e0-32f5-46b5-bda7-118f1c6d3d17" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b505f05b-0a8b-4b86-83b0-34d9e546bc97" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="de329726-7c32-43a0-9d16-32b714748633" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="618ab449-fc58-429c-8fa2-c9f9432f4e4d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="dea8f725-5b9d-4fd2-a230-7b4ec91416ff" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="2bed7c75-ae20-4e2c-b8b0-96c8293d52dd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="73e9e075-0460-4370-925f-c709181b3d38" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="086698d3-6a09-4e45-ba07-d486d57980e8" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="fe040dd1-b97a-491b-9dae-c63b7b4ff9f1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a08b6a59-6bac-4f84-8508-6838e08b7171" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="52894959-35b4-46b9-b28f-7b9b1ee7a2b3" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ccdfb069-de80-4e52-bc95-04f35c5eb414" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="e239c143-27b7-487b-be8e-acf01a566ffa" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="6ec54e9b-2ff7-4241-974c-750483c386dd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4b4a30fe-bb8d-47e4-9723-6ca53826b4a9" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="889a3228-ef20-4ca5-bcc4-da565c3ad49f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1b098fc4-92a5-4371-888e-ea171ce220fa" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f21a99da-be31-4574-8487-901cab57db09" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="fdf19b66-808b-4850-aa38-57c9657ed643" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="892c5f50-c7d6-4c75-8ad0-18adaab9e40c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="187a1e5a-5f33-4795-84f6-7fede27bf869" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="bdaa07df-da1b-41ec-979a-f6f6193e4ac4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="026f94ea-db43-40ad-86eb-2e10c3386dde" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d881675f-db1b-42b4-925e-f269b9108ffb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="57965d6b-59f5-493f-9de7-bbc0a326dbce" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ba033f0f-86b6-40b0-afc5-682a52644414" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="42e6533a-6513-45df-bbe9-19020566a242" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7b577c33-d37d-41c1-8195-c105878a75dc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="eeceb1d4-a207-455f-b57d-51b331713a8f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ea897095-0e9b-4dd1-8c74-c6f2ac34ed6d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="10faac5e-e5dc-4e2b-9616-b09d3ca0be6f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="912fe55a-e7cb-450b-ab2c-9395d4d50e46" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b34e5926-66c9-4315-9dd9-753d397d63cd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="613d900a-f96c-496d-be60-7e47dacb05f6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8087ce53-0207-4712-9353-280d668f70ab" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8b74191a-9531-4b56-b8e6-df5f3385f15d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1570e8a5-1fe7-4282-b413-0dd5dc5dc712" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="77256d5e-31ac-4853-97df-e00fc0382308" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4dd2c3ca-a016-4537-91cc-620fb4726ae2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="e75dbe9c-a912-4085-bcc9-4da253e64ca2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5bde538e-7d64-437e-a844-b7a3ae236c5d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f22fd694-d2e2-4f87-8725-fbc7eb80d33e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="02850ec1-43eb-4e22-b5ec-9c606a7f25bd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="6e86e9ac-9eb8-45b2-8339-a28202199048" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a7230011-5381-4550-9271-3b16ec53c3ec" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="ef79d054-e8bc-4a74-9cd0-c1598f81b2c6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7856a436-98ce-4ef6-84ed-267ec837e8b1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="10f727b9-e18d-48fc-973d-5be98f5b4078" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="60db24ed-7a5a-4d9c-8373-7daf436c8fd0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="d1ec9843-fde7-4fd5-890e-6c8038bdbe84" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a5f8e003-27b3-44bf-9c38-8f9aecf0df70" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b4f0153d-90a8-4544-b0d9-82167e139f38" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="803c00ba-16e8-4f3c-b241-c12c89a716cb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f388a33f-6cb6-42a0-a94b-e04282eece38" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="a9a56fef-9bab-4a0d-8191-b0ca386b2001" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8ead28b7-14fa-443c-b4d2-ce9d4938c093" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="38596a27-eaef-4d31-a9bc-358e0423c7e0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="50a53501-7701-44b5-8942-d4bb7753612d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cd53ada7-46f9-4144-87ea-70da0540a8b4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="f4fed7f7-3ea2-40ee-aa13-5d3af5a0f433" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="b2dc1145-69e6-457b-9fa8-59e1a7ffe00a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="06fd7867-a0ee-49c0-827a-f17312762a40" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="4734004e-4f42-48bb-9bb3-cc81cdbee38c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="7ac9774a-5d54-4054-885f-a3b875a28e23" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5b673850-ecac-4ec0-8170-96f28ba23e97" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="c441c829-1e72-4230-a8ad-1ff73470e64e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3c14270c-d92d-40b5-9ca1-cb201f5d1099" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="45a5cb57-c8a4-4c28-874f-b88d4cd0030f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5d72818c-b6c4-407e-8093-1bdc51f7b245" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="6caf4016-cb0b-47c2-90d2-ed17461a89a2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="2536fdab-441d-498e-8a37-b9d1dd8e56cb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="8199d90e-34c1-43e5-8eb5-dbcc97f8721a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="3d53b708-730a-47dc-8b84-7f59a532670c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="bf347fe4-84bc-4ce7-beeb-83febd090931" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="49827432-b3e9-4938-ae6a-731882e9d4ae" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="1ac149f9-9d33-4d86-ac8a-69ddd97867f2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="cd3c1f35-9f1d-485a-b85f-87b9eca333bc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
+        <Ticket id="5709ef91-3397-4d08-b91c-72bb61098bd1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
       </TicketList>
     </Event>
   </EventList>

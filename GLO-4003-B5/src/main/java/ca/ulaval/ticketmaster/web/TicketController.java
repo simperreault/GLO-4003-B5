@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.converter.TicketConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
@@ -35,7 +36,7 @@ public class TicketController {
     @RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
     public String create(@PathVariable String eventId, Model model) {
 	model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
-	// model.addAttribute("currentPage", "TicketAdd.jsp");
+	model.addAttribute("ticketlist", TicketType.values());
 	return "TicketAdd";
     }
 

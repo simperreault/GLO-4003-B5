@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td>Type :</td>
-				<td><form:input path="type" /></td>
+				<td><form:select path="type" items="${ticketlist}" /></td>
 			</tr>
 			<tr>
 				<td>Propriétaire :</td>
