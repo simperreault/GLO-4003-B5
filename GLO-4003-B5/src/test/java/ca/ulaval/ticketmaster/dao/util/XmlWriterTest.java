@@ -117,11 +117,7 @@ public class XmlWriterTest {
 		
 		//Ticket add
 		
-		Ticket t = new Ticket(readEvent);
-		t.setOwner("");
-		t.setPrice(30.00);
-		t.setResellprice(0);
-		t.setType(ticketType.AdmissionGenerale);
+		Ticket t = TicketFactory.CreateTicket(readEvent, ticketType.AdmissionGenerale, "", "", "", 30.00, 0);
 		writer.writeTicketToEvent(eventId,t);
 		Ticket readT = reader.loadTicket(eventId, ticketId3);
 		assertEquals(t,readT);
