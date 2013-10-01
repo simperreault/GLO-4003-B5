@@ -58,7 +58,7 @@ public class TicketControllerTest {
     @Test
     public void createTicketRedirectsToTicketList() {
 	TicketViewModel viewModel = new TicketViewModel();
-	viewModel.setType(TicketType.Saison);
+	viewModel.setType(TicketType.SEASON);
 
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
