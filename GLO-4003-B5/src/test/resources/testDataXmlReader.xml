@@ -10,11 +10,11 @@
 			<Location city="UL" date="25/06/2015" stadium="Telus" time="10:00" />
 			<TicketList>
 				<Ticket id="108417d5-d0b4-4005-a357-0cf82ebd066d" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="AdmissionGenerale" />
+					seat="qweqweqw" section="B" type="Reserve" />
 				<Ticket id="35552428-cf10-45f1-83d5-3fffc2a2e512" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="AdmissionGenerale" />
+					seat="qweqweqw" section="B" type="Reserve" />
 				<Ticket id="fe40ef04-8ecc-44b4-8663-fdbf90ed894a" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="AdmissionGenerale" />
+					seat="qweqweqw" section="B" type="Reserve" />
 			</TicketList>
 		</Event>
 	</EventList>

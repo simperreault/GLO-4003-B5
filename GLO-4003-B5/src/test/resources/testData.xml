@@ -1,14 +1,126 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList lastId="0" total="0">
-	</EventList>
-	<UserList total="2">
-		<User username="CarloBoutet">
-			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+	<EventList total="1">
+    <Event id="f295a8f5-767c-4c16-993f-671f5f0a5ae1" open="true" ticketsAvailable="100" ticketsTotal="100">
+      <SectionList>
+        <Section>A1</Section>
+        <Section>B6</Section>
+        <Section>F7</Section>
+      </SectionList>
+      <Sport gender="M" name="Football"/>
+      <Teams home="Rouge et or" visitors="Vert et or"/>
+      <Location city="Québec" date="30/09/2013" stadium="Bell" time="13:30"/>
+      <TicketList>
+        <Ticket id="f3646130-2ce0-400d-abb9-23c3364f02ea" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="4129226b-7632-4924-840f-2a6372839e76" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="d3707212-0288-40a3-b7a4-f50b8bd91a39" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ca5793f0-3b06-4f85-9997-01fe8f028bc1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="1284c1e1-681d-4484-98d8-03848b39408f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="9d87cf0b-8848-48f5-939c-ce7de90d7630" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="4b229462-3015-4807-98e9-ae54e7e93ab1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="5e17df23-5fb7-4e86-acb4-ab5ba1dd7642" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="9e6c7082-f861-4287-af7d-debc4dd4ac7f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="abeec1f3-2746-4c03-849a-6521f79bbfed" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="d44a8141-48dc-423b-8b07-1964ec323e2b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="51dc539f-8b93-453e-b7f5-e2b3c657e91b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ea48ca9e-9fe6-41ec-9000-2bbbbdde0201" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="acadce40-6039-4ebb-b5ae-3ae3dd88a1a0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ce4bdfa6-1d0b-4aee-abe3-aa5dbc4703ad" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="075447a8-e56c-4212-b47e-eea92a012fd7" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="86587672-dc50-40e7-a859-4a7825bbdab4" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="2ab7c8ef-89b5-4a35-b031-f9078eedff06" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="4da005c0-e82b-4145-b028-37de61d48fa6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="9c137d6e-3a5a-4b31-9567-62f2263ea98f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="2890c951-052d-4fe7-9d1b-d1d28080ec2d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="18fa1462-d978-41a4-8f57-044c2c9224b6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="2c24d573-74d1-49b3-a6fd-0450acb2bb43" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="90873733-1065-42b8-99d7-4aace6572f7f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="bf388bae-8870-4f26-be28-2fb275ef2d79" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="325f3c08-31d9-4dab-ab4a-4801402c7b9e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ae8f0e5d-0707-4b98-93a6-d876145e5ecd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f0c61b2b-31f0-4fa5-b3be-805df31a9dcc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f4b22ae9-9cd3-4b18-a303-6218a36850ae" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="2e343a81-fcbd-4d0a-921d-0b82a9b9b909" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="56b40483-1aeb-49f4-8b4f-bbb8b9c2a6c8" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="0e44e4e7-bd5d-4a02-bb3f-cac100da31af" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="63ae91b8-ff41-4c42-ad0f-7892be6436b8" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="4664bb85-7fa9-4f44-bf94-56cf0c9ddf63" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="02957175-5a4f-4964-80df-c3eec094dedd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ec962a9e-70fc-4a36-99dd-2f86c15d4e03" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="022c49e1-4333-42b0-81fc-ebeb4fcde2dc" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="393296e2-47f2-4884-a59e-1c7a45460395" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="0928a996-ab22-4610-ab20-5e270b394f30" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="5390fafd-f943-4dc8-8ddb-692e5e692ede" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="38cf7824-4e35-4671-a2e7-5d8527a5f7f1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="56e9f57a-946f-4268-af14-196b22119f76" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="a32f2973-e684-4835-90a3-7be472b4659d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="7fa65cb6-6e81-4df6-93ce-d4a88c818af2" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="629f8eb0-6cbf-4d7c-9100-5cfaede3e74e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="0e898002-2c3f-449f-8883-bf3d23d0255b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f6314b31-b62c-4ff2-a821-ba6a5d3717b9" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="3112aba9-5321-4aca-8c40-417cbac097e7" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="9730bc57-7932-4418-801b-1200bf307850" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="168a066e-528a-444c-a143-c05ff791fd2f" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="28141b37-18e4-48c9-a8a7-b77eac868713" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="6f85c7bd-a2e6-4e56-b6c7-9c32659cca55" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="5ec98837-159a-4689-a786-c6062bdaf91e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="263147f9-e82a-4bde-b594-b50ae19dcd08" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="3c636322-039a-477f-bca6-368558dec1da" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f74c381b-59a6-46e5-acb0-0b50b8a1aeeb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="b05dbe15-4832-4e8f-90aa-2097a7a49c2d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="2eddb928-1267-4eae-ac3f-73329397c652" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="1c33c092-a18a-4d04-af90-8c9661b3a778" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="89772b03-e539-4f56-8620-de4c2b611ad9" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="020e3e33-2a85-4590-99bc-745a8406714b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="1e1d9598-0a8f-4c50-a3d2-fb96190b9c27" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="75c030a8-2b2d-4206-b710-582649d525bf" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="e235159b-5cb3-48f2-bf11-ea8107c36422" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="0bab5be7-bd5f-4ab2-8cda-5dbe63b1c4f1" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="59e4ede4-e3bb-443f-9f61-bf368e4cc661" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="6ee61082-7050-496e-8ed2-53d61f435731" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="0240d904-e9f5-40df-8993-1fdc86635e6a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="3edf813a-dd6a-4821-9134-c53262be8f04" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f7f3cac2-4130-47cf-b601-559058d926bb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="233904fd-c5b1-4282-bf29-022574b04d92" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="dca4e262-c2dd-42b4-a7ee-06ae396e21ae" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="b62f1beb-f773-4af1-94b7-7019a1fb232c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="487f2bb0-46b4-4834-a1f9-d13ae8ec01ca" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f758ae9e-c784-4f0b-b963-b95911fc5bce" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="47cd9b65-af71-4ab0-be1d-7bcb054c3f47" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="e7661297-e9b2-41e2-8442-4766c6e9d72c" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="95d10607-d220-4eef-ad07-83cb9c981e97" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ad2f5630-9086-46d9-85a7-cc64e2ac7fdb" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="e84efa8c-33db-495b-ac0f-c0b0417b655d" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="f99a1562-fa38-4ef4-a5c0-1ab78ea5aefd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="8662268a-0454-43cb-b1d8-6f090eb17f80" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="618cbf8b-88f3-493b-acc9-f9f5c287d1de" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="a13ed799-4e9c-4113-bad4-472aba05eba6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="8820eb84-82cb-41d1-99c4-f834f4c38ece" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="22651a21-36c1-4c65-981b-a4063d9e138a" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="74c66eee-3b4d-49ac-96ac-9d0ba19e0821" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="c2be3989-89e3-49d7-938f-5a9ef90939dd" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="09793871-33aa-46e2-b6d4-eb13275e1c38" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="da6f098f-d2c5-4aa5-ad32-b2ec7ec18e32" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="e744c0fd-2957-42be-8b60-871ad2ac9eaf" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="03d19714-b3d6-4fa1-b96a-d4ee3c78bab6" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="346ecb51-46e4-4389-9b78-8fe26785d21b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="32b728b7-d700-4d32-9f7c-28e2bb765055" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="caa78e3c-fc22-44e4-a097-90bc0d55cbad" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="ddcc6136-bff8-403d-bffb-3eebce13ca4e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="4ddba360-bee5-4867-9f1b-83747995481b" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="6f9c0b8b-4b2f-4399-aff1-3cb9f54a63ca" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="7999a6f4-5d13-4e46-81f5-10253b4238e0" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+        <Ticket id="751af493-c382-4c01-9517-02318dc5c78e" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="Reserve"/>
+      </TicketList>
+    </Event>
+  </EventList>
+	<UserList total="1">
+		<User username="admin">
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="admin"/>
 			<UserTickets>
 				<Ticket matchId="1" ticketId="4"/>
 			</UserTickets>
-			<SearchPreferences city="québec" gender="M" sport="football" type="season"/>
+			<SearchPreferences city="québec" gender="M" sport="football" type="Saison"/>
 		</User>
 	</UserList>
 </Data>
