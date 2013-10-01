@@ -61,6 +61,7 @@ public class XmlReaderTest {
 	assertEquals(e.getSectionList().size(), 1);
 	assertEquals(e.getSectionList().get(0), "B");
 	assertEquals(e.getTicketList().size(), 3);
+	System.out.println(e.getTicketList());
 	e = x.loadEvent(UUID.randomUUID());
 	assertNull(e);
     }

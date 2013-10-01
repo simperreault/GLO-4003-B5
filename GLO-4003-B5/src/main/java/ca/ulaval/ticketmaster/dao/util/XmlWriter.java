@@ -52,7 +52,12 @@ private Document xmlDoc;
 	public static void main(String [] args)
 	{
 		Event event = new Event(true,SportType.Football,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
-		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
+		List<String> sectionList = new ArrayList<String>() {/**
+			 * 
+			 */
+			private static final long serialVersionUID = -2698371818760763386L;
+
+		{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
 			Ticket t =  TicketFactory.CreateTicket(event, TicketType.AdmissionGenerale, "", "", "", 30.00, 0);

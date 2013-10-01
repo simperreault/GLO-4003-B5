@@ -289,7 +289,7 @@ public class XmlReader {
 				NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");
 				for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 					Element tElement = (Element)tNodeList.item(tickIter);
-					tempuser.getUserTickets().add(new Pair(Integer.parseInt(tElement.getAttribute("matchId")), Integer.parseInt(tElement.getAttribute("ticketId"))));
+					tempuser.getUserTickets().add(new Pair<Integer, Integer>(Integer.parseInt(tElement.getAttribute("matchId")), Integer.parseInt(tElement.getAttribute("ticketId"))));
 				}
 				//returns found user
 				//System.out.println(tempuser.toString());
@@ -322,7 +322,7 @@ public class XmlReader {
 
 			NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");
 			for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
-				Element tElement = (Element)tNodeList.item(tickIter);
+				//Element tElement = (Element)tNodeList.item(tickIter);
 				//tempuser.getUserTickets().put(Integer.parseInt(tElement.getAttribute("matchId")), Integer.parseInt(tElement.getAttribute("ticketId")));
 			}
 			returnList.add(tempuser);

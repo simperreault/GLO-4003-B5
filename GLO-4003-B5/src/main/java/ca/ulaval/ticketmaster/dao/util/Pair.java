@@ -16,11 +16,12 @@ public class Pair<L,R> {
 	  @Override
 	  public int hashCode() { return left.hashCode() ^ right.hashCode(); }
 
-	  @Override
+	 @SuppressWarnings("unchecked")
+	@Override
 	  public boolean equals(Object o) {
 	    if (o == null) return false;
-	    if (!(o instanceof Pair)) return false;
-	    Pair pairo = (Pair) o;
+	    if (!(o instanceof Pair<?,?>)) return false;
+	    Pair<L,R> pairo = (Pair<L, R>) o;
 	    return this.left.equals(pairo.getLeft()) &&
 	           this.right.equals(pairo.getRight());
 	  }
