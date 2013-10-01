@@ -29,16 +29,16 @@ public class EventTest {
     @Test
     public void testEventIntBooleanIntIntSportStringStringStringStringStringDateDate() {
 	Date date = new Date();
-	Event e = new Event(false, SportType.Football, "M", "Potatoes", "Seotatop", "Somewhere",
+	Event e = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
 		"SomewhereStadium", date, date);
 	assertNotNull(e);
-	assertEquals(e.getSport(), SportType.Football);
+	assertEquals(e.getSport(), SportType.FOOTBALL);
     }
 
     @Test
     public void testToString() {
 	Date date = new Date();
-	Event e = new Event(false, SportType.Football, "M", "Potatoes", "Seotatop", "Somewhere",
+	Event e = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
 		"SomewhereStadium", date, date);
 	assertNotNull(e.toString());
     }
@@ -46,7 +46,7 @@ public class EventTest {
     @Test
     public void testGettersSetters() {
 	Date date = new Date();
-	Event e = new Event(false, SportType.Football, "M", "Potatoes", "Seotatop", "Somewhere",
+	Event e = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
 		"SomewhereStadium", date, date);
 	ArrayList<Ticket> a = new ArrayList<Ticket>();
 	// Test ticket list
@@ -67,8 +67,8 @@ public class EventTest {
 	e.setTicketsAvailable(1);
 	assertEquals(e.getTicketsAvailable(), 1);
 	// sport
-	e.setSport(SportType.Soccer);
-	assertEquals(e.getSport(), SportType.Soccer);
+	e.setSport(SportType.SOCCER);
+	assertEquals(e.getSport(), SportType.SOCCER);
 	// gender
 	e.setGender("F");
 	assertEquals(e.getGender(), "F");
@@ -107,7 +107,7 @@ public class EventTest {
 	e.removeTicketFromList(u2);
 	assertEquals(e.getTicketList().size(), 2);
 	// change event obj
-	Event ee = new Event(false, SportType.Football, "M", "Potatoes", "Seotatop", "Somewhere",
+	Event ee = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
 		"SomewhereStadium", date, date);
 	e.changeValuesFromEventObject(ee);
 	assertEquals(e.isOpen(), false);
@@ -117,7 +117,7 @@ public class EventTest {
     @Test
     public void testFindAndEditTicket() {
 	Date date = new Date();
-	Event e = new Event(false, SportType.Football, "M", "Potatoes", "Seotatop", "Somewhere",
+	Event e = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
 		"SomewhereStadium", date, date);
 	Ticket t = TicketFactory.CreateTicket();
 	e.addTicketToList(t);

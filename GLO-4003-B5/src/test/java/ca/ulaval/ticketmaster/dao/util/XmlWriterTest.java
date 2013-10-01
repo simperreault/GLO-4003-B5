@@ -70,7 +70,7 @@ public class XmlWriterTest {
     public void TestWriteNewEventToXml() throws ParseException {
 	// Créer une event de test
 	Event event = new Event(eventId);
-	event.setSport(SportType.Football);
+	event.setSport(SportType.FOOTBALL);
 	event.setGender("M");
 	event.setLocation("Québec");
 	event.setStadium("Bell");
@@ -91,7 +91,7 @@ public class XmlWriterTest {
 	};
 	List<Ticket> ticketList = new ArrayList<Ticket>();
 	for (int i = 1; i <= 100; i++) {
-	    Ticket t = TicketFactory.CreateTicket(event, TicketType.AdmissionGenerale, "", "", "", 30.00, 0);
+	    Ticket t = TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
 	    ticketList.add(t);
 	    event.setTicketsTotal(event.getTicketsTotal() + 1);
 	    event.setTicketsAvailable(event.getTicketsAvailable() + 1);
@@ -109,7 +109,7 @@ public class XmlWriterTest {
 
 	// Ticket add
 
-	Ticket t = TicketFactory.CreateTicket(readEvent, TicketType.AdmissionGenerale, "", "", "", 30.00, 0);
+	Ticket t = TicketFactory.CreateTicket(readEvent, TicketType.GENERAL, "", "", "", 30.00, 0);
 	writer.writeTicketToEvent(eventId, t);
 	Ticket readT = reader.loadTicket(eventId, ticketId3);
 	assertEquals(t, readT);

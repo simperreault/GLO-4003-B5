@@ -14,7 +14,7 @@ public class TicketConverterTest {
 
     @Test
     public void convertEntryToviewmodel() {
-	Ticket t = TicketFactory.CreateTicket(null, TicketType.Saison, "section", "seat", "owner", 1.0, 1.0);
+	Ticket t = TicketFactory.CreateTicket(null, TicketType.SEASON, "section", "seat", "owner", 1.0, 1.0);
 	TicketViewModel viewmodel = TicketConverter.convert(t);
 
 	assertEquals(t.getEvent(), viewmodel.event);
@@ -34,7 +34,7 @@ public class TicketConverterTest {
 	viewmodel.setResellprice(1.0);
 	viewmodel.setSeat("");
 	viewmodel.setSection("section");
-	viewmodel.setType(TicketType.valueOf("Saison"));
+	viewmodel.setType(TicketType.SEASON);
 
 	Ticket t = TicketConverter.convert(viewmodel, new DataManager());
 

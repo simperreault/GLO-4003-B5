@@ -101,7 +101,7 @@ public class EventControllerTest {
     @Test
     public void createEventRedirectsToEventList() {
 	EventViewModel viewModel = new EventViewModel();
-	viewModel.setSport(SportType.valueOf("Football"));
+	viewModel.setSport(SportType.FOOTBALL);
 
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
@@ -115,7 +115,7 @@ public class EventControllerTest {
     @Test
     public void createEventRedirectsToCreate() {
 	EventViewModel viewModel = new EventViewModel();
-	viewModel.setSport(SportType.valueOf("Football"));
+	viewModel.setSport(SportType.FOOTBALL);
 
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(true);

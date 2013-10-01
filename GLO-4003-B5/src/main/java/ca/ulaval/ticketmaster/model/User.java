@@ -39,7 +39,7 @@ public class User {
 	accessLevel = AccessLevel.User;
 	favSport = "";
 	favGender = "";
-	favType = TicketType.AdmissionGenerale;
+	favType = TicketType.GENERAL;
 	favLocation = "";
     }
 

@@ -22,7 +22,7 @@ public class UserConverterTest {
 	user.setFavGender("favGenre");
 	user.setFavLocation("MaLocation");
 	user.setFavSport("LeSoccer");
-	user.setFavType(TicketType.AdmissionGenerale);
+	user.setFavType(TicketType.GENERAL);
 
 	UserViewModel viewmodel = UserConverter.convert(user);
 
@@ -51,7 +51,7 @@ public class UserConverterTest {
 	viewmodel.setFavGender("favGenre");
 	viewmodel.setFavLocation("MaLocation");
 	viewmodel.setFavSport("LeSoccer");
-	viewmodel.setFavType(TicketType.AdmissionGenerale);
+	viewmodel.setFavType(TicketType.GENERAL);
 
 	User user = UserConverter.convert(viewmodel);
 

@@ -15,7 +15,7 @@ public class EventConverterTest {
     @Test
     public void convertEntryToviewmodel() {
 	Event e = new Event();
-	e.setSport(SportType.Football);
+	e.setSport(SportType.FOOTBALL);
 	e.setGender("gender");
 	e.setHomeTeam("hometeam");
 	e.setVisitorsTeam("visitorTeam");
@@ -39,7 +39,7 @@ public class EventConverterTest {
     @Test
     public void convertviewmodelToEntry() {
 	EventViewModel viewmodel = new EventViewModel();
-	viewmodel.setSport(SportType.valueOf("Football"));
+	viewmodel.setSport(SportType.FOOTBALL);
 	viewmodel.setGender("gender");
 	viewmodel.setHomeTeam("hometeam");
 	viewmodel.setVisitorsTeam("visitorTeam");

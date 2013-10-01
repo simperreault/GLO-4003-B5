@@ -37,15 +37,15 @@ public class TicketTest {
     @Test
     public void TestgetType() {
 	Ticket t = new ReservedTicket();
-	t.setType(TicketType.AdmissionGenerale);
-	assertEquals(t.getType(), TicketType.AdmissionGenerale);
+	t.setType(TicketType.GENERAL);
+	assertEquals(t.getType(), TicketType.GENERAL);
     }
 
     @Test
     public void TestsetType() {
 	Ticket t = new ReservedTicket();
-	t.setType(TicketType.AdmissionGenerale);
-	assertEquals(t.getType(), TicketType.AdmissionGenerale);
+	t.setType(TicketType.GENERAL);
+	assertEquals(t.getType(), TicketType.GENERAL);
     }
 
     @Test

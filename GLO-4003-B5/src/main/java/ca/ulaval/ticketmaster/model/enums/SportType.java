@@ -1,7 +1,7 @@
 package ca.ulaval.ticketmaster.model.enums;
 
 public enum SportType {
-    Football("Football"), Basketball("Basketball"), Rugby("Rugby"), Soccer("Soccer"), Volleyball("Volleyball");
+    FOOTBALL("Football"), BASKETBALL("Basketball"), RUGBY("Rugby"), SOCCER("Soccer"), VOLLEYBALL("Volleyball");
 
     private String displayName;
 

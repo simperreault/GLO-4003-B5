@@ -20,13 +20,13 @@ public class TicketFactory {
 	 */
 	public static Ticket CreateTicket(Event _event, TicketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
 		switch(_type){
-		case AdmissionGenerale:
+		case GENERAL:
 			return new GeneralTicket(_event,_type, _owner,_price,  _resellprice);
-		case Reserve:
+		case RESERVED:
 			return new ReservedTicket( _event,  _type,  _section,  _seat, _owner,  _price,  _resellprice);
-		case Saison:
+		case SEASON:
 			return new SectionTicket( _event, _type, _section,  _owner, _price,  _resellprice);
-		case Simple:
+		case SIMPLE:
 			return new SectionTicket( _event, _type, _section,  _owner, _price,  _resellprice);
 		default:
 			return null;
@@ -38,13 +38,13 @@ public class TicketFactory {
 	
 	public static Ticket CreateExistingTicket(UUID _id ,Event _event, TicketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
 		switch(_type){
-		case AdmissionGenerale:
+		case GENERAL:
 			return new GeneralTicket(_id,_event,_type, _owner,_price,  _resellprice);
-		case Reserve:
+		case RESERVED:
 			return new ReservedTicket(_id, _event,  _type,  _section,  _seat, _owner,  _price,  _resellprice);
-		case Saison:
+		case SEASON:
 			return new SectionTicket(_id, _event, _type, _section,  _owner, _price,  _resellprice);
-		case Simple:
+		case SIMPLE:
 			return new SectionTicket(_id, _event, _type, _section,  _owner, _price,  _resellprice);
 		default:
 			return null;
