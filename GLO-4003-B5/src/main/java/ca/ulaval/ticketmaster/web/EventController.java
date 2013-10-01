@@ -38,7 +38,7 @@ public class EventController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String detail(Model model) { 
 		
-		model.addAttribute("EventList", datamanager.getEventList());
+		model.addAttribute("EventList", datamanager.findAllEvents());
 		//model.addAttribute("currentPage", "EventList.jsp");
 		return "EventList";
 	}
@@ -47,14 +47,14 @@ public class EventController {
 	public String Event(@PathVariable String id, Model model) {
 		System.out.println(id);
 		model.addAttribute("eventID", UUID.fromString(id));
-		model.addAttribute("ticketList", datamanager.loadAllTickets(UUID.fromString(id)));
+		model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(id)));
 		//model.addAttribute("currentPage", "TicketList.jsp");
 		return "TicketList";
 	}
 	
 	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
 	public String detail(@PathVariable String id1 ,@PathVariable String id2, Model model) {
-		model.addAttribute("ticket", datamanager.getTicket(UUID.fromString(id1), UUID.fromString(id2)));
+		model.addAttribute("ticket", datamanager.findTicket(UUID.fromString(id1), UUID.fromString(id2)));
 		//model.addAttribute("currentPage", "detail.jsp");
 		return "detail";
 	}

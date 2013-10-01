@@ -22,13 +22,13 @@ public class TicketTest {
 
 	@Test
 	public void TestTicket(){
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		assertNotNull(t);
 	}
 	
 	@Test
 	public void TestGetID(){
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		assertNotNull(t.getId());
 	}
 	/*
@@ -41,56 +41,56 @@ public class TicketTest {
 	*/
 	@Test
 	public void TestgetType() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setType(ticketType.AdmissionGenerale);
 		assertEquals(t.getType(),ticketType.AdmissionGenerale);
 	}
 	
 	@Test
 	public void TestsetType() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setType(ticketType.AdmissionGenerale);
 		assertEquals(t.getType(),ticketType.AdmissionGenerale);
 	}
 	
 	@Test
 	public void TestgetSection() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setSection("A");
 		assertEquals(t.getSection(),"A");
 	}
 	
 	@Test
 	public void TestsetSection() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setSection("A");
 		assertEquals(t.getSection(),"A");
 	}
 	
 	@Test
 	public void TestgetSeat() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setSeat("22");
 		assertEquals(t.getSeat(),"22");
 	}
 	
 	@Test
 	public void TestsetSeat() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setSeat("22");
 		assertEquals(t.getSeat(),"22");
 	}
 	
 	@Test
 	public void TestgetOwner() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setSeat("bob");
 		assertEquals(t.getSeat(),"bob");
 	}
 	
 	@Test
 	public void TestsetOwner() {
-		Ticket t = new Ticket();
+		Ticket t = new ReservedTicket();
 		t.setOwner("bob");
 		assertEquals(t.getOwner(),"bob");
 	}

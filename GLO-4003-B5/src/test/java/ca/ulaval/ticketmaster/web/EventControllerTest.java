@@ -49,7 +49,7 @@ public class EventControllerTest {
 		list.add(new Event());
 		list.add(new Event());
 		list.add(new Event());
-		when(datamanager.getEventList()).thenReturn(list);
+		when(datamanager.findAllEvents()).thenReturn(list);
 		
 		String view = controller.detail(model);
 		

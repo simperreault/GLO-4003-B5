@@ -49,7 +49,10 @@ public class Event {
 	}
 	
 	public Event(boolean _open, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time){
-		id = UUID.randomUUID();
+		this(UUID.randomUUID(), _open,  _sport,  _gender,  _homeTeam,  _visitorsTeam,  _location,  _stadium,  _date,  _time, 0 ,0);
+	}
+	public Event(UUID _id ,boolean _open, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time, int _ticketsTotal,int _ticketsAvailable){
+		id = _id;
 		open = _open;
 		ticketsTotal = 0;
 		ticketsAvailable = 0;
@@ -63,9 +66,10 @@ public class Event {
 		time = _time;
 		ticketList = new ArrayList<Ticket>();
 		sectionList= new ArrayList<String>();
-	    ticketsTotal = 0;
-		ticketsAvailable = 0;
+	    ticketsTotal = _ticketsTotal;
+		ticketsAvailable = _ticketsAvailable;
 	}
+	
 	
 	public String toString(){
 		return "\n id: "+ id + " Sport: " + sport + " Gender: " + gender + " HomeTeam: " + homeTeam + " Visitors: " + visitorsTeam + " Location: " + location + " Stadium: " + stadium + " @ " + date + "tick total" + ticketsTotal + "tick avail" + ticketsAvailable;

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
@@ -13,15 +14,7 @@ public class TicketConverterTest {
 	
 	@Test
 	public void convertEntryToviewmodel() {
-		Ticket t = new Ticket();
-		t.setEvent(null);
-		t.setOwner("owner");
-		t.setPrice(1.0);
-		t.setResellprice(1.0);
-		t.setSeat("seat");
-		t.setSection("section");
-		t.setType(ticketType.Saison);
-		
+		Ticket t = TicketFactory.CreateTicket(null, ticketType.Saison, "section", "seat", "owner", 1.0, 1.0);
 		TicketViewModel viewmodel = TicketConverter.convert(t);
 		
 		assertEquals(t.getEvent(), viewmodel.event);
@@ -39,9 +32,9 @@ public class TicketConverterTest {
 		viewmodel.setOwner("owner");
 		viewmodel.setPrice(1.0);
 		viewmodel.setResellprice(1.0);
-		viewmodel.setSeat("seat");
+		viewmodel.setSeat("");
 		viewmodel.setSection("section");
-		viewmodel.setType("SEASON");
+		viewmodel.setType("Saison");
 		
 		Ticket t = TicketConverter.convert(viewmodel, new DataManager());
 		

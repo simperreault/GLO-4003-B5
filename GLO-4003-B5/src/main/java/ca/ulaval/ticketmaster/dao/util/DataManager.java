@@ -5,26 +5,23 @@
  */
 package ca.ulaval.ticketmaster.dao.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
 
 public class DataManager {
-	private static final Logger logger = LoggerFactory.getLogger(DataManager.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DataManager.class);
 
 	private XmlWriter xmlWriter;
 	private XmlReader xmlReader;
 	
-	private int lastEventId;
 	private int totalUsers;
 	private int totalEvents;
 	//private List<User> userList;
@@ -55,7 +52,7 @@ public class DataManager {
 	private void LoadStartupInformation(){
 		xmlWriter = new XmlWriter();
 		xmlReader = new XmlReader();
-		// Loader les id d'event pour ne pas é¦—raser un event existant dans le cas de la cré¥Œtion d'un nouvel event
+		// Loader les id d'event pour ne pas écraser un event existant dans le cas de la cré¥Œtion d'un nouvel event
 		int output[] = xmlReader.readStartupInformation();
 		totalEvents = output[0];
 		totalUsers = output[1];
@@ -64,24 +61,24 @@ public class DataManager {
 	/*
 	 * Returns an event if it exists, null otherwise
 	 */
-	public Event getEvent(UUID _eventId){
-		// implé§‘entation sujet ï¿½changement
+	public Event findEvent(UUID _eventId){
+		// implémentation sujet changement
 		return xmlReader.loadEvent(_eventId);
 	}
 	
 	/*
 	 * Returns a ticket from a specific event if it exists, null otherwise
 	 */
-	public Ticket getTicket(UUID _eventId, UUID _ticketId){
-		// implé§‘entation sujet ï¿½changement
+	public Ticket findTicket(UUID _eventId, UUID _ticketId){
+		// implémentation sujet changement
 		return xmlReader.loadTicket(_eventId, _ticketId);
 	}
 
 	/*
 	 * Returns a user if it exists, null otherwise
 	 */
-	public User getUser(String _username) {
-		// implé§‘entation sujet ï¿½changement
+	public User findUser(String _username) {
+		// implémentation sujet changement
 		return xmlReader.userAuthenticate(_username);
 	}
 	
@@ -100,7 +97,6 @@ public class DataManager {
 	public boolean saveTicket(Ticket _ticket){
 		//gestion de l'ajout local et au fichier
 		if(_ticket.getEvent() != null){
-			//TODO fix this  map event null // Event event = eventMap.get(_ticket.getEvent().getId());
 			Event event = _ticket.getEvent();
 			//add
 			event.addTicketToList(_ticket);
@@ -117,7 +113,7 @@ public class DataManager {
 				return false;
 			}
 		}
-		Event event = this.getEvent(_eventId);
+		Event event = this.findEvent(_eventId);
 		for(Iterator<Ticket> it = _ticketsToAdd.iterator(); it.hasNext();)
 		{
 			Ticket toAdd = it.next();
@@ -170,80 +166,15 @@ public class DataManager {
 		return xmlWriter.deleteEvent(_eventId);
 	}
 	
-	public List<Ticket> loadAllTickets(UUID _eventId){
-		return getEvent(_eventId).getTicketList();
+	public List<Ticket> findAllTickets(UUID _eventId){
+		return findEvent(_eventId).getTicketList();
 	}
 	
-	public List<User> getUserList() {
+	public List<User> findAllUsers() {
 		return xmlReader.loadUsers();
 	}
-/*
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
-*/
-	public List<Event> getEventList() {
+
+	public List<Event> findAllEvents() {
 		return xmlReader.loadEvents();
 	}
-	/*
-	public void setEventList(List<Event> eventList) {
-		this.eventList = eventList;
-	}
-	*/
-	/*
-	private boolean deleteTicketInLocalData(int _ticketId, Event _event){
-		if(eventMap.containsKey(_event.getId())){
-			_event.removeTicketFromList(_ticketId);
-			eventMap.put(_event.getId(), _event);
-			return true;
-		}
-		return false;
-	}
-	
-	private boolean deleteEventInLocalData(Event _event){
-		if(eventMap.containsKey(_event.getId())){
-			eventMap.remove(_event.getId());
-			return true;
-		}
-		return false;
-	}
-	
-	private boolean deleteUserInLocalData(User _user){
-		if(userMap.containsKey(_user.getUsername())){
-			userMap.remove(_user.getUsername());
-			return true;
-		}
-		return false;
-	}
-	
-	private boolean editTicketInLocalData(Ticket _ticket){
-		if(eventMap.containsKey(_ticket.getEvent().getId())){
-			Event event = eventMap.get(_ticket.getEvent().getId());
-			if(event.findAndEditTicket(_ticket)){
-				eventMap.put(event.getId(), event);
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	private boolean editEventInLocalData(Event _event){
-		if(eventMap.containsKey(_event.getId())){
-			Event event = eventMap.get(_event.getId());
-			event.changeValuesFromEventObject(_event);
-			eventMap.put(event.getId(), event);
-			return true;
-		}
-		return false;
-	}
-	
-	private boolean editUserInLocalData(User _user){
-		if(userMap.containsKey(_user.getUsername())){
-			User user = userMap.get(_user.getUsername());
-			user.changeValuesFromUserObject(_user);
-			userMap.put(user.getUsername(), user);
-			return true;
-		}
-		return false;
-	}*/
 }

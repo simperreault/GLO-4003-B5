@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Data>
+	<EventList total="1">
+    <Event id="464f0b84-ad96-4182-9b35-df80d02658d1" open="false" ticketsAvailable="0" ticketsTotal="0">
+      <SectionList/>
+      <Sport gender="M" name="Football"/>
+      <Teams home="a" visitors="b"/>
+      <Location city="c" date="12/12/2012" stadium="d" time="0:00"/>
+      <TicketList/>
+    </Event>
+  </EventList>
+	<UserList total="1">
+		<User username="CarloBoutet">
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+			<UserTickets/>
+			<SearchPreferences city="québec" gender="M" sport="football" type="AdmissionGenerale"/>
+		</User>
+	</UserList>
+</Data>

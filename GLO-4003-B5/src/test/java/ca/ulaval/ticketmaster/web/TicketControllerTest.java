@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
@@ -65,7 +66,7 @@ public class TicketControllerTest {
 		
 		BindingResult result = mock(BindingResult.class);
 		when(result.hasErrors()).thenReturn(false);
-		when(datamanager.saveTicket(new Ticket())).thenReturn(true);
+		when(datamanager.saveTicket(TicketFactory.CreateTicket())).thenReturn(true);
 
 		String redirect = controller.create(DEFAULT_EVENT_ID, viewModel,
 				result, model);

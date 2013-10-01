@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 public class XmlReader {
-	public static final String DATA_FILE = "src/main/resources/TestDataProjetUniversite.xml";
+	public static final String DATA_FILE = "src/main/resources/DataSource.xml";
 	private File fXmlFile;
 	private Document doc;
 
@@ -104,17 +104,9 @@ public class XmlReader {
 				//Load Ticket List
 				if (_andTickets){
 					NodeList tNodeList = ((Element)eElement.getElementsByTagName("TicketList").item(0)).getElementsByTagName("Ticket");
-					Ticket tempTicket;
 					for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 						Element tElement = (Element)tNodeList.item(tickIter);
-						tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
-						tempTicket.setSection(tElement.getAttribute("section"));
-						tempTicket.setSeat(tElement.getAttribute("seat"));
-						tempTicket.setOwner(tElement.getAttribute("owner"));
-						tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
-						tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
-						tempEvent.getTicketList().add(tempTicket);	
+						tempEvent.getTicketList().add(readTicket(tElement,tempEvent));	
 					}
 				}
 				// return found event
@@ -128,6 +120,18 @@ public class XmlReader {
 
 	}
 	
+	private Ticket readTicket(Element _element, Event _event){
+		Ticket tempTicket = TicketFactory.CreateExistingTicket(
+				UUID.fromString(_element.getAttribute("id")),
+				_event,
+				ticketType.valueOf(_element.getAttribute("type")),
+				_element.getAttribute("section"),
+				_element.getAttribute("seat"),
+				_element.getAttribute("owner"),
+				Double.parseDouble(_element.getAttribute("price")),
+				Double.parseDouble(_element.getAttribute("resellPrice")));
+		return tempTicket;
+	}
 	
 	/*
 	 * Loads a single event with all tickets if it exists, returns null otherwise
@@ -177,14 +181,7 @@ public class XmlReader {
 							tempEvent.getSectionList().add(sElement.getTextContent());
 						}
 						// Single ticket data
-						Ticket tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-						tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
-						tempTicket.setSection(tElement.getAttribute("section"));
-						if (!tElement.getAttribute("seat").isEmpty())
-							tempTicket.setSeat(tElement.getAttribute("seat"));
-						tempTicket.setOwner(tElement.getAttribute("owner"));
-						tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
-						tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
+						Ticket tempTicket = readTicket(tElement,tempEvent);
 						tempEvent.getTicketList().add(tempTicket);
 						//return the single ticket
 						//System.out.println(tempTicket.toString());
@@ -237,18 +234,9 @@ public class XmlReader {
 
 				//Load Ticket List
 				NodeList tNodeList = ((Element)eElement.getElementsByTagName("TicketList").item(0)).getElementsByTagName("Ticket");
-				Ticket tempTicket;
 				for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 					Element tElement = (Element)tNodeList.item(tickIter);
-					tempTicket = new Ticket(UUID.fromString(tElement.getAttribute("id")),tempEvent);
-					tempTicket.setType(ticketType.valueOf(tElement.getAttribute("type")));
-					tempTicket.setSection(tElement.getAttribute("section"));
-					if (!tElement.getAttribute("seat").isEmpty())
-						tempTicket.setSeat(tElement.getAttribute("seat"));
-					tempTicket.setOwner(tElement.getAttribute("owner"));
-					tempTicket.setPrice(Double.parseDouble(tElement.getAttribute("price")));
-					tempTicket.setResellprice(Double.parseDouble(tElement.getAttribute("resellPrice")));
-					tempEvent.getTicketList().add(tempTicket);	
+					tempEvent.getTicketList().add(readTicket(tElement,tempEvent));	
 				}
 
 

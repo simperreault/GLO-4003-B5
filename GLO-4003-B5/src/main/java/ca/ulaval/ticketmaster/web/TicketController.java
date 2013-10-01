@@ -51,7 +51,7 @@ public class TicketController {
 			return "TicketAdd";
 		}
 
-		viewmodel.setEvent(datamanager.getEvent(UUID.fromString(eventId)));
+		viewmodel.setEvent(datamanager.findEvent(UUID.fromString(eventId)));
 		for (int i= 0; i < viewmodel.howMany; ++i) {
 			Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
 			datamanager.saveTicket(ticket); // TODO What if save failed ?

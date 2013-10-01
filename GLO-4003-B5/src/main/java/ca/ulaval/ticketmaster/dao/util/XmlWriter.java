@@ -33,7 +33,7 @@ import ca.ulaval.ticketmaster.model.Event.Sport;
 import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 
 public class XmlWriter {
-public static final String DATA_FILE="src/main/resources/TestDataProjetUniversite.xml";
+public static final String DATA_FILE="src/main/resources/DataSource.xml";
 private File xmlFile;
 private Document xmlDoc;
 
@@ -55,11 +55,7 @@ private Document xmlDoc;
 		List<String> sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1 ; i <= 100 ; i++){
-			Ticket t = new Ticket(event);
-			t.setOwner("");
-			t.setPrice(30.00);
-			t.setResellprice(0);
-			t.setType(ticketType.AdmissionGenerale);
+			Ticket t =  TicketFactory.CreateTicket(event, ticketType.AdmissionGenerale, "", "", "", 30.00, 0);
 			ticketList.add(t);
 			event.setTicketsTotal(event.getTicketsTotal()+ 1);
 			event.setTicketsAvailable(event.getTicketsAvailable()+ 1);

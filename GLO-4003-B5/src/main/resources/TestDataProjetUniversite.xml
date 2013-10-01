@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="4">
+	<EventList total="5">
 	<Event id="f295a8f5-767c-4c16-993f-671f5f0a5ae1" open="true" ticketsAvailable="100" ticketsTotal="100">
       <SectionList>
         <Section>A1</Section>
@@ -336,6 +336,13 @@
         <Ticket id="f648e756-68e8-43d7-a58b-b0793be24fef" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
         <Ticket id="fbe185cd-21fc-4309-a1b3-33a44c49e0df" owner="" price="30.0" resellPrice="0.0" seat="" section="" type="AdmissionGenerale"/>
       </TicketList>
+    </Event>
+  <Event id="4baa8c88-764c-4c09-bfd9-ca4294a007ab" open="false" ticketsAvailable="0" ticketsTotal="0">
+      <SectionList/>
+      <Sport gender="M" name="Football"/>
+      <Teams home="a" visitors="b"/>
+      <Location city="c" date="12/12/2012" stadium="d" time="0:00"/>
+      <TicketList/>
     </Event>
   </EventList>
 	<UserList total="3">

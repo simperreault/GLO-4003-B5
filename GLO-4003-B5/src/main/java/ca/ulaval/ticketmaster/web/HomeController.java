@@ -113,7 +113,7 @@ public class HomeController {
 		
 		boolean userIsOk = false;
 		
-		User user = datamanager.getUser(username);
+		User user = datamanager.findUser(username);
 		if(user != null){
 			if(user.getPassword().equals(password)){
 				userIsOk = true;

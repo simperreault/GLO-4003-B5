@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.Event.Sport;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -18,6 +19,8 @@ public class EventTest {
 	@Test
 	public void testEventInt() {
 		Event e = new Event(UUID.randomUUID());
+		assertNotNull(e);
+		Event ee = new Event();
 		assertNotNull(e);
 	}
 
@@ -42,7 +45,7 @@ public class EventTest {
 		Event e = new Event( false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
 		ArrayList<Ticket> a = new ArrayList<Ticket>();
 		//Test ticket list
-		a.add(new Ticket());
+		a.add(TicketFactory.CreateTicket());
 		e.setTicketList(a);
 		assertEquals(e.getTicketList(),a);
 		// id
@@ -86,11 +89,11 @@ public class EventTest {
 		e.setSectionList(new ArrayList<String>());
 		assertNotNull(e.getSectionList());
 		//add
-		e.addTicketToList(new Ticket(UUID.randomUUID()));
+		e.addTicketToList(TicketFactory.CreateTicket());
 		assertEquals(e.getTicketsTotal(),2);
 		assertEquals(e.getTicketsAvailable(),2);
 		UUID u2 = UUID.randomUUID();
-		Ticket tick = new Ticket(u2);
+		Ticket tick = TicketFactory.CreateTicket(u2);
 		tick.setOwner("aaa");
 		tick.setResellprice(3);
 		e.addTicketToList(tick);
@@ -109,10 +112,10 @@ public class EventTest {
 	public void testFindAndEditTicket() {
 		Date date = new Date();
 		Event e = new Event( false, Sport.Football, "M", "Potatoes", "Seotatop", "Somewhere", "SomewhereStadium",date , date);
-		Ticket t = new Ticket(UUID.randomUUID());
+		Ticket t = TicketFactory.CreateTicket();
 		e.addTicketToList(t);
 		assertEquals(e.findAndEditTicket(t),true);
-		assertEquals(e.findAndEditTicket(new Ticket(UUID.randomUUID())),false);
+		assertEquals(e.findAndEditTicket(TicketFactory.CreateTicket()),false);
 	}
 
 }
