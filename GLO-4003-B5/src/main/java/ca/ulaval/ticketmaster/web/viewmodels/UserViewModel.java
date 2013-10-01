@@ -1,7 +1,7 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
-import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 import ca.ulaval.ticketmaster.model.User.AccessLevel;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class UserViewModel {
 
@@ -14,7 +14,7 @@ public class UserViewModel {
 	public AccessLevel accessLevel;
 	public String favSport;
 	public String favGender;
-	public ticketType favType;
+	public TicketType favType;
 	
 	public String getUsername() {
 		return username;
@@ -64,10 +64,10 @@ public class UserViewModel {
 	public void setFavGender(String favGender) {
 		this.favGender = favGender;
 	}
-	public ticketType getFavType() {
+	public TicketType getFavType() {
 		return favType;
 	}
-	public void setFavType(ticketType favType) {
+	public void setFavType(TicketType favType) {
 		this.favType = favType;
 	}
 	public String getFavLocation() {

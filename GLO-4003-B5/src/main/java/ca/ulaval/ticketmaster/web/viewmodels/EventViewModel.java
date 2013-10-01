@@ -2,14 +2,11 @@ package ca.ulaval.ticketmaster.web.viewmodels;
 
 import java.util.Date;
 
-public class EventViewModel {
-	
-	public enum Sport {
-		Football, Basketball, Rugby, Soccer, Volleyball
-	}
+import ca.ulaval.ticketmaster.model.enums.SportType;
 
-	//public Sport sport;
-	public String sport;
+public class EventViewModel {
+
+	public SportType sport;
 	public String gender;
 	public String homeTeam;
 	public String visitorsTeam;
@@ -62,10 +59,10 @@ public class EventViewModel {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public String getSport() {
+	public SportType getSport() {
 		return sport;
 	}
-	public void setSport(String sport) {
+	public void setSport(SportType sport) {
 		this.sport = sport;
 	}
 	

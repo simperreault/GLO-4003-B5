@@ -7,20 +7,6 @@
 
 package ca.ulaval.ticketmaster.dao.util;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.model.Event.Sport;
-import ca.ulaval.ticketmaster.model.Ticket.ticketType;
-
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class XmlReader {
 	public static final String DATA_FILE = "src/main/resources/DataSource.xml";
@@ -82,7 +82,7 @@ public class XmlReader {
 				tempEvent.setOpen(Boolean.parseBoolean(eElement.getAttribute("open")));
 				tempEvent.setTicketsTotal(Integer.parseInt(eElement.getAttribute("ticketsTotal")));
 				tempEvent.setTicketsAvailable(Integer.parseInt(eElement.getAttribute("ticketsAvailable")));
-				tempEvent.setSport(Sport.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
+				tempEvent.setSport(SportType.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
 				tempEvent.setGender(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("gender"));
 				tempEvent.setHomeTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("home"));
 				tempEvent.setVisitorsTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("visitors"));
@@ -124,7 +124,7 @@ public class XmlReader {
 		Ticket tempTicket = TicketFactory.CreateExistingTicket(
 				UUID.fromString(_element.getAttribute("id")),
 				_event,
-				ticketType.valueOf(_element.getAttribute("type")),
+				TicketType.valueOf(_element.getAttribute("type")),
 				_element.getAttribute("section"),
 				_element.getAttribute("seat"),
 				_element.getAttribute("owner"),
@@ -162,7 +162,7 @@ public class XmlReader {
 						tempEvent.setOpen(Boolean.parseBoolean(eElement.getAttribute("open")));
 						tempEvent.setTicketsTotal(Integer.parseInt(eElement.getAttribute("ticketsTotal")));
 						tempEvent.setTicketsAvailable(Integer.parseInt(eElement.getAttribute("ticketsAvailable")));
-						tempEvent.setSport(Sport.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
+						tempEvent.setSport(SportType.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
 						tempEvent.setGender(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("gender"));
 						tempEvent.setHomeTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("home"));
 						tempEvent.setVisitorsTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("visitors"));
@@ -213,7 +213,7 @@ public class XmlReader {
 				tempEvent.setOpen(Boolean.parseBoolean(eElement.getAttribute("open")));
 				tempEvent.setTicketsTotal(Integer.parseInt(eElement.getAttribute("ticketsTotal")));
 				tempEvent.setTicketsAvailable(Integer.parseInt(eElement.getAttribute("ticketsAvailable")));
-				tempEvent.setSport(Sport.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
+				tempEvent.setSport(SportType.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
 				tempEvent.setGender(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("gender"));
 				tempEvent.setHomeTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("home"));
 				tempEvent.setVisitorsTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("visitors"));
@@ -283,7 +283,7 @@ public class XmlReader {
 				tempuser.setAccessLevel(User.AccessLevel.valueOf(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("accessLevel")));
 				tempuser.setFavSport(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("sport"));
 				tempuser.setFavGender(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("gender"));
-				tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type")));
+				tempuser.setFavType(TicketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type")));
 				tempuser.setFavLocation(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("city"));
 
 				NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");
@@ -317,7 +317,7 @@ public class XmlReader {
 			tempuser.setAccessLevel(User.AccessLevel.valueOf(((Element)uElement.getElementsByTagName("PersonalData").item(0)).getAttribute("accessLevel")));
 			tempuser.setFavSport(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("sport"));
 			tempuser.setFavGender(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("gender"));
-			tempuser.setFavType(ticketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type")));
+			tempuser.setFavType(TicketType.valueOf(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("type")));
 			tempuser.setFavLocation(((Element)uElement.getElementsByTagName("SearchPreferences").item(0)).getAttribute("city"));
 
 			NodeList tNodeList = ((Element)uElement.getElementsByTagName("UserTickets").item(0)).getElementsByTagName("Ticket");

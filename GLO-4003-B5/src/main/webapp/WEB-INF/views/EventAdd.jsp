@@ -19,7 +19,7 @@
 			</tr>
 			<tr>
 				<td>Sport :</td>
-				<td><form:input path="sport" /></td>
+				<td><form:select path="sport" items="${sportList}" /></td>
 			</tr>
 			<tr>
 				<td>Équipe maison :</td>

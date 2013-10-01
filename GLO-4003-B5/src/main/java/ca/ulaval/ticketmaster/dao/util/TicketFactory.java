@@ -7,7 +7,7 @@ import ca.ulaval.ticketmaster.model.GeneralTicket;
 import ca.ulaval.ticketmaster.model.ReservedTicket;
 import ca.ulaval.ticketmaster.model.SectionTicket;
 import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.Ticket.ticketType;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class TicketFactory {
 
@@ -18,7 +18,7 @@ public class TicketFactory {
 	/*
 	 * General call which handles all cases
 	 */
-	public static Ticket CreateTicket(Event _event, ticketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
+	public static Ticket CreateTicket(Event _event, TicketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
 		switch(_type){
 		case AdmissionGenerale:
 			return new GeneralTicket(_event,_type, _owner,_price,  _resellprice);
@@ -36,7 +36,7 @@ public class TicketFactory {
 			return new ReservedTicket();
 	}
 	
-	public static Ticket CreateExistingTicket(UUID _id ,Event _event, ticketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
+	public static Ticket CreateExistingTicket(UUID _id ,Event _event, TicketType _type, String _section, String _seat, String _owner, double _price, double _resellprice){
 		switch(_type){
 		case AdmissionGenerale:
 			return new GeneralTicket(_id,_event,_type, _owner,_price,  _resellprice);

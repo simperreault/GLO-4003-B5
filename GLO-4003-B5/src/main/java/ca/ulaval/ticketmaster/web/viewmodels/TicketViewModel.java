@@ -3,12 +3,13 @@ package ca.ulaval.ticketmaster.web.viewmodels;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class TicketViewModel {
 	//public int id;
 	public Event event;
 	//public ticketType type;
-	public String type;
+	public TicketType type;
 	@NotEmpty(message="Section ne doit pas etre vide")
 	public String section;
 	@NotEmpty(message="Siege ne doit pas etre vide")
@@ -73,11 +74,11 @@ public class TicketViewModel {
 		this.howMany = howMany;
 	}
 
-	public String getType() {
+	public TicketType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TicketType type) {
 		this.type = type;
 	}
 	

@@ -3,14 +3,13 @@ package ca.ulaval.ticketmaster.web.converter;
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.Ticket.ticketType;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
 public class TicketConverter {
 
 	static public Ticket convert(TicketViewModel viewModel, DataManager datamanager) {
 		Ticket entry = TicketFactory.CreateTicket(viewModel.getEvent(),
-				ticketType.valueOf(viewModel.getType()),
+				viewModel.getType(),
 				viewModel.getSection(),
 				viewModel.getSeat(),
 				viewModel.getOwner(),
@@ -27,7 +26,7 @@ public class TicketConverter {
 		viewModel.setPrice(entry.getPrice());
 		viewModel.setResellprice(entry.getResellprice());
 		viewModel.setEvent(entry.getEvent());
-		viewModel.setType(entry.getType().toString());
+		viewModel.setType(entry.getType());
 		
 		return viewModel;
 	}

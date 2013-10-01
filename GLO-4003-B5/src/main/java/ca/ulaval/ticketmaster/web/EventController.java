@@ -1,13 +1,9 @@
 package ca.ulaval.ticketmaster.web;
 
-import java.text.DateFormat;
-import java.util.Locale;
 import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Event;
+import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.web.converter.EventConverter;
-import ca.ulaval.ticketmaster.web.converter.EventConverterTest;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 
 /**
@@ -27,64 +23,60 @@ import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 @Controller
 @RequestMapping(value = "/event")
 public class EventController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(EventController.class);
-	private DataManager datamanager;
-	
-	public EventController(){
-		 datamanager = new DataManager();
+
+    //private static final Logger logger = LoggerFactory.getLogger(EventController.class);
+    private DataManager datamanager;
+
+    public EventController() {
+	datamanager = new DataManager();
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String detail(Model model) {
+
+	model.addAttribute("EventList", datamanager.findAllEvents());
+	return "EventList";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String Event(@PathVariable String id, Model model) {
+	System.out.println(id);
+	model.addAttribute("eventID", UUID.fromString(id));
+	model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(id)));
+	return "TicketList";
+    }
+
+    @RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
+    public String detail(@PathVariable String id1, @PathVariable String id2, Model model) {
+	model.addAttribute("ticket", datamanager.findTicket(UUID.fromString(id1), UUID.fromString(id2)));
+	return "detail";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String create(Model model) {
+	model.addAttribute("event", new EventViewModel());
+	model.addAttribute("sportList", SportType.values());
+	return "EventAdd";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String create(@Valid EventViewModel viewmodel, BindingResult result, Model model) {
+	if (result.hasErrors()) {
+	    model.addAttribute("error", result.getAllErrors());
+	    model.addAttribute("event", viewmodel);
+	    return "EventAdd";
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String detail(Model model) { 
-		
-		model.addAttribute("EventList", datamanager.findAllEvents());
-		//model.addAttribute("currentPage", "EventList.jsp");
-		return "EventList";
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable String id, Model model) {
-		System.out.println(id);
-		model.addAttribute("eventID", UUID.fromString(id));
-		model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(id)));
-		//model.addAttribute("currentPage", "TicketList.jsp");
-		return "TicketList";
-	}
-	
-	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
-	public String detail(@PathVariable String id1 ,@PathVariable String id2, Model model) {
-		model.addAttribute("ticket", datamanager.findTicket(UUID.fromString(id1), UUID.fromString(id2)));
-		//model.addAttribute("currentPage", "detail.jsp");
-		return "detail";
-	}
-	
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String create(Model model) {
-		model.addAttribute("event", new EventViewModel());
-		//model.addAttribute("currentPage", "EventAdd.jsp");
-		return "EventAdd";
-	}
+	// Save
+	Event event = EventConverter.convert(viewmodel, datamanager);
+	datamanager.saveEvent(event);
+	return "redirect:/event/list";
+    }
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String create(@Valid EventViewModel viewmodel, BindingResult result, Model model) {
-		if (result.hasErrors()) {  	        
-			model.addAttribute("error", result.getAllErrors());
-			model.addAttribute("event", viewmodel);
-			//model.addAttribute("currentPage", "EventAdd.jsp");
-			return "EventAdd";
-		}
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable String id, Model model) {
+	datamanager.deleteEvent(UUID.fromString(id));
+	return "redirect:/event/list";
+    }
 
-		// Save
-		Event event = EventConverter.convert(viewmodel, datamanager);
-		datamanager.saveEvent(event);
-		return "redirect:/event/list";
-	}
-	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable String id, Model model) {
-		datamanager.deleteEvent(UUID.fromString(id));
-		return "redirect:/event/list";
-	}
-	
 }

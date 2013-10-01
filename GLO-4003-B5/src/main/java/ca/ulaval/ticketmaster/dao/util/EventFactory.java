@@ -4,18 +4,18 @@ import java.util.Date;
 import java.util.UUID;
 
 import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Event.Sport;
+import ca.ulaval.ticketmaster.model.enums.SportType;
 
 public class EventFactory {
 
 	public EventFactory(){
 	}
 	
-	public static Event CreateEvent(boolean _open, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time, int _ticketsTotal, int _ticketsAvailable){
+	public static Event CreateEvent(boolean _open, SportType _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time, int _ticketsTotal, int _ticketsAvailable){
 		return new Event(_open, _sport, _gender, _homeTeam, _visitorsTeam, _location, _stadium, _date, _time);
 	}
 	
-	public static Event CreateExistingEvent(UUID _id,boolean _open, Sport _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time, int _ticketsTotal, int _ticketsAvailable){
+	public static Event CreateExistingEvent(UUID _id,boolean _open, SportType _sport, String _gender, String _homeTeam, String _visitorsTeam, String _location, String _stadium, Date _date, Date _time, int _ticketsTotal, int _ticketsAvailable){
 		return new Event( _id , _open,  _sport,  _gender,  _homeTeam,  _visitorsTeam,  _location,  _stadium,  _date,  _time,  _ticketsTotal, _ticketsAvailable);
 	}
 	

@@ -2,7 +2,6 @@ package ca.ulaval.ticketmaster.web.converter;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Event.Sport;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 
 public class EventConverter {
@@ -16,7 +15,7 @@ public class EventConverter {
 		entry.setStadium(viewmodel.getStadium());
 		entry.setDate(viewmodel.getDate());
 		entry.setTime(viewmodel.getTime());
-		entry.setSport(Sport.valueOf(viewmodel.getSport()));
+		entry.setSport(viewmodel.getSport());
 		
 		return entry;
 	}
@@ -30,7 +29,7 @@ public class EventConverter {
 		viewmodel.setStadium(entry.getStadium());
 		viewmodel.setDate(entry.getDate());
 		viewmodel.setTime(entry.getTime());
-		viewmodel.setSport(entry.getSport().toString());
+		viewmodel.setSport(entry.getSport());
 		
 		return viewmodel;
 	}
