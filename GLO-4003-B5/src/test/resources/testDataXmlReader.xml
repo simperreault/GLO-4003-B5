@@ -5,16 +5,16 @@
 				<SectionList>
 		<Section>B</Section>
 			</SectionList>
-			<Sport gender="Male" name="Rugby" />
+			<Sport gender="Male" name="RUGBY" />
 			<Teams home="Simon d'ameique" visitors="Ben B-Baller" />
 			<Location city="UL" date="25/06/2015" stadium="Telus" time="10:00" />
 			<TicketList>
 				<Ticket id="108417d5-d0b4-4005-a357-0cf82ebd066d" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="Reserve" />
+					seat="qweqweqw" section="B" type="RESERVED" />
 				<Ticket id="35552428-cf10-45f1-83d5-3fffc2a2e512" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="Reserve" />
+					seat="qweqweqw" section="B" type="RESERVED" />
 				<Ticket id="fe40ef04-8ecc-44b4-8663-fdbf90ed894a" owner="asdas" price="45.0" resellPrice="45.0"
-					seat="qweqweqw" section="B" type="Reserve" />
+					seat="qweqweqw" section="B" type="RESERVED" />
 			</TicketList>
 		</Event>
 	</EventList>
@@ -25,15 +25,15 @@
 			<UserTickets>
 				<Ticket matchId="1" ticketId="1" />
 			</UserTickets>
-			<SearchPreferences city="québec" gender="M" sport="football"
-				type="AdmissionGenerale" />
+			<SearchPreferences city="québec" gender="M" sport="FOOTBALL"
+				type="RESERVED" />
 		</User>
 		<User username="testuser">
 			<PersonalData accessLevel="User" email="" firstname=""
 				lastName="" password="lol" />
 			<UserTickets />
 			<SearchPreferences city="" gender="" sport=""
-				type="AdmissionGenerale" />
+				type="RESERVED" />
 		</User>
 	</UserList>
 </Data>
