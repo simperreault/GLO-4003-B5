@@ -198,7 +198,7 @@ private Document xmlDoc;
 			rootEventElement.appendChild(sectionListElement);
 			//sport
 			Element sportElement = xmlDoc.createElement("Sport");
-			sportElement.setAttribute("name", _event.getSport().toString());
+			sportElement.setAttribute("name", _event.getSport().name());
 			sportElement.setAttribute("gender", _event.getGender());
 			rootEventElement.appendChild(sportElement);
 			//teams 
@@ -325,7 +325,7 @@ private Document xmlDoc;
 			}
 			//sport
 			Element sportElement = (Element)(myEventElement.getElementsByTagName("Sport").item(0));
-			sportElement.setAttribute("name", _event.getSport().toString());
+			sportElement.setAttribute("name", _event.getSport().name());
 			sportElement.setAttribute("gender", _event.getGender());
 			//teams 
 			Element teamElement = (Element)(myEventElement.getElementsByTagName("Teams").item(0));
@@ -529,7 +529,7 @@ private Document xmlDoc;
 		int eventIter = 0;
 		while (eventIter < eventNodeList.getLength()) {
 			Element elem = (Element)eventNodeList.item(eventIter);
-			if( UUID.fromString(elem.getAttribute("id")) == _eventId ){
+			if( UUID.fromString(elem.getAttribute("id")).equals( _eventId) ){
 				myEventElement = elem;
 			}
 			eventIter++;
