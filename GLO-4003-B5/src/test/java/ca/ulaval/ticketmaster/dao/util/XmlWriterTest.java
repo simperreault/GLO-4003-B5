@@ -61,14 +61,8 @@ public class XmlWriterTest {
 	    Date time = new SimpleDateFormat("H:mm").parse("13:30");
 	    Event event = EventFactory.CreateExistingEvent(eventId, true, SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
 		
-		List<String> sectionList = new ArrayList<String>() {
-		    {
-			add("A1");
-			add("B6");
-			add("F7");
-		    }
-		};
-		
+		List<String> sectionList = new ArrayList<String>(); 
+		sectionList.add("A1");sectionList.add("B6");sectionList.add("F7");
 		List<Ticket> ticketList = new ArrayList<Ticket>();
 		for (int i = 1; i <= 100; i++) {
 		    Ticket t = TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
