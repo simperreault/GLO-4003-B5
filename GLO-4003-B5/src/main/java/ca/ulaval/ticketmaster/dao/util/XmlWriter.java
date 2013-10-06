@@ -48,57 +48,7 @@ private Document xmlDoc;
 		}
 		return false;
 	}
-	
-	public static void main(String [] args)
-	{
-		Event event = new Event(true,SportType.FOOTBALL,"M","Rouge et or","Vert et or","Québec","Laval",new Date(),new Date());
-		List<String> sectionList = new ArrayList<String>() {/**
-			 * 
-			 */
-			private static final long serialVersionUID = -2698371818760763386L;
 
-		{add("A1");add("B6");add("F7");}};
-		List<Ticket> ticketList = new ArrayList<Ticket>();
-		for (int i = 1 ; i <= 100 ; i++){
-			Ticket t =  TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
-			ticketList.add(t);
-			event.setTicketsTotal(event.getTicketsTotal()+ 1);
-			event.setTicketsAvailable(event.getTicketsAvailable()+ 1);
-		}
-		event.setSectionList(sectionList);
-		event.setTicketList(ticketList);
-		/*
-		User user = new User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com",User.AccessLevel.User,"Basketball","M",ticketType.AdmissionGenerale,"Sherbrooke");
-		List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer, Integer>>();
-		userTickets.add(new Pair<Integer,Integer>(1,1));
-		userTickets.add(new Pair<Integer,Integer>(1,8));
-		userTickets.add(new Pair<Integer,Integer>(2,5));
-		userTickets.add(new Pair<Integer,Integer>(2,14));
-		userTickets.add(new Pair<Integer,Integer>(3,58));
-		user.setUserTickets(userTickets);*/
-		XmlWriter writer = new XmlWriter();
-		writer.writeEvent(event);
-		//writer.writeUser(user);
-		//List<Pair<Integer,Integer>> userTickets2 = new ArrayList<Pair<Integer, Integer>>();
-		//userTickets2.add(new Pair<Integer,Integer>(6,7));
-		//user.setEmail("wowttttttbo@barnak.ca");
-		//user.setPassword("bro");
-		//user.setUserTickets(userTickets2);
-		//writer.modifyUser(user);
-		//writer.writeTicketsToEvent(2, ticketList);
-		//writer.deleteUser("CarloBoutet");
-		//writer.deleteEvent(2);
-		//writer.deleteTicket(1, 1);
-		//Ticket test = event.getTicketList().get(0);
-		//test.setOwner("carloBoutet");
-		//test.setResellprice(50);
-		//writer.modifyTicket(test);
-		//event.setGender("F");
-		//event.setSport("Basketball");
-		//event.setStadium("Honco");
-		//writer.modifyEvent(event);
-	}
-	
 	private void writeTicket(Ticket _ticket, Element _ticketListElement){
 		Element ticketElement = xmlDoc.createElement("Ticket");
 		ticketElement.setAttribute("id", _ticket.getId().toString());
@@ -253,7 +203,7 @@ private Document xmlDoc;
 			Element dataElement = xmlDoc.createElement("PersonalData");
 			dataElement.setAttribute("accessLevel", _user.getAccessLevel().toString());
 			dataElement.setAttribute("email", _user.getEmail());
-			dataElement.setAttribute("firstname", _user.getFirstName());
+			dataElement.setAttribute("firstName", _user.getFirstName());
 			dataElement.setAttribute("lastName", _user.getLastName());
 			dataElement.setAttribute("password", _user.getPassword());
 			rootUserElement.appendChild(dataElement);
@@ -273,7 +223,7 @@ private Document xmlDoc;
 			searchElement.setAttribute("city", _user.getFavLocation());
 			searchElement.setAttribute("gender", _user.getFavGender());
 			searchElement.setAttribute("sport", _user.getFavSport());
-			searchElement.setAttribute("type", _user.getFavType().toString());
+			searchElement.setAttribute("type", _user.getFavType().name());
 			rootUserElement.appendChild(searchElement);
 			//update du nombre total de user
 			int newTotal = Integer.parseInt(rootElementList.getAttribute("total")) + 1;
@@ -393,7 +343,7 @@ private Document xmlDoc;
 			Element dataElement = (Element)(myUserElement.getElementsByTagName("PersonalData").item(0));
 			dataElement.setAttribute("accessLevel", _user.getAccessLevel().toString());
 			dataElement.setAttribute("email", _user.getEmail());
-			dataElement.setAttribute("firstname", _user.getFirstName());
+			dataElement.setAttribute("firstName", _user.getFirstName());
 			dataElement.setAttribute("lastName", _user.getLastName());
 			dataElement.setAttribute("password", _user.getPassword());
 			
@@ -415,7 +365,7 @@ private Document xmlDoc;
 			searchElement.setAttribute("city", _user.getFavLocation());
 			searchElement.setAttribute("gender", _user.getFavGender());
 			searchElement.setAttribute("sport", _user.getFavSport());
-			searchElement.setAttribute("type", _user.getFavType().toString());
+			searchElement.setAttribute("type", _user.getFavType().name());
 			//é¦—rire le contenu au fichier xml physique
 			saveDataToFile();
 		} catch (Exception e) {
@@ -544,7 +494,7 @@ private Document xmlDoc;
 		int ticketIter = 0;
 		while (ticketIter < ticketNodeList.getLength()) {
 			Element elem = (Element)ticketNodeList.item(ticketIter);
-			if( UUID.fromString(elem.getAttribute("id")) == _ticketId ){
+			if( UUID.fromString(elem.getAttribute("id")).equals(_ticketId) ){
 				myTicketElement = elem;
 			}
 			ticketIter++;

@@ -6,7 +6,7 @@
 
 package ca.ulaval.ticketmaster.dao.util;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,97 +22,208 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.User.AccessLevel;
 import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class XmlWriterTest {
-    /*
-     * Event event = new
-     * Event(4,true,100,100,Event.Sport.Football,"M","Rouge et or"
-     * ,"Vert et or","Qué¥•ec","Laval",new Date(),new Date()); List<String>
-     * sectionList = new ArrayList<String>() {{add("A1");add("B6");add("F7");}};
-     * List<Ticket> ticketList = new ArrayList<Ticket>(); for (int i = 1 ; i <=
-     * 100 ; i++){ Ticket t = new Ticket(i,event); t.setOwner("");
-     * t.setPrice(80.69); t.setResellprice(0); t.setSection("L01");
-     * t.setSeat("90"); t.setType(ticketType.SEASON); ticketList.add(t); }
-     * event.setSectionList(sectionList); event.setTicketList(ticketList); User
-     * user = new
-     * User("BobTheMaster","lolpass","Bob","Desbois","Bob123@hotmail.com"
-     * ,User.AccessLevel.User,"Basketball","M",ticketType.GENERAL,"Sherbrooke");
-     * List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer,
-     * Integer>>(); userTickets.add(new Pair<Integer,Integer>(1,1));
-     * userTickets.add(new Pair<Integer,Integer>(1,8)); userTickets.add(new
-     * Pair<Integer,Integer>(2,5)); userTickets.add(new
-     * Pair<Integer,Integer>(2,14)); userTickets.add(new
-     * Pair<Integer,Integer>(3,58)); user.setUserTickets(userTickets); XmlWriter
-     * writer = new XmlWriter(); //writer.writeEvent(event);
-     * //writer.writeUser(user); //List<Pair<Integer,Integer>> userTickets2 =
-     * new ArrayList<Pair<Integer, Integer>>(); //userTickets2.add(new
-     * Pair<Integer,Integer>(6,7)); //user.setEmail("wowttttttbo@barnak.ca");
-     * //user.setPassword("bro"); //user.setUserTickets(userTickets2);
-     * //writer.modifyUser(user); //writer.writeTicketsToEvent(2, ticketList);
-     * //writer.deleteUser("CarloBoutet"); //writer.deleteEvent(2);
-     * //writer.deleteTicket(1, 1); //Ticket test =
-     * event.getTicketList().get(0); //test.setOwner("carloBoutet");
-     * //test.setResellprice(50); //writer.modifyTicket(test);
-     * //event.setGender("F"); //event.setSport("Basketball");
-     * //event.setStadium("Honco"); //writer.modifyEvent(event);
-     */
-
-    public static final String DATA_FILE = "src/test/resources/testData.xml";
+    
+    public static final String DATA_FILE = "src/test/resources/testDataXmlWriter.xml";
+    //ces ids sont utilisées pour avoir des tests consistant pour garder le fichier xml intact
     private UUID eventId = UUID.fromString("f295a8f5-767c-4c16-993f-671f5f0a5ae1");
-    private UUID ticketId1 = UUID.fromString("94b85660-524d-4a5e-8061-6f32dd8f0a06");
-    private UUID ticketId2 = UUID.fromString("108417d5-d0b4-4005-a357-0cf82ebd066d");
-    private UUID ticketId3 = UUID.fromString("fd371ceb-12fa-4700-870f-e5baaa45b725");
+    private String username = "xmlTestsUser";
 
     @Test
-    public void TestWriteNewEventToXml() throws ParseException {
-	// Créer une event de test
-	Event event = new Event(eventId);
-	event.setSport(SportType.FOOTBALL);
-	event.setGender("M");
-	event.setLocation("Québec");
-	event.setStadium("Bell");
-	event.setHomeTeam("Rouge et or");
-	event.setVisitorsTeam("Vert et or");
-	Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
-	event.setDate(date);
-	Date time = new SimpleDateFormat("H:mm").parse("13:30");
-	event.setTime(time);
-	event.setOpen(true);
-
-	List<String> sectionList = new ArrayList<String>() {
-	    {
-		add("A1");
-		add("B6");
-		add("F7");
-	    }
-	};
-	List<Ticket> ticketList = new ArrayList<Ticket>();
-	for (int i = 1; i <= 100; i++) {
-	    Ticket t = TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
-	    ticketList.add(t);
-	    event.setTicketsTotal(event.getTicketsTotal() + 1);
-	    event.setTicketsAvailable(event.getTicketsAvailable() + 1);
-	}
-	event.setSectionList(sectionList);
-	event.setTicketList(ticketList);
-	XmlWriter writer = new XmlWriter();
-	writer.connect(DATA_FILE);
-	writer.writeEvent(event);
-
-	XmlReader reader = new XmlReader();
-	reader.connect(DATA_FILE);
-	Event readEvent = reader.loadEvent(eventId, true);
-	assertEquals(event.toString(), readEvent.toString());
-
-	// Ticket add
-
-	Ticket t = TicketFactory.CreateTicket(readEvent, TicketType.GENERAL, "", "", "", 30.00, 0);
-	writer.writeTicketToEvent(eventId, t);
-	Ticket readT = reader.loadTicket(eventId, ticketId3);
-	assertEquals(t, readT);
+    public void TestXmlWriter() {
+    	XmlWriter w = new XmlWriter();
+    	assertNotNull(w);
     }
 
+    @Test
+    public void TestConnectError() {
+    	XmlWriter w = new XmlWriter();
+    	assertEquals(w.connect("notrealfile"), false);
+    }
+
+    @Test
+    public void TestConnect() {
+    	XmlWriter w = new XmlWriter();
+    	assertEquals(w.connect(DATA_FILE), true);
+    }
+    
+    @Test
+    public void TestCreateEditDeleteEventToXml() throws ParseException {
+	
+	    // Créer une event de test
+	    Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
+	    Date time = new SimpleDateFormat("H:mm").parse("13:30");
+	    Event event = EventFactory.CreateExistingEvent(eventId, true, SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
+		
+		List<String> sectionList = new ArrayList<String>() {
+		    {
+			add("A1");
+			add("B6");
+			add("F7");
+		    }
+		};
+		
+		List<Ticket> ticketList = new ArrayList<Ticket>();
+		for (int i = 1; i <= 100; i++) {
+		    Ticket t = TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
+		    ticketList.add(t);
+		    event.setTicketsTotal(event.getTicketsTotal() + 1);
+		    event.setTicketsAvailable(event.getTicketsAvailable() + 1);
+		}
+		
+		event.setSectionList(sectionList);
+		event.setTicketList(ticketList);
+		XmlWriter writer = new XmlWriter();
+		writer.connect(DATA_FILE);
+		writer.writeEvent(event);
+	
+		XmlReader reader = new XmlReader();
+		reader.connect(DATA_FILE);
+		Event readEvent = reader.loadEvent(eventId, true);
+		assertEquals(event.toString(), readEvent.toString());
+	
+		//Edit event test
+		event.setGender("F");
+		event.setSport(SportType.RUGBY);
+		event.setHomeTeam("Test1");
+		event.setVisitorsTeam("Test2");
+		event.setLocation("Montréal");
+		event.setStadium("Stadium");
+		writer.modifyEvent(event);
+		
+		reader.connect(DATA_FILE);
+		Event editedEvent = reader.loadEvent(eventId, true);
+		assertEquals(event.toString(), editedEvent.toString());
+		
+		//Delete event test
+		writer.deleteEvent(eventId);
+		
+		reader.connect(DATA_FILE);
+		Event deletedEvent = reader.loadEvent(eventId, true);
+		assertNull(deletedEvent);
+		
+		// Ticket add
+		/*
+		Ticket t = TicketFactory.CreateTicket(readEvent, TicketType.GENERAL, "", "", "", 30.00, 0);
+		writer.writeTicketToEvent(eventId, t);
+		Ticket readT = reader.loadTicket(eventId, ticketId3);
+		assertEquals(t, readT);*/
+    }
+    
+    @Test
+    public void TestCreateEditDeleteUserToXml() {
+    	//test create user
+    	User user = new User(username,"test", "Bob", "Dubois", "testbillets@live.ca",AccessLevel.User,  SportType.FOOTBALL.toString(), "M", TicketType.GENERAL ,"Québec");
+    	List<Pair<Integer,Integer>> userTickets = new ArrayList<Pair<Integer,Integer>>(); 
+    	userTickets.add(new Pair<Integer,Integer>(1,1));
+    	userTickets.add(new Pair<Integer,Integer>(1,8)); 
+    	userTickets.add(new Pair<Integer,Integer>(2,5)); 
+    	userTickets.add(new Pair<Integer,Integer>(2,14));
+    	userTickets.add(new Pair<Integer,Integer>(3,58)); 
+    	user.setUserTickets(userTickets);
+    	
+    	XmlWriter writer = new XmlWriter();
+		writer.connect(DATA_FILE);
+		writer.writeUser(user);
+		
+		XmlReader reader = new XmlReader();
+		reader.connect(DATA_FILE);
+		User readUser = reader.userAuthenticate(username);
+		
+		assertEquals(user.toString(), readUser.toString());
+		
+		//test edit user
+		user.setEmail("test@lol.com");
+		user.setFirstName("Jon");
+		user.setLastName("Doe");
+		user.setFavLocation("Montréal");
+    	userTickets.add(new Pair<Integer,Integer>(18,19));
+    	user.setUserTickets(userTickets);
+		writer.modifyUser(user);
+		
+		reader.connect(DATA_FILE);
+		User editedUser = reader.userAuthenticate(username);
+		assertEquals(user.toString(), editedUser.toString());
+		
+		//test delete user
+		writer.deleteUser(username);
+		reader.connect(DATA_FILE);
+		User deletedUser = reader.userAuthenticate(username);
+		assertNull(deletedUser);
+    }
+    
+    @Test
+    public void TestCreateEditDeleteTicketsToXml() throws ParseException {
+    	// Créer une event de test
+        Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
+        Date time = new SimpleDateFormat("H:mm").parse("13:30");
+        Event event = EventFactory.CreateExistingEvent(eventId, true, SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
+       
+        XmlWriter writer = new XmlWriter();
+		writer.connect(DATA_FILE);
+		writer.writeEvent(event);
+		
+		Ticket tTest = TicketFactory.CreateTicket(event, TicketType.RESERVED, "A", "16", "", 30.00, 0);
+		event.addTicketToList(tTest);
+		//test ajouter 1 ticket
+		writer.writeTicketToEvent(eventId, tTest);
+		
+		XmlReader reader = new XmlReader();
+		reader.connect(DATA_FILE);
+		Event readEvent = reader.loadEvent(eventId, true);
+		assertEquals(event.toString(), readEvent.toString());
+		assertEquals(event.getTicketList().toString() , readEvent.getTicketList().toString());
+		
+		// test edit ticket
+		event.removeTicketFromList(tTest.getId());
+		tTest.setResellprice(90.00);
+		tTest.setOwner(username);
+		event.addTicketToList(tTest);
+		writer.modifyTicket(tTest);
+		reader.connect(DATA_FILE);
+		Ticket ticketModified = reader.loadTicket(eventId, tTest.getId());
+		assertEquals(ticketModified.toString(), ticketModified.toString());
+		
+		
+		//test supprimmer ticket
+		event.removeTicketFromList(tTest.getId());
+		writer.deleteTicket(eventId, tTest.getId());
+		reader.connect(DATA_FILE);
+		Event deletedTicketEvent = reader.loadEvent(eventId, true);
+		Ticket ticketRead = reader.loadTicket(eventId, tTest.getId());
+		assertNull(ticketRead);
+		assertEquals(event.toString(), deletedTicketEvent.toString());
+		assertEquals(event.getTicketList().toString() , deletedTicketEvent.getTicketList().toString());
+	
+		//test ajouter plusieurs tickets
+		
+		List<Ticket> ticketList = new ArrayList<Ticket>();
+		for (int i = 1; i <= 100; i++) {
+		    Ticket t = TicketFactory.CreateTicket(event, TicketType.GENERAL, "", "", "", 30.00, 0);
+		    ticketList.add(t);
+		    event.setTicketsTotal(event.getTicketsTotal() + 1);
+		    event.setTicketsAvailable(event.getTicketsAvailable() + 1);
+		}
+		event.setTicketList(ticketList);
+		writer.writeTicketsToEvent(eventId, ticketList);
+		
+		reader.connect(DATA_FILE);
+		Event multipleTicketsEvent = reader.loadEvent(eventId, true);
+		assertEquals(event.toString(), multipleTicketsEvent.toString());
+		assertEquals(event.getTicketList().toString() , multipleTicketsEvent.getTicketList().toString());
+		
+		//supprimmer tous les tickets + event pour faire le menage
+		writer.deleteEvent(eventId);
+		reader.connect(DATA_FILE);
+		Event deletedEvent = reader.loadEvent(eventId, true);
+		assertNull(deletedEvent);
+    }
+    
+ 
 }
