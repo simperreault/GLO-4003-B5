@@ -5,6 +5,7 @@
  */
 package ca.ulaval.ticketmaster.dao.util;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -12,10 +13,18 @@ import java.util.UUID;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
+
+
+
+
+import org.springframework.stereotype.Repository;
+
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.enums.SportType;
 
+@Repository
 public class DataManager {
 	//private static final Logger logger = LoggerFactory.getLogger(DataManager.class);
 
@@ -28,6 +37,10 @@ public class DataManager {
 	//private List<Event> eventList;
 	//private HashMap<String,User> userMap;
 	//private HashMap<Integer,Event> eventMap;
+	
+	public boolean reconnect(String _file){
+		return xmlWriter.connect(_file) && xmlReader.connect(_file);
+	}
 	
 	public int getTotalUsers() {
 		return totalUsers;
@@ -167,14 +180,45 @@ public class DataManager {
 	}
 	
 	public List<Ticket> findAllTickets(UUID _eventId){
-		return findEvent(_eventId).getTicketList();
+		return filterSoldTickets(findEvent(_eventId).getTicketList());
 	}
 	
 	public List<User> findAllUsers() {
 		return xmlReader.loadUsers();
 	}
+	
+	public List<Event>FindAllSportEvents(SportType _sport){
+		List<Event> returnList = new ArrayList<Event>();
+		for(Event e : xmlReader.loadEvents()){
+			if(e.getSport().equals(_sport)){
+				returnList.add(e);
+			}
+		}
+		return filterSoldTicketsForAllEvents(returnList);
+	}
+	
 
 	public List<Event> findAllEvents() {
-		return xmlReader.loadEvents();
+		return filterSoldTicketsForAllEvents(xmlReader.loadEvents());
 	}
+	
+	private List<Ticket> filterSoldTickets(List<Ticket> _toFilter){
+		List<Ticket> returnList = new ArrayList<Ticket>();
+		for(Ticket t : _toFilter){
+			if(t.getOwner().isEmpty() || (!t.getOwner().isEmpty() && t.getResellprice() != 0)){
+				returnList.add(t);
+			}
+		}
+		return returnList;
+	}
+	
+	private List<Event> filterSoldTicketsForAllEvents(List<Event> _toFilter){
+		List<Event> returnList = new ArrayList<Event>();
+		for(Event e : _toFilter){
+			e.setTicketList(filterSoldTickets(e.getTicketList()));
+			returnList.add(e);
+		}
+		return returnList;
+	}
+	
 }
