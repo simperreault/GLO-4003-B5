@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
@@ -14,8 +15,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.validation.support.BindingAwareModelMap;
 //import org.springframework.mock.web.MockHttpSession;
+import org.springframework.mock.web.MockHttpSession;
+
+
 
 
 
@@ -92,8 +97,8 @@ public class HomeControllerTest {
 
     @Test
     public void testSuccessfulLogin() {
-
-	HttpSession httpSession = Mockito.mock( HttpSession.class );
+    	
+    	HttpSession httpSession = new MockHttpSession();
 	
 	String adminUsername = "CarloBoutet";
 	
@@ -120,8 +125,8 @@ public class HomeControllerTest {
 
     @Test
     public void testFailLoginWithExistingUser() {
-
-	HttpSession httpSession = Mockito.mock( HttpSession.class );
+    	
+    	HttpSession httpSession = new MockHttpSession();
 	
 	User admin = new User("CarloBoutet");
 	admin.setPassword("123");
@@ -144,8 +149,8 @@ public class HomeControllerTest {
 
     @Test
     public void testFailLoginWithUnexistingUser() {
-
-	HttpSession httpSession = Mockito.mock( HttpSession.class );
+    	
+    	HttpSession httpSession = new MockHttpSession();
 
 	String ret = controller.Login("HEY!!", "FFFFFFUUUUUUUUU", model, httpSession);
 
@@ -163,8 +168,8 @@ public class HomeControllerTest {
 
     @Test
     public void testDisconnect() {
-
-	HttpSession httpSession = Mockito.mock( HttpSession.class );
+    	
+    	HttpSession httpSession = new MockHttpSession();
     	
 	String ret = controller.Disconnect(model, /* ehm... null*/httpSession);
 	
@@ -183,5 +188,23 @@ public class HomeControllerTest {
 
     	assertEquals(ret, "Basket");
     }
+    
+
+//Based on https://eclipse.googlesource.com/rap/org.eclipse.rap/+/features/multi-tab%5E/tests/org.eclipse.rap.rwt.test/src/org/eclipse/rap/rwt/internal/engine/RWTClusterSupport_Test.java
+//    private static HttpSession mockHttpSession() {
+//      return mockHttpSession( Mockito.mock( ServletContext.class ) );
+//    }
+//
+//    private static HttpSession mockHttpSession( ServletContext servletContext ) {
+//      HttpSession httpSession = Mockito.mock( HttpSession.class );
+//      when( httpSession.getServletContext() ).thenReturn( servletContext );
+//      return httpSession;
+//    }
+//
+//    private static ServletContext mockServletContext( ApplicationContext applicationContext ) {
+//      ServletContext servletContext = Mockito.mock( ServletContext.class );
+//      //when( servletContext.getAttribute( eq( ATTR_APPLICATION_CONTEXT ) ) ).thenReturn( applicationContext );
+//      return servletContext;
+//    }
 
 }
