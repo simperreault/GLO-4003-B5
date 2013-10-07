@@ -60,6 +60,7 @@ public class XmlReader {
 	 *  2 is total of users
 	 */
 	public int[] readStartupInformation(){
+		connect(DATA_FILE);
 		int output[] = new int[] {-1,-1};
 		Element elElement = ((Element)doc.getElementsByTagName("EventList").item(0));
 		output[0] = Integer.parseInt(elElement.getAttribute("total"));
@@ -72,7 +73,7 @@ public class XmlReader {
 	 * Loads a single event with or without tickets if it exists, returns null otherwise
 	 */
 	public Event loadEvent(UUID _eventId, Boolean _andTickets){
-
+		connect(DATA_FILE);
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
@@ -171,7 +172,7 @@ public class XmlReader {
 	 * Note that the Event linked to the ticket will only contain all tickets
 	 */
 	public Ticket loadTicket(UUID _eventId, UUID _ticketId){
-
+		connect(DATA_FILE);
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
@@ -200,6 +201,7 @@ public class XmlReader {
 
 
 	public List<Event> loadEvents() {
+		connect(DATA_FILE);
 		List<Event> returnList = new ArrayList<Event>();
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		Event tempEvent;
@@ -238,6 +240,7 @@ public class XmlReader {
 	 * Returns a user if it exists, null otherwise
 	 */
 	public User userAuthenticate(String _username){
+		connect(DATA_FILE);
 
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		for (int userIter = 0; userIter < UserNodeList.getLength(); userIter++) {
@@ -254,7 +257,7 @@ public class XmlReader {
 	}
 
 	public List<User> loadUsers() {
-
+		connect(DATA_FILE);
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		List<User> returnList = new ArrayList<User>();
 		User tempuser;
