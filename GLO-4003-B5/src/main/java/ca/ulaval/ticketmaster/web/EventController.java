@@ -1,5 +1,6 @@
 package ca.ulaval.ticketmaster.web;
 
+import java.text.ParseException;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -24,7 +25,8 @@ import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 @RequestMapping(value = "/event")
 public class EventController {
 
-    //private static final Logger logger = LoggerFactory.getLogger(EventController.class);
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(EventController.class);
     private DataManager datamanager;
 
     public EventController() {
@@ -68,8 +70,15 @@ public class EventController {
 	}
 
 	// Save
-	Event event = EventConverter.convert(viewmodel, datamanager);
-	datamanager.saveEvent(event);
+	try {
+	    Event event = EventConverter.convert(viewmodel, datamanager);
+	    datamanager.saveEvent(event);
+	} catch (ParseException e) {
+	    // Error happen, This event will not be saved
+	    model.addAttribute("error", "Erreur dans le format de la date (dd/mm/yyyy HH:MM)");
+	    model.addAttribute("event", viewmodel);
+	    return "EventAdd";
+	}
 	return "redirect:/event/list";
     }
 

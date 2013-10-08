@@ -1,7 +1,5 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
-import java.util.Date;
-
 import ca.ulaval.ticketmaster.model.enums.SportType;
 
 public class EventViewModel {
@@ -12,11 +10,7 @@ public class EventViewModel {
     public String visitorsTeam;
     public String location;
     public String stadium;
-    public Date date;
-    public Date time;
-
-    // public List<Ticket> ticketList;
-    // public List<String> sectionList;
+    public String date;
 
     public String getGender() {
 	return gender;
@@ -58,20 +52,12 @@ public class EventViewModel {
 	this.stadium = stadium;
     }
 
-    public Date getDate() {
+    public String getDate() {
 	return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
 	this.date = date;
-    }
-
-    public Date getTime() {
-	return time;
-    }
-
-    public void setTime(Date time) {
-	this.time = time;
     }
 
     public SportType getSport() {
