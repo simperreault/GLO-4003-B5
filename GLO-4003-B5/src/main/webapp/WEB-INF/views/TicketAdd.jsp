@@ -27,10 +27,6 @@
 				<td><form:select path="type" items="${ticketlist}" /></td>
 			</tr>
 			<tr>
-				<td>Propriétaire :</td>
-				<td><form:input path="owner" /></td>
-			</tr>
-			<tr>
 				<td>Prix :</td>
 				<td><form:input path="price" /></td>
 			</tr>
@@ -44,6 +40,7 @@
 			</tr>
 		</table>
 		<br>
+		<form:input path="owner" hidden="hidden" value="<%= session.getAttribute( "sesusername" ) %>"/>
         <p><button class="btn" type="submit">Ajouter un billet</button></p>
     </form:form>
     </c:if>

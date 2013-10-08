@@ -1,5 +1,7 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckDate;
 import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckGender;
@@ -9,11 +11,16 @@ public class EventViewModel {
     public SportType sport;
     @CheckGender
     public String gender;
+    @NotEmpty(message = "'Équipe maison' ne doit pas etre vide.")
     public String homeTeam;
+    @NotEmpty(message = "'Équipe visiteur' ne doit pas etre vide.")
     public String visitorsTeam;
+    @NotEmpty(message = "'Endroit' ne doit pas etre vide.")
     public String location;
+    @NotEmpty(message = "'Stade' ne doit pas etre vide.")
     public String stadium;
-    @CheckDate
+    @CheckDate(message = "'Date' doit avoir le format dd/mm/yyyy HH:mm.")
+    @NotEmpty(message = "'Date' ne doit pas etre vide.")
     public String date;
 
     public String getGender() {

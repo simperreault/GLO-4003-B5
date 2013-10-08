@@ -20,8 +20,8 @@ public class TicketConverterTest extends TicketConverter {
 
 	assertEquals(t.getEvent(), viewmodel.event);
 	assertEquals(t.getOwner(), viewmodel.owner);
-	assertEquals(t.getPrice(), viewmodel.price, 0.001);
-	assertEquals(t.getResellprice(), viewmodel.resellprice, 0.001);
+	assertEquals(t.getPrice(), Double.parseDouble(viewmodel.price), 0.001);
+	assertEquals(t.getResellprice(), Double.parseDouble(viewmodel.resellprice), 0.001);
 	assertEquals(t.getSeat(), viewmodel.seat);
 	assertEquals(t.getSection(), viewmodel.section);
     }
@@ -31,8 +31,8 @@ public class TicketConverterTest extends TicketConverter {
 	TicketViewModel viewmodel = new TicketViewModel();
 	viewmodel.setEvent(null);
 	viewmodel.setOwner("owner");
-	viewmodel.setPrice(1.0);
-	viewmodel.setResellprice(1.0);
+	viewmodel.setPrice("1.0");
+	viewmodel.setResellprice("1.0");
 	viewmodel.setSeat("");
 	viewmodel.setSection("section");
 	viewmodel.setType(TicketType.SEASON);
@@ -41,8 +41,8 @@ public class TicketConverterTest extends TicketConverter {
 
 	assertEquals(t.getEvent(), viewmodel.getEvent());
 	assertEquals(t.getOwner(), viewmodel.getOwner());
-	assertEquals(t.getPrice(), viewmodel.getPrice(), 0.001);
-	assertEquals(t.getResellprice(), viewmodel.getResellprice(), 0.001);
+	assertEquals(t.getPrice(), Double.parseDouble(viewmodel.getPrice()), 0.001);
+	assertEquals(t.getResellprice(), Double.parseDouble(viewmodel.getResellprice()), 0.001);
 	assertEquals(t.getSeat(), viewmodel.getSeat());
 	assertEquals(t.getSection(), viewmodel.getSection());
 	assertEquals(t.getType(), viewmodel.getType());
