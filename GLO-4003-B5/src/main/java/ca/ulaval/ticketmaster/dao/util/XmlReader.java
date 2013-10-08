@@ -30,16 +30,21 @@ import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class XmlReader {
-	public static String DATA_FILE = "src/main/resources/DataSource.xml";
+	private String DATA_FILE = "src/main/resources/DataSource.xml";
 	private File fXmlFile;
 	private Document doc;
 
 	public XmlReader() {
 		connect(DATA_FILE);
 	}
+	
+	public XmlReader(String _file){
+		connect(_file);
+	}
 
 	public boolean connect(String _file) {
 		try {
+			DATA_FILE = _file;
 			fXmlFile = new File(_file);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();

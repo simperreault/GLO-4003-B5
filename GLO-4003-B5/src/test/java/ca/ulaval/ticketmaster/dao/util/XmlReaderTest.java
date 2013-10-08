@@ -19,32 +19,32 @@ import ca.ulaval.ticketmaster.model.User.AccessLevel;
 @RunWith(MockitoJUnitRunner.class)
 public class XmlReaderTest {
 
+	public static String DATA_FILE = "src/test/resources/testDataXmlReader.xml";
     @Test
     public void TestXmlReader() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
 	assertNotNull(x);
     }
 
     @Test
     public void TestConnectError() {
-	XmlReader x = new XmlReader();
+	XmlReader x = new XmlReader(DATA_FILE);
 	assertEquals(x.connect("notrealfile"), false);
     }
 
     @Test
     public void TestConnect() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
-	assertEquals(x.connect(XmlReader.DATA_FILE), true);
+	XmlReader x = new XmlReader(DATA_FILE);
+
+	assertEquals(x.connect(DATA_FILE), true);
 
     }
 
     @Test
     public void TestStartup() {
-	XmlReader x = new XmlReader();
+	XmlReader x = new XmlReader(DATA_FILE);
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+
 	int[] result = x.readStartupInformation();
 	assertEquals(result[0], 1);
 	assertEquals(result[1], 2);
@@ -52,8 +52,8 @@ public class XmlReaderTest {
 
     @Test
     public void TestLoadEvent() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
+
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	Event e = x.loadEvent(UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"), false);
 	assertNotNull(e);
@@ -72,8 +72,8 @@ public class XmlReaderTest {
 
     @Test
     public void TestLoadTicket() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
+
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	Ticket t = x.loadTicket(UUID.fromString("d05696d9-8cae-4aca-a088-1501576e8187"),
 		UUID.fromString("108417d5-d0b4-4005-a357-0cf82ebd066d"));
@@ -86,8 +86,8 @@ public class XmlReaderTest {
 
     @Test
     public void TestLoadEvents() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
+
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	List<Event> l = x.loadEvents();
 	assertEquals(l.size(), 1);
@@ -95,8 +95,8 @@ public class XmlReaderTest {
 
     @Test
     public void TestLoadUser() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
+
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	User u = x.userAuthenticate("CarloBoutet");
 	assertEquals(u.getPassword(), "123");
@@ -107,8 +107,8 @@ public class XmlReaderTest {
 
     @Test
     public void TestLoadUsers() {
-	XmlReader x = new XmlReader();
-	XmlReader.DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+	XmlReader x = new XmlReader(DATA_FILE);
+
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	List<User> l = x.loadUsers();
 	assertEquals(l.size(), 2);
