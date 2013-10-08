@@ -30,7 +30,7 @@ import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class XmlReader {
-	public static final String DATA_FILE = "src/main/resources/DataSource.xml";
+	public static String DATA_FILE = "src/main/resources/DataSource.xml";
 	private File fXmlFile;
 	private Document doc;
 
