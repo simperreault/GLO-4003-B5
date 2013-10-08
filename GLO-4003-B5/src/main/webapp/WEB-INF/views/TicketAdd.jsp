@@ -15,6 +15,10 @@
 	<form:form method="post" class="form-horizontal" modelAttribute="ticket">
 		<table>
 			<tr>
+				<td>Propriétaire :</td>
+				<td></td>
+			</tr>
+			<tr>
 				<td>Section :</td>
 				<td><form:input path="section" /></td>
 			</tr>
