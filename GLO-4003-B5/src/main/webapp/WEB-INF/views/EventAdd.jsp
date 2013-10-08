@@ -13,7 +13,8 @@
 			$( "#datepicker" ).datetimepicker({
 				changeMonth: true,
 				showOtherMonths: true,
-				selectOtherMonths: true
+				selectOtherMonths: true,
+				dateFormat: "dd/mm/yy"
 			});
 		});
 	</script>

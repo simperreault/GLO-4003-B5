@@ -64,6 +64,7 @@ public class EventController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String create(@Valid EventViewModel viewmodel, BindingResult result, Model model) {
 	if (result.hasErrors()) {
+	    model.addAttribute("sportList", SportType.values());
 	    model.addAttribute("error", result.getAllErrors());
 	    model.addAttribute("event", viewmodel);
 	    return "EventAdd";
@@ -75,6 +76,7 @@ public class EventController {
 	    datamanager.saveEvent(event);
 	} catch (ParseException e) {
 	    // Error happen, This event will not be saved
+	    model.addAttribute("sportList", SportType.values());
 	    model.addAttribute("error", "Erreur dans le format de la date (dd/mm/yyyy HH:MM)");
 	    model.addAttribute("event", viewmodel);
 	    return "EventAdd";

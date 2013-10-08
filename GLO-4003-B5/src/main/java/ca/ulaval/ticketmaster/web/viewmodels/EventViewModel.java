@@ -1,15 +1,19 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
 import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckDate;
+import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckGender;
 
 public class EventViewModel {
 
     public SportType sport;
+    @CheckGender
     public String gender;
     public String homeTeam;
     public String visitorsTeam;
     public String location;
     public String stadium;
+    @CheckDate
     public String date;
 
     public String getGender() {
