@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
@@ -13,22 +12,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.context.ApplicationContext;
 import org.springframework.validation.support.BindingAwareModelMap;
 //import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockHttpSession;
 
 
-
-
-
-
-
-
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.User;
 import ca.ulaval.ticketmaster.model.User.AccessLevel;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
