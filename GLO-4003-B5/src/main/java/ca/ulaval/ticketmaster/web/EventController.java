@@ -32,8 +32,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String detail(Model model) {
-
+    public String list(Model model) {
+    System.out.println("/list elem count : " + datamanager.findAllEvents().size());
 	model.addAttribute("EventList", datamanager.findAllEvents());
 	return "EventList";
     }
