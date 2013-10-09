@@ -9,8 +9,8 @@ public class TicketConverter {
 
     static public Ticket convert(TicketViewModel viewModel, DataManager datamanager) {
 	Ticket entry = TicketFactory.CreateTicket(viewModel.getEvent(), viewModel.getType(),
-		viewModel.getSection(), viewModel.getSeat(), viewModel.getOwner(), viewModel.getPrice(),
-		viewModel.getResellprice());
+		viewModel.getSection(), viewModel.getSeat(), viewModel.getOwner(), Double.parseDouble(viewModel.getPrice()),
+		Double.parseDouble(viewModel.getResellprice()));
 	return entry;
     }
 
@@ -19,8 +19,8 @@ public class TicketConverter {
 	viewModel.setSection(entry.getSection());
 	viewModel.setSeat(entry.getSeat());
 	viewModel.setOwner(entry.getOwner());
-	viewModel.setPrice(entry.getPrice());
-	viewModel.setResellprice(entry.getResellprice());
+	viewModel.setPrice(entry.getPrice() + "");
+	viewModel.setResellprice(entry.getResellprice() + "");
 	viewModel.setEvent(entry.getEvent());
 	viewModel.setType(entry.getType());
 

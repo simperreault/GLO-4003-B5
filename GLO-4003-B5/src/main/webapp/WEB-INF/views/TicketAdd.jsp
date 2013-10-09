@@ -15,6 +15,10 @@
 	<form:form method="post" class="form-horizontal" modelAttribute="ticket">
 		<table>
 			<tr>
+				<td>Propriétaire :</td>
+				<td></td>
+			</tr>
+			<tr>
 				<td>Section :</td>
 				<td><form:input path="section" /></td>
 			</tr>
@@ -25,10 +29,6 @@
 			<tr>
 				<td>Type :</td>
 				<td><form:select path="type" items="${ticketlist}" /></td>
-			</tr>
-			<tr>
-				<td>Propriétaire :</td>
-				<td><form:input path="owner" /></td>
 			</tr>
 			<tr>
 				<td>Prix :</td>
@@ -44,6 +44,7 @@
 			</tr>
 		</table>
 		<br>
+		<form:input path="owner" hidden="hidden" value="<%= session.getAttribute( "sesusername" ) %>"/>
         <p><button class="btn" type="submit">Ajouter un billet</button></p>
     </form:form>
     </c:if>

@@ -1,5 +1,5 @@
 <decorators defaultdir="/decorators">
-    <decorator name="default" page="Mainframe.jsp">
+    <decorator name="default" page="MainFrame.jsp">
         <pattern>/*</pattern>
     </decorator>
 </decorators>

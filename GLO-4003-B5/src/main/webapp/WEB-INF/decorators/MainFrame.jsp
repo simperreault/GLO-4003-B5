@@ -3,8 +3,12 @@
 <html>
 <head>
 <title><sitemesh:write property='title' /></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/resources/css/style.css" />" />
+<link type="text/css" rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <sitemesh:write property='head' />
 </head>
 <body>

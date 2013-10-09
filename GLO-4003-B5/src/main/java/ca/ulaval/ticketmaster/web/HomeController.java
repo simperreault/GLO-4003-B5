@@ -100,10 +100,10 @@ public class HomeController {
 	if (!userIsOk) {
 	    model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
 	    model.addAttribute("currentPage", "Home.jsp");
-	    return "Mainframe";
-	} else {
-	    return "Home";
-	}
+	} 
+	
+	return "Home";
+	
     }
 
     @RequestMapping(value = "/Basket", method = RequestMethod.GET)

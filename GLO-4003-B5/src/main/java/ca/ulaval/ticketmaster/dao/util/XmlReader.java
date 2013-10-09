@@ -30,16 +30,21 @@ import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 public class XmlReader {
-	public static final String DATA_FILE = "src/main/resources/DataSource.xml";
+	private String DATA_FILE = "src/main/resources/DataSource.xml";
 	private File fXmlFile;
 	private Document doc;
 
 	public XmlReader() {
 		connect(DATA_FILE);
 	}
+	
+	public XmlReader(String _file){
+		connect(_file);
+	}
 
 	public boolean connect(String _file) {
 		try {
+			DATA_FILE = _file;
 			fXmlFile = new File(_file);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
@@ -60,6 +65,7 @@ public class XmlReader {
 	 *  2 is total of users
 	 */
 	public int[] readStartupInformation(){
+		connect(DATA_FILE);
 		int output[] = new int[] {-1,-1};
 		Element elElement = ((Element)doc.getElementsByTagName("EventList").item(0));
 		output[0] = Integer.parseInt(elElement.getAttribute("total"));
@@ -72,7 +78,7 @@ public class XmlReader {
 	 * Loads a single event with or without tickets if it exists, returns null otherwise
 	 */
 	public Event loadEvent(UUID _eventId, Boolean _andTickets){
-
+		connect(DATA_FILE);
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
@@ -168,10 +174,10 @@ public class XmlReader {
 
 	/*
 	 * Loads a ticket if the event and the ticket exists, returns null otherwise
-	 * Note that the Event linked to the ticket will only contain this ticket in his ticket list
+	 * Note that the Event linked to the ticket will only contain all tickets
 	 */
 	public Ticket loadTicket(UUID _eventId, UUID _ticketId){
-
+		connect(DATA_FILE);
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		for (int eventIter = 0; eventIter < EventNodeList.getLength(); eventIter++) {
 			Element eElement = (Element)EventNodeList.item(eventIter);
@@ -183,31 +189,9 @@ public class XmlReader {
 					if (UUID.fromString(tElement.getAttribute("id")).equals(_ticketId)){
 						//ticket exists, load data
 						//Event data to link to ticket
-						Event tempEvent = new Event(UUID.fromString(eElement.getAttribute("id")));
-						tempEvent.setOpen(Boolean.parseBoolean(eElement.getAttribute("open")));
-						tempEvent.setTicketsTotal(Integer.parseInt(eElement.getAttribute("ticketsTotal")));
-						tempEvent.setTicketsAvailable(Integer.parseInt(eElement.getAttribute("ticketsAvailable")));
-						tempEvent.setSport(SportType.valueOf(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("name")));
-						tempEvent.setGender(((Element)eElement.getElementsByTagName("Sport").item(0)).getAttribute("gender"));
-						tempEvent.setHomeTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("home"));
-						tempEvent.setVisitorsTeam(((Element)eElement.getElementsByTagName("Teams").item(0)).getAttribute("visitors"));
-						tempEvent.setLocation(((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("city"));
-						tempEvent.setStadium(((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("stadium"));
-						try {
-							tempEvent.setDate( new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("date")));
-							tempEvent.setTime( new SimpleDateFormat("HH:mm").parse(((Element)eElement.getElementsByTagName("Location").item(0)).getAttribute("time")));
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-						//Load Section List
-						NodeList sNodeList = ((Element)eElement.getElementsByTagName("SectionList").item(0)).getElementsByTagName("Section");
-						for (int secIter = 0; secIter < sNodeList.getLength(); secIter++) {
-							Element sElement = (Element)sNodeList.item(secIter);
-							tempEvent.getSectionList().add(sElement.getTextContent());
-						}
+						Event tempEvent = readEvent(eElement,true);
 						// Single ticket data
 						Ticket tempTicket = readTicket(tElement,tempEvent);
-						tempEvent.getTicketList().add(tempTicket);
 						//return the single ticket
 						//System.out.println(tempTicket.toString());
 						return tempTicket;
@@ -222,6 +206,7 @@ public class XmlReader {
 
 
 	public List<Event> loadEvents() {
+		connect(DATA_FILE);
 		List<Event> returnList = new ArrayList<Event>();
 		NodeList EventNodeList = doc.getElementsByTagName("Event");
 		Event tempEvent;
@@ -260,6 +245,7 @@ public class XmlReader {
 	 * Returns a user if it exists, null otherwise
 	 */
 	public User userAuthenticate(String _username){
+		connect(DATA_FILE);
 
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		for (int userIter = 0; userIter < UserNodeList.getLength(); userIter++) {
@@ -276,7 +262,7 @@ public class XmlReader {
 	}
 
 	public List<User> loadUsers() {
-
+		connect(DATA_FILE);
 		NodeList UserNodeList = doc.getElementsByTagName("User");
 		List<User> returnList = new ArrayList<User>();
 		User tempuser;

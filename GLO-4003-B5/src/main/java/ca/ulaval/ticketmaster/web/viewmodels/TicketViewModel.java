@@ -4,19 +4,22 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
+import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckIsPrice;
 
 public class TicketViewModel {
-    // public int id;
+
     public Event event;
-    // public ticketType type;
     public TicketType type;
-    @NotEmpty(message = "Section ne doit pas etre vide")
+    @NotEmpty(message = "'Section' ne doit pas etre vide.")
     public String section;
-    @NotEmpty(message = "Siege ne doit pas etre vide")
+    @NotEmpty(message = "'Siège' ne doit pas etre vide.")
     public String seat;
+    @NotEmpty(message = "'Propriétaire' ne doit pas etre vide.")
     public String owner;
-    public double price;
-    public double resellprice;
+    @CheckIsPrice(message = "'Prix' doit être Numérique, différent de 0 et positif.")
+    public String price = "0.0";
+    @CheckIsPrice(message = "'Prix de revente' doit être Numérique, différent de 0 et positif.")
+    public String resellprice = "0.0";
 
     public int howMany = 1;
 
@@ -51,19 +54,19 @@ public class TicketViewModel {
 	this.owner = owner;
     }
 
-    public double getPrice() {
+    public String getPrice() {
 	return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
 	this.price = price;
     }
 
-    public double getResellprice() {
+    public String getResellprice() {
 	return resellprice;
     }
 
-    public void setResellprice(double resellprice) {
+    public void setResellprice(String resellprice) {
 	this.resellprice = resellprice;
     }
 

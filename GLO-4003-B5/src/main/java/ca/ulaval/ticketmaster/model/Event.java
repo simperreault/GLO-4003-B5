@@ -207,8 +207,8 @@ public class Event {
 	Ticket ticket = null;
 	for (Iterator<Ticket> it = this.ticketList.iterator(); it.hasNext();) {
 	    Ticket itTicket = it.next();
-	    if (itTicket.getId() == _ticketId) {
-		ticket = itTicket;
+	    if (itTicket.getId().equals(_ticketId)) {
+	    	ticket = itTicket;
 	    }
 	}
 	if (ticket != null) {

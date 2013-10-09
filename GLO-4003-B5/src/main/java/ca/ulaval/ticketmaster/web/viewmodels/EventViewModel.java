@@ -1,22 +1,27 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
-import java.util.Date;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckDate;
+import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckGender;
 
 public class EventViewModel {
 
     public SportType sport;
+    @CheckGender
     public String gender;
+    @NotEmpty(message = "'Équipe maison' ne doit pas etre vide.")
     public String homeTeam;
+    @NotEmpty(message = "'Équipe visiteur' ne doit pas etre vide.")
     public String visitorsTeam;
+    @NotEmpty(message = "'Endroit' ne doit pas etre vide.")
     public String location;
+    @NotEmpty(message = "'Stade' ne doit pas etre vide.")
     public String stadium;
-    public Date date;
-    public Date time;
-
-    // public List<Ticket> ticketList;
-    // public List<String> sectionList;
+    @CheckDate(message = "'Date' doit avoir le format dd/mm/yyyy HH:mm.")
+    @NotEmpty(message = "'Date' ne doit pas etre vide.")
+    public String date;
 
     public String getGender() {
 	return gender;
@@ -58,20 +63,12 @@ public class EventViewModel {
 	this.stadium = stadium;
     }
 
-    public Date getDate() {
+    public String getDate() {
 	return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
 	this.date = date;
-    }
-
-    public Date getTime() {
-	return time;
-    }
-
-    public void setTime(Date time) {
-	this.time = time;
     }
 
     public SportType getSport() {

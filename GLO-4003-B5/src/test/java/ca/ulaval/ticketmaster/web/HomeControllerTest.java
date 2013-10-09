@@ -3,6 +3,9 @@ package ca.ulaval.ticketmaster.web;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.when;
+
+import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,8 +14,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.validation.support.BindingAwareModelMap;
+//import org.springframework.mock.web.MockHttpSession;
+import org.springframework.mock.web.MockHttpSession;
+
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.User.AccessLevel;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -69,7 +77,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testLogin() {
+    public void testLoginGET() {
 
 	String ret = controller.Login(model);
 
@@ -78,15 +86,116 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testDisconnect() {
+    public void testSuccessfulLogin() {
+    	
+    	HttpSession httpSession = new MockHttpSession();
+	
+	String adminUsername = "CarloBoutet";
+	
+	User admin = new User(adminUsername);
+	admin.setPassword("123");
+	admin.setAccessLevel(AccessLevel.Admin);
+	
+	when(datamanager.findUser(adminUsername)).thenReturn(admin);
+	
+	//FOQQWEQEFQOF
+	//when(httpSession.setAttribute("sesusername", admin.getAccessLevel().toString()).thenReturn("bob"));
 
-	String ret = controller.Disconnect(model, /* ehm... */null);
+	String ret = controller.Login(adminUsername, admin.getPassword(), model, httpSession);
 
-	assertNull(model.get("sesacceslevel"));
-	assertNull(model.get("sesusername"));
+	assertEquals(ret, "Home");
 
-	assertEquals(ret, "MainFrame");
+	//@TODO
+	//assertNotNull(httpSession.getAttribute("sesusername"));
+	//assertNotNull(httpSession.getAttribute("sesacceslevel"));
+
+	//assertNotNull(model.get("sesacceslevel"));
+	//assertNotNull(model.get("sesusername"));
 
     }
+
+    @Test
+    public void testFailLoginWithExistingUser() {
+    	
+    	HttpSession httpSession = new MockHttpSession();
+	
+	User admin = new User("CarloBoutet");
+	admin.setPassword("123");
+	
+	when(datamanager.findUser(admin.getUsername())).thenReturn(admin);
+
+	String ret = controller.Login(admin.getUsername(), "NOTTHEPASSWORD", model, httpSession);
+
+	assertEquals(ret, "Home");
+
+	assertNull(httpSession.getAttribute("sesacceslevel"));
+	assertNull(httpSession.getAttribute("sesusername"));
+
+	//On ne verifie pas le contenu car ce serait restrictif si on change un message d'erreur
+	//@TODO demander au prof
+	assertNotNull(model.get("errorMsg"));
+	assertNotNull(model.get("currentPage"));
+
+    }
+
+    @Test
+    public void testFailLoginWithUnexistingUser() {
+    	
+    	HttpSession httpSession = new MockHttpSession();
+
+	String ret = controller.Login("HEY!!", "FFFFFFUUUUUUUUU", model, httpSession);
+
+	assertEquals(ret, "Home");
+
+	assertNull(httpSession.getAttribute("sesacceslevel"));
+	assertNull(httpSession.getAttribute("sesusername"));
+
+	//On ne verifie pas le contenu car ce serait restrictif si on change un message d'erreur
+	//@TODO demander au prof
+	assertNotNull(model.get("errorMsg"));
+	assertNotNull(model.get("currentPage"));
+
+    }
+
+    @Test
+    public void testDisconnect() {
+    	
+    	HttpSession httpSession = new MockHttpSession();
+    	
+	String ret = controller.Disconnect(model, /* ehm... null*/httpSession);
+	
+	assertNull(httpSession.getAttribute("sesacceslevel"));
+	assertNull(httpSession.getAttribute("sesusername"));
+
+	assertEquals(ret, "Home");
+
+    }
+    
+    @Test
+    public void testBasket() {
+    	String ret = controller.Basket(model);
+    	
+    	assertEquals(model.get("currentPage"), "Basket.jsp");
+
+    	assertEquals(ret, "Basket");
+    }
+    
+
+//Based on https://eclipse.googlesource.com/rap/org.eclipse.rap/+/features/multi-tab%5E/tests/org.eclipse.rap.rwt.test/src/org/eclipse/rap/rwt/internal/engine/RWTClusterSupport_Test.java
+//    private static HttpSession mockHttpSession() {
+//      return mockHttpSession( Mockito.mock( ServletContext.class ) );
+//    }
+//
+//    private static HttpSession mockHttpSession( ServletContext servletContext ) {
+//      HttpSession httpSession = Mockito.mock( HttpSession.class );
+//      when( httpSession.getServletContext() ).thenReturn( servletContext );
+//      return httpSession;
+//    }
+//
+//    private static ServletContext mockServletContext( ApplicationContext applicationContext ) {
+//      ServletContext servletContext = Mockito.mock( ServletContext.class );
+//      //when( servletContext.getAttribute( eq( ATTR_APPLICATION_CONTEXT ) ) ).thenReturn( applicationContext );
+//      return servletContext;
+//    }
 
 }

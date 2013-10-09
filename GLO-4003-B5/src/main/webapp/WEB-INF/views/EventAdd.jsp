@@ -3,8 +3,22 @@
 <%@ page session="true" %>
 <html>
 <head>
+<script src="<c:url value="/resources/js/jquery-ui-timepicker-addon.js" />"></script>
+<link type="text/css" rel="stylesheet"
+	href="<c:url value="/resources/css/jquery-ui-timepicker-addon.css" />" />
 </head>
 <c:if test="${sesacceslevel == 'Admin'}">
+	<script>
+		$(function() {
+			$( "#datepicker" ).datetimepicker({
+				changeMonth: true,
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				dateFormat: "dd/mm/yy"
+			});
+		});
+	</script>
+
 	<h1>Ajouter un Évènement</h1><hr>
 	<p style="color:red;"> 
 		<c:forEach var="objectError" items="${error}">
@@ -15,7 +29,10 @@
 		<table>
 			<tr>
 				<td>Catégorie :</td>
-				<td><form:input path="gender" /></td>
+				<td><form:select path="gender">
+    					<form:option value="M" label="Masculin" />
+    					<form:option value="F" label="Féminin" />
+    				</form:select></td>
 			</tr>
 			<tr>
 				<td>Sport :</td>
@@ -39,11 +56,7 @@
 			</tr>
 			<tr>
 				<td>Date :</td>
-				<td><form:input path="date" /></td>
-			</tr>
-			<tr>
-				<td>Heure :</td>
-				<td><form:input path="time" /></td>
+				<td><form:input path="date" id="datepicker"/></td>
 			</tr>
 		</table>
 		<br>

@@ -46,7 +46,7 @@ public class TicketController {
 	if (result.hasErrors()) {
 	    model.addAttribute("error", result.getAllErrors());
 	    model.addAttribute("ticket", viewmodel);
-	    // model.addAttribute("currentPage", "TicketAdd.jsp");
+	    model.addAttribute("ticketlist", TicketType.values());
 	    return "TicketAdd";
 	}
 
