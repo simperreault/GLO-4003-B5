@@ -3,6 +3,8 @@ package ca.ulaval.ticketmaster.web;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import junit.framework.Assert;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,94 +24,61 @@ import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 // @SessionAttributes
 public class HomeController {
 
-    //private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    private DataManager datamanager;
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(HomeController.class);
+	private GlobalController controller;
 
-    public HomeController() {
-	datamanager = new DataManager();
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String MainFrame(Model model) {
-	// model.addAttribute("currentPage", "Home.jsp");
-	return "Home";
-    }
-
-    @RequestMapping(value = "/Home", method = RequestMethod.GET)
-    public String home(Model model) {
-	// model.addAttribute("currentPage", "Home.jsp");
-	return "Home";
-    }
-
-    @RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
-    public String CreateUser(Model model) {
-	model.addAttribute("user", new UserViewModel());
-	// model.addAttribute("currentPage", "CreateUser.jsp");
-	return "CreateUser";
-    }
-
-    @RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
-    public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model) {
-
-	// model.addAttribute("currentPage", "AddUser.jsp");
-	model.addAttribute("username", viewmodel.username);
-
-	User user = UserConverter.convert(viewmodel);
-
-	if (datamanager.saveUser(user)) {
-	    // blahblah user create sucessfull
-	} else {
-
+	public HomeController() {
+			controller = new GlobalController();
 	}
 
-	// model.addAttribute("currentPage", "Home.jsp");
-	return "Home";
-    }
-
-    @RequestMapping(value = "/Login", method = RequestMethod.GET)
-    public String Login(Model model) {
-	// model.addAttribute("currentPage", "Login.jsp");
-	return "Home";
-    }
-
-    @RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
-    public String Disconnect(Model model, HttpSession session) {
-	session.setAttribute("sesacceslevel", null);
-	session.setAttribute("sesusername", null);
-	return "Home";
-
-    }
-
-    // Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
-    // TODO:trouve comment pas hardcoder tous les paths possibles
-    @RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
-    public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
-	    Model model, HttpSession session) {
-
-	boolean userIsOk = false;
-
-	User user = datamanager.findUser(username);
-	if (user != null) {
-	    if (user.getPassword().equals(password)) {
-		userIsOk = true;
-		session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
-		session.setAttribute("sesusername", username);
-	    }
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String MainFrame(Model model) {
+		// model.addAttribute("currentPage", "Home.jsp");
+		return "Home";
 	}
 
-	if (!userIsOk) {
-	    model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
-	    model.addAttribute("currentPage", "Home.jsp");
-	} 
-	
-	return "Home";
-	
-    }
+	@RequestMapping(value = "/Home", method = RequestMethod.GET)
+	public String home(Model model) {
+		// model.addAttribute("currentPage", "Home.jsp");
+		return "Home";
+	}
 
-    @RequestMapping(value = "/Basket", method = RequestMethod.GET)
-    public String Basket(Model model) {
-	model.addAttribute("currentPage", "Basket.jsp");
-	return "Basket";
-    }
+	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
+	public String CreateUser(Model model) {
+		model.addAttribute("user", new UserViewModel());
+		// model.addAttribute("currentPage", "CreateUser.jsp");
+		return "CreateUser";
+	}
+
+	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
+	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model, HttpSession session) {
+		return controller.createUser(UserConverter.convert(viewmodel), model, session);
+	}
+
+	@RequestMapping(value = "/Login", method = RequestMethod.GET)
+	public String Login(Model model) {
+		return "Home";
+	}
+
+	@RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
+	public String Disconnect(Model model, HttpSession session) {
+
+		return controller.disconnect(session);
+	}
+
+	// Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
+	// TODO:trouve comment pas hardcoder tous les paths possibles
+	@RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
+	public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
+			Model model, HttpSession session) {
+		return controller.connect(username, password, model, session);
+	}
+
+	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
+	public String Basket(Model model) {
+		model.addAttribute("currentPage", "Basket.jsp");
+		return "Basket";
+	}
 
 }

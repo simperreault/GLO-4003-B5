@@ -3,6 +3,7 @@ package ca.ulaval.ticketmaster.web;
 import java.text.ParseException;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -25,69 +26,44 @@ import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 @RequestMapping(value = "/event")
 public class EventController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(EventController.class);
-    private DataManager datamanager;
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(EventController.class);
+	// private DataManager datamanager;
+	private GlobalController controller;
 
-    public EventController() {
-	datamanager = new DataManager();
-    }
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) {
-    System.out.println("/list elem count : " + datamanager.findAllEvents().size());
-	model.addAttribute("EventList", datamanager.findAllEvents());
-	return "EventList";
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String Event(@PathVariable String id, Model model) {
-	System.out.println(id);
-	model.addAttribute("eventID", UUID.fromString(id));
-	model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(id)));
-	return "TicketList";
-    }
-
-    @RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
-    public String detail(@PathVariable String id1, @PathVariable String id2, Model model) {
-	model.addAttribute("ticket", datamanager.findTicket(UUID.fromString(id1), UUID.fromString(id2)));
-	return "detail";
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String create(Model model) {
-	model.addAttribute("event", new EventViewModel());
-	model.addAttribute("sportList", SportType.values());
-	return "EventAdd";
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String create(@Valid EventViewModel viewmodel, BindingResult result, Model model) {
-	if (result.hasErrors()) {
-	    model.addAttribute("sportList", SportType.values());
-	    model.addAttribute("error", result.getAllErrors());
-	    model.addAttribute("event", viewmodel);
-	    return "EventAdd";
+	public EventController() {
+		controller = new GlobalController();
 	}
 
-	// Save
-	try {
-	    Event event = EventConverter.convert(viewmodel, datamanager);
-	    datamanager.saveEvent(event);
-	} catch (ParseException e) {
-	    // Error happen, This event will not be saved
-	    model.addAttribute("sportList", SportType.values());
-	    model.addAttribute("error", "Erreur dans le format de la date (dd/mm/yyyy HH:MM)");
-	    model.addAttribute("event", viewmodel);
-	    return "EventAdd";
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(Model model, HttpSession session) {
+		return controller.list(model, session);
 	}
-	return "redirect:/event/list";
-    }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable String id, Model model) {
-	datamanager.deleteEvent(UUID.fromString(id));
-	return "redirect:/event/list";
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String Event(@PathVariable String id, Model model, HttpSession session) {
+		return controller.getTickedEvent(id, model, session);
+	}
+
+	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
+	public String detail(@PathVariable String id1, @PathVariable String id2, Model model, HttpSession session) {
+		return controller.getTickedEvent(id1, id2, model, session);
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String create(Model model, HttpSession session) {
+
+		return controller.getAddEvent(model, session);
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String create(@Valid EventViewModel viewmodel, BindingResult result, Model model, HttpSession session) {
+		return controller.addEvent(viewmodel, result, model, session);
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable String id, Model model,HttpSession session) {
+		return controller.deleteEvent(id, session);
+	}
 
 }
