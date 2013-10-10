@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -50,7 +51,7 @@ public class EventControllerTest {
 	list.add(new Event());
 	when(datamanager.findAllEvents()).thenReturn(list);
 
-	String view = controller.detail(model);
+	String view = controller.list(model);
 
 	assertEquals(((List<Event>) model.get("EventList")).size(), 3);
 	assertEquals(view, "EventList");
@@ -102,6 +103,7 @@ public class EventControllerTest {
     public void createEventRedirectsToEventList() {
 	EventViewModel viewModel = new EventViewModel();
 	viewModel.setSport(SportType.FOOTBALL);
+	viewModel.setDate("10/10/2013 12:12");
 
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
