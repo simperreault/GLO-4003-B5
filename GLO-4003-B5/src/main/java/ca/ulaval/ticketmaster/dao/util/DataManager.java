@@ -6,12 +6,16 @@
 package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+
+
 
 
 
@@ -187,17 +191,64 @@ public class DataManager {
 		return xmlReader.loadUsers();
 	}
 	
-	public List<Event>FindAllSportEvents(SportType _sport){
+	private List<Event>filterSports(SportType _sport , List<Event> _list){
 		List<Event> returnList = new ArrayList<Event>();
-		for(Event e : xmlReader.loadEvents()){
+		for(Event e : _list){
 			if(e.getSport().equals(_sport)){
 				returnList.add(e);
 			}
 		}
-		return filterSoldTicketsForAllEvents(returnList);
+		return returnList;
+	}
+	
+	private List<Event>filterDates(int _days , List<Event> _list){
+	    Calendar cal = Calendar.getInstance();  
+	    cal.setTime(new Date());  // set with current time
+	    cal.add(Calendar.DATE, _days); // plus _days    
+	    Date date = cal.getTime();  
+		List<Event> returnList = new ArrayList<Event>();
+		for(Event e : _list){
+			if(e.getDate().before(date) || e.getDate().equals(date)){
+				returnList.add(e);
+			}
+		}
+		return returnList;
+	}
+	
+	private List<Event>filterTeam(String _team , List<Event> _list){
+		List<Event> returnList = new ArrayList<Event>();
+		for(Event e : _list){
+			if(e.getHomeTeam().equals(_team) || e.getVisitorsTeam().equals(_team)){
+				returnList.add(e);
+			}
+		}
+		return returnList;
+	}
+	
+	/*
+	 * Searchs all events and returns the ones which match criterias,
+	 * Sport - pass null if it doesn't matter
+	 * days  - pass 0 if it doesn't matter
+	 * team  - pass null if it doesn't matter
+	 */
+	public List<Event>SearchWithCriterias(SportType _sport, int _days, String _team){
+		List<Event> _list = findAllEvents();
+		if (_sport != null){
+			_list = this.filterSports(_sport, _list);
+		}
+		if (_days != 0){
+			_list = this.filterDates(_days, _list);
+		}
+		if (_team != null){
+			_list = this.filterTeam(_team, _list);
+		}
+		return _list;
 	}
 	
 
+	/*
+	 * Returns all events with their respective unsold tickets
+	 */
 	public List<Event> findAllEvents() {
 		return filterSoldTicketsForAllEvents(xmlReader.loadEvents());
 	}
