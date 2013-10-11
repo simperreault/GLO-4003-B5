@@ -82,7 +82,7 @@ public class HomeController {
 
     // Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
     // TODO:trouve comment pas hardcoder tous les paths possibles
-    @RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
+    @RequestMapping(value = { "/connect"}, method = RequestMethod.POST)
     public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
 	    Model model, HttpSession session) {
 

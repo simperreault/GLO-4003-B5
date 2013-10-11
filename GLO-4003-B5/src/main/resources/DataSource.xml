@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="1">
-    <Event id="464f0b84-ad96-4182-9b35-df80d02658d1" open="false" ticketsAvailable="0" ticketsTotal="0">
+	<EventList total="2">
+  <Event id="beb3d3e7-793a-4574-a20f-80d1f709530b" open="false" ticketsAvailable="0" ticketsTotal="0">
       <SectionList/>
-      <Sport gender="M" name="FOOTBALL"/>
-      <Teams home="a" visitors="b"/>
-      <Location city="c" date="12/12/2012" stadium="d" time="0:00"/>
+      <Sport gender="Masculin" name="FOOTBALL"/>
+      <Teams home="ULAVAL" visitors="BISHOP"/>
+      <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
       <TicketList/>
+    </Event>
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="1" ticketsTotal="1">
+      <SectionList/>
+      <Sport gender="Masculin" name="FOOTBALL"/>
+      <Teams home="ULAVAL" visitors="BISHOP"/>
+      <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
+      <TicketList>
+        <Ticket id="0c697585-ad0b-4536-bcc8-19671e9fa99b" owner="admin" price="12.0" resellPrice="12.0" seat="" section="A" type="SIMPLE"/>
+      </TicketList>
     </Event>
   </EventList>
 	<UserList total="1">
 		<User username="CarloBoutet">
 			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+			<UserTickets/>
+			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
+		</User>
+		<User username="admin">
+			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="admin"/>
 			<UserTickets/>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>

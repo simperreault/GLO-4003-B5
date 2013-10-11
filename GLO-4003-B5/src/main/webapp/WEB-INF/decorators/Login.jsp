@@ -4,7 +4,7 @@
 <html>
 <c:choose>
 	<c:when test="${ empty sesusername }">
-		<form name="loginForm" method="post" action="connect">
+		<form name="loginForm" method="post" action="/connect">
 
 			<table>
 				<tr>
@@ -43,7 +43,7 @@
 	</c:when>
 	<c:when test = "${not empty sesusername }">
 	
-		Bonjour, <%= session.getAttribute( "sesusername" ) %>
+		Bonjour, <%= session.getAttribute( "sesusername" ) %><br>
 		<a href="<c:url value="/disconnect" />" class="btn">Déconnexion</a>
 		
 	</c:when>
