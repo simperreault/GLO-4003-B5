@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -102,6 +103,7 @@ public class EventControllerTest {
     public void createEventRedirectsToEventList() {
 	EventViewModel viewModel = new EventViewModel();
 	viewModel.setSport(SportType.FOOTBALL);
+	viewModel.setDate("10/10/2013 12:12");
 
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
