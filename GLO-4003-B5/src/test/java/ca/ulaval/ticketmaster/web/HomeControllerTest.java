@@ -105,9 +105,8 @@ public class HomeControllerTest {
 
 	assertEquals(ret, "Home");
 
-	//@TODO
-	//assertNotNull(httpSession.getAttribute("sesusername"));
-	//assertNotNull(httpSession.getAttribute("sesacceslevel"));
+	assertNotNull(httpSession.getAttribute("sesusername"));
+	assertNotNull(httpSession.getAttribute("sesacceslevel"));
 
 	//assertNotNull(model.get("sesacceslevel"));
 	//assertNotNull(model.get("sesusername"));
@@ -179,23 +178,5 @@ public class HomeControllerTest {
 
     	assertEquals(ret, "Basket");
     }
-    
-
-//Based on https://eclipse.googlesource.com/rap/org.eclipse.rap/+/features/multi-tab%5E/tests/org.eclipse.rap.rwt.test/src/org/eclipse/rap/rwt/internal/engine/RWTClusterSupport_Test.java
-//    private static HttpSession mockHttpSession() {
-//      return mockHttpSession( Mockito.mock( ServletContext.class ) );
-//    }
-//
-//    private static HttpSession mockHttpSession( ServletContext servletContext ) {
-//      HttpSession httpSession = Mockito.mock( HttpSession.class );
-//      when( httpSession.getServletContext() ).thenReturn( servletContext );
-//      return httpSession;
-//    }
-//
-//    private static ServletContext mockServletContext( ApplicationContext applicationContext ) {
-//      ServletContext servletContext = Mockito.mock( ServletContext.class );
-//      //when( servletContext.getAttribute( eq( ATTR_APPLICATION_CONTEXT ) ) ).thenReturn( applicationContext );
-//      return servletContext;
-//    }
 
 }
