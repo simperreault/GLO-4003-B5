@@ -6,12 +6,15 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.converter.UserConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
@@ -44,6 +47,7 @@ public class HomeController {
     @RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
     public String CreateUser(Model model) {
 	model.addAttribute("user", new UserViewModel());
+	model.addAttribute("typeList", TicketType.values());
 	// model.addAttribute("currentPage", "CreateUser.jsp");
 	return "CreateUser";
     }
@@ -51,19 +55,37 @@ public class HomeController {
     @RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
     public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model) {
 
-	// model.addAttribute("currentPage", "AddUser.jsp");
-	model.addAttribute("username", viewmodel.username);
+    	if (result.hasErrors()) {
+    		System.out.println("CreateUser:POST:ERRORS");
+    		model.addAttribute("user", viewmodel);
+    		model.addAttribute("typeList", TicketType.values());
+    	    model.addAttribute("error", result.getAllErrors());
+    	    return "CreateUser";
+    	}
 
-	User user = UserConverter.convert(viewmodel);
+		//model.addAttribute("username", viewmodel.username);
+	
+		User user = UserConverter.convert(viewmodel);
+	
+		if (datamanager.saveUser(user)) {
+			model.addAttribute("message", "Utilisateur ajoute");
+		} else {
+			//Complexe : soit on passe d'une certaine facon le XMLReader au Validator,
+			// soit on fait la validation ici
+			
+			//model.addAttribute("message", "Utilisateur deja present");
+    		//model.addAttribute("error", "Utilisateur deja present");
+			result.addError(new ObjectError("user", "Utilisateur deja existant"));
+			
+    	    model.addAttribute("error", result.getAllErrors());
+    	    
+    		model.addAttribute("user", viewmodel);
+    		model.addAttribute("typeList", TicketType.values());
 
-	if (datamanager.saveUser(user)) {
-	    // blahblah user create sucessfull
-	} else {
+    	    return "CreateUser";
+		}
 
-	}
-
-	// model.addAttribute("currentPage", "Home.jsp");
-	return "Home";
+		return "Home";
     }
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
@@ -80,7 +102,7 @@ public class HomeController {
 
     }
 
-    // Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
+    // Msemble  ca va  etre  a mettre ailleurs
     // TODO:trouve comment pas hardcoder tous les paths possibles
     @RequestMapping(value = { "/connect"}, method = RequestMethod.POST)
     public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
