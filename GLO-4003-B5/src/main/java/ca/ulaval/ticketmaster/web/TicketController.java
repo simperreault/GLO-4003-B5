@@ -1,7 +1,6 @@
 package ca.ulaval.ticketmaster.web;
 
-import java.util.UUID;
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -10,12 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
-import ca.ulaval.ticketmaster.web.converter.TicketConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 
 /**
@@ -26,42 +19,27 @@ import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 // TODO Move what is related to ticket in EventController here
 public class TicketController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(TicketController.class);
-    private DataManager datamanager;
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(TicketController.class);
+	private GlobalController controller;
 
-    public TicketController() {
-	datamanager = new DataManager();
-    }
-
-    @RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
-    public String create(@PathVariable String eventId, Model model) {
-	model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
-	model.addAttribute("ticketlist", TicketType.values());
-	return "TicketAdd";
-    }
-
-    @RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
-    public String create(@PathVariable String eventId, @Valid TicketViewModel viewmodel,
-	    BindingResult result, Model model) {
-	if (result.hasErrors()) {
-	    model.addAttribute("error", result.getAllErrors());
-	    model.addAttribute("ticket", viewmodel);
-	    model.addAttribute("ticketlist", TicketType.values());
-	    return "TicketAdd";
+	public TicketController() {
+		controller = new GlobalController();
 	}
 
-	viewmodel.setEvent(datamanager.findEvent(UUID.fromString(eventId)));
-	for (int i = 0; i < viewmodel.howMany; ++i) {
-	    Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
-	    datamanager.saveTicket(ticket); // TODO What if save failed ?
+	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
+	public String create(@PathVariable String eventId, Model model, HttpSession session) {
+		return controller.getAddTicket(eventId, model, session);
 	}
-	return "redirect:/event/" + eventId;
-    }
 
-    @RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
-    public String delete(@PathVariable String eventId, @PathVariable String ticketId, Model model) {
-	datamanager.deleteTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-	return "redirect:/event/{eventId}";
-    }
+	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
+	public String create(@PathVariable String eventId, @Valid TicketViewModel viewmodel, BindingResult result,
+			Model model, HttpSession session) {
+		return controller.addTicket(eventId, viewmodel, result, model, session);
+	}
+
+	@RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
+	public String delete(@PathVariable String eventId, @PathVariable String ticketId, Model model, HttpSession session) {
+		return controller.deleteTicket(eventId, ticketId, session);
+	}
 }

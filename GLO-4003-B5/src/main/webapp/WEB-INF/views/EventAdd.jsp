@@ -7,7 +7,6 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/resources/css/jquery-ui-timepicker-addon.css" />" />
 </head>
-<c:if test="${sesacceslevel == 'Admin'}">
 	<script>
 		$(function() {
 			$( "#datepicker" ).datetimepicker({
@@ -62,8 +61,4 @@
 		<br>
         <p><button class="btn" type="submit">Créer l'événement</button></p>
     </form:form>
-    </c:if>
-       <c:if test="${sesacceslevel != 'Admin'}">
-    	get out hacker!
-   	 </c:if>
 </html>
