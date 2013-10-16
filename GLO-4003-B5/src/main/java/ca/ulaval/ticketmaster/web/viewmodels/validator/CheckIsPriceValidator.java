@@ -12,18 +12,17 @@ public class CheckIsPriceValidator implements ConstraintValidator<CheckIsPrice, 
 
     @Override
     public boolean isValid(String object, ConstraintValidatorContext arg1) {
-	
+
 	if (object == "")
 	    return false;
-	
+
 	Double db;
 	try {
 	    db = Double.parseDouble(object);
-	}
-	catch (NumberFormatException e) {
+	} catch (NumberFormatException e) {
 	    return false;
 	}
-	
+
 	return db > 0.0;
     }
 }

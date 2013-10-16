@@ -26,7 +26,8 @@ import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 // TODO Move what is related to ticket in EventController here
 public class TicketController {
 
-    //private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(TicketController.class);
     private DataManager datamanager;
 
     public TicketController() {

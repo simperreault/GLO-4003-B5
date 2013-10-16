@@ -1,5 +1,7 @@
 package ca.ulaval.ticketmaster.web.viewmodels;
 
+import java.util.UUID;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import ca.ulaval.ticketmaster.model.enums.SportType;
@@ -8,6 +10,7 @@ import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckGender;
 
 public class EventViewModel {
 
+    public UUID id;
     public SportType sport;
     @CheckGender
     public String gender;
@@ -22,6 +25,14 @@ public class EventViewModel {
     @CheckDate(message = "'Date' doit avoir le format dd/mm/yyyy HH:mm.")
     @NotEmpty(message = "'Date' ne doit pas etre vide.")
     public String date;
+
+    public UUID getId() {
+	return id;
+    }
+
+    public void setId(UUID id) {
+	this.id = id;
+    }
 
     public String getGender() {
 	return gender;

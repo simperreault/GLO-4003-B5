@@ -4,15 +4,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import ca.ulaval.ticketmaster.model.User.AccessLevel;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
-import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckUserNotPresent;
 
 public class UserViewModel {
 
     // TODO : msemble de quoi a faire avec le public + setters/getters = ...
-	@NotEmpty(message = "Le nom d'usager doit etre present")
-	//@CheckUserNotPresent
+    @NotEmpty(message = "Le nom d'usager doit etre present")
+    // @CheckUserNotPresent
     public String username;
-	@NotEmpty(message = "Un mot de passe doit etre present")
+    @NotEmpty(message = "Un mot de passe doit etre present")
     public String password;
     public String firstName;
     public String lastName;

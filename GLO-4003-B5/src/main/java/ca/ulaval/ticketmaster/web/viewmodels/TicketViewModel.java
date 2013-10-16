@@ -18,7 +18,8 @@ public class TicketViewModel {
     public String owner;
     @CheckIsPrice(message = "'Prix' doit être Numérique, différent de 0 et positif.")
     public String price = "0.0";
-    @CheckIsPrice(message = "'Prix de revente' doit être Numérique, différent de 0 et positif.")
+    // @CheckIsPrice(message =
+    // "'Prix de revente' doit être Numérique, différent de 0 et positif.")
     public String resellprice = "0.0";
 
     public int howMany = 1;

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.converter.UserConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
@@ -25,7 +24,8 @@ import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 // @SessionAttributes
 public class HomeController {
 
-    //private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(HomeController.class);
     private DataManager datamanager;
 
     public HomeController() {
@@ -55,37 +55,38 @@ public class HomeController {
     @RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
     public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model) {
 
-    	if (result.hasErrors()) {
-    		System.out.println("CreateUser:POST:ERRORS");
-    		model.addAttribute("user", viewmodel);
-    		model.addAttribute("typeList", TicketType.values());
-    	    model.addAttribute("error", result.getAllErrors());
-    	    return "CreateUser";
-    	}
+	if (result.hasErrors()) {
+	    System.out.println("CreateUser:POST:ERRORS");
+	    model.addAttribute("user", viewmodel);
+	    model.addAttribute("typeList", TicketType.values());
+	    model.addAttribute("error", result.getAllErrors());
+	    return "CreateUser";
+	}
 
-		//model.addAttribute("username", viewmodel.username);
-	
-		User user = UserConverter.convert(viewmodel);
-	
-		if (datamanager.saveUser(user)) {
-			model.addAttribute("message", "Utilisateur ajoute");
-		} else {
-			//Complexe : soit on passe d'une certaine facon le XMLReader au Validator,
-			// soit on fait la validation ici
-			
-			//model.addAttribute("message", "Utilisateur deja present");
-    		//model.addAttribute("error", "Utilisateur deja present");
-			result.addError(new ObjectError("user", "Utilisateur deja existant"));
-			
-    	    model.addAttribute("error", result.getAllErrors());
-    	    
-    		model.addAttribute("user", viewmodel);
-    		model.addAttribute("typeList", TicketType.values());
+	// model.addAttribute("username", viewmodel.username);
 
-    	    return "CreateUser";
-		}
+	User user = UserConverter.convert(viewmodel);
 
-		return "Home";
+	if (datamanager.saveUser(user)) {
+	    model.addAttribute("message", "Utilisateur ajoute");
+	} else {
+	    // Complexe : soit on passe d'une certaine facon le XMLReader au
+	    // Validator,
+	    // soit on fait la validation ici
+
+	    // model.addAttribute("message", "Utilisateur deja present");
+	    // model.addAttribute("error", "Utilisateur deja present");
+	    result.addError(new ObjectError("user", "Utilisateur deja existant"));
+
+	    model.addAttribute("error", result.getAllErrors());
+
+	    model.addAttribute("user", viewmodel);
+	    model.addAttribute("typeList", TicketType.values());
+
+	    return "CreateUser";
+	}
+
+	return "Home";
     }
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
@@ -102,9 +103,9 @@ public class HomeController {
 
     }
 
-    // Msemble  ca va  etre  a mettre ailleurs
+    // Msemble ca va etre a mettre ailleurs
     // TODO:trouve comment pas hardcoder tous les paths possibles
-    @RequestMapping(value = { "/connect"}, method = RequestMethod.POST)
+    @RequestMapping(value = { "/connect" }, method = RequestMethod.POST)
     public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
 	    Model model, HttpSession session) {
 
@@ -122,10 +123,10 @@ public class HomeController {
 	if (!userIsOk) {
 	    model.addAttribute("errorMsg", "La combinaison pseudo/mot de passe est invalide");
 	    model.addAttribute("currentPage", "Home.jsp");
-	} 
-	
+	}
+
 	return "Home";
-	
+
     }
 
     @RequestMapping(value = "/Basket", method = RequestMethod.GET)

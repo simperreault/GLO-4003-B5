@@ -117,8 +117,9 @@ public class XmlReader {
 		tempEvent.setLocation(((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("city"));
 		tempEvent.setStadium(((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("stadium"));
 		try {
-			tempEvent.setDate( new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("date")));
-			tempEvent.setTime( new SimpleDateFormat("HH:mm").parse(((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("time")));
+		    	String date = ((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("date") + " " + ((Element)_element.getElementsByTagName("Location").item(0)).getAttribute("time");
+			tempEvent.setDate( new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).parse(date));
+			tempEvent.setTime( new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).parse(date));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
