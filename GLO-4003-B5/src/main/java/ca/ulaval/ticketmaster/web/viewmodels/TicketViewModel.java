@@ -11,11 +11,11 @@ public class TicketViewModel {
     public Event event;
     public TicketType type;
     @NotEmpty(message = "'Section' ne doit pas etre vide.")
-    public String section;
+    public String section = "";
     @NotEmpty(message = "'Siège' ne doit pas etre vide.")
-    public String seat;
-    @NotEmpty(message = "'Propriétaire' ne doit pas etre vide.")
-    public String owner;
+    public String seat = "";
+    //@NotEmpty(message = "'Propriétaire' ne doit pas etre vide.")
+    public String owner = "";
     @CheckIsPrice(message = "'Prix' doit être Numérique, différent de 0 et positif.")
     public String price = "0.0";
     // @CheckIsPrice(message =

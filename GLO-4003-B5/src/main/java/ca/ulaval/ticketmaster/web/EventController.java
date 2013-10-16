@@ -1,8 +1,5 @@
 package ca.ulaval.ticketmaster.web;
 
-import java.text.ParseException;
-import java.util.UUID;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,10 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.web.converter.EventConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 
 /**

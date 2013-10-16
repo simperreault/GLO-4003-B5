@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="2">
+	<EventList total="3">
   <Event id="beb3d3e7-793a-4574-a20f-80d1f709530b" open="false" ticketsAvailable="0" ticketsTotal="0">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
@@ -15,6 +15,16 @@
       <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
       <TicketList>
         <Ticket id="0c697585-ad0b-4536-bcc8-19671e9fa99b" owner="admin" price="12.0" resellPrice="12.0" seat="" section="A" type="SIMPLE"/>
+      </TicketList>
+    </Event>
+  <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="2" ticketsTotal="2">
+      <SectionList/>
+      <Sport gender="M" name="VOLLEYBALL"/>
+      <Teams home="qwe" visitors="qwe"/>
+      <Location city="qwe" date="09/10/2013" stadium="qwe" time="10:10"/>
+      <TicketList>
+        <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
+      <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
       </TicketList>
     </Event>
   </EventList>
