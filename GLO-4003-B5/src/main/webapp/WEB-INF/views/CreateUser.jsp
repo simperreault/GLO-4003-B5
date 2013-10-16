@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<td>Type préféré :</td>
-				<td><form:input path="favType" /></td>
+				<td><form:select path="favType" items="${typeList}" /></td>
 			</tr>
 			<tr>
 				<td>Endroit préféré :</td>
