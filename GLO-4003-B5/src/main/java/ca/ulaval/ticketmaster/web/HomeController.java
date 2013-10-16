@@ -47,13 +47,12 @@ public class HomeController {
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
 	public String CreateUser(Model model) {
 		model.addAttribute("user", new UserViewModel());
-		// model.addAttribute("currentPage", "CreateUser.jsp");
 		return "CreateUser";
 	}
 
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
 	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model, HttpSession session) {
-		return controller.createUser(UserConverter.convert(viewmodel), model, session);
+		return controller.createUser(UserConverter.convert(viewmodel), viewmodel, model, result, session);
 	}
 
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
@@ -67,7 +66,7 @@ public class HomeController {
 		return controller.disconnect(session);
 	}
 
-	// Msemble ﾃｧa va ﾃｪtre ﾃ�mettre ailleurs
+
 	// TODO:trouve comment pas hardcoder tous les paths possibles
 	@RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
 	public String Login(@RequestParam("username") String username, @RequestParam("password") String password,

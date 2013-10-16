@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,6 +21,7 @@ import ca.ulaval.ticketmaster.web.converter.EventConverter;
 import ca.ulaval.ticketmaster.web.converter.TicketConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
 public class GlobalController {
 	public enum Page {
@@ -38,30 +40,52 @@ public class GlobalController {
 	}
 
 	private DataManager datamanager;
-
+	
 	public GlobalController() {
 		datamanager = new DataManager();
 		// this.session = session;
 
 	}
-
+	private String setCurrent(String page,HttpSession session)
+	{
+		session.setAttribute("currentPage",page);
+		return page;
+		
+	}
 	public boolean isAdmin(HttpSession session) {
 		if (session.getAttribute("sesacceslevel") == "Admin")
 			return true;
 		return false;
 	}
 
-	public String createUser(User user, Model model, HttpSession session) {
-		// TODO trouver ce que cette ligne
-		// model.addAttribute("username", viewmodel.username);
+	public String createUser(User user,UserViewModel viewmodel, Model model,BindingResult result, HttpSession session) {
+		
+	  	if (result.hasErrors()) {
+    		System.out.println("CreateUser:POST:ERRORS");
+    		model.addAttribute("user", viewmodel);
+    		model.addAttribute("typeList", TicketType.values());
+    	    model.addAttribute("error", result.getAllErrors());
+    	    return "CreateUser";
+    	}
 		if (datamanager.saveUser(user)) {
+			model.addAttribute("message", "Utilisateur ajoute");
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 			session.setAttribute("sesusername", user.getUsername());
 			return Page.Home.toString();
 		} else {
-			model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
+			//Complexe : soit on passe d'une certaine facon le XMLReader au Validator,
+			// soit on fait la validation ici
+			
+			//model.addAttribute("message", "Utilisateur deja present");
+    		//model.addAttribute("error", "Utilisateur deja present");
+			result.addError(new ObjectError("user", "Utilisateur deja existant"));
+			
+    	    model.addAttribute("error", result.getAllErrors());
+    	    
+    		model.addAttribute("user", viewmodel);
+    		model.addAttribute("typeList", TicketType.values());
+    		model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
 			return Page.Home.toString();
-
 		}
 
 	}
