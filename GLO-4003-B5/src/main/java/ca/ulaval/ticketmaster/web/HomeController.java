@@ -68,7 +68,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
 	public String Basket(Model model) {
-		model.addAttribute("currentPage", "Basket.jsp");
+		//model.addAttribute("currentPage", "Basket.jsp");
 		return "Basket";
 	}
 

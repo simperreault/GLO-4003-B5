@@ -36,7 +36,7 @@
 							<a href="${ticketUrl}">Details</a>
 						</td>
 						<td>
-							<a href="">Ajouter au panier</a>
+							<a href="/ticket/addBasket/${ticket.event.id}/${ticket.id}">Ajouter au panier</a>
 						</td>
 				<c:if test="${sesacceslevel == 'Admin'}">		
 						<td>
@@ -47,6 +47,7 @@
 			</tbody>
 		</table>
 	</div>
+	<p style="color:red;"> 
 	<c:if test="${sesacceslevel == 'Admin'}">
 	<div class="row">
 		<a href="<c:url value="/ticket/add/${eventID}" />" class="col-lg-offset=2 btn btn-primary">Ajouter un billet</a>

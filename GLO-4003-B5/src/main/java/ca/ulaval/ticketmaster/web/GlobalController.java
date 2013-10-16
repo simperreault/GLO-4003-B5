@@ -1,6 +1,7 @@
 package ca.ulaval.ticketmaster.web;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,13 @@ public class GlobalController {
 	public boolean isAdmin(HttpSession session) {
 		if (session.getAttribute("sesacceslevel") == "Admin")
 			return true;
+		return false;
+	}
+	public boolean isLogged(HttpSession session){
+		if (session.getAttribute("sesacceslevel") != null)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -114,9 +122,9 @@ public class GlobalController {
 	}
 
 	public String disconnect(HttpSession session) {
-
-		session.setAttribute("sesacceslevel", null);
-		session.setAttribute("sesusername", null);
+		session.invalidate();
+	//	session.setAttribute("sesacceslevel", null);
+		//session.setAttribute("sesusername", null);
 		// TODO changer pour current page
 		return Page.Home.toString();
 	}
@@ -221,7 +229,29 @@ public class GlobalController {
 	}
 	public String deleteTicket(String eventId,String ticketId, HttpSession session){
 		datamanager.deleteTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-		return "redirect:/event/{" + eventId +"}";
+		 return "redirect:/event/" + eventId;
 		
+	}
+	@SuppressWarnings("unchecked")// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas trouvé de solution pour enlever le warning
+	public String addToBasket(String eventId,String ticketId,Model model, HttpSession session){
+		if (isLogged(session))
+		{
+			ArrayList<Ticket> list;
+			if (session.getAttribute("basket") != null)
+			{
+				list = (ArrayList<Ticket>)session.getAttribute("basket");
+				model.addAttribute("msg", "old array");
+			}else //le panier est vide
+			{
+				 list=  new ArrayList<Ticket>();
+					model.addAttribute("msg", "New array");
+			}
+			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+			session.setAttribute("basket", list);
+		}else{
+			model.addAttribute("msg", "Veuillez vous connecter pour acheter des billets");
+			//TODO coder un message qui demande de se logger
+		}
+		return "redirect:/event/" + eventId;
 	}
 }

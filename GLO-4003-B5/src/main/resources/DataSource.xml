@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="3">
-  <Event id="beb3d3e7-793a-4574-a20f-80d1f709530b" open="false" ticketsAvailable="0" ticketsTotal="0">
-      <SectionList/>
-      <Sport gender="Masculin" name="FOOTBALL"/>
-      <Teams home="ULAVAL" visitors="BISHOP"/>
-      <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
-      <TicketList/>
-    </Event>
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="1" ticketsTotal="1">
+	<EventList total="2">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="6" ticketsTotal="6">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
       <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
       <TicketList>
-        <Ticket id="0c697585-ad0b-4536-bcc8-19671e9fa99b" owner="admin" price="12.0" resellPrice="12.0" seat="" section="A" type="SIMPLE"/>
+      <Ticket id="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="ab1ac354-be29-4c06-800d-6987f9c8a76f" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="d2b5c3f8-312d-4fcf-9a36-725e5f543518" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       </TicketList>
     </Event>
   <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="2" ticketsTotal="2">
