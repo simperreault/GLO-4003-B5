@@ -50,11 +50,9 @@ public class EventControllerTest {
         list.add(new Event());
         list.add(new Event());
         when(datamanager.findAllEvents()).thenReturn(list);
-//TODO fix the test add https session like this  //String view = controller.list(model, null);
-        //String view = controller.list(model);
-
+        String view = controller.list(model);
         assertEquals(((List<Event>) model.get("EventList")).size(), 3);
-      //  assertEquals(view, "EventList");
+       assertEquals(view, "EventList");
     }
 
     /*
@@ -95,7 +93,7 @@ public class EventControllerTest {
 
     @Test
     public void createReturnsTheCreateView() {
-    	//TODO fix the test add https session like this  String view = controller.create(model);
+    	//TODO fix the test add https session like this  String view = controller.create(model,Http Session);
 
       //  assertEquals(view, "EventAdd");
     }

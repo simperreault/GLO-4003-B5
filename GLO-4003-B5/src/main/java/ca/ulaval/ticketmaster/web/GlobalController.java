@@ -121,20 +121,20 @@ public class GlobalController {
 		return Page.Home.toString();
 	}
 
-	public String list(Model model, HttpSession session) {
+	public String list(Model model) {
 		// System.out.println("/list elem count : " +
 		// datamanager.findAllEvents().size());
 		model.addAttribute("EventList", datamanager.findAllEvents());
 		return Page.EventList.toString();
 	}
 
-	public String getTickedEvent(String idEvent, Model model, HttpSession session) {
+	public String getTickedEvent(String idEvent, Model model) {
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
 		return Page.TicketList.toString();
 	}
 
-	public String getTickedEvent(String idEvent1, String idEvent2, Model model, HttpSession session) {
+	public String getTickedEvent(String idEvent1, String idEvent2, Model model) {
 		model.addAttribute("ticket", datamanager.findTicket(UUID.fromString(idEvent1), UUID.fromString(idEvent2)));
 		return Page.Detail.toString();
 	}
@@ -179,7 +179,7 @@ public class GlobalController {
 			return Page.Error403.toString();
 		}
 	}
-	public String deleteEvent(String eventId, HttpSession session){
+	public String deleteEvent(String eventId){
 		datamanager.deleteEvent(UUID.fromString(eventId));
 		return "redirect:/event/list";
 	}

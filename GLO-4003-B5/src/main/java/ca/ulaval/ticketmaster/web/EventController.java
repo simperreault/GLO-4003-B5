@@ -29,18 +29,18 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, HttpSession session) {
-		return controller.list(model, session);
+	public String list(Model model) {
+		return controller.list(model);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable String id, Model model, HttpSession session) {
-		return controller.getTickedEvent(id, model, session);
+	public String Event(@PathVariable String id, Model model) {
+		return controller.getTickedEvent(id, model);
 	}
 
 	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
-	public String detail(@PathVariable String id1, @PathVariable String id2, Model model, HttpSession session) {
-		return controller.getTickedEvent(id1, id2, model, session);
+	public String detail(@PathVariable String id1, @PathVariable String id2, Model model ) {
+		return controller.getTickedEvent(id1, id2, model);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class EventController {
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable String id, Model model,HttpSession session) {
-		return controller.deleteEvent(id, session);
+		return controller.deleteEvent(id);
 	}
 
 }
