@@ -7,12 +7,15 @@ import static org.mockito.Mockito.when;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
@@ -41,7 +44,10 @@ public class TicketControllerTest {
 
     @Test
     public void createAddANewViewModelToTheModel() {
-	controller.create(DEFAULT_EVENT_ID.toString(), model);
+    	
+    	HttpSession httpSession = new MockHttpSession();
+    	
+	controller.create(DEFAULT_EVENT_ID.toString(), model, httpSession);
 
 	assertNotNull(model.get("ticket"));
 	assertNotNull(((TicketViewModel) model.get("ticket")).getEvent());
@@ -50,7 +56,10 @@ public class TicketControllerTest {
 
     @Test
     public void createReturnsTheCreateView() {
-	String view = controller.create(DEFAULT_EVENT_ID.toString(), model);
+    	
+    	HttpSession httpSession = new MockHttpSession();
+    	
+	String view = controller.create(DEFAULT_EVENT_ID.toString(), model, httpSession);
 
 	assertEquals(view, "TicketAdd");
     }
@@ -63,8 +72,10 @@ public class TicketControllerTest {
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
 	when(datamanager.saveTicket(TicketFactory.CreateTicket())).thenReturn(true);
+	
+	HttpSession httpSession = new MockHttpSession();
 
-	String redirect = controller.create(DEFAULT_EVENT_ID.toString(), viewModel, result, model);
+	String redirect = controller.create(DEFAULT_EVENT_ID.toString(), viewModel, result, model, httpSession);
 
 	assertEquals("redirect:/event/" + DEFAULT_EVENT_ID, redirect);
     }
