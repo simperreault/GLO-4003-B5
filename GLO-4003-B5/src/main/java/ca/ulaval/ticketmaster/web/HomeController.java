@@ -52,10 +52,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
 	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model, HttpSession session) {
-		System.out.println("CREATEUSER:POST:CONTROLLER");
-		String ret = domaine.createUser(UserConverter.convert(viewmodel), viewmodel, model, result, session);
-		System.out.println("RETPOST = " + ret);
-		return ret;
+		
+		return domaine.createUser(UserConverter.convert(viewmodel), viewmodel, model, result, session);
 	}
 
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
