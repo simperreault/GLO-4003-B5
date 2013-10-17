@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAAuthentication;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAUser;
 import ca.ulaval.ticketmaster.web.converter.UserConverter;
@@ -42,14 +43,19 @@ public class HomeController {
 
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.GET)
 	public String CreateUser(Model model) {
+		
 		model.addAttribute("user", new UserViewModel());
+		model.addAttribute("typeList", TicketType.values());
 		
 		return "CreateUser";
 	}
 
 	@RequestMapping(value = "/CreateUser", method = RequestMethod.POST)
 	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model, HttpSession session) {
-		return domaine.createUser(UserConverter.convert(viewmodel), viewmodel, model, result, session);
+		System.out.println("CREATEUSER:POST:CONTROLLER");
+		String ret = domaine.createUser(UserConverter.convert(viewmodel), viewmodel, model, result, session);
+		System.out.println("RETPOST = " + ret);
+		return ret;
 	}
 
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)

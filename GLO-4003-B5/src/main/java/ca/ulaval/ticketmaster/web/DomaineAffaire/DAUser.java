@@ -18,7 +18,7 @@ public class DAUser {
 		datamanager = new DataManager();
 	}
 public String createUser(User user,UserViewModel viewmodel, Model model,BindingResult result, HttpSession session) {
-		
+		System.out.println("createUser");
 	  	if (result.hasErrors()) {
     		System.out.println("CreateUser:POST:ERRORS");
     		model.addAttribute("user", viewmodel);
@@ -26,12 +26,15 @@ public String createUser(User user,UserViewModel viewmodel, Model model,BindingR
     	    model.addAttribute("error", result.getAllErrors());
     	    return "CreateUser";
     	}
+	  	System.out.println("createUser2");
 		if (datamanager.saveUser(user)) {
+		  	System.out.println("createUser2::saved");
 			model.addAttribute("message", "Utilisateur ajoute");
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 			session.setAttribute("sesusername", user.getUsername());
 			return Page.Home.toString();
 		} else {
+		  	System.out.println("createUser2::unsaved");
 			//Complexe : soit on passe d'une certaine facon le XMLReader au Validator,
 			// soit on fait la validation ici
 			
@@ -44,7 +47,7 @@ public String createUser(User user,UserViewModel viewmodel, Model model,BindingR
     		model.addAttribute("user", viewmodel);
     		model.addAttribute("typeList", TicketType.values());
     		model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
-			return Page.Home.toString();
+    	    return "CreateUser";
 		}
 
 	}
