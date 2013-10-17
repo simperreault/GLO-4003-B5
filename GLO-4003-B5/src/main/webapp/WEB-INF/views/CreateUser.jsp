@@ -11,7 +11,7 @@
 		</c:forEach>
 	</p>
 
-	<form:form method="post" class="form-horizontal" action="connect">
+	<form:form method="post" class="form-horizontal" action="connect" modelAttribute="user">
 		<table>
 			<tr>
 				<td>Nom d'utilisateur :</td>
