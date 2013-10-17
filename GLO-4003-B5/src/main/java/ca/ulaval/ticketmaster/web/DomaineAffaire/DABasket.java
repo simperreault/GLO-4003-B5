@@ -12,64 +12,53 @@ import ca.ulaval.ticketmaster.model.Ticket;
 
 public class DABasket {
 	private DataManager datamanager;
+
 	public DABasket() {
 		datamanager = new DataManager();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public String addToBasket(String eventId,String ticketId,Model model, HttpSession session){
-		if (DAAuthentication.isLogged(session))
-		{
+	public String addToBasket(String eventId, String ticketId, Model model, HttpSession session) {
+		if (DAAuthentication.isLogged(session)) {
 			ArrayList<Ticket> list;
-			if (session.getAttribute("basket") != null)
-			{
-				// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas trouvé de solution pour enlever le warning
-				list = (ArrayList<Ticket>)session.getAttribute("basket");
+			if (session.getAttribute("basket") != null) {
+				// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
+				// trouvé de solution pour enlever le warning
+				list = (ArrayList<Ticket>) session.getAttribute("basket");
 				model.addAttribute("msg", "old array");
-			}else //le panier est vide
+			} else // le panier est vide
 			{
-				 list=  new ArrayList<Ticket>();
-					model.addAttribute("msg", "New array");
+				list = new ArrayList<Ticket>();
+				model.addAttribute("msg", "New array");
 			}
 			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
 			session.setAttribute("basket", list);
-		}else{
+		} else {
 			model.addAttribute("msg", "Veuillez vous connecter pour acheter des billets");
-			//TODO coder un message qui demande de se logger
+			// TODO coder un message qui demande de se logger
 		}
 		return "redirect:/event/" + eventId;
-		
-	}
-	
-	@SuppressWarnings("unchecked")
-	public String removeFromBasket(String eventId,String ticketId,Model model, HttpSession session){
 
-		if (session.getAttribute("basket") != null)
-		{
-		
-			ArrayList<Ticket> list = (ArrayList<Ticket>)session.getAttribute("basket");
+	}
+
+	@SuppressWarnings("unchecked")
+	public String removeFromBasket(String eventId, String ticketId, Model model, HttpSession session) {
+
+		// isFound = true;
+		if (session.getAttribute("basket") != null) {
+			ArrayList<Ticket> list = (ArrayList<Ticket>) session.getAttribute("basket");
 			int i = 0;
 			boolean isFound = false;
-			while (i < list.size() && !isFound)
-			{
-				if (list.get(i).getId().toString() == ticketId)
-				{
+			while (i < list.size() && !isFound) {
+				if (list.get(i).getId().toString().equals(ticketId)) {
 					isFound = true;
-					while (!isFound && i < list.size()){		
-						if(list.get(i).getId().toString() == eventId)
-						{
-							list.remove(i);
-							session.setAttribute("basket", list);
-							isFound = true;
-						}
-						++i;
-					}
-					
+					list.remove(i);
+					session.setAttribute("basket", list);
 				}
 				++i;
 			}
-			list.remove(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+
 		}
-			return "redirect:/Basket";		
+		return "redirect:/Basket";
 	}
 }
