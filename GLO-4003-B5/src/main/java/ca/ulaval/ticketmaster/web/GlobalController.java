@@ -19,6 +19,7 @@ import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.converter.EventConverter;
 import ca.ulaval.ticketmaster.web.converter.TicketConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.web.viewmodels.SearchViewModel;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
@@ -39,17 +40,18 @@ public class GlobalController {
 	}
 
 	private DataManager datamanager;
-	
+
 	public GlobalController() {
 		datamanager = new DataManager();
 		// this.session = session;
 
 	}
+
 	private String setCurrent(String page,HttpSession session)
 	{
 		session.setAttribute("currentPage",page);
 		return page;
-		
+
 	}
 	public boolean isAdmin(HttpSession session) {
 		if (session.getAttribute("sesacceslevel") == "Admin")
@@ -65,14 +67,14 @@ public class GlobalController {
 	}
 
 	public String createUser(User user,UserViewModel viewmodel, Model model,BindingResult result, HttpSession session) {
-		
-	  	if (result.hasErrors()) {
-    		System.out.println("CreateUser:POST:ERRORS");
-    		model.addAttribute("user", viewmodel);
-    		model.addAttribute("typeList", TicketType.values());
-    	    model.addAttribute("error", result.getAllErrors());
-    	    return "CreateUser";
-    	}
+
+		if (result.hasErrors()) {
+			System.out.println("CreateUser:POST:ERRORS");
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("error", result.getAllErrors());
+			return "CreateUser";
+		}
 		if (datamanager.saveUser(user)) {
 			model.addAttribute("message", "Utilisateur ajoute");
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
@@ -81,16 +83,16 @@ public class GlobalController {
 		} else {
 			//Complexe : soit on passe d'une certaine facon le XMLReader au Validator,
 			// soit on fait la validation ici
-			
+
 			//model.addAttribute("message", "Utilisateur deja present");
-    		//model.addAttribute("error", "Utilisateur deja present");
+			//model.addAttribute("error", "Utilisateur deja present");
 			result.addError(new ObjectError("user", "Utilisateur deja existant"));
-			
-    	    model.addAttribute("error", result.getAllErrors());
-    	    
-    		model.addAttribute("user", viewmodel);
-    		model.addAttribute("typeList", TicketType.values());
-    		model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
+
+			model.addAttribute("error", result.getAllErrors());
+
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
 			return Page.Home.toString();
 		}
 
@@ -123,17 +125,10 @@ public class GlobalController {
 
 	public String disconnect(HttpSession session) {
 		session.invalidate();
-	//	session.setAttribute("sesacceslevel", null);
+		//	session.setAttribute("sesacceslevel", null);
 		//session.setAttribute("sesusername", null);
 		// TODO changer pour current page
 		return Page.Home.toString();
-	}
-
-	public String list(Model model) {
-		// System.out.println("/list elem count : " +
-		// datamanager.findAllEvents().size());
-		model.addAttribute("EventList", datamanager.findAllEvents());
-		return Page.EventList.toString();
 	}
 
 	public String getTickedEvent(String idEvent, Model model) {
@@ -147,19 +142,33 @@ public class GlobalController {
 		return Page.Detail.toString();
 	}
 
+	public String list(Model model) {
+		model.addAttribute("search", new SearchViewModel());
+		model.addAttribute("sportList", SportType.values());
+		model.addAttribute("EventList", datamanager.findAllEvents());
+		return Page.EventList.toString();
+	}
+
+	public String search(SearchViewModel viewModel, BindingResult result, Model model) {
+		model.addAttribute("search", viewModel);
+		model.addAttribute("sportList", SportType.values());
+		model.addAttribute("EventList", datamanager.SearchWithCriterias(viewModel.sport, viewModel.days, viewModel.team));
+		return Page.EventList.toString();
+	}
+	
 	public String getAddEvent(Model model, HttpSession session)
 	{
 		if (isAdmin(session))
 		{
-		model.addAttribute("event", new EventViewModel());
-		model.addAttribute("sportList", SportType.values());
-		return Page.EventAdd.toString();
+			model.addAttribute("event", new EventViewModel());
+			model.addAttribute("sportList", SportType.values());
+			return Page.EventAdd.toString();
 		}else{
-			
+
 			return Page.Error403.toString();
 		}
 	}
-	
+
 	public String addEvent(EventViewModel viewmodel,BindingResult result,Model model, HttpSession session)
 	{
 		if (isAdmin(session))
@@ -170,7 +179,7 @@ public class GlobalController {
 				model.addAttribute("event", viewmodel);
 				return Page.EventAdd.toString();
 			}
-			
+
 			try {
 				Event event = EventConverter.convert(viewmodel, datamanager);
 				datamanager.saveEvent(event);
@@ -182,7 +191,7 @@ public class GlobalController {
 				return Page.EventAdd.toString();
 			}
 			return "redirect:/event/list";
-			
+
 		}else{
 			return Page.Error403.toString();
 		}
@@ -191,46 +200,46 @@ public class GlobalController {
 		datamanager.deleteEvent(UUID.fromString(eventId));
 		return "redirect:/event/list";
 	}
-	
+
 	public String getAddTicket(String eventId, Model model, HttpSession session)
 	{
 		if (isAdmin(session))
 		{
 			model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
 			model.addAttribute("ticketlist", TicketType.values());
-		return Page.TicketAdd.toString();
+			return Page.TicketAdd.toString();
 		}else{
-			
+
 			return Page.Error403.toString();
 		}
 	}
-	
+
 	public String addTicket(String eventId, TicketViewModel viewmodel, BindingResult result,Model model, HttpSession session)
 	{
 		if (isAdmin(session))
 		{
 			if (result.hasErrors()) {
-			    model.addAttribute("error", result.getAllErrors());
-			    model.addAttribute("ticket", viewmodel);
-			    model.addAttribute("ticketlist", TicketType.values());
-			    return Page.TicketAdd.toString();
+				model.addAttribute("error", result.getAllErrors());
+				model.addAttribute("ticket", viewmodel);
+				model.addAttribute("ticketlist", TicketType.values());
+				return Page.TicketAdd.toString();
 			}
 
 			viewmodel.setEvent(datamanager.findEvent(UUID.fromString(eventId)));
 			for (int i = 0; i < viewmodel.howMany; ++i) {
-			    Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
-			    datamanager.saveTicket(ticket); // TODO What if save failed ?
+				Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
+				datamanager.saveTicket(ticket); // TODO What if save failed ?
 			}
 			return "redirect:/event/" + eventId;
-			
+
 		}else{
 			return Page.Error403.toString();
 		}
 	}
 	public String deleteTicket(String eventId,String ticketId, HttpSession session){
 		datamanager.deleteTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-		 return "redirect:/event/" + eventId;
-		
+		return "redirect:/event/" + eventId;
+
 	}
 	@SuppressWarnings("unchecked")// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas trouvé de solution pour enlever le warning
 	public String addToBasket(String eventId,String ticketId,Model model, HttpSession session){
@@ -243,8 +252,8 @@ public class GlobalController {
 				model.addAttribute("msg", "old array");
 			}else //le panier est vide
 			{
-				 list=  new ArrayList<Ticket>();
-					model.addAttribute("msg", "New array");
+				list=  new ArrayList<Ticket>();
+				model.addAttribute("msg", "New array");
 			}
 			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
 			session.setAttribute("basket", list);
