@@ -65,10 +65,13 @@ public class HomeControllerTest {
 
     @Test
     public void testCreateUserPOST() {
+    	
+    	HttpSession httpSession = new MockHttpSession();
+    	
 	UserViewModel viewModel = new UserViewModel();
 	viewModel.setUsername("bob");
 
-	String ret = controller.CreateUser(viewModel, null, model);
+	String ret = controller.CreateUser(viewModel, null, model, httpSession);
 
 
 	assertEquals(model.get("username"), viewModel.getUsername());
@@ -172,7 +175,10 @@ public class HomeControllerTest {
     
     @Test
     public void testBasket() {
-    	String ret = controller.Basket(model);
+    	
+    	HttpSession httpSession = new MockHttpSession();
+    	
+    	String ret = controller.Basket(model, httpSession);
     	
     	assertEquals(model.get("currentPage"), "Basket.jsp");
 
