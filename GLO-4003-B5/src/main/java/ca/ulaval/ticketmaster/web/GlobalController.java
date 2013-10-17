@@ -25,7 +25,7 @@ import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 public class GlobalController {
 	public enum Page {
 		//TODO coder une page erreur 403
-		Home("Home"),Error403("Home"), CUser("CreateUser"), EventList("EventList"), TicketList("TicketList"), Detail("detail"),EventAdd("EventAdd"),TicketAdd("TicketAdd");
+		Home("Home"),Error403("Home"), CUser("CreateUser"), EventList("EventList"), TicketList("TicketList"), Detail("detail"),EventAdd("EventAdd"),TicketAdd("TicketAdd"),Basket("Basket");
 		private final String name;
 
 		Page(String str) {
@@ -232,13 +232,14 @@ public class GlobalController {
 		 return "redirect:/event/" + eventId;
 		
 	}
-	@SuppressWarnings("unchecked")// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas trouvé de solution pour enlever le warning
+	@SuppressWarnings("unchecked")
 	public String addToBasket(String eventId,String ticketId,Model model, HttpSession session){
 		if (isLogged(session))
 		{
 			ArrayList<Ticket> list;
 			if (session.getAttribute("basket") != null)
 			{
+				// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas trouvé de solution pour enlever le warning
 				list = (ArrayList<Ticket>)session.getAttribute("basket");
 				model.addAttribute("msg", "old array");
 			}else //le panier est vide
@@ -253,5 +254,37 @@ public class GlobalController {
 			//TODO coder un message qui demande de se logger
 		}
 		return "redirect:/event/" + eventId;
+		
+	}
+	@SuppressWarnings("unchecked")
+	public String removeFromBasket(String eventId,String ticketId,Model model, HttpSession session){
+
+		if (session.getAttribute("basket") != null)
+		{
+		
+			ArrayList<Ticket> list = (ArrayList<Ticket>)session.getAttribute("basket");
+			int i = 0;
+			boolean isFound = false;
+			while (i < list.size() && !isFound)
+			{
+				if (list.get(i).getId().toString() == ticketId)
+				{
+					isFound = true;
+					while (!isFound && i < list.size()){		
+						if(list.get(i).getId().toString() == eventId)
+						{
+							list.remove(i);
+							session.setAttribute("basket", list);
+							isFound = true;
+						}
+						++i;
+					}
+					
+				}
+				++i;
+			}
+			list.remove(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+		}
+			return "redirect:/Basket";		
 	}
 }

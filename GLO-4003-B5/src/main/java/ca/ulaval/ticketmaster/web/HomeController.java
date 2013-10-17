@@ -67,9 +67,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
-	public String Basket(Model model) {
-		//model.addAttribute("currentPage", "Basket.jsp");
-		return "Basket";
+	public String Basket(Model model, HttpSession session) {
+		// model.addAttribute("currentPage", "Basket.jsp");
+		if (controller.isLogged(session))
+			return "Basket";
+		else
+			return "Home";
 	}
 
 }

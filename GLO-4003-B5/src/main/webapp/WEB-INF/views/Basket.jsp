@@ -42,14 +42,11 @@
 							<a href="${ticketUrl}">Details</a>
 						</td>
 						<td>
-							<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer du panier</a>
+							<a href="/ticket/deleteBasket/${ticket.event.id}/${ticket.id}">Retirer du panier</a>
 						</td>
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	<div class="row">
-		<a href="<c:url value="/ticket/add/${eventID}" />" class="btn">Acheter</a>
 	</div>
 </div>
 </body>
