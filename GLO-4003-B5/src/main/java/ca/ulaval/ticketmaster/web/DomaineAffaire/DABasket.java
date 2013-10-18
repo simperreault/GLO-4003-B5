@@ -16,6 +16,7 @@ public class DABasket {
 	public DABasket() {
 		datamanager = new DataManager();
 	}
+
 	// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
 	// trouvé de solution pour enlever le warning
 	@SuppressWarnings("unchecked")
@@ -23,7 +24,7 @@ public class DABasket {
 		if (DAAuthentication.isLogged(session)) {
 			ArrayList<Ticket> list;
 			if (session.getAttribute("basket") != null) {
-			
+
 				list = (ArrayList<Ticket>) session.getAttribute("basket");
 				model.addAttribute("msg", "old array");
 			} else // le panier est vide
@@ -60,5 +61,20 @@ public class DABasket {
 
 		}
 		return "redirect:/Basket";
+	}
+
+	@SuppressWarnings("unchecked")
+	public String copyToBasket(String eventId, String ticketId, HttpSession session) {
+		if (DAAuthentication.isLogged(session)) {
+			ArrayList<Ticket> list;
+			if (session.getAttribute("basket") != null) {
+				list = (ArrayList<Ticket>) session.getAttribute("basket");
+				list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+				session.setAttribute("basket", list);
+			}
+
+		} 
+		return "redirect:/Basket";
+
 	}
 }

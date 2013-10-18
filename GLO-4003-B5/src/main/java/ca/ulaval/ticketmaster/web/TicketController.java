@@ -55,4 +55,9 @@ public class TicketController {
 	public String removeFromBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model, HttpSession session) {
 		return basket.removeFromBasket(eventId, ticketId, model, session);
 	}
+	@RequestMapping(value = "/copyBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
+	public String copyToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model, HttpSession session) {
+		return basket.copyToBasket(eventId, ticketId, session);
+	}
+	
 }

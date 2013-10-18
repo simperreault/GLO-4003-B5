@@ -21,7 +21,9 @@
 					<th>Endroit</th>
 					<th>Type</th>
 					<th>Prix</th>
-					<th>Nombre</th>
+					<th></th>
+					<th></th>
+					<th>Ajouter</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -45,7 +47,7 @@
 						<td>
 							<a href="/ticket/deleteBasket/${ticket.event.id}/${ticket.id}">Retirer du panier</a>
 						</td>
-						<td><a href="">-</a> 1 <a href="">+</a></td>
+						<td><a href="/ticket/copyBasket/${ticket.event.id}/${ticket.id}">Ajouter un Billet Similaire</a></td>
 				</c:forEach>
 			</tbody>
 		</table>
