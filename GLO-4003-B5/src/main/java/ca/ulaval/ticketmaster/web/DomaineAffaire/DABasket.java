@@ -16,14 +16,14 @@ public class DABasket {
 	public DABasket() {
 		datamanager = new DataManager();
 	}
-
+	// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
+	// trouvé de solution pour enlever le warning
 	@SuppressWarnings("unchecked")
 	public String addToBasket(String eventId, String ticketId, Model model, HttpSession session) {
 		if (DAAuthentication.isLogged(session)) {
 			ArrayList<Ticket> list;
 			if (session.getAttribute("basket") != null) {
-				// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
-				// trouvé de solution pour enlever le warning
+			
 				list = (ArrayList<Ticket>) session.getAttribute("basket");
 				model.addAttribute("msg", "old array");
 			} else // le panier est vide

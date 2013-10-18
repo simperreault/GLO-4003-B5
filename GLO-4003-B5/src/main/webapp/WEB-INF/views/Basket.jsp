@@ -21,6 +21,7 @@
 					<th>Endroit</th>
 					<th>Type</th>
 					<th>Prix</th>
+					<th>Nombre</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -44,6 +45,7 @@
 						<td>
 							<a href="/ticket/deleteBasket/${ticket.event.id}/${ticket.id}">Retirer du panier</a>
 						</td>
+						<td><a href="">-</a> 1 <a href="">+</a></td>
 				</c:forEach>
 			</tbody>
 		</table>
