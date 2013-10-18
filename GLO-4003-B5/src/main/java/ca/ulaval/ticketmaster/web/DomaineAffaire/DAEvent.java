@@ -2,8 +2,8 @@ package ca.ulaval.ticketmaster.web.DomaineAffaire;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -32,11 +32,7 @@ public class DAEvent {
 		model.addAttribute("EventList", datamanager.findAllEvents());
 
 		//model.addAttribute("teamList", datamanager.getTeamList());
-		ArrayList<String> teamList = new ArrayList<String>();
-		teamList.add("SIMON TEAM");
-		teamList.add("BEN TEAM");
-		teamList.add("BIRU TEAM");
-		teamList.add("BISHOP");
+		List<String> teamList = datamanager.GetAllTeams();
 		model.addAttribute("teamList", teamList);
 				
 		LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
@@ -103,11 +99,7 @@ public class DAEvent {
 		model.addAttribute("search", viewModel);
 		model.addAttribute("sportList", SportType.values());
 		//model.addAttribute("teamList", datamanager.getTeamList());
-		ArrayList<String> teamList = new ArrayList<String>();
-		teamList.add("SIMON TEAM");
-		teamList.add("BEN TEAM");
-		teamList.add("BIRU TEAM");
-		teamList.add("BISHOP");
+		List<String> teamList = datamanager.GetAllTeams();
 		model.addAttribute("teamList", teamList);
 		
 		LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();

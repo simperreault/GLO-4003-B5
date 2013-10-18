@@ -8,16 +8,14 @@ package ca.ulaval.ticketmaster.dao.util;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
-
-
-
-
 
 
 
@@ -243,6 +241,16 @@ public class DataManager {
 			_list = this.filterTeam(_team, _list);
 		}
 		return _list;
+	}
+	
+	
+	public List<String> GetAllTeams(){
+		Set<String> returnSet = new HashSet<String>();
+		for(Event e : findAllEvents()){
+			returnSet.add(e.getHomeTeam());
+			returnSet.add(e.getVisitorsTeam());
+		}
+		return new ArrayList<String>(returnSet);
 	}
 	
 
