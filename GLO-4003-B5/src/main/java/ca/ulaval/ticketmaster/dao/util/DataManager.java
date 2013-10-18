@@ -239,7 +239,7 @@ public class DataManager {
 		if (_days != 0){
 			_list = this.filterDates(_days, _list);
 		}
-		if (_team != null){
+		if (_team != null && !_team.isEmpty()){
 			_list = this.filterTeam(_team, _list);
 		}
 		return _list;

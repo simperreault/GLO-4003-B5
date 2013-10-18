@@ -34,21 +34,14 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) { // @RequestParam("sportType") String sportType,
-		System.out.println("getParam");
-		/**String sportType = null;
-		if (sportType != null) {
-			System.out.println("avec sport");
-			return controller.search(model, sportType);
-		}
-		else
-		{
-			System.out.println("pas de sport");
-			System.out.println( controller.list(model));
-		}**/
-			
-			return controller.list(model);
-		//return domaine.getEventList(model);
+	public String list(Model model) { // @RequestParam("sportType") String sportType,			
+		return domaine.getEventList(model);
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public String list(SearchViewModel viewmodel, Model model) { // @RequestParam("sportType") String sportType,
+		System.out.println(viewmodel.getTeam());
+		return domaine.search(viewmodel, model);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
