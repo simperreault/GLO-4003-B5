@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import ca.ulaval.ticketmaster.model.enums.SportType;
 
 public class Event {

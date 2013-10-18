@@ -1,3 +1,4 @@
+
 package ca.ulaval.ticketmaster.web.DomaineAffaire;
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ public class DABasket {
 		if (DAAuthentication.isLogged(session)) {
 			ArrayList<Ticket> list;
 			if (session.getAttribute("basket") != null) {
-
 				list = (ArrayList<Ticket>) session.getAttribute("basket");
 				model.addAttribute("msg", "old array");
 			} else // le panier est vide

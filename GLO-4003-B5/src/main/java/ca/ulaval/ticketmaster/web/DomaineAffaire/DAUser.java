@@ -20,13 +20,15 @@ public class DAUser {
 public String createUser(User user,UserViewModel viewmodel, Model model,BindingResult result, HttpSession session) {
 		
 	  	if (result.hasErrors()) {
-    		System.out.println("CreateUser:POST:ERRORS");
+
     		model.addAttribute("user", viewmodel);
     		model.addAttribute("typeList", TicketType.values());
     	    model.addAttribute("error", result.getAllErrors());
     	    return "CreateUser";
     	}
+
 		if (datamanager.saveUser(user)) {
+
 			model.addAttribute("message", "Utilisateur ajoute");
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 			session.setAttribute("sesusername", user.getUsername());
@@ -44,7 +46,7 @@ public String createUser(User user,UserViewModel viewmodel, Model model,BindingR
     		model.addAttribute("user", viewmodel);
     		model.addAttribute("typeList", TicketType.values());
     		model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
-			return Page.Home.toString();
+    	    return "CreateUser";
 		}
 
 	}

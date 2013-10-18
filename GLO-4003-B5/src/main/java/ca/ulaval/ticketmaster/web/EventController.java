@@ -1,5 +1,6 @@
 package ca.ulaval.ticketmaster.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -9,10 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAEvent;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DATicket;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.web.viewmodels.SearchViewModel;
 
 /**
  * Handles requests for the application related to Event
@@ -31,8 +34,14 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(Model model) { // @RequestParam("sportType") String sportType,			
 		return domaine.getEventList(model);
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public String list(SearchViewModel viewmodel, Model model) { // @RequestParam("sportType") String sportType,
+		System.out.println(viewmodel.getTeam());
+		return domaine.search(viewmodel, model);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -47,7 +56,6 @@ public class EventController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String create(Model model, HttpSession session) {
-
 		return domaine.getAddEvent(model, session);
 	}
 
