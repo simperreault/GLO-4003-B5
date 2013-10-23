@@ -7,8 +7,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,9 +42,10 @@ public class TicketControllerTest {
 
     @Test
     public void createAddANewViewModelToTheModel() {
-    	
-    	HttpSession httpSession = new MockHttpSession();
-    	
+
+	MockHttpSession httpSession = new MockHttpSession();
+	httpSession.setAttribute("sesacceslevel", "Admin");
+
 	controller.create(DEFAULT_EVENT_ID.toString(), model, httpSession);
 
 	assertNotNull(model.get("ticket"));
@@ -56,9 +55,10 @@ public class TicketControllerTest {
 
     @Test
     public void createReturnsTheCreateView() {
-    	
-    	HttpSession httpSession = new MockHttpSession();
-    	
+
+	MockHttpSession httpSession = new MockHttpSession();
+	httpSession.setAttribute("sesacceslevel", "Admin");
+
 	String view = controller.create(DEFAULT_EVENT_ID.toString(), model, httpSession);
 
 	assertEquals(view, "TicketAdd");
@@ -72,10 +72,12 @@ public class TicketControllerTest {
 	BindingResult result = mock(BindingResult.class);
 	when(result.hasErrors()).thenReturn(false);
 	when(datamanager.saveTicket(TicketFactory.CreateTicket())).thenReturn(true);
-	
-	HttpSession httpSession = new MockHttpSession();
 
-	String redirect = controller.create(DEFAULT_EVENT_ID.toString(), viewModel, result, model, httpSession);
+	MockHttpSession httpSession = new MockHttpSession();
+	httpSession.setAttribute("sesacceslevel", "Admin");
+
+	String redirect = controller.create(DEFAULT_EVENT_ID.toString(), viewModel, result, model,
+		httpSession);
 
 	assertEquals("redirect:/event/" + DEFAULT_EVENT_ID, redirect);
     }

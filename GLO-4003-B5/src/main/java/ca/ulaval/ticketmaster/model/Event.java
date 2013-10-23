@@ -12,8 +12,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import ca.ulaval.ticketmaster.model.enums.SportType;
 
 public class Event {
@@ -210,7 +208,7 @@ public class Event {
 	for (Iterator<Ticket> it = this.ticketList.iterator(); it.hasNext();) {
 	    Ticket itTicket = it.next();
 	    if (itTicket.getId().equals(_ticketId)) {
-	    	ticket = itTicket;
+		ticket = itTicket;
 	    }
 	}
 	if (ticket != null) {

@@ -154,18 +154,18 @@ public class User {
 	this.favLocation = favLocation;
     }
 
-    //Semble pas utilisee...
-    //@TODO enlever ? ou sinon au moins renommer
-//    public void changeValuesFromUserObject(User _user) {
-//	password = _user.getPassword();
-//	firstName = _user.getFirstName();
-//	lastName = _user.getLastName();
-//	email = _user.getEmail();
-//	accessLevel = _user.getAccessLevel();
-//	favSport = _user.getFavSport();
-//	favGender = _user.getFavGender();
-//	favType = _user.getFavType();
-//	favLocation = _user.getFavLocation();
-//    }
+    // Semble pas utilisee...
+    // @TODO enlever ? ou sinon au moins renommer
+    // public void changeValuesFromUserObject(User _user) {
+    // password = _user.getPassword();
+    // firstName = _user.getFirstName();
+    // lastName = _user.getLastName();
+    // email = _user.getEmail();
+    // accessLevel = _user.getAccessLevel();
+    // favSport = _user.getFavSport();
+    // favGender = _user.getFavGender();
+    // favType = _user.getFavType();
+    // favLocation = _user.getFavLocation();
+    // }
 
 }

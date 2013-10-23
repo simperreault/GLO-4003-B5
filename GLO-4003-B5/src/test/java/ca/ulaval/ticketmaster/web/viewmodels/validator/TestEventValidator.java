@@ -44,22 +44,22 @@ public class TestEventValidator {
 	event.date = "1asd0/10/1010 10:10";
 	Set<ConstraintViolation<EventViewModel>> constraintViolations = validator.validate(event);
 	assertEquals(1, constraintViolations.size());
-	
+
 	event.date = "10/10asdasd/1010 10:10";
 	constraintViolations = validator.validate(event);
 	assertEquals(1, constraintViolations.size());
-	
+
 	event.date = "10/10/10s10 10:10123s";
 	constraintViolations = validator.validate(event);
 	assertEquals(1, constraintViolations.size());
     }
-    
+
     @Test
     public void testGenderNotValid() {
 	event.gender = "Q";
 	Set<ConstraintViolation<EventViewModel>> constraintViolations = validator.validate(event);
 	assertEquals(1, constraintViolations.size());
-	
+
 	event.gender = "2";
 	constraintViolations = validator.validate(event);
 	assertEquals(1, constraintViolations.size());

@@ -14,7 +14,7 @@ public class TicketViewModel {
     public String section = "";
     @NotEmpty(message = "'Siège' ne doit pas etre vide.")
     public String seat = "";
-    //@NotEmpty(message = "'Propriétaire' ne doit pas etre vide.")
+    // @NotEmpty(message = "'Propriétaire' ne doit pas etre vide.")
     public String owner = "";
     @CheckIsPrice(message = "'Prix' doit être Numérique, différent de 0 et positif.")
     public String price = "0.0";

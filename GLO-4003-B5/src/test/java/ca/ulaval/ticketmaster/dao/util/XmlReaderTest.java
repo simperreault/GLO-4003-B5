@@ -19,7 +19,8 @@ import ca.ulaval.ticketmaster.model.User.AccessLevel;
 @RunWith(MockitoJUnitRunner.class)
 public class XmlReaderTest {
 
-	public static String DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+    public static String DATA_FILE = "src/test/resources/testDataXmlReader.xml";
+
     @Test
     public void TestXmlReader() {
 	XmlReader x = new XmlReader(DATA_FILE);

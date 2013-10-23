@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
@@ -39,20 +39,20 @@ public class EventControllerTest {
 
     @Before
     public void setUp() {
-        model = new BindingAwareModelMap();
+	model = new BindingAwareModelMap();
     }
 
     @SuppressWarnings("unchecked")
     @Test
     public void listEvent() {
-        List<Event> list = new LinkedList<Event>();
-        list.add(new Event());
-        list.add(new Event());
-        list.add(new Event());
-        when(datamanager.findAllEvents()).thenReturn(list);
-        String view = controller.list(model);
-        assertEquals(((List<Event>) model.get("EventList")).size(), 3);
-       assertEquals(view, "EventList");
+	List<Event> list = new LinkedList<Event>();
+	list.add(new Event());
+	list.add(new Event());
+	list.add(new Event());
+	when(datamanager.findAllEvents()).thenReturn(list);
+	String view = controller.list(model);
+	assertEquals(((List<Event>) model.get("EventList")).size(), 3);
+	assertEquals(view, "EventList");
     }
 
     /*
@@ -85,44 +85,47 @@ public class EventControllerTest {
 
     @Test
     public void createAddANewViewModelToTheModel() {
-    	  controller.create(model, null);
-//controller.create(model);
+	MockHttpSession httpSession = new MockHttpSession();
+	httpSession.setAttribute("sesacceslevel", "Admin");
 
-        assertNotNull(model.get("event"));
+	controller.create(model, httpSession);
+
+	assertNotNull(model.get("event"));
     }
 
     @Test
     public void createReturnsTheCreateView() {
-    	//TODO fix the test add https session like this  String view = controller.create(model,Http Session);
+	// TODO fix the test add https session like this String view =
+	// controller.create(model,Http Session);
 
-      //  assertEquals(view, "EventAdd");
+	// assertEquals(view, "EventAdd");
     }
 
     @Test
     public void createEventRedirectsToEventList() {
-        EventViewModel viewModel = new EventViewModel();
-        viewModel.setSport(SportType.FOOTBALL);
-        viewModel.setDate("10/10/2013 12:12");
+	EventViewModel viewModel = new EventViewModel();
+	viewModel.setSport(SportType.FOOTBALL);
+	viewModel.setDate("10/10/2013 12:12");
 
-        BindingResult result = mock(BindingResult.class);
-        when(result.hasErrors()).thenReturn(false);
-        when(datamanager.saveEvent(new Event(DEFAULT_EVENT_ID))).thenReturn(true);
-//TODO voir les autres todo
-    //    String redirect = controller.create(viewModel, result, model);
+	BindingResult result = mock(BindingResult.class);
+	when(result.hasErrors()).thenReturn(false);
+	when(datamanager.saveEvent(new Event(DEFAULT_EVENT_ID))).thenReturn(true);
+	// TODO voir les autres todo
+	// String redirect = controller.create(viewModel, result, model);
 
-        //assertEquals("redirect:/event/list", redirect);
+	// assertEquals("redirect:/event/list", redirect);
     }
 
     @Test
     public void createEventRedirectsToCreate() {
-        EventViewModel viewModel = new EventViewModel();
-        viewModel.setSport(SportType.FOOTBALL);
+	EventViewModel viewModel = new EventViewModel();
+	viewModel.setSport(SportType.FOOTBALL);
 
-        BindingResult result = mock(BindingResult.class);
-        when(result.hasErrors()).thenReturn(true);
-//TODO voir les autres todo
-       // String redirect = controller.create(viewModel, result, model);
+	BindingResult result = mock(BindingResult.class);
+	when(result.hasErrors()).thenReturn(true);
+	// TODO voir les autres todo
+	// String redirect = controller.create(viewModel, result, model);
 
-        //assertEquals(redirect, "EventAdd");
+	// assertEquals(redirect, "EventAdd");
     }
 }

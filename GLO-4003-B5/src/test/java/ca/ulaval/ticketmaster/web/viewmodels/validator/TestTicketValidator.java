@@ -42,35 +42,16 @@ public class TestTicketValidator {
 	ticket.price = "";
 	Set<ConstraintViolation<TicketViewModel>> constraintViolations = validator.validate(ticket);
 	assertEquals(1, constraintViolations.size());
-	
+
 	ticket.price = "-0.3";
 	constraintViolations = validator.validate(ticket);
 	assertEquals(1, constraintViolations.size());
-	
+
 	ticket.price = "0.0";
 	constraintViolations = validator.validate(ticket);
 	assertEquals(1, constraintViolations.size());
-	
+
 	ticket.price = "qwe";
-	constraintViolations = validator.validate(ticket);
-	assertEquals(1, constraintViolations.size());
-    }
-    
-    @Test
-    public void testResellPriceNotValid() {
-	ticket.resellprice = "";
-	Set<ConstraintViolation<TicketViewModel>> constraintViolations = validator.validate(ticket);
-	assertEquals(1, constraintViolations.size());
-	
-	ticket.resellprice = "-0.3";
-	constraintViolations = validator.validate(ticket);
-	assertEquals(1, constraintViolations.size());
-	
-	ticket.resellprice = "0.0";
-	constraintViolations = validator.validate(ticket);
-	assertEquals(1, constraintViolations.size());
-	
-	ticket.resellprice = "qwe";
 	constraintViolations = validator.validate(ticket);
 	assertEquals(1, constraintViolations.size());
     }
