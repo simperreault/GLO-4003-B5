@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
-	<EventList total="2">
+	<EventList total="3">
   <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="6" ticketsTotal="6">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
@@ -24,6 +24,13 @@
         <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
       <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
       </TicketList>
+    </Event>
+  <Event id="8733121f-6d35-4dfd-941c-5180d744d95b" open="false" ticketsAvailable="0" ticketsTotal="0">
+      <SectionList/>
+      <Sport gender="M" name="FOOTBALL"/>
+      <Teams home="ULAVAL" visitors="BISHOP"/>
+      <Location city="Quebec" date="27/10/2013" stadium="Telus" time="0:00"/>
+      <TicketList/>
     </Event>
   </EventList>
 	<UserList total="1">
