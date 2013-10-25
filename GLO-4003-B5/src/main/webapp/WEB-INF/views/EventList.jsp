@@ -53,7 +53,7 @@
 								<td>${event.gender}</td>
 								<td>${event.location},${event.stadium}</td>
 								<td><fmt:formatDate value="${event.date}"
-										pattern="yyyy-MM-dd hh:mm" /></td>
+										pattern="dd/MM/yyyy hh:mm" /></td>
 								<td>${event.homeTeam}vs${event.visitorsTeam}</td>
 								<td><a href="${eventUrl}">Billets disponibles</a></td>
 								<c:if test="${sesacceslevel == 'Admin'}">
