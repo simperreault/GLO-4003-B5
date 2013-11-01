@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -22,6 +23,7 @@ import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
 import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 @Repository
 public class DataManager {
@@ -34,10 +36,6 @@ public class DataManager {
     private int totalUsers;
     private int totalEvents;
 
-    // private List<User> userList;
-    // private List<Event> eventList;
-    // private HashMap<String,User> userMap;
-    // private HashMap<Integer,Event> eventMap;
 
     public boolean reconnect(String _file) {
 	return xmlWriter.connect(_file) && xmlReader.connect(_file);
@@ -73,7 +71,7 @@ public class DataManager {
 	totalUsers = output[1];
     }
 
-    /*
+    /**
      * Returns an event if it exists, null otherwise
      */
     public Event findEvent(UUID _eventId) {
@@ -81,7 +79,7 @@ public class DataManager {
 	return xmlReader.loadEvent(_eventId);
     }
 
-    /*
+    /**
      * Returns a ticket from a specific event if it exists, null otherwise
      */
     public Ticket findTicket(UUID _eventId, UUID _ticketId) {
@@ -89,7 +87,7 @@ public class DataManager {
 	return xmlReader.loadTicket(_eventId, _ticketId);
     }
 
-    /*
+    /**
      * Returns a user if it exists, null otherwise
      */
     public User findUser(String _username) {
@@ -105,7 +103,7 @@ public class DataManager {
 	return false;
     }
 
-    /*
+    /**
      * Adds a ticket to the local event linked in the ticket received and adds a
      * ticket to the data of the website Be sure to have a linked event in the
      * ticket // the id is generated for the ticket Return a boolean
@@ -223,10 +221,10 @@ public class DataManager {
 	return returnList;
     }
 
-    /*
-     * Searchs all events and returns the ones which match criterias, Sport -
+    /**
+     * Searches all events and returns the ones which match criterias, Sport -
      * pass null if it doesn't matter days - pass 0 if it doesn't matter team -
-     * pass null if it doesn't matter
+     * pass null or "" if it doesn't matter
      */
     public List<Event> SearchWithCriterias(SportType _sport, int _days, String _team) {
 	List<Event> _list = findAllEvents();
@@ -251,13 +249,71 @@ public class DataManager {
 	return new ArrayList<String>(returnSet);
     }
 
-    /*
+    /**
      * Returns all events with their respective unsold tickets
      */
     public List<Event> findAllEvents() {
 	return filterSoldTicketsForAllEvents(xmlReader.loadEvents());
     }
 
+    /**
+     * Find similar unsold simple or general Tickets, returns an empty list if no ticket of the same type is found
+     * If the kind of ticket you want to find doesn't have a section, use "" as a parameter
+     * @param _eventId id of the event you wanna find tickets
+     * @param _type type of tickets wanted
+     * @param _section if the kind of tickets you want has a section, otherwise ""
+     * @return a list of tickets which match criterias
+     */
+    public List<Ticket> findSimilarTickets(List<Ticket> _ticketList, TicketType _type, String _section){
+    	List<Ticket> returnList = new ArrayList<Ticket>();
+    	for (Ticket t : filterSoldTickets(_ticketList)) {
+    	   if (_type.equals(t.getType()) && _section.equals(t.getSection()))  {
+    		   returnList.add(t);
+    	   }
+    	}
+    	return returnList;
+    }
+    
+    /**
+     * 
+     * @param _eventId id of the event you wanna find tickets
+     * @param _type type of tickets wanted
+     * @param _section if the kind of tickets you want has a section, otherwise ""
+     * @return number of similar tickets found
+     */
+    public int countSimilarTickets(List<Ticket> _ticketList, TicketType _type, String _section){
+    	return findSimilarTickets( _ticketList,  _type,  _section).size();
+    }
+
+    /**
+     * Regroups all the tickets by their respective type and section, returns null if event doesnt exist
+     * @param _ticketList
+     * @return list with general, simple, season and reserved tickets by section
+     */
+    public List<ArrayList<Ticket>> regroupSimilarTickets(UUID _eventId){
+    	Event e = findEvent(_eventId);
+    	if (e == null) return null;
+    	List<Ticket> ticketList = findAllTickets(_eventId);
+    	List<ArrayList<Ticket>> returnList = new ArrayList<ArrayList<Ticket>>();
+    	// add all general tickets in first list
+    	returnList.add((ArrayList<Ticket>)findSimilarTickets(ticketList,TicketType.GENERAL,""));
+    	//then add simple tickets
+    	for(String s : e.listExistingSections()){
+    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ticketList,TicketType.SIMPLE,s));
+    	}
+    	// then add season tickets
+    	for(String s : e.listExistingSections()){
+    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ticketList,TicketType.SEASON,s));
+    	}
+    	
+    	// then add reserved tickets
+    	for(String s : e.listExistingSections()){
+    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ticketList,TicketType.RESERVED,s));
+    	}
+    	// need to do it three times so season and reserved tickets are not interleaved with the others
+    	return returnList;
+    }
+    
     private List<Ticket> filterSoldTickets(List<Ticket> _toFilter) {
 	List<Ticket> returnList = new ArrayList<Ticket>();
 	for (Ticket t : _toFilter) {

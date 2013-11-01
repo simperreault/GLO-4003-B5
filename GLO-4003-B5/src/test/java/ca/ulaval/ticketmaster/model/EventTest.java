@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -14,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventTest {
@@ -123,6 +125,22 @@ public class EventTest {
 	e.addTicketToList(t);
 	assertEquals(e.findAndEditTicket(t), true);
 	assertEquals(e.findAndEditTicket(TicketFactory.CreateTicket()), false);
+    }
+    
+    @Test
+    public void testlistSections(){
+    	Date date = new Date();
+    	Event e = new Event(false, SportType.FOOTBALL, "M", "Potatoes", "Seotatop", "Somewhere",
+    		"SomewhereStadium", date, date);
+    	Ticket t = TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "", "", 1, 1);
+    	Ticket t1 = TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "", "", 1, 1);
+    	Ticket t2 = TicketFactory.CreateTicket(e, TicketType.SIMPLE, "2", "", "", 1, 1);
+    	e.addTicketToList(t);
+    	e.addTicketToList(t1);
+    	e.addTicketToList(t2);
+    	List<String> ls = e.listExistingSections();
+    	assertTrue(ls.contains(t1.getSection()));
+    	assertTrue(ls.contains(t2.getSection()));
     }
 
 }
