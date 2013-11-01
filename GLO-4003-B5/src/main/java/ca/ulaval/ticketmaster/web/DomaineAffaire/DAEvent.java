@@ -30,14 +30,13 @@ public class DAEvent {
 	model.addAttribute("sportList", SportType.values());
 	model.addAttribute("EventList", datamanager.findAllEvents());
 
-	// model.addAttribute("teamList", datamanager.getTeamList());
 	List<String> teamList = datamanager.GetAllTeams();
 	model.addAttribute("teamList", teamList);
 
 	LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
 	DateTime date = new DateTime();
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	for (int i = 1; i < 5; ++i) {
+	for (int i = 1; i < 10; ++i) {
 	    date = date.plusDays(1);
 	    days.put(i, "Avant le " + sdf.format(date.toDate()));
 	}
@@ -98,14 +97,13 @@ public class DAEvent {
     public String search(SearchViewModel viewModel, ProxyModel model) {
 	model.addAttribute("search", viewModel);
 	model.addAttribute("sportList", SportType.values());
-	// model.addAttribute("teamList", datamanager.getTeamList());
 	List<String> teamList = datamanager.GetAllTeams();
 	model.addAttribute("teamList", teamList);
 
 	LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
 	DateTime date = new DateTime();
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	for (int i = 1; i < 5; ++i) {
+	for (int i = 1; i < 10; ++i) {
 	    date = date.plusDays(1);
 	    days.put(i, "Avant le " + sdf.format(date.toDate()));
 	}

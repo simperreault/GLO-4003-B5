@@ -20,6 +20,7 @@ public class UserViewModel {
     public String favSport;
     public String favGender;
     public TicketType favType;
+    public String favLocation;
 
     public String getUsername() {
 	return username;
@@ -100,7 +101,4 @@ public class UserViewModel {
     public void setFavLocation(String favLocation) {
 	this.favLocation = favLocation;
     }
-
-    public String favLocation;
-
 }

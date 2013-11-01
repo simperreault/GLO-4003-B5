@@ -66,7 +66,6 @@
 		</div>
 		<c:if test="${sesacceslevel == 'Admin'}">
 			<div class="row">
-				<!-- TODO: /event/add -->
 				<a href="<c:url value="/event/add" />" class="btn">Ajouter un
 					événement</a>
 			</div>
