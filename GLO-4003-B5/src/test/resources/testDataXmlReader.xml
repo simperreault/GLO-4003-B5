@@ -17,6 +17,18 @@
 					seat="qweqweqw" section="B" type="RESERVED" />
 			</TicketList>
 		</Event>
+		<Event id="d05696d9-8cae-4aca-a088-1501576e8182" open="false" ticketsAvailable="3" ticketsTotal="3">
+				<SectionList>
+		<Section>B</Section>
+			</SectionList>
+			<Sport gender="Male" name="RUGBY" />
+			<Teams home="Simon d'ameique" visitors="Ben B-Baller" />
+			<Location city="UL" date="25/06/2015" stadium="Telus" time="10:00" />
+			<TicketList>
+				<Ticket id="108417d5-d0b4-4005-a357-0cf82ebd0661" owner="CarloBoutet" price="45.0" resellPrice="45.0"
+					seat="qweqweqw" section="B" type="RESERVED" />
+			</TicketList>
+		</Event>
 	</EventList>
 	<UserList total="2">
 		<User username="CarloBoutet">
@@ -36,4 +48,15 @@
 				type="RESERVED" />
 		</User>
 	</UserList>
+	<TransactionList>
+  		<Transaction id="35552428-cf10-45f1-83d5-3fffc2a21337" user="CarloBoutet" >
+  			 <Event id="d05696d9-8cae-4aca-a088-1501576e8187">
+    				<Ticket id="108417d5-d0b4-4005-a357-0cf82ebd066d" />
+    				<Ticket id="35552428-cf10-45f1-83d5-3fffc2a2e512" />
+   			</Event>
+   			<Event id="d05696d9-8cae-4aca-a088-1501576e8182">
+    				<Ticket id="108417d5-d0b4-4005-a357-0cf82ebd0661" />
+   			</Event>
+  		</Transaction>
+  </TransactionList>
 </Data>

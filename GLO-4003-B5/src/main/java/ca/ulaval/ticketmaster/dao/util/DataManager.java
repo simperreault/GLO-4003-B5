@@ -250,6 +250,19 @@ public class DataManager {
     }
 
     /**
+     * Returns the list of tickets of a transaction
+     * @param _uuid valid uuid of transaction
+     * @param _user valid user name
+     * @return list of tickets of the specified transaction or null if it doesn't exist
+     */
+    public List<Ticket> findTransaction(UUID _transactionId, String _user){
+    	if (_transactionId != null && _user != null)
+    		return xmlReader.readTransaction(_transactionId, _user);
+    	else
+    		return null;
+    }
+    
+    /**
      * Returns all events with their respective unsold tickets
      */
     public List<Event> findAllEvents() {
