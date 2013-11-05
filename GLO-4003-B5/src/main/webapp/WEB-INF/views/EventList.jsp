@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="true"%>
 <html>
+<meta name="foo" content="test">
 <head>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
 <title>Liste des événements à venir</title>
@@ -60,6 +61,9 @@
 									<td><a href="/event/delete/${event.id}">Retirer</a></td>
 								</c:if>
 						</c:forEach>
+						<c:if test="${message.length() > 0}">
+							<tr><td>${message}</td><td></td><td></td><td></td><td></td><td></td></tr>
+						</c:if>
 					</tbody>
 				</table>
 			</form:form>

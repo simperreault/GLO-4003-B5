@@ -51,6 +51,7 @@
 				<div class="box">
 					<div>
 						<div class="body">
+						<p>${page.properties["meta.foo"]}</p>
 							<sitemesh:write property='body' />
 							<br>
 						</div>
