@@ -4,7 +4,7 @@
 <html>
 <c:choose>
 	<c:when test="${ empty sesusername }">
-		<form name="loginForm" method="post" action="/connect">
+		<form name="loginForm" method="post" action="/user/connect">
 
 			<table>
 				<tr>
@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><a href="/CreateUser"
+					<td><a href="/user/create"
 						style="text-align: right; font-size: 11px;">Pas de compte ?</a></td>
 				</tr>
 			</table>
@@ -45,7 +45,7 @@
 		Bonjour, <%= session.getAttribute( "sesusername" ) %>
 		<div>
 		<a href="#">Mon profil</a><br>
-		<a href="<c:url value="/disconnect" />" class="btn">Déconnexion</a>
+		<a href="<c:url value="/user/disconnect" />" class="btn">Déconnexion</a>
 		</div>
 	</c:when>
 </c:choose>
