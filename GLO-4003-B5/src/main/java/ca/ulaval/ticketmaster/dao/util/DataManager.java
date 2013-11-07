@@ -412,16 +412,16 @@ public class DataManager {
     }
     
     public List<ArrayList<Ticket>> regroupSimilarTicketsByEvents(List<Ticket> _ticketList){
-		Set<Event> eventSet = new HashSet<Event>();
+		Set<UUID> eventSet = new HashSet<UUID>();
 		for (Ticket t  : _ticketList) {
-		    eventSet.add(t.getEvent());
+		    eventSet.add(t.getEvent().getId());
 		}
     	ArrayList<ArrayList<Ticket>> eventSortedList = new ArrayList<ArrayList<Ticket>>();
     	List<ArrayList<Ticket>> returnList = new ArrayList<ArrayList<Ticket>>();
-    	for(Event e : eventSet){
+    	for(UUID e : eventSet){
     		ArrayList<Ticket> tempList = new ArrayList<Ticket>();
     		for (Ticket t  : _ticketList) {
-    		    if(t.getEvent() == e){
+    		    if(t.getEvent().getId().equals(e)){
     		    	tempList.add(t);
     		    }
     		}
