@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList total="3">
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="6" ticketsTotal="6">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="4" ticketsTotal="6">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
       <Location city="Quebec" date="29/09/2013" stadium="Telus" time="0:00"/>
       <TicketList>
-      <Ticket id="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="ab1ac354-be29-4c06-800d-6987f9c8a76f" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="d2b5c3f8-312d-4fcf-9a36-725e5f543518" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="ab1ac354-be29-4c06-800d-6987f9c8a76f" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="d2b5c3f8-312d-4fcf-9a36-725e5f543518" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       </TicketList>
     </Event>
   <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="2" ticketsTotal="2">
@@ -21,8 +21,8 @@
       <Teams home="qwe" visitors="qwe"/>
       <Location city="qwe" date="09/10/2013" stadium="qwe" time="10:10"/>
       <TicketList>
-        <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
-      <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52" owner="" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
+        <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144" owner="CarloBoutet" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
+      <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52" owner="CarloBoutet" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
       </TicketList>
     </Event>
   <Event id="8733121f-6d35-4dfd-941c-5180d744d95b" open="false" ticketsAvailable="0" ticketsTotal="0">
@@ -37,6 +37,15 @@
 		<User username="CarloBoutet">
 			<PersonalData accessLevel="Admin" email="bolduc_mathieu@live.ca" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets>
+        <Ticket matchId="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" ticketId="a914f0d4-f29a-4538-83d8-b7d813d7d144"/>
+        <Ticket matchId="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" ticketId="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52"/>
+        <Ticket matchId="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" ticketId="a914f0d4-f29a-4538-83d8-b7d813d7d144"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="ab1ac354-be29-4c06-800d-6987f9c8a76f"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="d2b5c3f8-312d-4fcf-9a36-725e5f543518"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="9415e638-8039-4b8d-beb5-b789a1d26bf3"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="4ac19ca1-f089-4483-a30b-21a535693948"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="d5979de5-244b-491d-923d-92d106297f06"/>
       </UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
@@ -47,5 +56,26 @@
 		</User>
 	</UserList>
 	<TransactionList>
+  <Transaction id="f77f3030-50ff-4794-905e-42361e61815a" user="CarloBoutet">
+      <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff">
+        <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144"/>
+        <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52"/>
+        <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144"/>
+      </Event>
+    </Transaction>
+  <Transaction id="147b11c9-747c-4e84-b367-6622547eb7bb" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="ab1ac354-be29-4c06-800d-6987f9c8a76f"/>
+        <Ticket id="d2b5c3f8-312d-4fcf-9a36-725e5f543518"/>
+        <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3"/>
+        <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948"/>
+      </Event>
+    </Transaction>
+  <Transaction id="c98179c9-a5ca-448e-9e79-56ccde31c3be" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
+        <Ticket id="d5979de5-244b-491d-923d-92d106297f06"/>
+      </Event>
+    </Transaction>
   </TransactionList>
 </Data>
