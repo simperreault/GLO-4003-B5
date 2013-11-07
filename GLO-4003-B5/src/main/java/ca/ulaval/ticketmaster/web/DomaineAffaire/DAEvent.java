@@ -46,8 +46,12 @@ public class DAEvent {
 	}
 
 	public String getTickedEvent(String idEvent, ProxyModel model) {
+		
 		model.addAttribute("eventID", UUID.fromString(idEvent));
-		model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
+		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
+		model.addAttribute("ticketList", datamanager.findAllTicketsOnTwoLevels(UUID.fromString(idEvent)));
+		
+		
 		return Page.TicketList.toString();
 	}
 

@@ -25,29 +25,33 @@
 					<th>Endroit</th>
 					<th>Type</th>
 					<th>Prix</th>
+					<th>Billets similaires</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="ticket" items="${ticketList}">
-					<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
-					<tr>
-						<td>${ticket.event.sport}</td>
-						<td>${ticket.event.date}</td>
-						<td>${ticket.event.location}, ${ticket.event.stadium}</td>
-						<td>${ticket.type}</td>
-						<td>${ticket.price}$</td>
-						<td>
-							<a href="${ticketUrl}">Details</a>
-						</td>
-						<td>
-							<a href="/ticket/addBasket/${ticket.event.id}/${ticket.id}">Ajouter au panier</a>
-						</td>
-				<c:if test="${sesacceslevel == 'Admin'}">		
-						<td>
-							<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
-						</td>
-						</c:if>
+				<c:forEach var="ticketSubList" items="${ticketList}">
+					<c:forEach var="ticket" items="${ticketSubList}">
+						<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
+						<tr>
+							<td>${ticket.event.sport}</td>
+							<td>${ticket.event.date}</td>
+							<td>${ticket.event.location}, ${ticket.event.stadium}</td>
+							<td>${ticket.type}</td>
+							<td>${ticket.price}$</td>
+							<td>${ticketSubList.size()}</td>
+							<td>
+								<a href="${ticketUrl}">Details</a>
+							</td>
+							<td>
+								<a href="/ticket/addBasket/${ticket.event.id}/${ticket.id}">Ajouter au panier</a>
+							</td>
+					<c:if test="${sesacceslevel == 'Admin'}">		
+							<td>
+								<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
+							</td>
+							</c:if>
+					</c:forEach>
 				</c:forEach>
 			</tbody>
 		</table>
