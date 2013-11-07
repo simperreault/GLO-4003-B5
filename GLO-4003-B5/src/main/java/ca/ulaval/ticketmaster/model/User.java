@@ -8,6 +8,7 @@ package ca.ulaval.ticketmaster.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import ca.ulaval.ticketmaster.dao.util.Pair;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
@@ -28,11 +29,11 @@ public class User {
     private String favGender;
     private TicketType favType;
     private String favLocation;
-    private List<Pair<Integer, Integer>> userTickets;
+    private List<Pair<UUID, UUID>> userTickets;
 
     public User(String _username) {
 	username = _username;
-	userTickets = new ArrayList<Pair<Integer, Integer>>();
+	userTickets = new ArrayList<Pair<UUID, UUID>>();
 	firstName = "";
 	lastName = "";
 	email = "";
@@ -56,7 +57,7 @@ public class User {
 	favGender = _favGender;
 	favType = _favType;
 	favLocation = _favLocation;
-	userTickets = new ArrayList<Pair<Integer, Integer>>();
+	userTickets = new ArrayList<Pair<UUID, UUID>>();
     }
 
     public String toString() {
@@ -114,11 +115,15 @@ public class User {
 	this.accessLevel = accessLevel;
     }
 
-    public List<Pair<Integer, Integer>> getUserTickets() {
+    public List<Pair<UUID, UUID>> getUserTickets() {
 	return userTickets;
     }
 
-    public void setUserTickets(List<Pair<Integer, Integer>> userTickets) {
+    public void addTicketToList(UUID _eventId, UUID _ticketId){
+    	this.userTickets.add(new Pair<UUID,UUID>(_eventId,_ticketId));
+    }
+    
+    public void setUserTickets(List<Pair<UUID, UUID>> userTickets) {
 	this.userTickets = userTickets;
     }
 
