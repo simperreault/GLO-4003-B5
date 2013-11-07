@@ -23,9 +23,6 @@ import ca.ulaval.ticketmaster.web.viewmodels.SearchViewModel;
 @RequestMapping(value = "/event")
 public class EventController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(EventController.class);
-    // private DataManager datamanager;
     private DAEvent domaine;
 
     public EventController() {
@@ -39,10 +36,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String list(SearchViewModel viewmodel, Model model) { // @RequestParam("sportType")
-								 // String
-								 // sportType,
-	System.out.println(viewmodel.getTeam());
+    public String list(SearchViewModel viewmodel, Model model) {
 	return domaine.search(viewmodel, ProxyModel.create(model));
     }
 

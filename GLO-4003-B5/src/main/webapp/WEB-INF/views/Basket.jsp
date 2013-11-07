@@ -52,6 +52,7 @@
 			</tbody>
 		</table>
 	</div>
+	<a href="<c:url value="/purchase" />" class="btn">Acheter</a>
 </div>
 </body>
 </html>

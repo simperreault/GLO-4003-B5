@@ -8,8 +8,10 @@ package ca.ulaval.ticketmaster.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import ca.ulaval.ticketmaster.model.enums.SportType;
@@ -186,6 +188,18 @@ public class Event {
 
     public List<String> getSectionList() {
 	return sectionList;
+    }
+    
+    /**
+     * Since there are no interface to put a sectionList, this method should be used to know existing sections
+     * @return list of existing sections
+     */
+    public List<String> listExistingSections() {
+    	Set<String> returnSet = new HashSet<String>();
+    	for (Ticket t : ticketList) {
+    	    returnSet.add(t.getSection());
+    	}
+    	return new ArrayList<String>(returnSet);
     }
 
     public void setSectionList(List<String> sectionList) {

@@ -42,10 +42,11 @@
 		</form>
 	</c:when>
 	<c:when test = "${not empty sesusername }">
-	
-		Bonjour, <%= session.getAttribute( "sesusername" ) %><br>
+		Bonjour, <%= session.getAttribute( "sesusername" ) %>
+		<div>
+		<a href="#">Mon profil</a><br>
 		<a href="<c:url value="/disconnect" />" class="btn">Déconnexion</a>
-		
+		</div>
 	</c:when>
 </c:choose>
 </html>

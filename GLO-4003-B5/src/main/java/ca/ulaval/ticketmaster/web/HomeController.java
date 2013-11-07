@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ca.ulaval.ticketmaster.model.enums.PaymentType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAAuthentication;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAUser;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.converter.UserConverter;
+import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
 import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
 
 /**
@@ -63,6 +65,13 @@ public class HomeController {
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
     public String Login(Model model) {
 	return "Home";
+    }
+    
+    @RequestMapping(value = "/purchase", method = RequestMethod.GET)
+    public String Purchase(Model model) {
+    	model.addAttribute("purchaseInfos", new PurchaseViewModel());
+    	model.addAttribute("paymentType", PaymentType.values());
+	return "Purchase";
     }
 
     @RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)

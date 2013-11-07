@@ -4,38 +4,48 @@ import ca.ulaval.ticketmaster.model.enums.SportType;
 
 public class SearchViewModel {
 
-    public SportType sport;
-    public String team;
-    public int days;
+	public SportType sport;
+	public String team;
+	public int days;
+	public String message;
 
-    public SearchViewModel() {
-	sport = null;
-	team = null;
-	days = 0;
-    }
+	public SearchViewModel() {
+		sport = null;
+		team = null;
+		days = 0;
+		message = "";
+	}
 
-    public SportType getSport() {
-	return sport;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public void setSport(SportType sport) {
-	this.sport = sport;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public String getTeam() {
-	return team;
-    }
+	public SportType getSport() {
+		return sport;
+	}
 
-    public void setTeam(String team) {
-	this.team = team;
-    }
+	public void setSport(SportType sport) {
+		this.sport = sport;
+	}
 
-    public int getDays() {
-	return days;
-    }
+	public String getTeam() {
+		return team;
+	}
 
-    public void setDays(int days) {
-	this.days = days;
-    }
+	public void setTeam(String team) {
+		this.team = team;
+	}
+
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
 
 }

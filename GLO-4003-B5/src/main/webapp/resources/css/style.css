@@ -189,7 +189,13 @@ box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
  width: 282px;
 }
 
+#login div {
+	line-height: 20px;
+	text-transform: none;
+}
+
 #login table {
+	align:right;
 	text-align:right;
 }
 
@@ -388,4 +394,5 @@ text-decoration: none;
 text-shadow: rgba(0, 0, 0, 0.247059) 0px -1px 0px;
 vertical-align: middle;
 white-space: nowrap;
+min-width:120px
 }

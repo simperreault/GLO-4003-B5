@@ -15,6 +15,7 @@ import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
 import ca.ulaval.ticketmaster.model.User.AccessLevel;
+import ca.ulaval.ticketmaster.model.enums.TicketType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class XmlReaderTest {
@@ -91,7 +92,7 @@ public class XmlReaderTest {
 
 	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
 	List<Event> l = x.loadEvents();
-	assertEquals(l.size(), 1);
+	assertEquals(l.size(), 2);
     }
 
     @Test
@@ -116,5 +117,17 @@ public class XmlReaderTest {
 	assertEquals(l.get(0).getAccessLevel(), AccessLevel.Admin);
 
     }
+
+	@Test
+	public void testReadTransaction() throws Exception {
+		XmlReader x = new XmlReader(DATA_FILE);
+		assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
+		List<Ticket> l = x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21337"), "CarloBoutet");
+		assertNotNull(l);
+		assertEquals(l.size(),3);
+		assertEquals(l.get(0).getType(),TicketType.RESERVED);
+		assertNull(x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21111"), "CarloBoutet"));
+		
+	}
 
 }

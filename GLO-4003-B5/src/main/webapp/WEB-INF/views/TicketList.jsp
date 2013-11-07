@@ -3,6 +3,8 @@
 <html>
 <head>
 	<title>Liste de billets en vente</title>
+<script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
+
 </head>
 <body>
 
@@ -11,6 +13,9 @@
 	Liste de billets en vente 
 </h1>
 <hr>
+<div id="confirmation" style="display:none; background-color:#316e66;">
+<p>Le billet a été ajouté à votre panier</p>
+</div>
 	<div class="row">
 		<table  id="hor-minimalist-b">
 			<thead>
