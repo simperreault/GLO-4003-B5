@@ -23,6 +23,7 @@
 							<th>Endroit</th>
 							<th>Date</th>
 							<th>Équipes</th>
+							<th>Billets</th>
 							<th colspan="2"></th>
 						</tr>
 						<tr>
@@ -56,6 +57,7 @@
 								<td><fmt:formatDate value="${event.date}"
 										pattern="dd/MM/yyyy hh:mm" /></td>
 								<td>${event.homeTeam}vs${event.visitorsTeam}</td>
+								<td>${event.ticketList.size()}</td>
 								<td><a href="${eventUrl}">Billets disponibles</a></td>
 								<c:if test="${sesacceslevel == 'Admin'}">
 									<td><a href="/event/delete/${event.id}">Retirer</a></td>

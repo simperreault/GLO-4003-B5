@@ -25,7 +25,8 @@ public class DAUser {
 	    model.addAttribute("user", viewmodel);
 	    model.addAttribute("typeList", TicketType.values());
 	    model.addAttribute("error", result.getAllErrors());
-	    return "CreateUser";
+	    //return "CreateUser";
+	    return Page.CreateUser.toString();
 	}
 
 	if (datamanager.saveUser(user)) {
@@ -47,8 +48,9 @@ public class DAUser {
 
 	    model.addAttribute("user", viewmodel);
 	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("errorMsg", "Une érreur c'est produite lors de la création du compte");
-	    return "CreateUser";
+	    model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
+	    //return "CreateUser";
+	    return Page.CreateUser.toString();
 	}
 
     }

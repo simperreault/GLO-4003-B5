@@ -11,7 +11,7 @@
 		</c:forEach>
 	</p>
 
-	<form:form method="post" class="form-horizontal" action="CreateUser" modelAttribute="user">
+	<form:form method="post" class="form-horizontal" modelAttribute="user">
 		<table>
 			<tr>
 				<td>Nom d'utilisateur :</td>
