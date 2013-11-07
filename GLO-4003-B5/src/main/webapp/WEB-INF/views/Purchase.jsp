@@ -8,6 +8,7 @@
 <body>
 <h1>Informations d'achat</h1>
 		<hr>
+		<div>${message}</div>
 	<form:form method="post" class="form-horizontal" action="Purchase"
 		modelAttribute="purchaseInfos">
 		<table>

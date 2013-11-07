@@ -44,7 +44,7 @@
 									<form:option value="" label="--- Choisir ---" />
 									<form:options items="${teamList}" />
 								</form:select></th>
-							<th colspan="2">
+							<th colspan="3">
 						</tr>
 					</thead>
 					<tbody>
@@ -64,7 +64,7 @@
 								</c:if>
 						</c:forEach>
 						<c:if test="${message.length() > 0}">
-							<tr><td>${message}</td><td></td><td></td><td></td><td></td><td></td></tr>
+							<tr><td colspan="10">${message}</td></tr>
 						</c:if>
 					</tbody>
 				</table>

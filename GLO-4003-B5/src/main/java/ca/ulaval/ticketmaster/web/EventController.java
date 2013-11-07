@@ -30,8 +30,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) { // @RequestParam("sportType") String
-				      // sportType,
+    public String list(Model model) { 
 	return domaine.getEventList(ProxyModel.create(model));
     }
 
