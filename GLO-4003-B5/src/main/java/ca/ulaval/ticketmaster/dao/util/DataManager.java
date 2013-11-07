@@ -183,6 +183,12 @@ public class DataManager {
 	return filterSoldTickets(findEvent(_eventId).getTicketList());
     }
 
+    //2 levels @ --> pour avoir le count par "type / whatever" de billets
+    public List<ArrayList<Ticket>> findAllTicketsOnTwoLevels(UUID _eventId) {
+    	List<ArrayList<Ticket>> listTickets = regroupSimilarTickets(_eventId);
+    	return listTickets;
+    }
+
     public List<User> findAllUsers() {
 	return xmlReader.loadUsers();
     }
