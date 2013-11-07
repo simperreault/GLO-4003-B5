@@ -21,6 +21,7 @@
 					<th>Endroit</th>
 					<th>Type</th>
 					<th>Prix</th>
+					<th>Quantité</th>
 					<th></th>
 					<th></th>
 					<th>Ajouter</th>
@@ -28,26 +29,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="ticket" items="${basket}">
-					<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
+				<c:forEach var="ticket" items="${basketD}">
+					<c:url var="ticketUrl" value="/event/${ticket.get(0).event.id}/${ticket.get(0).id}" />
 					<tr>
-						<td>${ticket.event.sport}</td>
-						<td>${ticket.event.date}</td>
-						<td>${ticket.event.location}, ${ticket.event.stadium}</td>
-						<td>${ticket.type}</td>
-						<td>${ticket.price}$</td>
-						<c:if test="${ticket.type} == GENERAL">
+						<td>${ticket.get(0).event.sport}</td>
+						<td>${ticket.get(0).event.date}</td>
+						<td>${ticket.get(0).event.location}, ${ticket.get(0).event.stadium}</td>
+						<td>${ticket.get(0).type}</td>
+						<td>${ticket.get(0).price}$</td>
+						<td>${ticket.size()}</td>
+						<td><a href="${ticketUrl}">Details</a></td>
 						<td>
-							Quantité : <form:input path="" />
+							<a href="/ticket/deleteBasket/${ticket.get(0).event.id}/${ticket.get(0).id}">Retirer du panier</a>
 						</td>
-						</c:if>	
-						<td>
-							<a href="${ticketUrl}">Details</a>
-						</td>
-						<td>
-							<a href="/ticket/deleteBasket/${ticket.event.id}/${ticket.id}">Retirer du panier</a>
-						</td>
-						<td><a href="/ticket/copyBasket/${ticket.event.id}/${ticket.id}">Ajouter un Billet Similaire</a></td>
+						<td><a href="/ticket/copyBasket/${ticket.get(0).event.id}/${ticket.get(0).id}">Ajouter un Billet Similaire</a></td>
 				</c:forEach>
 			</tbody>
 		</table>

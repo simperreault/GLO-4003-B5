@@ -11,11 +11,11 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 
 public class DABasket {
 	private DataManager datamanager;
-
+	
 	public DABasket() {
 		datamanager = new DataManager();
 	}
-
+	
 	// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
 	// trouvé de solution pour enlever le warning
 	@SuppressWarnings("unchecked")
@@ -27,11 +27,17 @@ public class DABasket {
 				model.addAttribute("msg", "old array");
 			} else // le panier est vide
 			{
+			//	datamanager.countSimilarTickets(_ticketList, _type, _section)
 				list = new ArrayList<Ticket>();
 				model.addAttribute("msg", "New array");
 			}
+			
 			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+			List<ArrayList<Ticket>> tmp =datamanager.regroupSimilarTicketsByEvents(list);
+			session.setAttribute("basketD",datamanager.regroupSimilarTicketsByEvents(list));		
 			session.setAttribute("basket", list);
+			ArrayList<Ticket> x = tmp.get(0);
+			//ArrayList<Ticket> test = tmp.get(1).get(0);
 		} else {
 			model.addAttribute("msg", "Veuillez vous connecter pour acheter des billets");
 			// TODO coder un message qui demande de se logger
@@ -53,6 +59,7 @@ public class DABasket {
 					isFound = true;
 					list.remove(i);
 					session.setAttribute("basket", list);
+					session.setAttribute("basketD",datamanager.regroupSimilarTicketsByEvents(list));	
 				}
 				++i;
 			}
@@ -89,25 +96,19 @@ public class DABasket {
 
 				session.setAttribute("basket", list);
 
-				if (invalidTickets == null){
+				if (invalidTickets == null) {
 					model.addAttribute("message", "Billets valide");
-					return "redirect:/Confirmation";	
-				}
-				else {
+					return "redirect:/Confirmation";
+				} else {
 					model.addAttribute("message", "Erreur : Billets invalides");
-					return "redirect:/Confirmation";	
+					return "redirect:/Confirmation";
 				}
 
-
-			}
-			else
-			{
+			} else {
 				model.addAttribute("message", "Erreur : Le panier est vide");
 			}
 
-		}
-		else
-		{
+		} else {
 			System.out.println("pas loggé");
 		}
 		return "redirect:/Purchase";
