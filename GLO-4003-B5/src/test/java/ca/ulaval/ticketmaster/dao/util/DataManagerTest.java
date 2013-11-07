@@ -306,6 +306,19 @@ public class DataManagerTest {
 	}
 	
 	@Test
+	public void testRegroupSamePriceTickets(){
+		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
+		List<ArrayList<Ticket>> someList = new ArrayList<ArrayList<Ticket>>();
+    	Event e = new Event();
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		e.setTicketList(returnList);
+		someList.add(returnList);
+		when(xmlReader.loadEvent(e.getId())).thenReturn(e);
+		assertEquals(someList,mockedDataManager.regroupSamePriceTickets(e.getId()));
+	}
+	
+	@Test
 	public void testBuyTickets(){
 		User user = new User("CarloBoutet");
     	ArrayList<Ticket> testList = new ArrayList<Ticket>();

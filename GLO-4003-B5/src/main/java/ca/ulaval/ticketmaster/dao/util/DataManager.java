@@ -379,7 +379,7 @@ public class DataManager {
 
     /**
      * Regroups all the tickets by their respective type and section, returns null if event doesnt exist
-     * @param _ticketList
+     * @param id of the event
      * @return list with general, simple, season and reserved tickets by section
      */
     public List<ArrayList<Ticket>> regroupSimilarTickets(UUID _eventId){
@@ -404,6 +404,36 @@ public class DataManager {
     	}
     	// need to do it three times so season and reserved tickets are not interleaved with the others
     	return returnList;
+    }
+    
+    /**
+     * Regroups all the tickets by their respective price, returns null if event doesnt exist
+     * @param id of the event
+     * @return list with general, simple, season and reserved tickets by section
+     */
+    public List<ArrayList<Ticket>> regroupSamePriceTickets(UUID _eventId){
+    	Event e = findEvent(_eventId);
+    	if (e == null) return null;
+    	List<Ticket> ticketList = filterSoldTickets(findAllTickets(_eventId));
+    	// find all prices of tickets
+    	Set<Double> PriceSet = new HashSet<Double>();
+    	for (Ticket t : ticketList) {
+    		PriceSet.add(t.getPrice());
+    	}
+    	
+    	// create a list for each price and add it to the return list
+    	List<ArrayList<Ticket>> returnList = new ArrayList<ArrayList<Ticket>>();
+    	for (Double d : PriceSet) {
+    		ArrayList<Ticket> tempList = new ArrayList<Ticket>();
+    		for(Ticket t: ticketList){
+    			if (t.getPrice() == d)  {
+    				tempList.add(t);
+    	     	   }
+    		}
+    		returnList.add(tempList);
+     	}
+     	return returnList;
+    	
     }
     
     private List<Ticket> filterSoldTickets(List<Ticket> _toFilter) {
