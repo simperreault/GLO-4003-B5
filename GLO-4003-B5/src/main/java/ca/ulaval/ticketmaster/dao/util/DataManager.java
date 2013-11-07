@@ -58,8 +58,8 @@ public class DataManager {
     	test.buyTickets(testList, "CarloBoutet");
     	//boolean mytestbrah = test.buyTicket(eventid, ticketid, "mrTito2");
     	//System.out.println(mytestbrah);
-    }*/
-    
+    }
+    */
     public boolean reconnect(String _file) {
 	return xmlWriter.connect(_file) && xmlReader.connect(_file);
     }
@@ -87,7 +87,7 @@ public class DataManager {
     private void LoadStartupInformation() {
 	xmlWriter = new XmlWriter();
 	xmlReader = new XmlReader();
-	
+	mailSender = new MailUtil();
 	// Loader les id d'event pour ne pas écraser un event existant dans le
 	// cas de la cré¥Œtion d'un nouvel event
 	int output[] = xmlReader.readStartupInformation();
@@ -220,10 +220,7 @@ public class DataManager {
     } 
     
     private void sendConfirmationMail(User _receiver, UUID _transactionId, List<Ticket> _ticketList){
-    	ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("mailSender.xml");
-    	mailSender = (MailUtil) context.getBean("MailService");
     	mailSender.sendTransactionMail(_receiver, _transactionId,_ticketList);
-    	context.close();
     }
     
     private void buyTicket(Ticket _ticket, User _owner){

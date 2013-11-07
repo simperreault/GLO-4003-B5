@@ -3,23 +3,43 @@ package ca.ulaval.ticketmaster.dao.util;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.*;
-import org.springframework.stereotype.Service;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
 
-@Service("MailService")
 public class MailUtil {
 
 	public static String TRANSACTION_SUBJECT = "Votre confirmation de commande de billets";
 	public static String TRANSACTION_FROM = "confirmationAchat@ulaval.ca";
 	public static String TRANSACTION_HELP = "AssistanceAchat@ulaval.ca";
-	@Autowired
-	private MailSender mailSender;
+	public static String HOST ="smtp.gmail.com";
+	public static int PORT = 587;
+	public static String MAIL = "ulavalachatbillets@gmail.com";
+	public static String PASS ="lolulaval";
+	
+	
+	private JavaMailSenderImpl mailSender;
+	
+	public MailUtil(){
+		mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(HOST);
+		mailSender.setPort(PORT);
+		mailSender.setPassword(PASS);
+		mailSender.setUsername(MAIL);
+		Properties javaMailProperties = new Properties();
+		javaMailProperties.put("mail.smtp.auth", "true");
+		javaMailProperties.put("mail.smtp.starttls.enable", "true");
+		javaMailProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		javaMailProperties.put("mail.debug", "true");
+		mailSender.setJavaMailProperties(javaMailProperties);
+	}
+	
 	
 	public void sendTransactionMail(User _receiver , UUID _transactionId , List<Ticket> _buyList){
 		SimpleMailMessage msg = new SimpleMailMessage();
@@ -37,12 +57,6 @@ public class MailUtil {
             System.err.println(ex.getMessage());            
         }
 	}
-	
-	
-	public void setMailSender(MailSender mailSender) {
-		this.mailSender = mailSender;
-	}
-
 	
 	private void setupMailInfos(SimpleMailMessage _msg){
 		_msg.setSubject(TRANSACTION_SUBJECT);

@@ -35,10 +35,8 @@
   </EventList>
 	<UserList total="1">
 		<User username="CarloBoutet">
-			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
+			<PersonalData accessLevel="Admin" email="bolduc_mathieu@live.ca" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets>
-        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
-        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
       </UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
