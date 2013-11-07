@@ -304,5 +304,21 @@ public class DataManagerTest {
 		when(xmlReader.loadEvent(e.getId())).thenReturn(e);
 		assertEquals(someList,mockedDataManager.regroupSimilarTickets(e.getId()));
 	}
+	
+	@Test
+	public void testBuyTickets(){
+		User user = new User("CarloBoutet");
+    	List<Ticket> testList = new ArrayList<Ticket>();
+    	Ticket t = TicketFactory.CreateTicket();
+    	t.setPrice(1);
+    	t.setType(TicketType.GENERAL);
+    	t.setEvent(new Event());
+    	testList.add(t);
+    	when(xmlWriter.writeTransaction(UUID.randomUUID(),testList , "CarloBoutet")).thenReturn(true);
+    	when(xmlReader.userAuthenticate("CarloBoutet")).thenReturn(user);
+    	when(xmlWriter.modifyUser(user)).thenReturn(true);
+    	when(xmlWriter.modifyTicket(t)).thenReturn(true);
+    	mockedDataManager.buyTickets(testList, "CarloBoutet");
+	}
 
 }

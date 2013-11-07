@@ -34,9 +34,7 @@
 		<User username="CarloBoutet">
 			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com"
 				firstName="Charl" lastName="Boutet" password="123" />
-			<UserTickets>
-				<Ticket matchId="1" ticketId="1" />
-			</UserTickets>
+			<UserTickets />
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL"
 				type="RESERVED" />
 		</User>
