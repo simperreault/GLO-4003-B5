@@ -35,8 +35,9 @@
   </EventList>
 	<UserList total="1">
 		<User username="CarloBoutet">
-			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="123"/>
-			<UserTickets/>
+			<PersonalData accessLevel="Admin" email="bolduc_mathieu@live.ca" firstName="Charl" lastName="Boutet" password="123"/>
+			<UserTickets>
+      </UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
 		<User username="admin">
@@ -45,4 +46,6 @@
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
 	</UserList>
+	<TransactionList>
+  </TransactionList>
 </Data>

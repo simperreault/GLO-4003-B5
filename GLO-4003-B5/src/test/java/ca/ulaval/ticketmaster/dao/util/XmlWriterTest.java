@@ -122,13 +122,10 @@ public class XmlWriterTest {
 	// test create user
 	User user = new User(username, "test", "Bob", "Dubois", "testbillets@live.ca", AccessLevel.User,
 		SportType.FOOTBALL.toString(), "M", TicketType.GENERAL, "Québec");
-	List<Pair<Integer, Integer>> userTickets = new ArrayList<Pair<Integer, Integer>>();
-	userTickets.add(new Pair<Integer, Integer>(1, 1));
-	userTickets.add(new Pair<Integer, Integer>(1, 8));
-	userTickets.add(new Pair<Integer, Integer>(2, 5));
-	userTickets.add(new Pair<Integer, Integer>(2, 14));
-	userTickets.add(new Pair<Integer, Integer>(3, 58));
-	user.setUserTickets(userTickets);
+	List<Pair<UUID, UUID>> userTickets = new ArrayList<Pair<UUID, UUID>>();
+	userTickets.add(new Pair<UUID, UUID>(UUID.randomUUID(), UUID.randomUUID()));
+	userTickets.add(new Pair<UUID, UUID>(UUID.randomUUID(), UUID.randomUUID()));
+	userTickets.add(new Pair<UUID, UUID>(UUID.randomUUID(), UUID.randomUUID()));
 
 	XmlWriter writer = new XmlWriter();
 	writer.connect(DATA_FILE);
@@ -145,7 +142,7 @@ public class XmlWriterTest {
 	user.setFirstName("Jon");
 	user.setLastName("Doe");
 	user.setFavLocation("Montréal");
-	userTickets.add(new Pair<Integer, Integer>(18, 19));
+	userTickets.add(new Pair<UUID, UUID>(UUID.randomUUID(), UUID.randomUUID()));
 	user.setUserTickets(userTickets);
 	writer.modifyUser(user);
 

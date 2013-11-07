@@ -213,9 +213,8 @@ public class XmlReader {
 		for (int tickIter = 0; tickIter < tNodeList.getLength(); tickIter++) {
 			Element tElement = (Element) tNodeList.item(tickIter);
 			tempuser.getUserTickets().add(
-					new Pair<Integer, Integer>(Integer.parseInt(tElement
-							.getAttribute("matchId")), Integer
-							.parseInt(tElement.getAttribute("ticketId"))));
+					new Pair<UUID, UUID>(UUID.fromString(tElement.getAttribute("matchId")), 
+							UUID.fromString(tElement.getAttribute("ticketId"))));
 		}
 		// returns found user
 		// System.out.println(tempuser.toString());

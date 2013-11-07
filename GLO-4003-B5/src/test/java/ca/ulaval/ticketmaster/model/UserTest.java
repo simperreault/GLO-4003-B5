@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -149,7 +150,7 @@ public class UserTest {
 
     @Test
     public void testGetSetUserTickets() {
-	List<Pair<Integer, Integer>> ticketList = new ArrayList<Pair<Integer, Integer>>();
+	List<Pair<UUID, UUID>> ticketList = new ArrayList<Pair<UUID, UUID>>();
 
 	User bob = new User("bob");
 

@@ -11,10 +11,17 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
 
+
+
+
+
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -22,6 +29,7 @@ import org.springframework.stereotype.Repository;
 import ca.ulaval.ticketmaster.model.Event;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.model.User.AccessLevel;
 import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.model.enums.TicketType;
 
@@ -32,11 +40,26 @@ public class DataManager {
 
     private XmlWriter xmlWriter;
     private XmlReader xmlReader;
+    private MailUtil mailSender;
 
     private int totalUsers;
     private int totalEvents;
 
-
+/*
+    public static void main(String[] args){
+    	DataManager test = new DataManager();
+    	UUID eventid = UUID.fromString("14be9fba-dfcd-41ca-a317-b61e6fc159f3");
+    	UUID ticketid = UUID.fromString("8ff5a890-96ab-43a7-a6aa-2cdb06fcab01");
+    	User user = new User("CarloBoutet", "123", "Mathieu", "Bolduc", "bolduc_mathieu@live.ca", AccessLevel.User,
+    			SportType.FOOTBALL.toString(), "M", TicketType.GENERAL, "Québec");
+    	Ticket testT = test.findTicket(eventid, ticketid);
+    	List<Ticket> testList = new ArrayList<Ticket>();
+    	testList.add(testT);
+    	test.buyTickets(testList, "CarloBoutet");
+    	//boolean mytestbrah = test.buyTicket(eventid, ticketid, "mrTito2");
+    	//System.out.println(mytestbrah);
+    }
+    */
     public boolean reconnect(String _file) {
 	return xmlWriter.connect(_file) && xmlReader.connect(_file);
     }
@@ -64,6 +87,7 @@ public class DataManager {
     private void LoadStartupInformation() {
 	xmlWriter = new XmlWriter();
 	xmlReader = new XmlReader();
+	mailSender = new MailUtil();
 	// Loader les id d'event pour ne pas écraser un event existant dans le
 	// cas de la cré¥Œtion d'un nouvel event
 	int output[] = xmlReader.readStartupInformation();
@@ -157,6 +181,55 @@ public class DataManager {
 
     public boolean editTicket(Ticket _ticket) {
 	return xmlWriter.modifyTicket(_ticket);
+    }
+    
+    private boolean verifyTicket(Ticket _ticket){
+    	//Regarder si le billet est disponible à l'achat
+    	if(_ticket.getOwner().equals("") || _ticket.getResellprice() != 0){
+    		return true;
+    	}
+    	return false;
+    }
+    /*
+     * Returns null if all tickets are available and action was completed
+     * or returns a list of the tickets that are not available for the purchase
+     */
+    public List<Ticket> buyTickets(List<Ticket> _ticketList, String _owner){
+    	List<Ticket> invalidTicketList = new ArrayList<Ticket>();
+    	//Regarder si les billets sont disponible à l'achat
+    	for (Iterator<Ticket> it = _ticketList.iterator(); it.hasNext();) {	
+    		Ticket ticket = it.next();
+    		if(! verifyTicket(ticket)){
+    			invalidTicketList.add(ticket);
+    		}
+    	}
+    	User owner = findUser(_owner);
+    	//si il n'y a pas de billets invalide procéder à l'achat et le owner est valide
+    	if(invalidTicketList.isEmpty() && owner != null){
+    		for (Iterator<Ticket> it = _ticketList.iterator(); it.hasNext();) {	
+        		Ticket ticket = it.next();
+        		buyTicket(ticket,owner);
+    		}
+    		//créer les données de transaction
+    		UUID transactionId = UUID.randomUUID();
+    		xmlWriter.writeTransaction(transactionId, _ticketList, _owner);
+    		sendConfirmationMail(owner, transactionId,_ticketList);
+    		return null;
+    	}
+    	return invalidTicketList;
+    } 
+    
+    private void sendConfirmationMail(User _receiver, UUID _transactionId, List<Ticket> _ticketList){
+    	mailSender.sendTransactionMail(_receiver, _transactionId,_ticketList);
+    }
+    
+    private void buyTicket(Ticket _ticket, User _owner){
+    	_ticket.setOwner(_owner.getUsername());
+    	//modifier le liste de billets de l'utilisateur
+    	_owner.addTicketToList(_ticket.getEvent().getId(), _ticket.getId());
+    	xmlWriter.modifyUser(_owner);
+    	//modifier le ticket correspondant
+    	xmlWriter.modifyTicket(_ticket);
     }
 
     public boolean deleteTicket(UUID _eventId, UUID _ticketId) {
