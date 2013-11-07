@@ -7,6 +7,7 @@ package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
+
 
 
 
@@ -349,7 +351,7 @@ public class DataManager {
     }
 
     /**
-     * Find similar unsold simple or general Tickets, returns an empty list if no ticket of the same type is found
+     * Find similar unsold simple or general Tickets, returns null list if no ticket of the same type is found
      * If the kind of ticket you want to find doesn't have a section, use "" as a parameter
      * @param _eventId id of the event you wanna find tickets
      * @param _type type of tickets wanted
@@ -363,7 +365,9 @@ public class DataManager {
     		   returnList.add(t);
     	   }
     	}
+    	if (returnList.size() > 0)
     	return returnList;
+    	else return null;
     }
     
     /**
@@ -403,6 +407,45 @@ public class DataManager {
     		returnList.add((ArrayList<Ticket>)findSimilarTickets(ticketList,TicketType.RESERVED,s));
     	}
     	// need to do it three times so season and reserved tickets are not interleaved with the others
+    	returnList.removeAll(Collections.singleton(null));
+    	return returnList;
+    }
+    
+    public List<ArrayList<Ticket>> regroupSimilarTicketsByEvents(List<Ticket> _ticketList){
+		Set<Event> eventSet = new HashSet<Event>();
+		for (Ticket t  : _ticketList) {
+		    eventSet.add(t.getEvent());
+		}
+    	ArrayList<ArrayList<Ticket>> eventSortedList = new ArrayList<ArrayList<Ticket>>();
+    	List<ArrayList<Ticket>> returnList = new ArrayList<ArrayList<Ticket>>();
+    	for(Event e : eventSet){
+    		ArrayList<Ticket> tempList = new ArrayList<Ticket>();
+    		for (Ticket t  : _ticketList) {
+    		    if(t.getEvent() == e){
+    		    	tempList.add(t);
+    		    }
+    		}
+    		eventSortedList.add(tempList);
+    	}
+    	for(ArrayList<Ticket> ar: eventSortedList){
+	    	// add all general tickets in first list
+    		Event e = ar.get(0).getEvent();
+	    	returnList.add((ArrayList<Ticket>)findSimilarTickets(ar,TicketType.GENERAL,""));
+	    	//then add simple tickets
+	    	for(String s : e.listExistingSections()){
+	    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ar,TicketType.SIMPLE,s));
+	    	}
+	    	// then add season tickets
+	    	for(String s : e.listExistingSections()){
+	    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ar,TicketType.SEASON,s));
+	    	}
+	    	// then add reserved tickets
+	    	for(String s : e.listExistingSections()){
+	    		returnList.add((ArrayList<Ticket>)findSimilarTickets(ar,TicketType.RESERVED,s));
+	    	}
+	    	// need to do it three times so season and reserved tickets are not interleaved with the others
+    	}
+    	returnList.removeAll(Collections.singleton(null));
     	return returnList;
     }
     

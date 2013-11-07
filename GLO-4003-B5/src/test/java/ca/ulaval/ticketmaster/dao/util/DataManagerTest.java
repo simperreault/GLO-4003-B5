@@ -293,14 +293,11 @@ public class DataManagerTest {
 	public void testRegroupSimilarTickets() throws Exception {
 		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
 		List<ArrayList<Ticket>> someList = new ArrayList<ArrayList<Ticket>>();
-		someList.add(new ArrayList<Ticket>());
     	Event e = new Event();
 		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
 		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
 		e.setTicketList(returnList);
 		someList.add(returnList);
-		someList.add(new ArrayList<Ticket>());
-		someList.add(new ArrayList<Ticket>());
 		when(xmlReader.loadEvent(e.getId())).thenReturn(e);
 		assertEquals(someList,mockedDataManager.regroupSimilarTickets(e.getId()));
 	}
