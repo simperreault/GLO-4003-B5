@@ -194,8 +194,8 @@ public class DataManager {
      * Returns null if all tickets are available and action was completed
      * or returns a list of the tickets that are not available for the purchase
      */
-    public List<Ticket> buyTickets(List<Ticket> _ticketList, String _owner){
-    	List<Ticket> invalidTicketList = new ArrayList<Ticket>();
+    public ArrayList<Ticket> buyTickets(ArrayList<Ticket> _ticketList, String _owner){
+    	ArrayList<Ticket> invalidTicketList = new ArrayList<Ticket>();
     	//Regarder si les billets sont disponible à l'achat
     	for (Iterator<Ticket> it = _ticketList.iterator(); it.hasNext();) {	
     		Ticket ticket = it.next();

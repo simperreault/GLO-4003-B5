@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ca.ulaval.ticketmaster.model.enums.PaymentType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAAuthentication;
+import ca.ulaval.ticketmaster.web.DomaineAffaire.DABasket;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.Page;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
+import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
 
 /**
@@ -20,40 +22,50 @@ import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
 // @SessionAttributes
 public class HomeController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(HomeController.class);
-    //private DAUser domaine;
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(HomeController.class);
 
-    public HomeController() {
-	//domaine = new DAUser();
-    }
+	private DABasket domaine;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String MainFrame(Model model) {
-	return "Home";
-    }
+	public HomeController() {
+		domaine = new DABasket();
+	}
 
-    @RequestMapping(value = "/Home", method = RequestMethod.GET)
-    public String home(Model model) {
-	return "Home";
-    }
-    
-    @RequestMapping(value = "/purchase", method = RequestMethod.GET)
-    public String Purchase(Model model) {
-    	model.addAttribute("purchaseInfos", new PurchaseViewModel());
-    	model.addAttribute("paymentType", PaymentType.values());
-	return "Purchase";
-    }
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String MainFrame(Model model) {
+		return "Home";
+	}
 
-    @RequestMapping(value = "/Basket", method = RequestMethod.GET)
-    public String Basket(Model model, HttpSession session) {
-	// model.addAttribute("currentPage", "Basket.jsp");
-	if (DAAuthentication.isLogged(ProxyHttpSession.create(session)))
-	    //return "Basket";
-		return Page.Basket.toString();
-	else
-	    //return "Home";
-		return Page.Home.toString();
-    }
+	@RequestMapping(value = "/Home", method = RequestMethod.GET)
+	public String home(Model model) {
+		return "Home";
+	}
+	
+	@RequestMapping(value = "/Confirmation", method = RequestMethod.GET)
+	public String confirmation(Model model) {
+		return "Confirmation";
+	}
+
+	@RequestMapping(value = "/Purchase", method = RequestMethod.GET)
+	public String Purchase(Model model) {
+		model.addAttribute("purchaseInfos", new PurchaseViewModel());
+		model.addAttribute("paymentType", PaymentType.values());
+		return "Purchase";
+	}
+
+	@RequestMapping(value = "/Purchase", method = RequestMethod.POST)
+	public String Purchase(PurchaseViewModel purchaseModel, Model model, HttpSession session) {
+		model.addAttribute("purchaseInfos", new PurchaseViewModel());
+		model.addAttribute("paymentType", PaymentType.values());
+		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model));
+	}
+
+	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
+	public String Basket(Model model, HttpSession session) {
+		if (DAAuthentication.isLogged(ProxyHttpSession.create(session)))
+			return Page.Basket.toString();
+		else
+			return Page.Home.toString();
+	}
 
 }
