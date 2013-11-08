@@ -31,8 +31,9 @@
 			</thead>
 			<tbody>
 				<c:forEach var="ticketSubList" items="${ticketList}">
-					<c:forEach var="ticket" items="${ticketSubList}">
+					<c:forEach var="ticket" items="${ticketSubList}" varStatus="stat">
 						<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
+						<c:if test="${stat.first}">
 						<tr>
 							<td>${ticket.event.sport}</td>
 							<td>${ticket.event.date}</td>
@@ -46,11 +47,13 @@
 							<td>
 								<a href="/ticket/addBasket/${ticket.event.id}/${ticket.id}">Ajouter au panier</a>
 							</td>
-					<c:if test="${sesacceslevel == 'Admin'}">		
+							<c:if test="${sesacceslevel == 'Admin'}">		
 							<td>
 								<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
 							</td>
 							</c:if>
+						</tr>
+						</c:if>
 					</c:forEach>
 				</c:forEach>
 			</tbody>
