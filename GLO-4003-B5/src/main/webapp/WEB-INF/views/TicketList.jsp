@@ -1,10 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="true" %>
 <html>
 <head>
 	<title>Liste de billets en vente</title>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
-
 </head>
 <body>
 
@@ -36,7 +36,8 @@
 						<c:if test="${stat.first}">
 						<tr>
 							<td>${ticket.event.sport}</td>
-							<td>${ticket.event.date}</td>
+							<td><fmt:formatDate value="${ticket.event.date}"
+										pattern="dd/MM/yyyy hh:mm" /></td>
 							<td>${ticket.event.location}, ${ticket.event.stadium}</td>
 							<td>${ticket.type}</td>
 							<td>${ticket.price}$</td>

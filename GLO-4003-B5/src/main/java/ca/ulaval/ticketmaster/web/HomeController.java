@@ -1,9 +1,11 @@
 package ca.ulaval.ticketmaster.web;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -54,10 +56,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/Purchase", method = RequestMethod.POST)
-	public String Purchase(PurchaseViewModel purchaseModel, Model model, HttpSession session) {
+	public String Purchase(@Valid PurchaseViewModel purchaseModel, Model model, HttpSession session,  BindingResult result) {
 		model.addAttribute("purchaseInfos", new PurchaseViewModel());
 		model.addAttribute("paymentType", PaymentType.values());
-		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model));
+		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
 	}
 
 	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
@@ -68,4 +70,9 @@ public class HomeController {
 			return Page.Home.toString();
 	}
 
+	@RequestMapping(value = "/addBasket", method = RequestMethod.POST)
+	public String copyToBasket(Model model, HttpSession session) {
+		return Page.Basket.toString();
+	}
+	
 }

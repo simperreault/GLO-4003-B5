@@ -7,20 +7,20 @@ import ca.ulaval.ticketmaster.web.viewmodels.validator.CheckEmail;
 
 public class PurchaseViewModel {
 	@NotEmpty(message = "Veuillez indiquer un prénom")
-	private String firstName;
+	public String firstName;
 	@NotEmpty(message = "Veuillez indiquer un nom de famille")
-	private String lastName;
+	public String lastName;
 	@NotEmpty(message = "Veuillez indiquer une adresse courriel")
 	@CheckEmail(message = "L'adresse courriel fournie est invalide")
-	private String email;
+	public String email;
 	@NotEmpty(message = "Veuillez indiquer une adresse")
-	private String adress;
+	public String adress;
 	@NotEmpty(message = "Veuillez indiquer un type de paiement")
-	private PaymentType paymentType;
+	public PaymentType paymentType;
 	@NotEmpty(message = "Veuillez indiquer un numéro de carte de crédit")
-	private String cardNumber;
+	public String cardNumber;
 	@NotEmpty(message = "Veuillez indiquer le numéro de vérification")
-	private String verificationNumber;
+	public String verificationNumber;
 
 	public String getFirstName() {
 		return firstName;

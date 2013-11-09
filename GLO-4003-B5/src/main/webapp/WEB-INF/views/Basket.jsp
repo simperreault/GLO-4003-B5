@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>Panier d'achat</title>
+<script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
 </head>
 <body>
 
@@ -39,7 +40,7 @@
 								${ticket.get(0).event.stadium}</td>
 							<td>${ticket.get(0).type}</td>
 							<td>${ticket.get(0).price}$</td>
-							<td>${ticket.size()}</td>
+							<td><input id="amount" style="width:50px" value="${ticket.size()}" type="number" min="0" max="50" onchange="post_add_qte('/addBasket')"/></td>
 							<td><a href="${ticketUrl}">Details</a></td>
 							<td><a
 								href="/ticket/deleteBasket/${ticket.get(0).event.id}/${ticket.get(0).id}">Retirer

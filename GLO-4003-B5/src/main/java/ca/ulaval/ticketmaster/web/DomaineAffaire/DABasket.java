@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.validation.BindingResult;
+
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 
@@ -84,8 +87,14 @@ public class DABasket {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String purchase(ProxyHttpSession session, ProxyModel model) {
+	public String purchase(ProxyHttpSession session, ProxyModel model, BindingResult result) {
 		if (DAAuthentication.isLogged(session)) {
+			if (result.hasErrors()) {
+				model.addAttribute("error", result.getAllErrors());
+				//model.addAttribute("event", model);
+				return "Purchase";
+			}
+			
 			ArrayList<Ticket> list;
 			ArrayList<Ticket> invalidTickets;
 
