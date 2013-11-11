@@ -80,12 +80,8 @@ public class DABasket {
 					ticketCmp.getType(), 
 					ticketCmp.getSection());
 			
-			System.out.println("A::" + listTickets.size());
-			
 			//2- Filter tickets already in basket
 			listTickets = datamanager.filterListWithList(listTickets, listOfBasket);
-			
-			System.out.println("B::" + listTickets.size());
 			
 			//3- Add them
 			for ( int i = 0; i < listTickets.size() && i < nbSimilarTicketsToAdd ; ++i )
