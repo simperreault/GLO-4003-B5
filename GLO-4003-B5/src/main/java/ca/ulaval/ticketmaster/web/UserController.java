@@ -57,7 +57,7 @@ public class UserController {
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
     public String Login(Model model) {
-	return "Home";
+	return Page.Home.toString();
     }
 
     @RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
