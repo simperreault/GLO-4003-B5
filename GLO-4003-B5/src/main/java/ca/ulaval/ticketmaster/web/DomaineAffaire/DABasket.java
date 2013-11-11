@@ -48,6 +48,66 @@ public class DABasket {
 		return "redirect:/event/" + eventId;
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public String addMultipleTicketsToBasket(String eventId, String ticketId, String nbSimilarTickets,
+			ProxyModel model, ProxyHttpSession session) {
+		
+		int totalTicketsNbAdded = 0; //possiblement utilisé plus tard
+		
+		if (DAAuthentication.isLogged(session)) {
+			
+			ArrayList<Ticket> listOfBasket;
+			if (session.getAttribute("basket") != null) {
+				listOfBasket = (ArrayList<Ticket>) session.getAttribute("basket");
+				model.addAttribute("msg", "old array");
+			} else // le panier est vide
+			{
+			//	datamanager.countSimilarTickets(_ticketList, _type, _section)
+				listOfBasket = new ArrayList<Ticket>();
+				model.addAttribute("msg", "New array");
+			}
+			
+			int nbSimilarTicketsToAdd = Integer.parseInt(nbSimilarTickets);
+			
+			//0- The initial ticket (it may be taken due to race condition (i.e. bought) I think @addToBasket
+			// so we have to make sure it isn't taken
+			Ticket ticketCmp = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
+			
+			//1- Find similar tickets to the one @ UUID.fromString(ticketId)
+			List<Ticket> listTickets = datamanager.findSimilarTickets(
+					datamanager.findAllTickets(UUID.fromString(eventId)), //should filter sold
+					ticketCmp.getType(), 
+					ticketCmp.getSection());
+			
+			System.out.println("A::" + listTickets.size());
+			
+			//2- Filter tickets already in basket
+			listTickets = datamanager.filterListWithList(listTickets, listOfBasket);
+			
+			System.out.println("B::" + listTickets.size());
+			
+			//3- Add them
+			for ( int i = 0; i < listTickets.size() && i < nbSimilarTicketsToAdd ; ++i )
+			{
+				++totalTicketsNbAdded;
+				System.out.println("Adding ticket : " + listTickets.get(i).getId());
+				listOfBasket.add(listTickets.get(i));
+			}
+
+			List<ArrayList<Ticket>> tmp = datamanager.regroupSimilarTicketsByEvents(listOfBasket);
+			session.setAttribute("basketD", datamanager.regroupSimilarTicketsByEvents(listOfBasket));		
+			session.setAttribute("basket", listOfBasket);
+			
+			//ArrayList<Ticket> x = tmp.get(0); //wtf ?
+			//ArrayList<Ticket> test = tmp.get(1).get(0);
+		} else {
+			model.addAttribute("msg", "Veuillez vous connecter pour acheter des billets");
+			// TODO coder un message qui demande de se logger
+		}
+		return "redirect:/event/" + eventId;
+
+	}
 
 	@SuppressWarnings("unchecked")
 	public String removeFromBasket(String eventId, String ticketId, ProxyModel model, ProxyHttpSession session) {

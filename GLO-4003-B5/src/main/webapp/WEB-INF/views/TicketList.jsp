@@ -30,10 +30,28 @@
 				</tr>
 			</thead>
 			<tbody>
+				<script type="text/javascript">
+					function strRemoveFromEndCharUntilSlash(str)
+					{
+						str = str.substr(0, str.lastIndexOf("/") + 1 );
+						
+						return str;
+					}
+					function updateUrl(itId)
+					{
+						//alert("id = " + itId);
+						var selectedValue =  document.getElementById("nbTicketsList" + itId).value
+						var oldHref = document.getElementById("idTicketsAdd" + itId).href; 
+						var newUrl = strRemoveFromEndCharUntilSlash(oldHref) + selectedValue;
+						document.getElementById("idTicketsAdd" + itId).href = newUrl;
+					}
+				</script>
 				<c:forEach var="ticketSubList" items="${ticketList}">
+					<c:set var="counterTicketGroup" value="0" />
 					<c:forEach var="ticket" items="${ticketSubList}" varStatus="stat">
 						<c:url var="ticketUrl" value="/event/${ticket.event.id}/${ticket.id}" />
 						<c:if test="${stat.first}">
+        				<c:set var="counterTicketGroup" value="${counterTicketGroup + 1}"/>
 						<tr>
 							<td>${ticket.event.sport}</td>
 							<td><fmt:formatDate value="${ticket.event.date}"
@@ -46,9 +64,18 @@
 								<a href="${ticketUrl}">Details</a>
 							</td>
 							<td>
-								<a href="/ticket/addBasket/${ticket.event.id}/${ticket.id}">Ajouter au panier</a>
+								<!--<c:set var="tmpSize" value="${ticketSubList.size()}" />-->
+								<select id="nbTicketsList<c:out value="${counterTicketGroup}"/>" 
+										name="nbTicketsList<c:out value="${counterTicketGroup}"/>" 
+										onchange="updateUrl(<c:out value="${counterTicketGroup}"/>)">
+									<c:forEach var="i" begin="1" end="${ticketSubList.size()}">
+										<option value="<c:out value="${i}"/>"><c:out value="${i}"/></option>
+									</c:forEach>
+								</select>
+								<a id="idTicketsAdd<c:out value="${counterTicketGroup}"/>" 
+									href="/ticket/addBasket/${ticket.event.id}/${ticket.id}/1">Ajouter au panier</a>
 							</td>
-							<c:if test="${sesacceslevel == 'Admin'}">		
+							<c:if test="${sesacceslevel == 'Admin'}">
 							<td>
 								<a href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
 							</td>

@@ -56,6 +56,16 @@ public class TicketController {
 		return basket.addToBasket(eventId, ticketId, ProxyModel.create(model), ProxyHttpSession.create(session));
 	}
 
+	//Ajoute plusieurs billets au panier
+	@RequestMapping(value = "/addBasket/{eventId}/{ticketId}/{nbSimilarTickets}", method = RequestMethod.GET)
+	public String addToBasketMultiple(@PathVariable String eventId, @PathVariable String ticketId,
+			@PathVariable String nbSimilarTickets,
+			Model model,
+			HttpSession session) {
+		
+		return basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets, ProxyModel.create(model), ProxyHttpSession.create(session));
+	}
+
 	@RequestMapping(value = "/deleteBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
 	public String removeFromBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
 			HttpSession session) {

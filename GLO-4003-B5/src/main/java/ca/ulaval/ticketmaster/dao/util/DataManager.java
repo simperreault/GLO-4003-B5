@@ -479,6 +479,34 @@ public class DataManager {
     	
     }
     
+    /**
+     * Remove from the first list the elements in the second list 
+     * @param _toFilter
+     * @return
+     */
+    public List<Ticket> filterListWithList(List<Ticket> _toFilter, List<Ticket> _filter) {
+    	
+    	List<Ticket> returnList = new ArrayList<Ticket>();
+    	
+    	boolean doAdd;
+    	
+    	for (Ticket t : _toFilter) {
+    		doAdd = true;
+    		for( Ticket tFilter : _filter )
+    		{
+        	    if (t.getId().equals(tFilter.getId() ) ) {
+        	    	doAdd = false;
+        	    }
+    		}
+    		if (doAdd)
+    		{
+    	    	returnList.add(t);
+    		}
+    	}
+    	
+    	return returnList;
+    }
+    
     private List<Ticket> filterSoldTickets(List<Ticket> _toFilter) {
 	List<Ticket> returnList = new ArrayList<Ticket>();
 	for (Ticket t : _toFilter) {
