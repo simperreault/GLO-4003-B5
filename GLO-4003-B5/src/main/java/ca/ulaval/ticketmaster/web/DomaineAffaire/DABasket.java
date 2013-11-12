@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
+import ca.ulaval.ticketmaster.model.enums.PaymentType;
 import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
@@ -147,7 +148,6 @@ public class DABasket {
 		if (DAAuthentication.isLogged(session)) {
 			if (result.hasErrors()) {
 				model.addAttribute("error", result.getAllErrors());
-				//model.addAttribute("event", model);
 				return "Purchase";
 			}
 			

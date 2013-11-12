@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <title>Acheter</title>
@@ -9,7 +10,11 @@
 <h1>Informations d'achat</h1>
 		<hr>
 		<div>${message}</div>
-		<div>${error}</div>
+	<div class="error"> 
+		<c:forEach var="objectError" items="${error}">
+			<c:out value="${objectError.getDefaultMessage()}"></c:out> <br />
+		</c:forEach>
+	</div>
 	<form:form method="post" class="form-horizontal" action="Purchase"
 		modelAttribute="purchaseInfos">
 		<table>
@@ -26,12 +31,8 @@
 				<td><form:input path="adress" /></td>
 			</tr>
 			<tr>
-				<td>Courriel :</td>
-				<td><form:input path="email" /></td>
-			</tr>
-			<tr>
 				<td>Type de paiement :</td>
-				<td><form:input path="paymentType" /></td>
+				<td><form:select path="paymentType" items="${paymentType}" /></td>
 			</tr>
 			<tr>
 				<td>Numero de carte de crédit :</td>

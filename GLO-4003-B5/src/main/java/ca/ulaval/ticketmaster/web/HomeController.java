@@ -21,7 +21,6 @@ import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
  * Handles requests for the application home page.
  */
 @Controller
-// @SessionAttributes
 public class HomeController {
 
 	// private static final Logger logger =
@@ -56,8 +55,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/Purchase", method = RequestMethod.POST)
-	public String Purchase(@Valid PurchaseViewModel purchaseModel, Model model, HttpSession session,  BindingResult result) {
-		model.addAttribute("purchaseInfos", new PurchaseViewModel());
+	public String Purchase(@Valid PurchaseViewModel purchaseModel, BindingResult result, Model model, HttpSession session) {
+		model.addAttribute("purchaseInfos", purchaseModel);
 		model.addAttribute("paymentType", PaymentType.values());
 		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
 	}
