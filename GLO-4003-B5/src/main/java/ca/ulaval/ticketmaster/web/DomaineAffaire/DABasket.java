@@ -128,7 +128,7 @@ public class DABasket {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String copyToBasket(String eventId, String ticketId,int amount, ProxyHttpSession session) {
+	public String copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) {
 		
 		if (DAAuthentication.isLogged(session)) {
 			Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
@@ -154,11 +154,17 @@ public class DABasket {
 				List<Ticket> similarTicket = datamanager.findSimilarTickets(eventTicket, source.getType(), source.getSection());				
 				// donne les billets similaire qui ne sont pas dans le panier
 				List<Ticket> freeTicket = datamanager.filterListWithList(similarTicket, ticketDisplay.get(i));
-				for(int j = 0;j< amount - ticketDisplay.get(i).size();++j)
+				//s'il n'y a pas asser de ticket
+				if (freeTicket.size() < amount - ticketDisplay.get(i).size())
 				{
-					basket.add(freeTicket.get(j));
-				}				
-				this.setBasket(basket, session);
+					model.addAttribute("message", "Erreur : Il ne reste que " + freeTicket.size() +" billets de cette catégorie" );
+				}else{
+					for(int j = 0;j< amount - ticketDisplay.get(i).size();++j)
+					{
+						basket.add(freeTicket.get(j));
+					}				
+					this.setBasket(basket, session);
+				}
 			}else{ //si on supprime un billet
 				this.removeFromBasket(eventId, ticketId,session);
 			}
