@@ -75,5 +75,9 @@ public class HomeController {
 	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId, HttpSession session) {
 		return domaine.copyToBasket(eventId, ticketId, amount, ProxyHttpSession.create(session));
 	}
+	@RequestMapping(value = "/emptyBasket", method = RequestMethod.GET)
+	public String emptyBasket(Model model, HttpSession session) {
+		return domaine.removeAllFromBasket(ProxyHttpSession.create(session));
+	}
 	
 }

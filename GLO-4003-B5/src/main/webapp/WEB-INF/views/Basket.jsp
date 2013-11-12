@@ -44,15 +44,16 @@
 							<td><input id="amount" style="width:50px" value="${ticket.size()}" type="number" min="0" max="50" onchange="post_add_qte('/addBasket')"/></td>
 							<td><a href="${ticketUrl}">Details</a></td>
 					</c:forEach>
-					<c:if test="${basketD.size() == 0}">
+					<c:if test="${basketDisplay.size() == 0}">
 						<tr><td colspan="10">Le panier est vide</td></tr>
 					</c:if>
 				</tbody>
 			</table>
 		</div>
-		<c:if test="${basketD.size() > 0}">
+		<c:if test="${basketDisplay.size() > 0}">
 			<a href="<c:url value="/Purchase" />" class="btn">Passer au
 				paiement</a>
+				<a href="<c:url value="/emptyBasket" />" class="btn">Vider le panier</a>
 		</c:if>
 	</div>
 </body>

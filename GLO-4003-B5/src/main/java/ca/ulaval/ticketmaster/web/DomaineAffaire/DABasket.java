@@ -120,6 +120,12 @@ public class DABasket {
 		}
 		return "redirect:/Basket";
 	}
+	public String removeAllFromBasket(ProxyHttpSession session)
+	{
+		ArrayList<Ticket> list = new ArrayList<Ticket>();
+		this.setBasket(list, session);
+		return Page.Basket.toString();
+	}
 
 	@SuppressWarnings("unchecked")
 	public String copyToBasket(String eventId, String ticketId,int amount, ProxyHttpSession session) {
@@ -199,5 +205,5 @@ public class DABasket {
 		return "redirect:/Purchase";
 
 	}
-
+	
 }
