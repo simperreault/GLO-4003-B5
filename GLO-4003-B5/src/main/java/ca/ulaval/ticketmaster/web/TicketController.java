@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DABasket;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DATicket;
@@ -53,7 +54,7 @@ public class TicketController {
 	@RequestMapping(value = "/addBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
 	public String addToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
 			HttpSession session) {
-		return basket.addToBasket(eventId, ticketId, ProxyModel.create(model), ProxyHttpSession.create(session));
+		return basket.addToBasket(eventId, ticketId, ProxyHttpSession.create(session));
 	}
 
 	//Ajoute plusieurs billets au panier
@@ -69,13 +70,13 @@ public class TicketController {
 	@RequestMapping(value = "/deleteBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
 	public String removeFromBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
 			HttpSession session) {
-		return basket.removeFromBasket(eventId, ticketId, ProxyModel.create(model), ProxyHttpSession.create(session));
+		return basket.removeFromBasket(eventId, ticketId,ProxyHttpSession.create(session));
 	}
 
 	@RequestMapping(value = "/copyBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
-	public String copyToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
+	public String copyToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,@RequestParam("amount") int amount,
 			HttpSession session) {
-		return basket.copyToBasket(eventId, ticketId, ProxyHttpSession.create(session));
+		return basket.copyToBasket(eventId, ticketId, amount, ProxyHttpSession.create(session));
 	}
 	
 	@RequestMapping(value = "/buySingleTicket/{eventId}/{ticketId}", method = RequestMethod.GET)

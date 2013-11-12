@@ -19,11 +19,15 @@ public class DABasket {
 	public DABasket() {
 		datamanager = new DataManager();
 	}
-
+	private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
+	{
+		session.setAttribute("basket", list);
+		session.setAttribute("basketDisplay", datamanager.regroupSimilarTicketsByEvents(list));
+	}
 	// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
 	// trouvé de solution pour enlever le warning
 	@SuppressWarnings("unchecked")
-	public String addToBasket(String eventId, String ticketId, ProxyModel model, ProxyHttpSession session) {
+	public String addToBasket(String eventId, String ticketId, ProxyHttpSession session) {
 		if (DAAuthentication.isLogged(session)) {
 			ArrayList<Ticket> list;
 			if (session.getAttribute("basket") != null) {
@@ -35,8 +39,9 @@ public class DABasket {
 
 			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
 			List<ArrayList<Ticket>> tmp = datamanager.regroupSimilarTicketsByEvents(list);
-			session.setAttribute("basketD", datamanager.regroupSimilarTicketsByEvents(list));
-			session.setAttribute("basket", list);
+			this.setBasket(list, session);
+		//	session.setAttribute("basketDisplay", datamanager.regroupSimilarTicketsByEvents(list));
+		//	session.setAttribute("basket", list);
 			ArrayList<Ticket> x = tmp.get(0);
 			// ArrayList<Ticket> test = tmp.get(1).get(0);
 		} else {
@@ -86,9 +91,7 @@ public class DABasket {
 				System.out.println("Adding ticket : " + listTickets.get(i).getId());
 				listOfBasket.add(listTickets.get(i));
 			}
-
-			session.setAttribute("basketD", datamanager.regroupSimilarTicketsByEvents(listOfBasket));
-			session.setAttribute("basket", listOfBasket);
+			this.setBasket(listOfBasket, session);
 
 		} else {
 			//Not logged
@@ -98,7 +101,7 @@ public class DABasket {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String removeFromBasket(String eventId, String ticketId, ProxyModel model, ProxyHttpSession session) {
+	public String removeFromBasket(String eventId, String ticketId, ProxyHttpSession session) {
 
 		// isFound = true;
 		if (session.getAttribute("basket") != null) {
@@ -109,8 +112,7 @@ public class DABasket {
 				if (list.get(i).getId().toString().equals(ticketId)) {
 					isFound = true;
 					list.remove(i);
-					session.setAttribute("basket", list);
-					session.setAttribute("basketD", datamanager.regroupSimilarTicketsByEvents(list));
+					this.setBasket(list, session);
 				}
 				++i;
 			}
@@ -120,18 +122,45 @@ public class DABasket {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String copyToBasket(String eventId, String ticketId, ProxyHttpSession session) {
+	public String copyToBasket(String eventId, String ticketId,int amount, ProxyHttpSession session) {
+		
 		if (DAAuthentication.isLogged(session)) {
-			ArrayList<Ticket> list;
-			if (session.getAttribute("basket") != null) {
-				list = (ArrayList<Ticket>) session.getAttribute("basket");
-				list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
-				session.setAttribute("basket", list);
+			Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
+			//Liste des Ticket Displayed
+			List<ArrayList<Ticket>> ticketDisplay = (List<ArrayList<Ticket>>)session.getAttribute("basketDisplay");			
+			//Les ticket dans le basket
+			int i = 0;
+			Ticket current = ticketDisplay.get(i).get(0);
+			//Trouver à quelle section de BasketDisplay le source Ticket appartient
+			//while (!((current.getType().equals(source.getType())) && (current.getEvent().getId().equals(source.getEvent().getId()) && (current.getSection().equals(source.getSection())))))
+			//Devrait tt le temps etre en  position 0 sinon remettre ligne en haut
+			while (!(current.getId().equals(source.getId())))
+			{
+				++i;
+				current = ticketDisplay.get(i).get(0);
 			}
-
-		}
-		return "redirect:/Basket";
-
+			//si on ajoute un billet
+			if (amount > ticketDisplay.get(i).size()){
+				ArrayList<Ticket> basket = (ArrayList<Ticket>)session.getAttribute("basket");
+				//Les tickets de l'évent du source Ticket
+				List<Ticket> eventTicket = datamanager.findAllTickets(source.getEvent().getId());
+				//Trouver les Tickets similaires
+				List<Ticket> similarTicket = datamanager.findSimilarTickets(eventTicket, source.getType(), source.getSection());				
+				// donne les billets similaire qui ne sont pas dans le panier
+				List<Ticket> freeTicket = datamanager.filterListWithList(similarTicket, ticketDisplay.get(i));
+				for(int j = 0;j< amount - ticketDisplay.get(i).size();++j)
+				{
+					basket.add(freeTicket.get(j));
+				}				
+				this.setBasket(basket, session);
+			}else{ //si on supprime un billet
+				this.removeFromBasket(eventId, ticketId,session);
+			}
+			
+			
+			
+		}		
+		return Page.Basket.toString();
 	}
 
 	@SuppressWarnings("unchecked")
