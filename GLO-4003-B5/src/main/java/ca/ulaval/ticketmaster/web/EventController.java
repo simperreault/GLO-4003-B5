@@ -40,8 +40,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String Event(@PathVariable String id, Model model) {
-	return domaine.getTickedEvent(id, ProxyModel.create(model));
+    public String Event(@PathVariable String id, Model model, HttpSession session) {
+	return domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
     }
 
     @RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)

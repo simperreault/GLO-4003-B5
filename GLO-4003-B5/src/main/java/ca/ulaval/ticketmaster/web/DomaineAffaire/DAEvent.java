@@ -45,12 +45,14 @@ public class DAEvent {
 		return Page.EventList.toString();
 	}
 
-	public String getTickedEvent(String idEvent, ProxyModel model) {
+	public String getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
 		
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
 		model.addAttribute("ticketList", datamanager.findAllTicketsOnTwoLevels(UUID.fromString(idEvent)));
 		
+		if (!DAAuthentication.isLogged(session))
+			model.addAttribute("message", "Veuillez vous connecter pour acheter des billets");
 		
 		return Page.TicketList.toString();
 	}
