@@ -78,5 +78,11 @@ public class TicketController {
 			HttpSession session) {
 		return basket.copyToBasket(eventId, ticketId, amount, ProxyHttpSession.create(session));
 	}
+	
+	@RequestMapping(value = "/buySingleTicket/{eventId}/{ticketId}", method = RequestMethod.GET)
+	public String buySingleTicket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
+			HttpSession session) {
+		return basket.buySingleTicket(eventId, ticketId, ProxyHttpSession.create(session));
+	}
 
 }

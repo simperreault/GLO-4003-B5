@@ -78,8 +78,8 @@ public class DABasket {
 			// 1- Find similar tickets to the one @ UUID.fromString(ticketId)
 			List<Ticket> listTickets = datamanager.findSimilarTickets(
 					datamanager.findAllTickets(UUID.fromString(eventId)), // should
-																			// filter
-																			// sold
+					// filter
+					// sold
 					ticketCmp.getType(), ticketCmp.getSection());
 
 			// 2- Filter tickets already in basket
@@ -177,33 +177,58 @@ public class DABasket {
 				return "Purchase";
 			}
 
-			ArrayList<Ticket> list;
-			ArrayList<Ticket> invalidTickets;
+			ArrayList<Ticket> list = new ArrayList<>();
+			ArrayList<Ticket> invalidTickets = null;
 
-			if (session.getAttribute("basket") != null) {
-				System.out.println("basket");
+			if (session.getAttribute("singleTicket") != null)
+				list = (ArrayList<Ticket>) session.getAttribute("singleTicket");
+			else if (session.getAttribute("basket") != null)
 				list = (ArrayList<Ticket>) session.getAttribute("basket");
-				invalidTickets = datamanager.buyTickets(list, (String) session.getAttribute("sesusername"));
 
-				session.setAttribute("basket", list);
+			if (list.size() > 0)
+			{
+				System.out.println(list.get(0).getOwner());
+				invalidTickets = datamanager.buyTickets(list, (String) session.getAttribute("sesusername"));
+				//session.setAttribute("basket", list);
+
 
 				if (invalidTickets == null) {
-					model.addAttribute("message", "Billets valide");
+					model.addAttribute("message", "Billets valides");
 					return "redirect:/Confirmation";
 				} else {
+					System.out.println(invalidTickets.get(0).getOwner());
+					System.out.println("Invalid tickets size : " + invalidTickets.size());
 					model.addAttribute("message", "Erreur : Billets invalides");
-					return "redirect:/Confirmation";
+					return "redirect:/Purchase";
 				}
 
 			} else {
 				model.addAttribute("message", "Erreur : Le panier est vide");
 			}
 
-		} else {
-			System.out.println("pas loggé");
+		} else {	//Pas loggé
+			return Page.Home.toString();	
 		}
 		return "redirect:/Purchase";
 
 	}
-	
+
+	public String buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) {
+		if (DAAuthentication.isLogged(session)) {			
+			ArrayList<Ticket> list = new ArrayList<>();
+			ArrayList<Ticket> invalidTickets;
+
+			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
+			//invalidTickets = datamanager.buyTickets(list, (String) session.getAttribute("sesusername"));
+			//invalidTickets == null && 
+			if (list.size() == 1)	//ticket is valid
+			{
+				session.setAttribute("singleTicket", list);
+			}
+		}
+		return "redirect:/Purchase";
+
+
+	}
+
 }

@@ -42,8 +42,6 @@ function post_to_url(path, method) {
 function post_add_qte(path, method) {
 	method = method || "post";
 
-	
-	
 	var form = document.createElement("form");
 	form.setAttribute("method", method);
 	form.setAttribute("action", path);
