@@ -23,17 +23,18 @@
 						<th>Prix</th>
 						<th>Quantité</th>
 						<th></th>
-						<th></th>
-						<th>Ajouter</th>
 						<th colspan="3"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="ticket" items="${basketD}">
+					<c:forEach var="ticket" items="${basketDisplay}">
 						<c:url var="ticketUrl"
 							value="/event/${ticket.get(0).event.id}/${ticket.get(0).id}" />
+							<input id="ticketId" type="hidden" value ="${ticket.get(0).id}"/>
+							<input id="eventId" type="hidden" value ="${ticket.get(0).event.id}"/>
 						<tr>
-							<td>${ticket.get(0).event.sport}</td>
+							<td>
+										${ticket.get(0).event.sport}</td>
 							<td><fmt:formatDate value="${ticket.get(0).event.date}"
 										pattern="dd/MM/yyyy hh:mm" /></td>
 							<td>${ticket.get(0).event.location},
@@ -42,12 +43,6 @@
 							<td>${ticket.get(0).price}$</td>
 							<td><input id="amount" style="width:50px" value="${ticket.size()}" type="number" min="0" max="50" onchange="post_add_qte('/addBasket')"/></td>
 							<td><a href="${ticketUrl}">Details</a></td>
-							<td><a
-								href="/ticket/deleteBasket/${ticket.get(0).event.id}/${ticket.get(0).id}">Retirer
-									du panier</a></td>
-							<td><a
-								href="/ticket/copyBasket/${ticket.get(0).event.id}/${ticket.get(0).id}">Ajouter
-									un Billet Similaire</a></td>
 					</c:forEach>
 					<c:if test="${basketD.size() == 0}">
 						<tr><td colspan="10">Le panier est vide</td></tr>

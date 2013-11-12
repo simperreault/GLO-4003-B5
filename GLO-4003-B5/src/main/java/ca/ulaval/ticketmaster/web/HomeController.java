@@ -6,8 +6,10 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.model.enums.PaymentType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAAuthentication;
@@ -55,8 +57,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/Purchase", method = RequestMethod.POST)
-	public String Purchase(@Valid PurchaseViewModel purchaseModel, BindingResult result, Model model, HttpSession session) {
-		model.addAttribute("purchaseInfos", purchaseModel);
+	public String Purchase(@Valid PurchaseViewModel purchaseModel, Model model, HttpSession session,  BindingResult result) {
+		model.addAttribute("purchaseInfos", new PurchaseViewModel());
 		model.addAttribute("paymentType", PaymentType.values());
 		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
 	}
@@ -70,8 +72,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/addBasket", method = RequestMethod.POST)
-	public String copyToBasket(Model model, HttpSession session) {
-		return Page.Basket.toString();
+	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId, HttpSession session) {
+		return domaine.copyToBasket(eventId, ticketId, amount, ProxyHttpSession.create(session));
 	}
 	
 }
