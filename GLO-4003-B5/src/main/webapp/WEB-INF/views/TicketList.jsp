@@ -14,6 +14,8 @@
 					}
 					function updateUrl(itId)
 					{
+						//alert(itId);
+						//return;
 						//alert("id = " + itId);
 						var selectedValue =  document.getElementById("nbTicketsList" + itId).value
 						var oldHref = document.getElementById("idTicketsAdd" + itId).href; 
@@ -41,13 +43,13 @@
 						<th>Endroit</th>
 						<th>Type</th>
 						<th>Prix</th>
-						<th>Billets similaires</th>
+						<th colspan="2">Billets similaires</th>
 						<th colspan="3"></th>
 					</tr>
 				</thead>
 				<tbody>
+					<c:set var="counterTicketGroup" value="0" />
 					<c:forEach var="ticketSubList" items="${ticketList}">
-						<c:set var="counterTicketGroup" value="0" />
 						<c:forEach var="ticket" items="${ticketSubList}" varStatus="stat">
 							<c:url var="ticketUrl"
 								value="/event/${ticket.event.id}/${ticket.id}" />
@@ -73,9 +75,11 @@
 												<option value="<c:out value="${i}"/>"><c:out
 														value="${i}" /></option>
 											</c:forEach>
-									</select> <a id="idTicketsAdd<c:out value="${counterTicketGroup}"/>"
+									</select>
+									<td><a id="idTicketsAdd<c:out value="${counterTicketGroup}"/>"
 										href="/ticket/addBasket/${ticket.event.id}/${ticket.id}/1">Ajouter
 											au panier</a>
+									</td>
 									</td>
 									<c:if test="${sesacceslevel == 'Admin'}">
 										<td><a

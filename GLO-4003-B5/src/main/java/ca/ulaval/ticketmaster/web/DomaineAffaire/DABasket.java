@@ -88,7 +88,7 @@ public class DABasket {
 			// 3- Add them
 			for (int i = 0; i < listTickets.size() && i < nbSimilarTicketsToAdd; ++i) {
 				++totalTicketsNbAdded;
-				System.out.println("Adding ticket : " + listTickets.get(i).getId());
+				//System.out.println("Adding ticket : " + listTickets.get(i).getId());
 				listOfBasket.add(listTickets.get(i));
 			}
 			this.setBasket(listOfBasket, session);
