@@ -6,8 +6,10 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.model.enums.PaymentType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DAAuthentication;
@@ -21,7 +23,6 @@ import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
  * Handles requests for the application home page.
  */
 @Controller
-// @SessionAttributes
 public class HomeController {
 
 	// private static final Logger logger =
@@ -71,8 +72,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/addBasket", method = RequestMethod.POST)
-	public String copyToBasket(Model model, HttpSession session) {
-		return Page.Basket.toString();
+	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId,Model model, HttpSession session) {
+		return domaine.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model),ProxyHttpSession.create(session));
+	}
+	@RequestMapping(value = "/emptyBasket", method = RequestMethod.GET)
+	public String emptyBasket(Model model, HttpSession session) {
+		return domaine.removeAllFromBasket(ProxyHttpSession.create(session));
 	}
 	
 }

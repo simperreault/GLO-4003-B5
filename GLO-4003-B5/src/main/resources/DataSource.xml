@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList total="3">
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="8" ticketsTotal="10">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="16" ticketsTotal="18">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
@@ -13,9 +13,21 @@
       <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="e1a52cd2-d73e-4b17-9ed8-68018f70691f" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="206fc251-389c-46b6-a3d4-6224a60297d4" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="167d3a01-2efa-4495-82c2-af06415890f3" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="af3cc5be-dfb7-4607-b897-28a3428f4052" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="98b38aeb-2768-476c-92cd-160d05322435" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="c11983e0-47b8-4267-973f-a175fe2d8a5b" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="fe4f437c-52de-48a9-9de0-b8db423dfb28" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="651c202a-9687-4fe1-8d0e-b7522d4d0dbf" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="01c447c2-9914-4c23-9a48-3b76b2f9d254" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="bf9b12c8-d71f-4600-868b-00d29dabf276" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="01359a84-27a5-47cf-aa60-f7dde4e5a163" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="fb8f1af3-178d-486e-af61-11c58423472c" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       </TicketList>
     </Event>
-  <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="2" ticketsTotal="2">
+  <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="7" ticketsTotal="7">
       <SectionList/>
       <Sport gender="M" name="VOLLEYBALL"/>
       <Teams home="qwe" visitors="qwe"/>
@@ -23,6 +35,11 @@
       <TicketList>
         <Ticket id="a914f0d4-f29a-4538-83d8-b7d813d7d144" owner="CarloBoutet" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
       <Ticket id="edcd1a30-2eac-4a6b-afcd-3b5f0cd82f52" owner="CarloBoutet" price="123.0" resellPrice="0.0" seat="" section="asd" type="SEASON"/>
+      <Ticket id="3c9ee3a7-b3ea-40ee-8c4b-4d1b13757611" owner="" price="10.0" resellPrice="0.0" seat="" section="" type="GENERAL"/>
+      <Ticket id="e195ce79-e31b-4c51-9b3b-505fa88610c1" owner="" price="10.0" resellPrice="0.0" seat="" section="" type="GENERAL"/>
+      <Ticket id="37c9ff6d-3f48-4ddd-a89f-4874a1b30b56" owner="" price="10.0" resellPrice="0.0" seat="" section="" type="GENERAL"/>
+      <Ticket id="4e4b4663-b62c-440b-a0c1-ee53957161ff" owner="" price="10.0" resellPrice="0.0" seat="" section="" type="GENERAL"/>
+      <Ticket id="ac8b385e-c15c-4ee2-b9e4-02e81aeee0f3" owner="" price="10.0" resellPrice="0.0" seat="" section="" type="GENERAL"/>
       </TicketList>
     </Event>
   <Event id="8733121f-6d35-4dfd-941c-5180d744d95b" open="false" ticketsAvailable="0" ticketsTotal="0">

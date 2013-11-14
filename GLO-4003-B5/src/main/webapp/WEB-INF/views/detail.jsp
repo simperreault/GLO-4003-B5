@@ -27,5 +27,6 @@
 			<td>Prix : </td><td>${ticket.price} $</td>
 		</tr>
 	</table>
+	<a href="/ticket/buySingleTicket/${ticket.event.id}/${ticket.id}" class="btn">Acheter ce billet</a>
 	<br>
 </html>
