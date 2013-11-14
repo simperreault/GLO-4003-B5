@@ -50,22 +50,6 @@ public class TicketController {
 	public String delete(@PathVariable String eventId, @PathVariable String ticketId, Model model, HttpSession session) {
 		return domain.deleteTicket(eventId, ticketId, ProxyHttpSession.create(session));
 	}
-
-	@RequestMapping(value = "/addBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
-	public String addToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
-			HttpSession session) {
-		return basket.addToBasket(eventId, ticketId, ProxyHttpSession.create(session));
-	}
-
-	//Ajoute plusieurs billets au panier
-	/*@RequestMapping(value = "/addBasket/{eventId}/{ticketId}/{nbSimilarTickets}", method = RequestMethod.GET)
-	public String addToBasketMultiple(@PathVariable String eventId, @PathVariable String ticketId,
-			@PathVariable String nbSimilarTickets,
-			Model model,
-			HttpSession session) {
-		
-		return basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets, ProxyModel.create(model), ProxyHttpSession.create(session));
-	}*/
 	
 	@RequestMapping(value = "/addBasket/{eventId}", method = RequestMethod.POST)
 	public String addToBasketMultiple(@PathVariable String eventId, 
