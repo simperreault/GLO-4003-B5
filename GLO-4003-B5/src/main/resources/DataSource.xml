@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList total="3">
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="4" ticketsTotal="6">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="8" ticketsTotal="10">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
