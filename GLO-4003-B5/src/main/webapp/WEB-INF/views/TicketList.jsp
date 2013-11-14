@@ -22,6 +22,38 @@
 						var newUrl = strRemoveFromEndCharUntilSlash(oldHref) + selectedValue;
 						document.getElementById("idTicketsAdd" + itId).href = newUrl;
 					}
+					function AddTickets(path, idToGetNbTickets, ticketLikeThisOne)
+					{
+						var strNbToBuy = document.getElementById(idToGetNbTickets).value;
+						
+						if ( !(strNbToBuy % 1 === 0) /*isNotInt*/ )
+						{
+							alert('unhappy cat')
+							return;
+						}
+						
+						var form = document.createElement("form");
+						form.setAttribute("method", "post");
+						form.setAttribute("action", path);
+
+
+						var hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "nbSimilarTickets");
+						hiddenField.setAttribute("value", strNbToBuy);
+						form.appendChild(hiddenField);
+
+
+						var hiddenField2 = document.createElement("input");
+						hiddenField2.setAttribute("type", "hidden");
+						hiddenField2.setAttribute("name", "ticketId");
+						hiddenField2.setAttribute("value", ticketLikeThisOne);
+						form.appendChild(hiddenField2);
+
+
+						document.body.appendChild(form);
+						form.submit();
+					}
 				</script>
 </head>
 <body>
@@ -76,14 +108,16 @@
 														value="${i}" /></option>
 											</c:forEach>
 									</select>
-									<td><a id="idTicketsAdd<c:out value="${counterTicketGroup}"/>"
-										href="/ticket/addBasket/${ticket.event.id}/${ticket.id}/1">Ajouter
-											au panier</a>
+									<td>
+        								<button class="btn" 
+        								onclick="AddTickets('/ticket/addBasket/${ticket.event.id}',
+        									'nbTicketsList<c:out value="${counterTicketGroup}"/>',
+        									'${ticket.id}')">Ajouter au panier</button>
 									</td>
 									</td>
 									<c:if test="${sesacceslevel == 'Admin'}">
 										<td><a
-											href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
+											href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer 1</a>
 										</td>
 									</c:if>
 								</tr>

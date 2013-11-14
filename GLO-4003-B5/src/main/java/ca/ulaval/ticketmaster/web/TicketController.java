@@ -58,11 +58,23 @@ public class TicketController {
 	}
 
 	//Ajoute plusieurs billets au panier
-	@RequestMapping(value = "/addBasket/{eventId}/{ticketId}/{nbSimilarTickets}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/addBasket/{eventId}/{ticketId}/{nbSimilarTickets}", method = RequestMethod.GET)
 	public String addToBasketMultiple(@PathVariable String eventId, @PathVariable String ticketId,
 			@PathVariable String nbSimilarTickets,
 			Model model,
 			HttpSession session) {
+		
+		return basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets, ProxyModel.create(model), ProxyHttpSession.create(session));
+	}*/
+	
+	@RequestMapping(value = "/addBasket/{eventId}", method = RequestMethod.POST)
+	public String addToBasketMultiple(@PathVariable String eventId, 
+			@RequestParam("ticketId") String ticketId,
+			@RequestParam("nbSimilarTickets") String nbSimilarTickets,
+			Model model,
+			HttpSession session) {
+		
+		//System.out.println("ticketId :=" + ticketId + "\nnbSimilarTickets :=" + nbSimilarTickets);
 		
 		return basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets, ProxyModel.create(model), ProxyHttpSession.create(session));
 	}
