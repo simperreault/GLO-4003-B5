@@ -131,6 +131,7 @@ public class DABasket {
 	public String copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) {
 		
 		if (DAAuthentication.isLogged(session)) {
+			model.addAttribute("message", "" );
 			Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
 			//Liste des Ticket Displayed
 			List<ArrayList<Ticket>> ticketDisplay = (List<ArrayList<Ticket>>)session.getAttribute("basketDisplay");			
@@ -166,7 +167,13 @@ public class DABasket {
 					this.setBasket(basket, session);
 				}
 			}else{ //si on supprime un billet
-				this.removeFromBasket(eventId, ticketId,session);
+				int asd = ticketDisplay.get(i).size();
+				for(int j = (ticketDisplay.get(i).size() - amount)-1;j >= 0 ;--j)
+				{
+					this.removeFromBasket(eventId, ticketDisplay.get(i).get(j).getId().toString(),session);
+				}				
+				this.setBasket((ArrayList<Ticket>)session.getAttribute("basket"), session);
+
 			}
 			
 			

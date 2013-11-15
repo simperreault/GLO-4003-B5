@@ -12,6 +12,11 @@
 	<div class="container">
 		<h1>Panier d'achat</h1>
 		<hr>
+		<c:if test="${message != ''}">
+		<p style="color:red;"> 
+			<c:out value="${message}"></c:out> <br />
+		</p>
+		</c:if>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>
