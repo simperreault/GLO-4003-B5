@@ -18,9 +18,9 @@
 	</div>
 	<form:form method="post" class="form-horizontal" action="Purchase"
 		modelAttribute="purchaseInfos">
-		<table style="width:100%; border:solid">
+		<table style="width:100%"><!-- ; border:solid -->
 			<tr>
-				<td style="width:50%; border:solid">
+				<td style="width:50%"><!-- ; border:solid -->
 					<table id="Purchaseform">
 						<tr>
 							<td>Prénom :</td>
@@ -48,7 +48,7 @@
 						</tr>
 					</table>
 				</td>
-				<td style="width:50%; border:solid">TEST</td>
+				<td style="width:50%"><!-- border:solid--></td>
 			</tr>
 		</table>
 		<br>
