@@ -8,8 +8,6 @@ import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.enums.PaymentType;
-import ca.ulaval.ticketmaster.model.enums.SportType;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 
@@ -19,7 +17,8 @@ public class DABasket {
 	public DABasket() {
 		datamanager = new DataManager();
 	}
-	private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
+	
+private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 	{
 		session.setAttribute("basket", list);
 		session.setAttribute("basketDisplay", datamanager.regroupSimilarTicketsByEvents(list));
@@ -120,6 +119,7 @@ public class DABasket {
 		}
 		return "redirect:/Basket";
 	}
+	
 	public String removeAllFromBasket(ProxyHttpSession session)
 	{
 		ArrayList<Ticket> list = new ArrayList<Ticket>();

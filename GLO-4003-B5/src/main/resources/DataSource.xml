@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList total="3">
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="16" ticketsTotal="18">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="8" ticketsTotal="18">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
@@ -13,18 +13,18 @@
       <Ticket id="9415e638-8039-4b8d-beb5-b789a1d26bf3" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="4ac19ca1-f089-4483-a30b-21a535693948" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="e1a52cd2-d73e-4b17-9ed8-68018f70691f" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="206fc251-389c-46b6-a3d4-6224a60297d4" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="e1a52cd2-d73e-4b17-9ed8-68018f70691f" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="206fc251-389c-46b6-a3d4-6224a60297d4" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="167d3a01-2efa-4495-82c2-af06415890f3" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="af3cc5be-dfb7-4607-b897-28a3428f4052" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="98b38aeb-2768-476c-92cd-160d05322435" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="c11983e0-47b8-4267-973f-a175fe2d8a5b" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="fe4f437c-52de-48a9-9de0-b8db423dfb28" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="651c202a-9687-4fe1-8d0e-b7522d4d0dbf" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="01c447c2-9914-4c23-9a48-3b76b2f9d254" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="bf9b12c8-d71f-4600-868b-00d29dabf276" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="01359a84-27a5-47cf-aa60-f7dde4e5a163" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="fb8f1af3-178d-486e-af61-11c58423472c" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="fe4f437c-52de-48a9-9de0-b8db423dfb28" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="651c202a-9687-4fe1-8d0e-b7522d4d0dbf" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="01c447c2-9914-4c23-9a48-3b76b2f9d254" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="bf9b12c8-d71f-4600-868b-00d29dabf276" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="01359a84-27a5-47cf-aa60-f7dde4e5a163" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="fb8f1af3-178d-486e-af61-11c58423472c" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       </TicketList>
     </Event>
   <Event id="c95f0acd-c69c-48f2-9bd9-9d66a6d815ff" open="false" ticketsAvailable="7" ticketsTotal="7">
@@ -63,6 +63,14 @@
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="4ac19ca1-f089-4483-a30b-21a535693948"/>
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="d5979de5-244b-491d-923d-92d106297f06"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="e1a52cd2-d73e-4b17-9ed8-68018f70691f"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="206fc251-389c-46b6-a3d4-6224a60297d4"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="fe4f437c-52de-48a9-9de0-b8db423dfb28"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="651c202a-9687-4fe1-8d0e-b7522d4d0dbf"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="01c447c2-9914-4c23-9a48-3b76b2f9d254"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="bf9b12c8-d71f-4600-868b-00d29dabf276"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="01359a84-27a5-47cf-aa60-f7dde4e5a163"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="fb8f1af3-178d-486e-af61-11c58423472c"/>
       </UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
@@ -92,6 +100,26 @@
       <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
         <Ticket id="8ff5a890-96ab-43a7-a6aa-2cdb06fcab01"/>
         <Ticket id="d5979de5-244b-491d-923d-92d106297f06"/>
+      </Event>
+    </Transaction>
+  <Transaction id="1dd35401-d2a2-46f3-9bcd-1d6505678590" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="e1a52cd2-d73e-4b17-9ed8-68018f70691f"/>
+      </Event>
+    </Transaction>
+  <Transaction id="23e8e69b-42c7-47c3-93c4-a267803f15df" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="206fc251-389c-46b6-a3d4-6224a60297d4"/>
+      </Event>
+    </Transaction>
+  <Transaction id="0e2ad5e5-932a-4ab0-82e1-bef5e0d24ea7" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="fe4f437c-52de-48a9-9de0-b8db423dfb28"/>
+        <Ticket id="651c202a-9687-4fe1-8d0e-b7522d4d0dbf"/>
+        <Ticket id="01c447c2-9914-4c23-9a48-3b76b2f9d254"/>
+        <Ticket id="bf9b12c8-d71f-4600-868b-00d29dabf276"/>
+        <Ticket id="01359a84-27a5-47cf-aa60-f7dde4e5a163"/>
+        <Ticket id="fb8f1af3-178d-486e-af61-11c58423472c"/>
       </Event>
     </Transaction>
   </TransactionList>
