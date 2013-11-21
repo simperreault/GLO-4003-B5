@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DABasket;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.DATicket;
+import ca.ulaval.ticketmaster.web.DomaineAffaire.Page;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import exceptions.UnauthorizedException;
 
 /**
  * Handles requests for the application related to Ticket
@@ -72,7 +74,13 @@ public class TicketController {
 	@RequestMapping(value = "/copyBasket/{eventId}/{ticketId}", method = RequestMethod.GET)
 	public String copyToBasket(@PathVariable String eventId, @PathVariable String ticketId, Model model,@RequestParam("amount") int amount,
 			HttpSession session) {
-		return basket.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model), ProxyHttpSession.create(session));
+		try {
+			basket.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model), ProxyHttpSession.create(session));
+		} catch (UnauthorizedException e) {
+			return Page.Home.toString();
+		}
+		
+		return Page.Basket.toString();
 	}
 	
 	@RequestMapping(value = "/buySingleTicket/{eventId}/{ticketId}", method = RequestMethod.GET)

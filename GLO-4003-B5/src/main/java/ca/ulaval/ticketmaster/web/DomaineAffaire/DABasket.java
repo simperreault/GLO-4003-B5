@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.ValidationException;
+
 import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
+import exceptions.FormValidationsExceptions;
+import exceptions.InvalidPurchaseException;
+import exceptions.UnauthorizedException;
 
 public class DABasket {
 	private DataManager datamanager;
@@ -120,17 +125,21 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 		return "redirect:/Basket";
 	}
 	
-	public String removeAllFromBasket(ProxyHttpSession session)
+	public void removeAllFromBasket(ProxyHttpSession session) throws UnauthorizedException 
 	{
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthorizedException();
+		
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
 		this.setBasket(list, session);
-		return Page.Basket.toString();
 	}
 
 	@SuppressWarnings("unchecked")
-	public String copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) {
+	public void copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) throws UnauthorizedException {
 		
-		if (DAAuthentication.isLogged(session)) {
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthorizedException();
+			
 			model.addAttribute("message", "" );
 			Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
 			//Liste des Ticket Displayed
@@ -173,21 +182,17 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 					this.removeFromBasket(eventId, ticketDisplay.get(i).get(j).getId().toString(),session);
 				}				
 				this.setBasket((ArrayList<Ticket>)session.getAttribute("basket"), session);
-
 			}
-			
-			
-			
-		}		
-		return Page.Basket.toString();
 	}
 
 	@SuppressWarnings("unchecked")
-	public String purchase(ProxyHttpSession session, ProxyModel model, BindingResult result) {
-		if (DAAuthentication.isLogged(session)) {
+	public void purchase(ProxyHttpSession session, ProxyModel model, BindingResult result) throws UnauthorizedException, FormValidationsExceptions, InvalidPurchaseException{
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthorizedException();
+			
 			if (result.hasErrors()) {
 				model.addAttribute("error", result.getAllErrors());
-				return "Purchase";
+				throw new FormValidationsExceptions();
 			}
 
 			ArrayList<Ticket> list = new ArrayList<>();
@@ -205,25 +210,12 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 				//session.setAttribute("basket", list);
 
 
-				if (invalidTickets == null) {
-					model.addAttribute("message", "Billets valides");
-					return "redirect:/Confirmation";
-				} else {
-					System.out.println(invalidTickets.get(0).getOwner());
-					System.out.println("Invalid tickets size : " + invalidTickets.size());
-					model.addAttribute("message", "Erreur : Billets invalides");
-					return "redirect:/Purchase";
-				}
+				if (!(invalidTickets == null))
+					throw new InvalidPurchaseException();
 
 			} else {
 				model.addAttribute("message", "Erreur : Le panier est vide");
 			}
-
-		} else {	//Pas loggé
-			return Page.Home.toString();	
-		}
-		return "redirect:/Purchase";
-
 	}
 
 	public String buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) {

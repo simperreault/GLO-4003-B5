@@ -1,5 +1,6 @@
 package ca.ulaval.ticketmaster.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -18,6 +19,9 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.Page;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
+import exceptions.FormValidationsExceptions;
+import exceptions.InvalidPurchaseException;
+import exceptions.UnauthorizedException;
 
 /**
  * Handles requests for the application home page.
@@ -36,48 +40,75 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String MainFrame(Model model) {
-		return "Home";
+		return Page.Home.toString();
 	}
 
 	@RequestMapping(value = "/Home", method = RequestMethod.GET)
 	public String home(Model model) {
-		return "Home";
+		return Page.Home.toString();
 	}
-	
+
 	@RequestMapping(value = "/Confirmation", method = RequestMethod.GET)
 	public String confirmation(Model model) {
-		return "Confirmation";
+		return Page.Confirmation.toString();
 	}
 
 	@RequestMapping(value = "/Purchase", method = RequestMethod.GET)
 	public String Purchase(Model model) {
 		model.addAttribute("purchaseInfos", new PurchaseViewModel());
 		model.addAttribute("paymentType", PaymentType.values());
-		return "Purchase";
+		return Page.Purchase.toString();
 	}
 
 	@RequestMapping(value = "/Purchase", method = RequestMethod.POST)
-	public String Purchase(@Valid PurchaseViewModel purchaseModel, Model model, HttpSession session,  BindingResult result) {
+	public String Purchase(@Valid PurchaseViewModel purchaseModel, Model model, HttpSession session,  BindingResult result, HttpServletRequest request) {
 		model.addAttribute("purchaseInfos", new PurchaseViewModel());
 		model.addAttribute("paymentType", PaymentType.values());
-		return domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
+		System.out.println(request.getLocalAddr());
+		try {
+			domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
+		}
+		catch (UnauthorizedException e){
+			return e.getErrorPage();
+		} catch (FormValidationsExceptions e) {
+			return e.getErrorPage();
+		} catch (InvalidPurchaseException e) {
+			return e.getErrorPage();		//	return "redirect:/Purchase"; !?
+		}
+		
+		return "redirect:/Confirmation";
 	}
 
 	@RequestMapping(value = "/Basket", method = RequestMethod.GET)
 	public String Basket(Model model, HttpSession session) {
 		if (DAAuthentication.isLogged(ProxyHttpSession.create(session)))
 			return Page.Basket.toString();
-		else
+		else {
+			model.addAttribute("errorMsg", new UnauthorizedException().getErrorMsg());
 			return Page.Home.toString();
-	}
+
+		}
+				}
 
 	@RequestMapping(value = "/addBasket", method = RequestMethod.POST)
-	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId,Model model, HttpSession session) {
-		return domaine.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model),ProxyHttpSession.create(session));
+	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId, Model model, HttpSession session) {
+		try {
+			domaine.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model),ProxyHttpSession.create(session));}
+		catch(UnauthorizedException e){
+			model.addAttribute("errorMsg", e.getErrorMsg());
+			return e.getErrorPage();}
+
+		return Page.Basket.toString();
 	}
+
 	@RequestMapping(value = "/emptyBasket", method = RequestMethod.GET)
 	public String emptyBasket(Model model, HttpSession session) {
-		return domaine.removeAllFromBasket(ProxyHttpSession.create(session));
+		try {
+			domaine.removeAllFromBasket(ProxyHttpSession.create(session));}
+		catch (UnauthorizedException e){
+			return e.getErrorPage();}
+
+		return Page.Basket.toString();
 	}
-	
+
 }

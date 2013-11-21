@@ -25,7 +25,7 @@
 									</tr>
 				<tr>
 					<td class="error" >
-						${errorMsg}
+						${loginError}
 					</td>
 
 			        <td>

@@ -7,7 +7,7 @@
 <title>Accueil</title>
 </head>
 <body>
-	<p><c:out value="${message}"></c:out></p>
+	<div id="message" class="error">${errorMsg}</div>
 	<h1>Accueil</h1>
 	<hr>
 	<div>
