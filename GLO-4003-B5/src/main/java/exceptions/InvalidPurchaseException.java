@@ -3,11 +3,11 @@ package exceptions;
 public class InvalidPurchaseException extends DAException{
 
 	public InvalidPurchaseException(){
-		super("Un ou plusieurs billets sont invalides","Purchase");
+		super("Un ou plusieurs billets sont invalides");
 	}
 
-	public InvalidPurchaseException(String errorMsg, String errorPage){
-		super(errorMsg, errorPage);
+	public InvalidPurchaseException(String errorMsg){
+		super(errorMsg);
 	}
 
 }

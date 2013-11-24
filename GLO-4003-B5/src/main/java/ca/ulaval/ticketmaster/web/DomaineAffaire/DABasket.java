@@ -12,8 +12,9 @@ import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.model.Ticket;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
-import exceptions.FormValidationsExceptions;
+import exceptions.InvalidFormExceptions;
 import exceptions.InvalidPurchaseException;
+import exceptions.UnauthenticatedException;
 import exceptions.UnauthorizedException;
 
 public class DABasket {
@@ -125,20 +126,20 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 		return "redirect:/Basket";
 	}
 	
-	public void removeAllFromBasket(ProxyHttpSession session) throws UnauthorizedException 
+	public void removeAllFromBasket(ProxyHttpSession session) throws UnauthenticatedException 
 	{
 		if (!DAAuthentication.isLogged(session))
-			throw new UnauthorizedException();
+			throw new UnauthenticatedException();
 		
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
 		this.setBasket(list, session);
 	}
 
 	@SuppressWarnings("unchecked")
-	public void copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) throws UnauthorizedException {
+	public void copyToBasket(String eventId, String ticketId,int amount, ProxyModel model,ProxyHttpSession session) throws UnauthenticatedException {
 		
 		if (!DAAuthentication.isLogged(session))
-			throw new UnauthorizedException();
+			throw new UnauthenticatedException();
 			
 			model.addAttribute("message", "" );
 			Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
@@ -186,13 +187,13 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 	}
 
 	@SuppressWarnings("unchecked")
-	public void purchase(ProxyHttpSession session, ProxyModel model, BindingResult result) throws UnauthorizedException, FormValidationsExceptions, InvalidPurchaseException{
+	public void purchase(ProxyHttpSession session, ProxyModel model, BindingResult result) throws UnauthenticatedException, InvalidFormExceptions, InvalidPurchaseException{
 		if (!DAAuthentication.isLogged(session))
-			throw new UnauthorizedException();
+			throw new UnauthenticatedException();
 			
 			if (result.hasErrors()) {
 				model.addAttribute("error", result.getAllErrors());
-				throw new FormValidationsExceptions();
+				throw new InvalidFormExceptions();
 			}
 
 			ArrayList<Ticket> list = new ArrayList<>();
@@ -205,10 +206,7 @@ private void setBasket(ArrayList<Ticket> list, ProxyHttpSession session)
 
 			if (list.size() > 0)
 			{
-				System.out.println(list.get(0).getOwner());
 				invalidTickets = datamanager.buyTickets(list, (String) session.getAttribute("sesusername"));
-				//session.setAttribute("basket", list);
-
 
 				if (!(invalidTickets == null))
 					throw new InvalidPurchaseException();

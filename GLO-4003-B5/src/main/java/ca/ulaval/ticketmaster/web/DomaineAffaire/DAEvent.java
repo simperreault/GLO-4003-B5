@@ -17,6 +17,7 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.converter.EventConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
 import ca.ulaval.ticketmaster.web.viewmodels.SearchViewModel;
+import exceptions.UnauthorizedException;
 
 public class DAEvent {
 	private DataManager datamanager;
@@ -25,7 +26,7 @@ public class DAEvent {
 		datamanager = new DataManager();
 	}
 
-	public String getEventList(ProxyModel model) {
+	public void getEventList(ProxyModel model) {
 		model.addAttribute("search", new SearchViewModel());
 		model.addAttribute("sportList", SportType.values());
 		model.addAttribute("EventList", datamanager.findAllEvents());
@@ -41,20 +42,16 @@ public class DAEvent {
 			days.put(i, "Avant le " + sdf.format(date.toDate()));
 		}
 		model.addAttribute("dayList", days);
-
-		return Page.EventList.toString();
 	}
 
-	public String getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
+	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
 		
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
 		model.addAttribute("ticketList", datamanager.findAllTicketsOnTwoLevels(UUID.fromString(idEvent)));
 		
 		if (!DAAuthentication.isLogged(session))
-			model.addAttribute("message", "Veuillez vous connecter pour acheter des billets");
-		
-		return Page.TicketList.toString();
+			throw new UnauthorizedException();
 	}
 
 	public String getTickedEvent(String idEvent1, String idEvent2, ProxyModel model) {
@@ -100,7 +97,7 @@ public class DAEvent {
 		}
 	}
 
-	public String search(SearchViewModel viewModel, ProxyModel model) {
+	public void search(SearchViewModel viewModel, ProxyModel model) {
 		model.addAttribute("search", viewModel);
 		model.addAttribute("sportList", SportType.values());
 		List<String> teamList = datamanager.GetAllTeams();
@@ -117,11 +114,6 @@ public class DAEvent {
 
 		List<Event> events = datamanager.SearchWithCriterias(viewModel.sport, viewModel.days, viewModel.team);
 		model.addAttribute("EventList", events);
-
-		if (events.size() == 0)
-			model.addAttribute("message", "Aucun événement n'a été trouvé");
-
-		return Page.EventList.toString();
 	}
 
 	public String deleteEvent(String eventId) {

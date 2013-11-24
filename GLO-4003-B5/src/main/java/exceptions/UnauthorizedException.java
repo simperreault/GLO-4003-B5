@@ -3,11 +3,11 @@ package exceptions;
 public class UnauthorizedException extends DAException{
 
 	public UnauthorizedException(){
-		super("Vous n'avez pas accès à cette page","Home");
+		super("Vous n'avez pas les autorisations nécessaires pour accéder à cette page");
 	}
 
-	public UnauthorizedException(String errorMsg, String errorPage){
-		super(errorMsg, errorPage);
+	public UnauthorizedException(String errorMsg){
+		super(errorMsg);
 	}
 
 }

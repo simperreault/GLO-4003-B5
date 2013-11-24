@@ -12,6 +12,8 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.converter.TicketConverter;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import exceptions.UnauthenticatedException;
+import exceptions.UnauthorizedException;
 
 public class DATicket {
     private DataManager datamanager;
@@ -20,24 +22,24 @@ public class DATicket {
 	datamanager = new DataManager();
     }
 
-    public String getAddTicket(String eventId, ProxyModel model, ProxyHttpSession session) {
-	if (DAAuthentication.isAdmin(session)) {
+    public void getAddTicket(String eventId, ProxyModel model, ProxyHttpSession session) throws UnauthenticatedException {
+	if (!DAAuthentication.isAdmin(session))
+		throw new UnauthenticatedException();
+		
 	    model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
 	    model.addAttribute("ticketlist", TicketType.values());
-	    return Page.TicketAdd.toString();
-	} else {
-	    return Page.Error403.toString();
-	}
     }
 
-    public String addTicket(String eventId, TicketViewModel viewmodel, BindingResult result,
-	    ProxyModel model, ProxyHttpSession session) {
-	if (DAAuthentication.isAdmin(session)) {
+    public void addTicket(String eventId, TicketViewModel viewmodel, BindingResult result,
+	    ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
+	if (!DAAuthentication.isAdmin(session))
+		throw new UnauthorizedException();
+		
 	    if (result.hasErrors()) {
 		model.addAttribute("error", result.getAllErrors());
 		model.addAttribute("ticket", viewmodel);
 		model.addAttribute("ticketlist", TicketType.values());
-		return Page.TicketAdd.toString();
+		//return Page.TicketAdd.toString();		//TODO
 	    }
 
 	    viewmodel.setEvent(datamanager.findEvent(UUID.fromString(eventId)));
@@ -45,11 +47,6 @@ public class DATicket {
 		Ticket ticket = TicketConverter.convert(viewmodel, datamanager);
 		datamanager.saveTicket(ticket); // TODO What if save failed ?
 	    }
-	    return "redirect:/event/" + eventId;
-
-	} else {
-	    return Page.Error403.toString();
-	}
     }
 
     public String deleteTicket(String eventId, String ticketId, ProxyHttpSession session) {

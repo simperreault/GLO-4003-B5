@@ -1,5 +1,6 @@
 package ca.ulaval.ticketmaster.web;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -19,9 +20,9 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.Page;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.viewmodels.PurchaseViewModel;
-import exceptions.FormValidationsExceptions;
+import exceptions.InvalidFormExceptions;
 import exceptions.InvalidPurchaseException;
-import exceptions.UnauthorizedException;
+import exceptions.UnauthenticatedException;
 
 /**
  * Handles requests for the application home page.
@@ -68,14 +69,14 @@ public class HomeController {
 		try {
 			domaine.purchase(ProxyHttpSession.create(session),ProxyModel.create(model), result);
 		}
-		catch (UnauthorizedException e){
-			return e.getErrorPage();
-		} catch (FormValidationsExceptions e) {
-			return e.getErrorPage();
+		catch (UnauthenticatedException e){
+			return Page.Home.toString();
+		} catch (InvalidFormExceptions e) {
+			return Page.Purchase.toString();
 		} catch (InvalidPurchaseException e) {
-			return e.getErrorPage();		//	return "redirect:/Purchase"; !?
+			return Page.Purchase.toString();		//	return "redirect:/Purchase"; !?
 		}
-		
+
 		return "redirect:/Confirmation";
 	}
 
@@ -84,19 +85,19 @@ public class HomeController {
 		if (DAAuthentication.isLogged(ProxyHttpSession.create(session)))
 			return Page.Basket.toString();
 		else {
-			model.addAttribute("errorMsg", new UnauthorizedException().getErrorMsg());
+			model.addAttribute("errorMsg", new UnauthenticatedException().getErrorMsg());
 			return Page.Home.toString();
 
 		}
-				}
+	}
 
 	@RequestMapping(value = "/addBasket", method = RequestMethod.POST)
 	public String copyToBasket(@RequestParam("amount") int amount,@RequestParam("ticketId") String ticketId,@RequestParam("eventId") String eventId, Model model, HttpSession session) {
 		try {
 			domaine.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model),ProxyHttpSession.create(session));}
-		catch(UnauthorizedException e){
+		catch(UnauthenticatedException e){
 			model.addAttribute("errorMsg", e.getErrorMsg());
-			return e.getErrorPage();}
+			return Page.Home.toString();}
 
 		return Page.Basket.toString();
 	}
@@ -105,8 +106,8 @@ public class HomeController {
 	public String emptyBasket(Model model, HttpSession session) {
 		try {
 			domaine.removeAllFromBasket(ProxyHttpSession.create(session));}
-		catch (UnauthorizedException e){
-			return e.getErrorPage();}
+		catch (UnauthenticatedException e){
+			return Page.Home.toString();}
 
 		return Page.Basket.toString();
 	}

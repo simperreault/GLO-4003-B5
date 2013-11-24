@@ -63,9 +63,9 @@
 									<td><a href="/event/delete/${event.id}">Retirer</a></td>
 								</c:if>
 						</c:forEach>
-						<c:if test="${message.length() > 0}">
-							<tr><td colspan="10">${message}</td></tr>
-						</c:if>
+						<c:if test="${EventList.size() == 0}">
+						<tr><td colspan="8">Aucun événement n'a été trouvé</td></tr>
+					</c:if>
 					</tbody>
 				</table>
 			</form:form>

@@ -17,6 +17,7 @@ import ca.ulaval.ticketmaster.web.DomaineAffaire.Page;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
 import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import exceptions.UnauthenticatedException;
 import exceptions.UnauthorizedException;
 
 /**
@@ -39,13 +40,23 @@ public class TicketController {
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.GET)
 	public String create(@PathVariable String eventId, Model model, HttpSession session) {
-		return domain.getAddTicket(eventId, ProxyModel.create(model), ProxyHttpSession.create(session));
+		try {
+			domain.getAddTicket(eventId, ProxyModel.create(model), ProxyHttpSession.create(session));
+		} catch (UnauthenticatedException e) {
+			return Page.Home.toString();
+		}
+		return Page.TicketAdd.toString();
 	}
 
 	@RequestMapping(value = "/add/{eventId}", method = RequestMethod.POST)
 	public String create(@PathVariable String eventId, @Valid TicketViewModel viewmodel, BindingResult result,
 			Model model, HttpSession session) {
-		return domain.addTicket(eventId, viewmodel, result, ProxyModel.create(model), ProxyHttpSession.create(session));
+		try {
+			domain.addTicket(eventId, viewmodel, result, ProxyModel.create(model), ProxyHttpSession.create(session));
+		} catch (UnauthorizedException e) {
+			Page.Home.toString();
+		}
+		 return "redirect:/event/" + eventId;
 	}
 
 	@RequestMapping(value = "/delete/{eventId}/{ticketId}", method = RequestMethod.GET)
@@ -59,9 +70,6 @@ public class TicketController {
 			@RequestParam("nbSimilarTickets") String nbSimilarTickets,
 			Model model,
 			HttpSession session) {
-		
-		//System.out.println("ticketId :=" + ticketId + "\nnbSimilarTickets :=" + nbSimilarTickets);
-		
 		return basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets, ProxyModel.create(model), ProxyHttpSession.create(session));
 	}
 
@@ -76,7 +84,7 @@ public class TicketController {
 			HttpSession session) {
 		try {
 			basket.copyToBasket(eventId, ticketId, amount,ProxyModel.create(model), ProxyHttpSession.create(session));
-		} catch (UnauthorizedException e) {
+		} catch (UnauthenticatedException e) {
 			return Page.Home.toString();
 		}
 		
