@@ -6,9 +6,10 @@ import org.junit.Test;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
-import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketConverter;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketViewModel;
 
 //Note : extends UserConverter afin d'avoir la classe comme "verifiee" par EclEmma
 public class TicketConverterTest extends TicketConverter {

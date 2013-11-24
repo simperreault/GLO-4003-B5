@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.model.User.AccessLevel;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
-import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.users.model.User;
+import ca.ulaval.ticketmaster.users.model.UserConverter;
+import ca.ulaval.ticketmaster.users.model.UserViewModel;
+import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
 //Note : extends UserConverter afin d'avoir la classe comme "verifiee" par EclEmma
 public class UserConverterTest extends UserConverter {

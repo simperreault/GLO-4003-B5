@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.events.model.EventViewModel;
+import ca.ulaval.ticketmaster.events.model.SportType;
 
 public class TestEventValidator {
 

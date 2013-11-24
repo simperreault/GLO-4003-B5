@@ -43,7 +43,7 @@
 						<li><a href="">TODO</a></li>
 						<li><a href="">À propos</a></li>
 						<li><a href="">Contact</a></li>
-						<li><a href="/Basket">Panier</a></li>
+						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 						<li><a href="">TODO</a></li>
 						<li><a href="">À propos</a></li>
 						<li><a href="">Contact</a></li>
-						<li><a href="/Basket">Panier</a></li>
+						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>
 				</div>
 			</div>

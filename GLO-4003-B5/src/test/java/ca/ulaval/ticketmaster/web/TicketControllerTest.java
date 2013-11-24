@@ -19,8 +19,9 @@ import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
-import ca.ulaval.ticketmaster.web.viewmodels.TicketViewModel;
+import ca.ulaval.ticketmaster.events.tickets.TicketController;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketViewModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TicketControllerTest {

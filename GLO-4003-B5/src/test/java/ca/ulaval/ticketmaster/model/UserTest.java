@@ -13,8 +13,9 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import ca.ulaval.ticketmaster.dao.util.Pair;
-import ca.ulaval.ticketmaster.model.User.AccessLevel;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.users.model.User;
+import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserTest {

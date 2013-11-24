@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Data>
 	<EventList total="3">
-  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="8" ticketsTotal="18">
+  <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3" open="false" ticketsAvailable="7" ticketsTotal="18">
       <SectionList/>
       <Sport gender="Masculin" name="FOOTBALL"/>
       <Teams home="ULAVAL" visitors="BISHOP"/>
@@ -15,7 +15,7 @@
       <Ticket id="d5979de5-244b-491d-923d-92d106297f06" owner="CarloBoutet" price="20.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="e1a52cd2-d73e-4b17-9ed8-68018f70691f" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="206fc251-389c-46b6-a3d4-6224a60297d4" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
-      <Ticket id="167d3a01-2efa-4495-82c2-af06415890f3" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
+      <Ticket id="167d3a01-2efa-4495-82c2-af06415890f3" owner="CarloBoutet" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="af3cc5be-dfb7-4607-b897-28a3428f4052" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="98b38aeb-2768-476c-92cd-160d05322435" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
       <Ticket id="c11983e0-47b8-4267-973f-a175fe2d8a5b" owner="" price="100.0" resellPrice="0.0" seat="" section="C" type="SIMPLE"/>
@@ -71,6 +71,7 @@
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="bf9b12c8-d71f-4600-868b-00d29dabf276"/>
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="01359a84-27a5-47cf-aa60-f7dde4e5a163"/>
         <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="fb8f1af3-178d-486e-af61-11c58423472c"/>
+        <Ticket matchId="14be9fba-dfcd-41ca-a317-b61e6fc159f3" ticketId="167d3a01-2efa-4495-82c2-af06415890f3"/>
       </UserTickets>
 			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
@@ -120,6 +121,11 @@
         <Ticket id="bf9b12c8-d71f-4600-868b-00d29dabf276"/>
         <Ticket id="01359a84-27a5-47cf-aa60-f7dde4e5a163"/>
         <Ticket id="fb8f1af3-178d-486e-af61-11c58423472c"/>
+      </Event>
+    </Transaction>
+  <Transaction id="7fb41430-b81d-4ea5-8629-4566993f2197" user="CarloBoutet">
+      <Event id="14be9fba-dfcd-41ca-a317-b61e6fc159f3">
+        <Ticket id="167d3a01-2efa-4495-82c2-af06415890f3"/>
       </Event>
     </Transaction>
   </TransactionList>

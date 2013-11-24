@@ -17,11 +17,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyHttpSession;
-import ca.ulaval.ticketmaster.web.DomaineAffaire.proxy.ProxyModel;
-import ca.ulaval.ticketmaster.web.converter.UserConverter;
-import ca.ulaval.ticketmaster.web.viewmodels.UserViewModel;
+import ca.ulaval.ticketmaster.purchase.BLBasket;
+import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
+import ca.ulaval.ticketmaster.springproxy.ProxyModel;
+import ca.ulaval.ticketmaster.users.model.User;
+import ca.ulaval.ticketmaster.users.model.UserConverter;
+import ca.ulaval.ticketmaster.users.model.UserViewModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DABasketTest {
@@ -30,7 +31,7 @@ public class DABasketTest {
     public DataManager datamanager;
 
     @InjectMocks
-    public DABasket domaine;
+    public BLBasket domaine;
 
     private BindingAwareModelMap realModel;
     private ProxyModel model;

@@ -10,8 +10,8 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.User;
+import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
+import ca.ulaval.ticketmaster.users.model.User;
 
 public class MailUtil {
 

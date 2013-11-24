@@ -22,11 +22,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.model.SportType;
+import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.users.model.User;
 
 public class XmlReader {
 	private String DATA_FILE = "src/main/resources/DataSource.xml";

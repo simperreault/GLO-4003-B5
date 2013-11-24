@@ -2,12 +2,12 @@ package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.UUID;
 
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.GeneralTicket;
-import ca.ulaval.ticketmaster.model.ReservedTicket;
-import ca.ulaval.ticketmaster.model.SectionTicket;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.tickets.model.GeneralTicket;
+import ca.ulaval.ticketmaster.events.tickets.model.ReservedTicket;
+import ca.ulaval.ticketmaster.events.tickets.model.SectionTicket;
+import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
 
 public class TicketFactory {
 

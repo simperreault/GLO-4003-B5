@@ -16,12 +16,12 @@ import static org.mockito.Mockito.when;
 
 import org.mockito.runners.MockitoJUnitRunner;
 
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.Ticket;
-import ca.ulaval.ticketmaster.model.User;
-import ca.ulaval.ticketmaster.model.User.AccessLevel;
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.model.enums.TicketType;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.model.SportType;
+import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
+import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.users.model.User;
+import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DataManagerTest {

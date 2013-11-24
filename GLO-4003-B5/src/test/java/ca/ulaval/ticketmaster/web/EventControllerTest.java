@@ -20,9 +20,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.events.EventController;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.model.EventViewModel;
+import ca.ulaval.ticketmaster.events.model.SportType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventControllerTest {

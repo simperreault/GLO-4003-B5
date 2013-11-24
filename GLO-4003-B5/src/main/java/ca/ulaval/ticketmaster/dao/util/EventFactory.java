@@ -3,8 +3,8 @@ package ca.ulaval.ticketmaster.dao.util;
 import java.util.Date;
 import java.util.UUID;
 
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.enums.SportType;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.model.SportType;
 
 public class EventFactory {
 

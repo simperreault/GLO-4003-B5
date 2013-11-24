@@ -8,9 +8,10 @@ import java.text.SimpleDateFormat;
 import org.junit.Test;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.model.Event;
-import ca.ulaval.ticketmaster.model.enums.SportType;
-import ca.ulaval.ticketmaster.web.viewmodels.EventViewModel;
+import ca.ulaval.ticketmaster.events.model.Event;
+import ca.ulaval.ticketmaster.events.model.EventConverter;
+import ca.ulaval.ticketmaster.events.model.EventViewModel;
+import ca.ulaval.ticketmaster.events.model.SportType;
 
 //Note : extends UserConverter afin d'avoir la classe comme "verifiee" par EclEmma
 public class EventConverterTest extends EventConverter {
