@@ -177,19 +177,17 @@ public class BLBasket {
 		}
 	}
 
-	public String buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) {
-		if (DAAuthentication.isLogged(session)) {
-			ArrayList<Ticket> list = new ArrayList<>();
+	public String buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) throws UnauthenticatedException {
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthenticatedException();
 
+			ArrayList<Ticket> list = new ArrayList<>();
 			list.add(datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId)));
-			// invalidTickets = datamanager.buyTickets(list, (String)
-			// session.getAttribute("sesusername"));
-			// invalidTickets == null &&
 			if (list.size() == 1) // ticket is valid
 			{
 				session.setAttribute("singleTicket", list);
 			}
-		}
+		
 		return "redirect:/purchase/Purchase";
 
 	}
