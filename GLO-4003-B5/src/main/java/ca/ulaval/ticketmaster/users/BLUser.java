@@ -18,7 +18,9 @@ public class BLUser {
     public BLUser() {
 	datamanager = new DataManager();
     }
-
+    public BLUser(DataManager dm){
+    	datamanager = dm;
+    }
     public String createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
 	    ProxyHttpSession session) {
 
