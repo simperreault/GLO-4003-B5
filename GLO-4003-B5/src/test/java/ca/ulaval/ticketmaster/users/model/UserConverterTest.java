@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.web.converter;
+package ca.ulaval.ticketmaster.users.model;
 
 import static org.junit.Assert.assertEquals;
 

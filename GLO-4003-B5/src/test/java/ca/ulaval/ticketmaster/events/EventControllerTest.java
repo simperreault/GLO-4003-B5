@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.web;
+package ca.ulaval.ticketmaster.events;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

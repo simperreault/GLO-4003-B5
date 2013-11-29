@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.web.viewmodels.validator;
+package ca.ulaval.ticketmaster.validator;
 
 import static org.junit.Assert.assertEquals;
 

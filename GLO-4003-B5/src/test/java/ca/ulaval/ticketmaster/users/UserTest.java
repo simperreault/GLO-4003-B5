@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.model;
+package ca.ulaval.ticketmaster.users;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -20,7 +20,6 @@ import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 @RunWith(MockitoJUnitRunner.class)
 public class UserTest {
 
-    // wtf tester les enums... (compte dans le % de coverage)
     @Test
     public void testEnumAccessLevel() {
 

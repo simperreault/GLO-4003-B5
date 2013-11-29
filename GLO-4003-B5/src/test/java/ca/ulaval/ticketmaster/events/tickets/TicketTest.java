@@ -4,7 +4,7 @@
  * 
  * */
 
-package ca.ulaval.ticketmaster.model;
+package ca.ulaval.ticketmaster.events.tickets;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
