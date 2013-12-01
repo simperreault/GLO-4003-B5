@@ -206,13 +206,7 @@ public class DataManagerTest {
 		mockedDataManager.deleteEvent(u);
 	}
 
-	@Test
-	public void testFindAllTickets() throws Exception {
-		UUID _eventId = UUID.randomUUID();
-		Event _event = new Event();
-		when(xmlReader.loadEvent(_eventId)).thenReturn(_event);
-		assertEquals(mockedDataManager.findAllTickets(_eventId),new ArrayList<Ticket>());
-	}
+	
 
 	@Test
 	public void testFindAllUsers() throws Exception {
@@ -220,38 +214,9 @@ public class DataManagerTest {
 		assertEquals(mockedDataManager.findAllUsers(),new ArrayList<User>());
 	}
 
-	@Test
-	public void testSearchWithCriterias() throws Exception {
-		List<Event> e = new ArrayList<Event>();
-		Event ee = new Event();
-		ee.setSport(SportType.BASKETBALL);
-		Date d = new Date();
-		ee.setDate(d);
-		ee.setHomeTeam("huhuhu");
-		e.add(ee);
-		Ticket t = TicketFactory.CreateTicket();
-		ee.addTicketToList(t);
-		when(xmlReader.loadEvents()).thenReturn(e);
-		assertEquals(mockedDataManager.SearchWithCriterias(SportType.BASKETBALL, 1, "huhuhu"),e);
-	}
+	
 
-	@Test
-	public void testGetAllTeams() throws Exception {
-		List<Event> e = new ArrayList<Event>();
-		Event ee = new Event();
-		ee.setSport(SportType.BASKETBALL);
-		Date d = new Date();
-		ee.setDate(d);
-		ee.setHomeTeam("huhuhu");
-		ee.setVisitorsTeam("huhuhu");
-		e.add(ee);
-		Ticket t = TicketFactory.CreateTicket();
-		ee.addTicketToList(t);
-		when(xmlReader.loadEvents()).thenReturn(e);
-		List<String> l = new ArrayList<String>();
-		l.add("huhuhu");
-		assertEquals(mockedDataManager.GetAllTeams(),l);
-	}
+	
 
 	@Test
 	public void testFindTransaction() throws Exception {
@@ -261,59 +226,11 @@ public class DataManagerTest {
 		assertEquals(mockedDataManager.findTransaction(null, null), null);
 	}
 
-	@Test
-	public void testFindAllEvents() throws Exception {
-		List<Event> e = new ArrayList<Event>();
-		when(xmlReader.loadEvents()).thenReturn(e);
-		assertEquals(mockedDataManager.findAllEvents(),e);
-
-	}
-
-	@Test
-	public void testFindSimilarTickets() throws Exception {
-    	List<Ticket> returnList = new ArrayList<Ticket>();
-    	Event e = new Event();
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		
-		assertEquals(mockedDataManager.findSimilarTickets(returnList, TicketType.SIMPLE, "1"),returnList);
-	}
-
-	@Test
-	public void testCountSimilarTickets() throws Exception {
-		List<Ticket> returnList = new ArrayList<Ticket>();
-    	Event e = new Event();
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		
-		assertEquals(mockedDataManager.countSimilarTickets(returnList, TicketType.SIMPLE, "1"),2);
-	}
-
-	@Test
-	public void testRegroupSimilarTickets() throws Exception {
-		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
-		List<ArrayList<Ticket>> someList = new ArrayList<ArrayList<Ticket>>();
-    	Event e = new Event();
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		e.setTicketList(returnList);
-		someList.add(returnList);
-		when(xmlReader.loadEvent(e.getId())).thenReturn(e);
-		assertEquals(someList,mockedDataManager.regroupSimilarTickets(e.getId()));
-	}
 	
-	@Test
-	public void testRegroupSamePriceTickets(){
-		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
-		List<ArrayList<Ticket>> someList = new ArrayList<ArrayList<Ticket>>();
-    	Event e = new Event();
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
-		e.setTicketList(returnList);
-		someList.add(returnList);
-		when(xmlReader.loadEvent(e.getId())).thenReturn(e);
-		assertEquals(someList,mockedDataManager.regroupSamePriceTickets(e.getId()));
-	}
+
+	
+
+	
 	
 	@Test
 	public void testBuyTickets(){

@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.SearchEngine;
 import ca.ulaval.ticketmaster.events.model.Event;
 import ca.ulaval.ticketmaster.events.model.EventConverter;
 import ca.ulaval.ticketmaster.events.model.EventViewModel;
@@ -23,17 +24,19 @@ import ca.ulaval.ticketmaster.springproxy.ProxyModel;
 
 public class BLEvent {
 	private DataManager datamanager;
+	private SearchEngine searchEngine;
 
 	public BLEvent() {
 		datamanager = new DataManager();
+		searchEngine = new SearchEngine();
 	}
 
 	public void getEventList(ProxyModel model) {
 		model.addAttribute("search", new SearchViewModel());
 		model.addAttribute("sportList", SportType.values());
-		model.addAttribute("EventList", datamanager.findAllEvents());
+		model.addAttribute("EventList", searchEngine.findAllEvents());
 
-		List<String> teamList = datamanager.GetAllTeams();
+		List<String> teamList = searchEngine.GetAllTeams();
 		model.addAttribute("teamList", teamList);
 
 		LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
@@ -50,7 +53,7 @@ public class BLEvent {
 		
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
-		model.addAttribute("ticketList", datamanager.findAllTicketsOnTwoLevels(UUID.fromString(idEvent)));
+		model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(idEvent)));
 		
 		if (!DAAuthentication.isLogged(session))
 			throw new UnauthorizedException();
@@ -102,7 +105,7 @@ public class BLEvent {
 	public void search(SearchViewModel viewModel, ProxyModel model) {
 		model.addAttribute("search", viewModel);
 		model.addAttribute("sportList", SportType.values());
-		List<String> teamList = datamanager.GetAllTeams();
+		List<String> teamList = searchEngine.GetAllTeams();
 		model.addAttribute("teamList", teamList);
 
 		LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
@@ -114,7 +117,7 @@ public class BLEvent {
 		}
 		model.addAttribute("dayList", days);
 
-		List<Event> events = datamanager.SearchWithCriterias(viewModel.sport, viewModel.days, viewModel.team);
+		List<Event> events = searchEngine.SearchWithCriterias(viewModel.sport, viewModel.days, viewModel.team);
 		model.addAttribute("EventList", events);
 	}
 

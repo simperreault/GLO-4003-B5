@@ -26,7 +26,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.dao.util.EventFactory;
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.events.model.Event;
 import ca.ulaval.ticketmaster.events.model.SportType;

@@ -94,7 +94,7 @@ public class TicketController {
 
     @RequestMapping(value = "/buySingleTicket/{eventId}/{ticketId}", method = RequestMethod.GET)
     public String buySingleTicket(@PathVariable String eventId, @PathVariable String ticketId, Model model,
-	    HttpSession session) {
+	    HttpSession session) throws UnauthenticatedException {
 	return basket.buySingleTicket(eventId, ticketId, ProxyHttpSession.create(session));
     }
 

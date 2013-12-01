@@ -23,7 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.dao.util.EventFactory;
+import ca.ulaval.ticketmaster.dao.util.SearchEngine;
 import ca.ulaval.ticketmaster.dao.util.TicketFactory;
 import ca.ulaval.ticketmaster.events.model.Event;
 import ca.ulaval.ticketmaster.events.model.SportType;
@@ -45,6 +45,9 @@ public class TestBLBasket {
 
 	@Mock
 	private DataManager dataManager;
+	
+	@Mock
+	private SearchEngine searchEngine;
 	@Mock
 	ProxyModel model;
 
@@ -87,7 +90,7 @@ public class TestBLBasket {
 	private Event makeEvent() throws ParseException {
 		Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
 		Date time = new SimpleDateFormat("H:mm").parse("13:30");
-		return EventFactory.CreateExistingEvent(UUID.randomUUID(), true, SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
+		return new Event(UUID.randomUUID(), true, SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
 	}
 
 	@Test
@@ -129,7 +132,7 @@ public class TestBLBasket {
 		UUID eventId = list.get(0).getId();
 
 		when(dataManager.findTicket(eventId, list.get(0).getId())).thenReturn(list.get(0));
-		when(dataManager.filterListWithList(new ArrayList<Ticket>(), new ArrayList<Ticket>())).thenReturn(list);
+		when(searchEngine.filterListWithList(new ArrayList<Ticket>(), new ArrayList<Ticket>())).thenReturn(list);
 		basket.addMultipleTicketsToBasket(eventId.toString(), list.get(0).getId().toString(), "3", model, session);
 		assertNull(session.getAttribute("basket"));
 		setAdmin(session);
@@ -140,7 +143,7 @@ public class TestBLBasket {
 		assertEquals(list.get(1).getId(), nList.get(1).getId());
 		assertEquals(list.get(2).getId(), nList.get(2).getId());
 
-		when(dataManager.filterListWithList(new ArrayList<Ticket>(), nList)).thenReturn(list);
+		when(searchEngine.filterListWithList(new ArrayList<Ticket>(), nList)).thenReturn(list);
 		basket.addMultipleTicketsToBasket(eventId.toString(), list.get(0).getId().toString(), "3", model, session);
 		nList = (ArrayList<Ticket>) session.getAttribute("basket");
 		assertEquals(list.get(0).getId(), nList.get(3).getId());
@@ -205,7 +208,7 @@ public class TestBLBasket {
 		session.setAttribute("basketDisplay", displayList);
 		temp = new ArrayList<Ticket>();
 		when(dataManager.findTicket(event.getId(), ticket.getId())).thenReturn(ticket);
-		when(dataManager.filterListWithList(temp, displayList.get(1))).thenReturn(list);
+		when(searchEngine.filterListWithList(temp, displayList.get(1))).thenReturn(list);
 		basket.copyToBasket(event.getId().toString(), ticket.getId().toString(), 3, model, session);
 		assertEquals(4, ((ArrayList<Ticket>) session.getAttribute("basket")).size());
 	}

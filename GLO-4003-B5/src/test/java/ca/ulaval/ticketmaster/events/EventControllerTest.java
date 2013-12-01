@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.SearchEngine;
 import ca.ulaval.ticketmaster.events.EventController;
 import ca.ulaval.ticketmaster.events.model.Event;
 import ca.ulaval.ticketmaster.events.model.EventViewModel;
@@ -30,6 +31,8 @@ public class EventControllerTest {
 
     @Mock
     public DataManager datamanager;
+    @Mock
+    public SearchEngine searchEngine;
 
     @InjectMocks
     public EventController controller;
@@ -50,7 +53,7 @@ public class EventControllerTest {
 	list.add(new Event());
 	list.add(new Event());
 	list.add(new Event());
-	when(datamanager.findAllEvents()).thenReturn(list);
+	when(searchEngine.findAllEvents()).thenReturn(list);
 	String view = controller.list(model);
 	assertEquals(((List<Event>) model.get("EventList")).size(), 3);
 	assertEquals(view, "EventList");

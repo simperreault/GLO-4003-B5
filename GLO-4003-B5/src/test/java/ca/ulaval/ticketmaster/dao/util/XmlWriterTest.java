@@ -62,7 +62,7 @@ public class XmlWriterTest {
 	// Créer une event de test
 	Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
 	Date time = new SimpleDateFormat("H:mm").parse("13:30");
-	Event event = EventFactory.CreateExistingEvent(eventId, true, SportType.FOOTBALL, "M", "Rouge et or",
+	Event event = new Event(eventId, true, SportType.FOOTBALL, "M", "Rouge et or",
 		"Vert et or", "Québec", "Bell", date, time, 0, 0);
 
 	List<String> sectionList = new ArrayList<String>();
@@ -162,7 +162,7 @@ public class XmlWriterTest {
 	// Créer une event de test
 	Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
 	Date time = new SimpleDateFormat("H:mm").parse("13:30");
-	Event event = EventFactory.CreateExistingEvent(eventId, true, SportType.FOOTBALL, "M", "Rouge et or",
+	Event event = new Event(eventId, true, SportType.FOOTBALL, "M", "Rouge et or",
 		"Vert et or", "Québec", "Bell", date, time, 0, 0);
 
 	XmlWriter writer = new XmlWriter();

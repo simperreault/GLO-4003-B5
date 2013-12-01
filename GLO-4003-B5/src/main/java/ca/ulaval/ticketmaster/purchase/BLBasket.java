@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.validation.BindingResult;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
+import ca.ulaval.ticketmaster.dao.util.SearchEngine;
 import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
 import ca.ulaval.ticketmaster.execptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.execptions.InvalidPurchaseException;
@@ -17,9 +18,11 @@ import ca.ulaval.ticketmaster.springproxy.ProxyModel;
 
 public class BLBasket {
 	private DataManager datamanager;
+	private SearchEngine searchEngine = new SearchEngine();
 
 	public BLBasket() {
 		datamanager = new DataManager();
+		
 	}
 
 	public BLBasket(DataManager m) {
@@ -28,7 +31,7 @@ public class BLBasket {
 
 	public void setBasket(ArrayList<Ticket> list, ProxyHttpSession session) {
 		session.setAttribute("basket", list);
-		session.setAttribute("basketDisplay", datamanager.regroupSimilarTicketsByEvents(list));
+		session.setAttribute("basketDisplay", searchEngine.regroupSimilarTicketsByEvents(list));
 	}
 
 	// a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
@@ -65,8 +68,8 @@ public class BLBasket {
 
 			int nbSimilarTicketsToAdd = Integer.parseInt(nbSimilarTickets);
 			Ticket ticketCmp = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-			List<Ticket> listTickets = datamanager.findSimilarTickets(datamanager.findAllTickets(UUID.fromString(eventId)), ticketCmp.getType(), ticketCmp.getSection());
-			listTickets = datamanager.filterListWithList(listTickets, listOfBasket);
+			List<Ticket> listTickets = searchEngine.findSimilarTickets(searchEngine.findAllTickets(UUID.fromString(eventId)), ticketCmp.getType(), ticketCmp.getSection());
+			listTickets = searchEngine.filterListWithList(listTickets, listOfBasket);
 			for (int i = 0; i < listTickets.size() && i < nbSimilarTicketsToAdd; ++i) {
 				listOfBasket.add(listTickets.get(i));
 			}
@@ -129,9 +132,9 @@ public class BLBasket {
 	
 		if (amount > ticketDisplay.get(i).size()) {	// si on ajoute un billet
 			ArrayList<Ticket> basket = (ArrayList<Ticket>) session.getAttribute("basket");
-			List<Ticket> eventTicket = datamanager.findAllTickets(source.getEvent().getId());
-			List<Ticket> similarTicket = datamanager.findSimilarTickets(eventTicket, source.getType(), source.getSection());
-			List<Ticket> freeTicket = datamanager.filterListWithList(similarTicket, ticketDisplay.get(i));
+			List<Ticket> eventTicket = searchEngine.findAllTickets(source.getEvent().getId());
+			List<Ticket> similarTicket = searchEngine.findSimilarTickets(eventTicket, source.getType(), source.getSection());
+			List<Ticket> freeTicket = searchEngine.filterListWithList(similarTicket, ticketDisplay.get(i));
 			if (freeTicket.size() < amount - ticketDisplay.get(i).size()) {
 				model.addAttribute("message", "Erreur : Il ne reste que " + freeTicket.size() + " billets de cette catégorie");
 			} else {
