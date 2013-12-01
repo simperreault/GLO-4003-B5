@@ -29,9 +29,8 @@ public class TicketFactory {
 	    return new SectionTicket(_event, _type, _section, _owner, _price, _resellprice);
 	case SIMPLE:
 	    return new SectionTicket(_event, _type, _section, _owner, _price, _resellprice);
-	default:
-	    return null;
 	}
+	return null;
     }
 
     public static Ticket CreateTicket() {
@@ -49,9 +48,8 @@ public class TicketFactory {
 	    return new SectionTicket(_id, _event, _type, _section, _owner, _price, _resellprice);
 	case SIMPLE:
 	    return new SectionTicket(_id, _event, _type, _section, _owner, _price, _resellprice);
-	default:
-	    return null;
 	}
+	return null;
     }
 
     public static Ticket CreateTicket(UUID _id) {

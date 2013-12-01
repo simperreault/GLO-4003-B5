@@ -6,13 +6,8 @@
 package ca.ulaval.ticketmaster.dao.util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 //import org.slf4j.Logger;
@@ -20,9 +15,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import ca.ulaval.ticketmaster.events.model.Event;
-import ca.ulaval.ticketmaster.events.model.SportType;
 import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
-import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
 import ca.ulaval.ticketmaster.users.model.User;
 
 @Repository
