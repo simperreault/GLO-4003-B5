@@ -56,13 +56,15 @@ public class BLBasket {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String addMultipleTicketsToBasket(String eventId, String ticketId, String nbSimilarTickets, ProxyModel model, ProxyHttpSession session) {
-		if (DAAuthentication.isLogged(session)) {
+	public void addMultipleTicketsToBasket(String eventId, String ticketId, String nbSimilarTickets, ProxyModel model, ProxyHttpSession session) throws UnauthenticatedException {
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthenticatedException();
+			
 			ArrayList<Ticket> listOfBasket;
 			if (session.getAttribute("basket") != null) {
 				listOfBasket = (ArrayList<Ticket>) session.getAttribute("basket");
-			} else // le panier est vide
-			{
+			} else { // le panier est vide
+			
 				listOfBasket = new ArrayList<Ticket>();
 			}
 
@@ -74,18 +76,10 @@ public class BLBasket {
 				listOfBasket.add(listTickets.get(i));
 			}
 			this.setBasket(listOfBasket, session);
-
-		} else {
-			// Not logged
-		}
-		return "redirect:/event/" + eventId;
-
 	}
 
 	@SuppressWarnings("unchecked")
-	public String removeFromBasket(String eventId, String ticketId, ProxyHttpSession session) {
-
-
+	public void removeFromBasket(String eventId, String ticketId, ProxyHttpSession session) {
 		if (session.getAttribute("basket") != null) {
 			ArrayList<Ticket> list = (ArrayList<Ticket>) session.getAttribute("basket");
 			int i = 0;
@@ -100,7 +94,6 @@ public class BLBasket {
 			}
 
 		}
-		return "redirect:/Basket";
 	}
 
 	public void removeAllFromBasket(ProxyHttpSession session) throws UnauthenticatedException {
@@ -180,7 +173,7 @@ public class BLBasket {
 		}
 	}
 
-	public String buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) throws UnauthenticatedException {
+	public void buySingleTicket(String eventId, String ticketId, ProxyHttpSession session) throws UnauthenticatedException {
 		if (!DAAuthentication.isLogged(session))
 			throw new UnauthenticatedException();
 
@@ -190,9 +183,6 @@ public class BLBasket {
 			{
 				session.setAttribute("singleTicket", list);
 			}
-		
-		return "redirect:/purchase/Purchase";
-
 	}
 
 }

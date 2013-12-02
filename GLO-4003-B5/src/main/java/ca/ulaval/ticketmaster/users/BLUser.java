@@ -13,76 +13,71 @@ import ca.ulaval.ticketmaster.users.model.User;
 import ca.ulaval.ticketmaster.users.model.UserViewModel;
 
 public class BLUser {
-    private DataManager datamanager;
+	private DataManager datamanager;
 
-    public BLUser() {
-	datamanager = new DataManager();
-    }
-    public BLUser(DataManager dm){
-    	datamanager = dm;
-    }
-    public String createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
-	    ProxyHttpSession session) {
-
-	if (result.hasErrors()) {
-
-	    model.addAttribute("user", viewmodel);
-	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("error", result.getAllErrors());
-	    // return "CreateUser";
-	    return Page.CreateUser.toString();
+	public BLUser() {
+		datamanager = new DataManager();
 	}
-
-	if (datamanager.saveUser(user)) {
-
-	    model.addAttribute("message", "Utilisateur ajoute");
-	    session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
-	    session.setAttribute("sesusername", user.getUsername());
-	    return Page.Home.toString();
-	} else {
-	    // Complexe : soit on passe d'une certaine facon le XMLReader au
-	    // Validator,
-	    // soit on fait la validation ici
-
-	    // model.addAttribute("message", "Utilisateur deja present");
-	    // model.addAttribute("error", "Utilisateur deja present");
-	    result.addError(new ObjectError("user", "Utilisateur deja existant"));
-
-	    model.addAttribute("error", result.getAllErrors());
-
-	    model.addAttribute("user", viewmodel);
-	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
-	    // return "CreateUser";
-	    return Page.CreateUser.toString();
+	public BLUser(DataManager dm){
+		datamanager = dm;
 	}
+	public String createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
+			ProxyHttpSession session) {
 
-    }
+		if (result.hasErrors()) {
 
-    public String connect(String username, String pWord, ProxyModel model, ProxyHttpSession session) {
-	if (!DAAuthentication.isLogged(session)) {
-	    boolean userIsOk = false;
-	    User user = datamanager.findUser(username);
-	    if (user != null) {
-		if (user.getPassword().equals(pWord)) {
-		    userIsOk = true;
-		    session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
-		    session.setAttribute("sesusername", username);
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("error", result.getAllErrors());
+			// return "CreateUser";
+			return Page.CreateUser.toString();
 		}
-	    }
 
-	    if (!userIsOk) {
-		model.addAttribute("loginError", "La combinaison pseudo/mot de passe est invalide");
-	    }
+		if (datamanager.saveUser(user)) {
+
+			model.addAttribute("message", "Utilisateur ajoute");
+			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
+			session.setAttribute("sesusername", user.getUsername());
+			return Page.Home.toString();
+		} else {
+			// Complexe : soit on passe d'une certaine facon le XMLReader au
+			// Validator,
+			// soit on fait la validation ici
+
+			// model.addAttribute("message", "Utilisateur deja present");
+			// model.addAttribute("error", "Utilisateur deja present");
+			result.addError(new ObjectError("user", "Utilisateur deja existant"));
+
+			model.addAttribute("error", result.getAllErrors());
+
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
+			// return "CreateUser";
+			return Page.CreateUser.toString();
+		}
+
 	}
-	// TODO Changer pour current page
-	return Page.Home.toString();
 
-    }
+	public void connect(String username, String pWord, ProxyModel model, ProxyHttpSession session) {
+		if (!DAAuthentication.isLogged(session)) {
+			boolean userIsOk = false;
+			User user = datamanager.findUser(username);
+			if (user != null) {
+				if (user.getPassword().equals(pWord)) {
+					userIsOk = true;
+					session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
+					session.setAttribute("sesusername", username);
+				}
+			}
 
-    public String disconnect(ProxyHttpSession session) {
-	session.invalidate();
-	// TODO changer pour current page
-	return Page.Home.toString();
-    }
+			if (!userIsOk) {
+				model.addAttribute("loginError", "La combinaison pseudo/mot de passe est invalide");
+			}
+		}
+	}
+
+	public void disconnect(ProxyHttpSession session) {
+		session.invalidate();
+	}
 }

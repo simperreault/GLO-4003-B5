@@ -25,48 +25,46 @@ import ca.ulaval.ticketmaster.users.model.UserViewModel;
 // @SessionAttributes
 public class UserController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(HomeController.class);
-    private BLUser domaine;
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(HomeController.class);
+	private BLUser domaine;
 
-    public UserController() {
-	domaine = new BLUser();
-    }
+	public UserController() {
+		domaine = new BLUser();
+	}
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String CreateUser(Model model) {
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String CreateUser(Model model) {
 
-	model.addAttribute("user", new UserViewModel());
-	model.addAttribute("typeList", TicketType.values());
+		model.addAttribute("user", new UserViewModel());
+		model.addAttribute("typeList", TicketType.values());
+		return Page.CreateUser.toString();
+	}
 
-	// return "CreateUser";
-	return Page.CreateUser.toString();
-    }
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model,
+			HttpSession session) {
+		return domaine.createUser(UserConverter.convert(viewmodel), viewmodel, ProxyModel.create(model),
+				result, ProxyHttpSession.create(session));
+	}
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String CreateUser(@Valid UserViewModel viewmodel, BindingResult result, Model model,
-	    HttpSession session) {
+	@RequestMapping(value = "/Login", method = RequestMethod.GET)
+	public String Login(Model model) {
+		return Page.Home.toString();
+	}
 
-	return domaine.createUser(UserConverter.convert(viewmodel), viewmodel, ProxyModel.create(model),
-		result, ProxyHttpSession.create(session));
-    }
+	@RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
+	public String Disconnect(Model model, HttpSession session) {
+		domaine.disconnect(ProxyHttpSession.create(session));
+		return Page.Home.toString();	//TODO changer pour currentPage
+	}
 
-    @RequestMapping(value = "/Login", method = RequestMethod.GET)
-    public String Login(Model model) {
-	return Page.Home.toString();
-    }
+	@RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
+	public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
+			Model model, HttpSession session) {
+		domaine.connect(username, password, ProxyModel.create(model), ProxyHttpSession.create(session));
+		return Page.Home.toString();	// TODO Changer pour currentPage
 
-    @RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
-    public String Disconnect(Model model, HttpSession session) {
-
-	return domaine.disconnect(ProxyHttpSession.create(session));
-    }
-
-    @RequestMapping(value = { "/connect", "/event/connect", "/event/{id}/connect" }, method = RequestMethod.POST)
-    public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
-	    Model model, HttpSession session) {
-	return domaine
-		.connect(username, password, ProxyModel.create(model), ProxyHttpSession.create(session));
-    }
+	}
 
 }

@@ -16,6 +16,7 @@ import ca.ulaval.ticketmaster.events.model.EventConverter;
 import ca.ulaval.ticketmaster.events.model.EventViewModel;
 import ca.ulaval.ticketmaster.events.model.SearchViewModel;
 import ca.ulaval.ticketmaster.events.model.SportType;
+import ca.ulaval.ticketmaster.execptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.execptions.UnauthorizedException;
 import ca.ulaval.ticketmaster.home.DAAuthentication;
 import ca.ulaval.ticketmaster.home.Page;
@@ -50,39 +51,38 @@ public class BLEvent {
 	}
 
 	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
-		
+
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
 		model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(idEvent)));
-		
+
 		if (!DAAuthentication.isLogged(session))
 			throw new UnauthorizedException();
 	}
 
-	public String getTickedEvent(String idEvent1, String idEvent2, ProxyModel model) {
+	public void getTickedEvent(String idEvent1, String idEvent2, ProxyModel model) {
 		model.addAttribute("ticket",
 				datamanager.findTicket(UUID.fromString(idEvent1), UUID.fromString(idEvent2)));
-		return Page.Detail.toString();
 	}
 
-	public String getAddEvent(ProxyModel model, ProxyHttpSession session) {
-		if (DAAuthentication.isAdmin(session)) {
+	public void getAddEvent(ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
+		if (!DAAuthentication.isAdmin(session))
+			throw new UnauthorizedException();
+			
 			model.addAttribute("event", new EventViewModel());
 			model.addAttribute("sportList", SportType.values());
-			return Page.EventAdd.toString();
-		} else {
-			return Page.Error403.toString();
-		}
 	}
 
-	public String addEvent(EventViewModel viewmodel, BindingResult result, ProxyModel model,
-			ProxyHttpSession session) {
-		if (DAAuthentication.isAdmin(session)) {
+	public void addEvent(EventViewModel viewmodel, BindingResult result, ProxyModel model,
+			ProxyHttpSession session) throws UnauthorizedException, InvalidFormExceptions {
+		if (!DAAuthentication.isAdmin(session))
+			throw new UnauthorizedException();
+			
 			if (result.hasErrors()) {
 				model.addAttribute("sportList", SportType.values());
 				model.addAttribute("error", result.getAllErrors());
 				model.addAttribute("event", viewmodel);
-				return Page.EventAdd.toString();
+				throw new InvalidFormExceptions();
 			}
 
 			try {
@@ -93,13 +93,7 @@ public class BLEvent {
 				model.addAttribute("sportList", SportType.values());
 				model.addAttribute("error", "Erreur dans le format de la date (dd/mm/yyyy HH:MM)");
 				model.addAttribute("event", viewmodel);
-				return Page.EventAdd.toString();
 			}
-			return "redirect:/event/list";
-
-		} else {
-			return Page.Error403.toString();
-		}
 	}
 
 	public void search(SearchViewModel viewModel, ProxyModel model) {
@@ -121,9 +115,8 @@ public class BLEvent {
 		model.addAttribute("EventList", events);
 	}
 
-	public String deleteEvent(String eventId) {
+	public void deleteEvent(String eventId) {
 		datamanager.deleteEvent(UUID.fromString(eventId));
-		return "redirect:/event/list";
 	}
 
 }

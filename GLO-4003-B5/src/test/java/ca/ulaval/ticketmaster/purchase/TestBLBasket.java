@@ -124,7 +124,7 @@ public class TestBLBasket {
 	}
 
 	@Test
-	public void testAddMultipleTicketToBask() throws ParseException {
+	public void testAddMultipleTicketToBask() throws ParseException, UnauthenticatedException {
 
 		Event event = makeEvent();
 		list = makeMultipleTicket(event, 3);

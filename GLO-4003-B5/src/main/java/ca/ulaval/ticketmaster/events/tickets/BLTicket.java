@@ -51,9 +51,8 @@ public class BLTicket {
 	}
     }
 
-    public String deleteTicket(String eventId, String ticketId, ProxyHttpSession session) {
+    public void deleteTicket(String eventId, String ticketId, ProxyHttpSession session) {
 	datamanager.deleteTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-	return "redirect:/event/" + eventId;
 
     }
 }
