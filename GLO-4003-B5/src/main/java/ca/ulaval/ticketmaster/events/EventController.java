@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ca.ulaval.ticketmaster.events.model.EventViewModel;
 import ca.ulaval.ticketmaster.events.model.SearchViewModel;
-import ca.ulaval.ticketmaster.execptions.InvalidFormExceptions;
-import ca.ulaval.ticketmaster.execptions.UnauthorizedException;
+import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
+import ca.ulaval.ticketmaster.exceptions.UnauthorizedException;
 import ca.ulaval.ticketmaster.home.Page;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.springproxy.ProxyModel;
