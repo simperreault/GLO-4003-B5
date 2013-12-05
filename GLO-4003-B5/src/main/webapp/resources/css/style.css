@@ -77,7 +77,7 @@ input:focus {
 	background-position: 0 -118px;
 	background-repeat: no-repeat;
 	height: 49px;
-	width: 122px;
+	width: 171px;
 	margin: 0;
 	padding-left: 1px;
 	text-align: center;
@@ -215,6 +215,7 @@ width:155px;
 	margin: -38px 0 20px;
 	padding-top: 42px;
 	text-transform: uppercase;
+	
 }
 #footer > div {
 	background-color: #ac9e94;
@@ -225,6 +226,9 @@ width:155px;
 	margin: 0 auto;
 	padding: 0 20px;
 	text-align: right;
+	border-radius:7px;
+-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
 }
 #footer ul.navigation {
 	float: left;

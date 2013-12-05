@@ -11,7 +11,7 @@
 	<h1>Accueil</h1>
 	<hr>
 	<div>
-		<p>Sup ! Bienvenue !</p>
+		<p>Bienvenue sur le système de billeterie de l'Université Laval !</p>
 	</div>
 </body>
 </html>

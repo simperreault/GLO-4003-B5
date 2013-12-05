@@ -3,8 +3,10 @@
 <html>
 <head>
 <title><sitemesh:write property='title' /></title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/resources/css/style.css" />" />
 <link type="text/css" rel="stylesheet"
@@ -26,23 +28,10 @@
 				</div>
 				<div id="navigation">
 					<ul>
-						<li
-							class="<c:if test="${currentPage2 == 'Home'}">
-					    	<c:out value="selected" />
-					    </c:if>">
-							<a href="/Home">Accueil</a>
-						<c:out value="${currentPage2}" />
-						</li>
-						<li
-							class="<c:if test='${currentPage == "EventList.jsp"}'>
-					    	<c:out value="selected"></c:out>
-					    </c:if>">
-							<a href="/event/list">Événements</a>
-						</li>
-						<li class=""><a href="">TODO</a></li>
-						<li><a href="">TODO</a></li>
-						<li><a href="">À propos</a></li>
-						<li><a href="">Contact</a></li>
+						<li><a href="/Home">Accueil</a></li>
+						<li><a href="/event/list">Événements</a></li>
+						<li><a href="/about">À propos</a></li>
+						<li><a href="/contact">Contact</a></li>
 						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>
 				</div>
@@ -51,7 +40,7 @@
 				<div class="box">
 					<div>
 						<div class="body">
-						<p>${page.properties["meta.foo"]}</p>
+							<p>${page.properties["meta.foo"]}</p>
 							<sitemesh:write property='body' />
 							<br>
 						</div>
@@ -61,22 +50,10 @@
 			<div id="footer">
 				<div>
 					<ul class="navigation">
-						<li
-							class="<c:if test='${currentPage == "Home.jsp"}'>
-					    	<c:out value="active"></c:out>
-					    </c:if>">
-							<a href="/Home">Accueil</a>
-						</li>
-						<li
-							class="<c:if test='${currentPage == "EventList.jsp"}'>
-					    	<c:out value="active"></c:out>
-					    </c:if>">
-							<a href="/event/list">Événements</a>
-						</li>
-						<li class=""><a href="">TODO</a></li>
-						<li><a href="">TODO</a></li>
-						<li><a href="">À propos</a></li>
-						<li><a href="">Contact</a></li>
+						<li><a href="/Home">Accueil</a></li>
+						<li><a href="/event/list">Événements</a></li>
+						<li><a href="/about">À propos</a></li>
+						<li><a href="/contact">Contact</a></li>
 						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>
 				</div>

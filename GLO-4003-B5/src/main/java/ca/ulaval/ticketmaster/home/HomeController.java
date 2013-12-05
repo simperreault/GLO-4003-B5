@@ -26,5 +26,15 @@ public class HomeController {
     public String home(Model model) {
 	return Page.Home.toString();
     }
+    
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about(Model model) {
+	return Page.About.toString();
+    }
+    
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String contact(Model model) {
+	return Page.Contact.toString();
+    }
 
 }
