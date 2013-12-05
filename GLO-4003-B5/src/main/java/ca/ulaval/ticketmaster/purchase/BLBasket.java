@@ -25,8 +25,9 @@ public class BLBasket {
 		
 	}
 
-	public BLBasket(DataManager m) {
+	public BLBasket(DataManager m, SearchEngine s) {
 		datamanager = m;
+		searchEngine = s;
 	}
 
 	public void setBasket(ArrayList<Ticket> list, ProxyHttpSession session) {
@@ -116,17 +117,14 @@ public class BLBasket {
 
 		model.addAttribute("message", "");
 		Ticket source = datamanager.findTicket(UUID.fromString(eventId), UUID.fromString(ticketId));
-		// Liste des Ticket Displayed
 		List<ArrayList<Ticket>> ticketDisplay = (List<ArrayList<Ticket>>) session.getAttribute("basketDisplay");
-		// Les ticket dans le basket
 		int i = 0;
 		Ticket current = ticketDisplay.get(i).get(0);
-		// Devrait tt le temps etre en position 0 sinon remettre ligne en haut
-		while (!(current.getId().equals(source.getId()))) {
+		while (!(current.getId().equals(source.getId()))) 
+		{
 			++i;
 			current = ticketDisplay.get(i).get(0);
 		}
-	
 		if (amount > ticketDisplay.get(i).size()) {	// si on ajoute un billet
 			ArrayList<Ticket> basket = (ArrayList<Ticket>) session.getAttribute("basket");
 			List<Ticket> eventTicket = searchEngine.findAllTickets(source.getEvent().getId());

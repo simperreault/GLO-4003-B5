@@ -45,9 +45,8 @@ public class TestBLBasket {
 
 	@Mock
 	private DataManager dataManager;
-	
-	@Mock
 	private SearchEngine searchEngine;
+
 	@Mock
 	ProxyModel model;
 
@@ -55,7 +54,8 @@ public class TestBLBasket {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		dataManager = Mockito.mock(DataManager.class);
-		basket = new BLBasket(dataManager);
+		searchEngine = Mockito.mock(SearchEngine.class);
+		basket = new BLBasket(dataManager, searchEngine);
 		session = ProxyHttpSession.create(new MockHttpSession());
 		model = ProxyModel.create(Mockito.mock(Model.class));
 		list = new ArrayList<Ticket>();
@@ -123,6 +123,16 @@ public class TestBLBasket {
 		assertEquals(ticket2.getId(), nList.get(1).getId());
 	}
 
+	@Test(expected = UnauthenticatedException.class)
+	public void testAddMultipleTicketToBaskUnauthenticatedException() throws ParseException, UnauthenticatedException {
+		Event event = makeEvent();
+		list = makeMultipleTicket(event, 3);
+		UUID eventId = list.get(0).getId();
+		when(dataManager.findTicket(eventId, list.get(0).getId())).thenReturn(list.get(0));
+		when(searchEngine.filterListWithList(new ArrayList<Ticket>(), new ArrayList<Ticket>())).thenReturn(list);
+		basket.addMultipleTicketsToBasket(eventId.toString(), list.get(0).getId().toString(), "3", model, session);
+	}
+
 	@Test
 	public void testAddMultipleTicketToBask() throws ParseException, UnauthenticatedException {
 
@@ -130,12 +140,10 @@ public class TestBLBasket {
 		list = makeMultipleTicket(event, 3);
 
 		UUID eventId = list.get(0).getId();
-
+		setAdmin(session);
 		when(dataManager.findTicket(eventId, list.get(0).getId())).thenReturn(list.get(0));
 		when(searchEngine.filterListWithList(new ArrayList<Ticket>(), new ArrayList<Ticket>())).thenReturn(list);
-		basket.addMultipleTicketsToBasket(eventId.toString(), list.get(0).getId().toString(), "3", model, session);
-		assertNull(session.getAttribute("basket"));
-		setAdmin(session);
+		
 
 		basket.addMultipleTicketsToBasket(eventId.toString(), list.get(0).getId().toString(), "3", model, session);
 		ArrayList<Ticket> nList = (ArrayList<Ticket>) session.getAttribute("basket");
@@ -270,15 +278,14 @@ public class TestBLBasket {
 		basket.purchase(session, model, result);
 		Mockito.verify(dataManager, Mockito.atLeastOnce()).buyTickets(list, null);
 	}
-	
+
 	@Test(expected = UnauthenticatedException.class)
-	public void testBuySingleTicketUnauthenticatedException() throws UnauthenticatedException
-	{
+	public void testBuySingleTicketUnauthenticatedException() throws UnauthenticatedException {
 		basket.buySingleTicket("", "", session);
 	}
+
 	@Test
-	public void testBuySingleTicket() throws UnauthenticatedException, ParseException
-	{
+	public void testBuySingleTicket() throws UnauthenticatedException, ParseException {
 		setAdmin(session);
 		Event event = makeEvent();
 		Ticket ticket = makeTicket(event);
@@ -286,5 +293,4 @@ public class TestBLBasket {
 		assertEquals(1, ((ArrayList<Ticket>) session.getAttribute("singleTicket")).size());
 	}
 
-	
 }
