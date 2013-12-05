@@ -74,7 +74,7 @@ public class TicketController {
 			basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets,
 					ProxyModel.create(model), ProxyHttpSession.create(session));
 		} catch (UnauthenticatedException e) {
-			return Page.Home.toString();
+			return Page.TicketList.toString();
 		}
 		return "redirect:/event/" + eventId;
 	}

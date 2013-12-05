@@ -26,7 +26,8 @@ public class BLTicket {
     public void getAddTicket(String eventId, ProxyModel model, ProxyHttpSession session)
 	    throws UnauthenticatedException {
 	if (!DAAuthentication.isAdmin(session))
-	    throw new UnauthenticatedException();
+		throw new UnauthenticatedException();
+	
 
 	model.addAttribute("ticket", new TicketViewModel(new Event(UUID.fromString(eventId))));
 	model.addAttribute("ticketlist", TicketType.values());

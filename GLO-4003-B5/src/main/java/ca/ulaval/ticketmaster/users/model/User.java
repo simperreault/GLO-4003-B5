@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import ca.ulaval.ticketmaster.dao.util.Pair;
+import ca.ulaval.ticketmaster.events.model.SportType;
 import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
 
 public class User {
@@ -38,7 +39,7 @@ public class User {
 	lastName = "";
 	email = "";
 	accessLevel = AccessLevel.User;
-	favSport = "";
+	favSport = null;
 	favGender = "";
 	favType = TicketType.GENERAL;
 	favLocation = "";

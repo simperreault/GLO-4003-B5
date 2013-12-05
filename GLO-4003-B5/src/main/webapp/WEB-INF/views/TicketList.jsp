@@ -28,7 +28,6 @@
 						
 						if ( !(strNbToBuy % 1 === 0) /*isNotInt*/ )
 						{
-							alert('unhappy cat')
 							return;
 						}
 						
@@ -65,7 +64,7 @@
 			style="display: none; background-color: #316e66;">
 			<p>Le billet a été ajouté à votre panier</p>
 		</div>
-		<div id="message" class="error">${message}</div>
+		<div id="message" class="error">${errorMsg}</div>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>
@@ -117,7 +116,7 @@
 									</td>
 									<c:if test="${sesacceslevel == 'Admin'}">
 										<td><a
-											href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer 1</a>
+											href="/ticket/delete/${ticket.event.id}/${ticket.id}">Retirer</a>
 										</td>
 									</c:if>
 								</tr>

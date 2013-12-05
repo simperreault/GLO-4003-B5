@@ -1,5 +1,8 @@
 package ca.ulaval.ticketmaster.events;
 
+import java.net.ProxySelector;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -33,8 +36,8 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) {
-		domaine.getEventList(ProxyModel.create(model));
+	public String list(Model model, SearchViewModel viewmodel , HttpSession session) {
+		domaine.preLoadEvents(viewmodel, ProxyModel.create(model), ProxyHttpSession.create(session));
 		return Page.EventList.toString();
 	}
 
@@ -46,11 +49,7 @@ public class EventController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String Event(@PathVariable String id, Model model, HttpSession session) {
-		try {
-			domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
-		} catch (UnauthorizedException e) {
-			return Page.Home.toString();
-		}
+		domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
 		return Page.TicketList.toString();
 	}
 

@@ -57,9 +57,13 @@ public class BLBasket {
 
 	@SuppressWarnings("unchecked")
 	public void addMultipleTicketsToBasket(String eventId, String ticketId, String nbSimilarTickets, ProxyModel model, ProxyHttpSession session) throws UnauthenticatedException {
-		if (!DAAuthentication.isLogged(session))
+		if (!DAAuthentication.isLogged(session)){
+			model.addAttribute("eventID", UUID.fromString(eventId));
+			model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(eventId)));
+			model.addAttribute("errorMsg", "Vous devez être authentifiés pour ajouter des billets à votre panier.");
 			throw new UnauthenticatedException();
-			
+		}
+		
 			ArrayList<Ticket> listOfBasket;
 			if (session.getAttribute("basket") != null) {
 				listOfBasket = (ArrayList<Ticket>) session.getAttribute("basket");

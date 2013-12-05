@@ -22,6 +22,7 @@ import ca.ulaval.ticketmaster.home.DAAuthentication;
 import ca.ulaval.ticketmaster.home.Page;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.springproxy.ProxyModel;
+import ca.ulaval.ticketmaster.users.model.User;
 
 public class BLEvent {
 	private DataManager datamanager;
@@ -50,14 +51,9 @@ public class BLEvent {
 		model.addAttribute("dayList", days);
 	}
 
-	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
-
+	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
 		model.addAttribute("eventID", UUID.fromString(idEvent));
-		//model.addAttribute("ticketList", datamanager.findAllTickets(UUID.fromString(idEvent)));
 		model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(idEvent)));
-
-		if (!DAAuthentication.isLogged(session))
-			throw new UnauthorizedException();
 	}
 
 	public void getTickedEvent(String idEvent1, String idEvent2, ProxyModel model) {
@@ -96,12 +92,22 @@ public class BLEvent {
 			}
 	}
 
+	public void preLoadEvents(SearchViewModel viewModel, ProxyModel model, ProxyHttpSession session)
+	{
+		if (session.getAttribute("sesusername") != null){
+			User user = datamanager.findUser((String) session.getAttribute("sesusername"));
+			if (SportType.matchString(user.getFavSport()) != null)
+				viewModel.sport = SportType.matchString(user.getFavSport());
+		}
+		search(viewModel, model);
+	}
+	
 	public void search(SearchViewModel viewModel, ProxyModel model) {
 		model.addAttribute("search", viewModel);
 		model.addAttribute("sportList", SportType.values());
 		List<String> teamList = searchEngine.GetAllTeams();
 		model.addAttribute("teamList", teamList);
-
+		
 		LinkedHashMap<Integer, String> days = new LinkedHashMap<Integer, String>();
 		DateTime date = new DateTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

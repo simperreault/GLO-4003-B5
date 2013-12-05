@@ -54,7 +54,7 @@ public class EventControllerTest {
 	list.add(new Event());
 	list.add(new Event());
 	when(searchEngine.findAllEvents()).thenReturn(list);
-	String view = controller.list(model);
+	String view = controller.list(model, null, null);
 	assertEquals(((List<Event>) model.get("EventList")).size(), 3);
 	assertEquals(view, "EventList");
     }
