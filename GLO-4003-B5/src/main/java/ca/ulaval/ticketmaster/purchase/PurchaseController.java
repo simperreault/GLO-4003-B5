@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ca.ulaval.ticketmaster.execptions.InvalidFormExceptions;
-import ca.ulaval.ticketmaster.execptions.InvalidPurchaseException;
-import ca.ulaval.ticketmaster.execptions.UnauthenticatedException;
+import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
+import ca.ulaval.ticketmaster.exceptions.InvalidPurchaseException;
+import ca.ulaval.ticketmaster.exceptions.UnauthenticatedException;
 import ca.ulaval.ticketmaster.home.DAAuthentication;
 import ca.ulaval.ticketmaster.home.Page;
 import ca.ulaval.ticketmaster.purchase.model.PaymentType;

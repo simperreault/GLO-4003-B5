@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.execptions;
+package ca.ulaval.ticketmaster.exceptions;
 
 public abstract class DAException extends Exception {
     private static final long serialVersionUID = 7580189856047217417L;

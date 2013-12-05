@@ -1,4 +1,4 @@
-package ca.ulaval.ticketmaster.execptions;
+package ca.ulaval.ticketmaster.exceptions;
 
 public class InvalidFormExceptions extends DAException {
 
