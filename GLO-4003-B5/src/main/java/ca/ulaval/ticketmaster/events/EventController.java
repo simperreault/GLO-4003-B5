@@ -18,6 +18,7 @@ import ca.ulaval.ticketmaster.events.model.SearchViewModel;
 import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.exceptions.UnauthorizedException;
 import ca.ulaval.ticketmaster.home.Page;
+import ca.ulaval.ticketmaster.purchase.BLBasket;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.springproxy.ProxyModel;
 import ca.ulaval.ticketmaster.users.BLUser;
@@ -34,7 +35,9 @@ public class EventController {
 	public EventController() {
 		domaine = new BLEvent();
 	}
-
+	public EventController(BLEvent e) {
+		domaine = e;
+	}
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, SearchViewModel viewmodel , HttpSession session) {
 		domaine.preLoadEvents(viewmodel, ProxyModel.create(model), ProxyHttpSession.create(session));
@@ -62,6 +65,7 @@ public class EventController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String create(Model model, HttpSession session) {
 		try {
+			ProxyModel temp = ProxyModel.create(model);
 			domaine.getAddEvent(ProxyModel.create(model), ProxyHttpSession.create(session));
 		} catch (UnauthorizedException e) {
 			return Page.Error403.toString();

@@ -22,7 +22,6 @@ import ca.ulaval.ticketmaster.home.HomeController;
 import ca.ulaval.ticketmaster.users.model.User;
 import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
-//import ca.ulaval.ticketmaster.web.DomaineAffaire.DAUser;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
@@ -30,8 +29,6 @@ public class HomeControllerTest {
     @Mock
     public DataManager datamanager;
 
-    // @InjectMocks
-    // public DAUser domaine;
 
     @InjectMocks
     public HomeController controller;
@@ -44,40 +41,9 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void createAddANewViewModelToTheModelAndCheckReturn() {
-
-	//String ret = controller.MainFrame(model);
-
-	//assertEquals(ret, "Home");
-    }
-
-    @Test
     public void testHome() {
 	String ret = controller.home(model);
 
 	assertEquals(ret, "Home");
     }
-
-    @Test
-    public void testBasketLogged() {
-
-	HttpSession httpSession = new MockHttpSession();
-
-	httpSession.setAttribute("sesacceslevel", "user");
-
-	//String ret = controller.Basket(model, httpSession);
-
-	//assertEquals(ret, "Basket");
-    }
-
-    @Test
-    public void testBasketNotLogged() {
-
-	HttpSession httpSession = new MockHttpSession();
-
-	//String ret = controller.Basket(model, httpSession);
-
-	//assertEquals(ret, "Home");
-    }
-
 }
