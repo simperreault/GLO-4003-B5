@@ -171,7 +171,7 @@ public class BLBasket {
 				throw new InvalidPurchaseException();
 
 		} else {
-			model.addAttribute("message", "Erreur : Le panier est vide");
+			model.addAttribute("errorMsg", "Erreur : Le panier est vide");
 		}
 	}
 

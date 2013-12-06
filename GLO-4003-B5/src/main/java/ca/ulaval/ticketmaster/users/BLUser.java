@@ -5,6 +5,7 @@ import org.springframework.validation.ObjectError;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
+import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.home.DAAuthentication;
 import ca.ulaval.ticketmaster.home.Page;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
@@ -21,24 +22,20 @@ public class BLUser {
 	public BLUser(DataManager dm){
 		datamanager = dm;
 	}
-	public String createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
-			ProxyHttpSession session) {
+	public void createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
+			ProxyHttpSession session) throws InvalidFormExceptions {
 
 		if (result.hasErrors()) {
-
 			model.addAttribute("user", viewmodel);
 			model.addAttribute("typeList", TicketType.values());
 			model.addAttribute("error", result.getAllErrors());
-			// return "CreateUser";
-			return Page.CreateUser.toString();
+			throw new InvalidFormExceptions();
 		}
 
 		if (datamanager.saveUser(user)) {
-
 			model.addAttribute("message", "Utilisateur ajoute");
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 			session.setAttribute("sesusername", user.getUsername());
-			return Page.Home.toString();
 		} else {
 			// Complexe : soit on passe d'une certaine facon le XMLReader au
 			// Validator,
@@ -53,10 +50,8 @@ public class BLUser {
 			model.addAttribute("user", viewmodel);
 			model.addAttribute("typeList", TicketType.values());
 			model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
-			// return "CreateUser";
-			return Page.CreateUser.toString();
+			throw new InvalidFormExceptions();
 		}
-
 	}
 
 	public void connect(String username, String pWord, ProxyModel model, ProxyHttpSession session) {

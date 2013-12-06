@@ -3,9 +3,11 @@ package ca.ulaval.ticketmaster.events;
 import java.net.ProxySelector;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,7 +67,6 @@ public class EventController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String create(Model model, HttpSession session) {
 		try {
-			ProxyModel temp = ProxyModel.create(model);
 			domaine.getAddEvent(ProxyModel.create(model), ProxyHttpSession.create(session));
 		} catch (UnauthorizedException e) {
 			return Page.Error403.toString();
