@@ -80,7 +80,7 @@ public class UserControllerTest {
     @Test
     public void testLoginGET() {
 
-	String ret = controller.Login(model);
+	String ret = controller.Login(model, null);
 
 	assertEquals(ret, "Home");
 
@@ -103,7 +103,7 @@ public class UserControllerTest {
 	// when(httpSession.setAttribute("sesusername",
 	// admin.getAccessLevel().toString()).thenReturn("bob"));
 
-	String ret = controller.Login(adminUsername, admin.getPassword(), model, httpSession);
+	String ret = controller.Login(adminUsername, admin.getPassword(), model, httpSession, null);
 
 	assertEquals(ret, "Home");
 
@@ -125,7 +125,7 @@ public class UserControllerTest {
 
 	when(datamanager.findUser(admin.getUsername())).thenReturn(admin);
 
-	String ret = controller.Login(admin.getUsername(), "NOTTHEPASSWORD", model, httpSession);
+	String ret = controller.Login(admin.getUsername(), "NOTTHEPASSWORD", model, httpSession, null);
 
 	assertEquals(ret, "Home");
 
@@ -145,7 +145,7 @@ public class UserControllerTest {
 
 	HttpSession httpSession = new MockHttpSession();
 
-	String ret = controller.Login("HEY!!", "FFFFFFUUUUUUUUU", model, httpSession);
+	String ret = controller.Login("HEY!!", "hey", model, httpSession, null);
 
 	assertEquals(ret, "Home");
 
@@ -165,7 +165,7 @@ public class UserControllerTest {
 
 	HttpSession httpSession = new MockHttpSession();
 
-	String ret = controller.Disconnect(model, httpSession);
+	String ret = controller.Disconnect(model, httpSession, null);
 
 	assertNull(httpSession.getAttribute("sesacceslevel"));
 	assertNull(httpSession.getAttribute("sesusername"));
