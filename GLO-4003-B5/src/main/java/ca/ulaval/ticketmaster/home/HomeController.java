@@ -21,6 +21,11 @@ public class HomeController {
     public String mainFrame(Model model) {
 	return Page.Home.toString();
     }
+    
+    @RequestMapping(value = "/*", method = RequestMethod.GET)
+    public String error404(Model model) {
+	return Page.Error404.toString();
+    }
 
     @RequestMapping(value = "/Home", method = RequestMethod.GET)
     public String home(Model model) {

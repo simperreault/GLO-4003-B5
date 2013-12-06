@@ -3,6 +3,7 @@ body {
 	/*background: #ffb744 url(../images/bg-body.jpg) repeat left bottom;*/
 	background: url(../images/bg-texture.png) repeat-x center;
 	background-attachment: fixed;
+	background-size:100% 100%;
 	font-family: "Times New Roman", Times, serif;
 	margin: 0;
 }

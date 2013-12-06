@@ -31,30 +31,36 @@
 					<c:forEach var="ticket" items="${basketDisplay}">
 						<c:url var="ticketUrl"
 							value="/event/${ticket.get(0).event.id}/${ticket.get(0).id}" />
-							<input id="ticketId" type="hidden" value ="${ticket.get(0).id}"/>
-							<input id="eventId" type="hidden" value ="${ticket.get(0).event.id}"/>
+						<input id="ticketId" type="hidden" value="${ticket.get(0).id}" />
+						<input id="eventId" type="hidden"
+							value="${ticket.get(0).event.id}" />
 						<tr>
-							<td>
-										${ticket.get(0).event.sport}</td>
+							<td>${ticket.get(0).event.sport}</td>
 							<td><fmt:formatDate value="${ticket.get(0).event.date}"
-										pattern="dd/MM/yyyy hh:mm" /></td>
+									pattern="dd/MM/yyyy hh:mm" /></td>
 							<td>${ticket.get(0).event.location},
 								${ticket.get(0).event.stadium}</td>
 							<td>${ticket.get(0).type}</td>
 							<td>${ticket.get(0).price}$</td>
-							<td><input id="amount" style="width:50px" value="${ticket.size()}" type="number" min="0" max="50" onchange="post_add_qte('/purchase/addBasket')"/></td>
+							<td><input id="amount" style="width: 50px"
+								value="${ticket.size()}" type="number" min="0" max="50"
+								onchange="post_add_qte('/purchase/addBasket')" /></td>
 							<td><a href="${ticketUrl}">Details</a></td>
 					</c:forEach>
 					<c:if test="${basketDisplay.size() == 0}">
-						<tr><td colspan="10">Le panier est vide</td></tr>
+						<tr>
+							<td colspan="10">Le panier est vide</td>
+						</tr>
 					</c:if>
 				</tbody>
 			</table>
 		</div>
+
 		<c:if test="${basketDisplay.size() > 0}">
-			<a href="<c:url value="/purchase/Purchase" />" class="btn">Passer au
-				paiement</a>
-				<a href="<c:url value="/purchase/emptyBasket" />" class="btn">Vider le panier</a>
+			<a href="<c:url value="/purchase/Purchase" />" class="btn">Passer
+				au paiement</a>
+			<a href="<c:url value="/purchase/emptyBasket" />" class="btn">Vider
+				le panier</a>
 		</c:if>
 	</div>
 </body>
