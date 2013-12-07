@@ -7,7 +7,6 @@ import ca.ulaval.ticketmaster.dao.util.DataManager;
 import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
 import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.home.DAAuthentication;
-import ca.ulaval.ticketmaster.home.Page;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.springproxy.ProxyModel;
 import ca.ulaval.ticketmaster.users.model.User;

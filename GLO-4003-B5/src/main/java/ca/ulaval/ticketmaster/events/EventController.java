@@ -1,13 +1,8 @@
 package ca.ulaval.ticketmaster.events;
 
-import java.net.ProxySelector;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,10 +15,8 @@ import ca.ulaval.ticketmaster.events.model.SearchViewModel;
 import ca.ulaval.ticketmaster.exceptions.InvalidFormExceptions;
 import ca.ulaval.ticketmaster.exceptions.UnauthorizedException;
 import ca.ulaval.ticketmaster.home.Page;
-import ca.ulaval.ticketmaster.purchase.BLBasket;
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 import ca.ulaval.ticketmaster.springproxy.ProxyModel;
-import ca.ulaval.ticketmaster.users.BLUser;
 
 /**
  * Handles requests for the application related to Event
