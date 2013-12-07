@@ -111,6 +111,25 @@ public class SearchEngineTest {
 	}
 	
 	@Test
+	public void testRegroupByEvent() throws Exception {
+		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
+		ArrayList<Ticket> returnList2 = new ArrayList<Ticket>();
+    	Event e = new Event();
+    	Event e2 = new Event();
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList2.add(TicketFactory.CreateTicket(e2, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList2.add(TicketFactory.CreateTicket(e2, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		e.setTicketList(returnList);
+		e2.setTicketList(returnList2);
+		ArrayList<Ticket> testlist = new ArrayList<Ticket>();
+		testlist.addAll(returnList);
+		testlist.addAll(returnList2);
+		assertEquals(2,mockedSearchEngine.regroupSimilarTicketsByEvents(testlist).size());
+		
+	}
+	
+	@Test
 	public void testRegroupSamePriceTickets(){
 		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
 		List<ArrayList<Ticket>> someList = new ArrayList<ArrayList<Ticket>>();
@@ -121,5 +140,20 @@ public class SearchEngineTest {
 		someList.add(returnList);
 		when(dataManager.findEvent(e.getId())).thenReturn(e);
 		assertEquals(someList,mockedSearchEngine.regroupSamePriceTickets(e.getId()));
+	}
+	@Test
+	public void listwithlisttest(){
+		ArrayList<Ticket> returnList = new ArrayList<Ticket>();
+		ArrayList<Ticket> returnList2 = new ArrayList<Ticket>();
+		ArrayList<Ticket> somelist = new ArrayList<Ticket>();
+    	Event e = new Event();
+    	Event e2 = new Event();
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList.add(TicketFactory.CreateTicket(e, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList2.add(TicketFactory.CreateTicket(e2, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		returnList2.add(TicketFactory.CreateTicket(e2, TicketType.SIMPLE, "1", "1", "", 3, 0));
+		somelist.addAll(returnList2);
+		somelist.addAll(returnList);
+		assertEquals(returnList2,mockedSearchEngine.filterListWithList(somelist, returnList));
 	}
 }
