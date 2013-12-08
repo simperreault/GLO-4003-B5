@@ -11,6 +11,20 @@
 	href="<c:url value="/resources/css/style.css" />" />
 <link type="text/css" rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<c:if test="${errorMsg.length() > 0}">
+	<script>
+		$(document).ready(function() {
+			$("#errorMsg").slideToggle("slow");
+		});
+	</script>
+</c:if>
+<c:if test="${confirmationMsg.length() > 0}">
+	<script>
+		$(document).ready(function() {
+			$("#confirmationMsg").slideToggle("slow");
+		});
+	</script>
+</c:if>
 <sitemesh:write property='head' />
 </head>
 <body>
@@ -40,6 +54,8 @@
 				<div class="box">
 					<div>
 						<div class="body">
+							<div id="confirmationMsg" class="trigger-confirmationMsg">${confirmationMsg}</div>
+							<div id="errorMsg" class="trigger-errorMsg">${errorMsg}</div>
 							<p>${page.properties["meta.foo"]}</p>
 							<sitemesh:write property='body' />
 							<br>

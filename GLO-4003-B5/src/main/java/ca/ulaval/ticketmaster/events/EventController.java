@@ -47,7 +47,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String EventConfirm(@PathVariable String id, Model model, HttpSession session, @RequestParam(value = "confirmation", defaultValue = "") String confirmation) {
+	public String event(@PathVariable String id, Model model, HttpSession session, @RequestParam(value = "confirmation", defaultValue = "") String confirmation) {
 		domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
 		if (confirmation.equals("1"))
 			model.addAttribute("confirmationMsg", "Le billet a bien été ajouté à votre panier");

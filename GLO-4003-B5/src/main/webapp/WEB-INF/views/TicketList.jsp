@@ -5,11 +5,6 @@
 <head>
 <title>Liste de billets en vente</title>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
-<script>
-$(document).ready(function(){
-	    $("#errorMsg").slideToggle("slow");
-	    $("#confirmationMsg").slideToggle("slow");
-	});</script>
 <script type="text/javascript">
 					function strRemoveFromEndCharUntilSlash(str)
 					{
@@ -65,8 +60,6 @@ $(document).ready(function(){
 	<div class="container">
 		<h1>Liste de billets en vente</h1>
 		<hr>
-		<div id="confirmationMsg" class="confirmation" style="display: none;">${confirmationMsg}</div>
-		<div id="errorMsg" class="error" style="display: none;">${errorMsg}</div>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>
@@ -110,10 +103,11 @@ $(document).ready(function(){
 											</c:forEach>
 									</select>
 									<td>
-        								<button class="btn" 
-        								onclick="AddTickets('/ticket/addBasket/${ticket.event.id}',
+										<button class="btn"
+											onclick="AddTickets('/ticket/addBasket/${ticket.event.id}',
         									'nbTicketsList<c:out value="${counterTicketGroup}"/>',
-        									'${ticket.id}')">Ajouter au panier</button>
+        									'${ticket.id}')">Ajouter
+											au panier</button>
 									</td>
 									</td>
 									<c:if test="${sesacceslevel == 'Admin'}">

@@ -8,11 +8,9 @@
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
 </head>
 <body>
-
 	<div class="container">
 		<h1>Panier d'achat</h1>
 		<hr>
-		<div id="message" class="error">${errorMsg}</div>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>

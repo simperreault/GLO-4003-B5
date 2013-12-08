@@ -15,87 +15,87 @@ import ca.ulaval.ticketmaster.users.model.UserConverter;
 import ca.ulaval.ticketmaster.users.model.UserViewModel;
 
 public class BLUser {
-    private DataManager datamanager;
+	private DataManager datamanager;
 
-    public BLUser() {
-	datamanager = new DataManager();
-    }
-
-    public BLUser(DataManager dm) {
-	datamanager = dm;
-    }
-
-    public void createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
-	    ProxyHttpSession session) throws InvalidFormExceptions {
-
-	if (result.hasErrors()) {
-	    model.addAttribute("user", viewmodel);
-	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("error", result.getAllErrors());
-	    throw new InvalidFormExceptions();
+	public BLUser() {
+		datamanager = new DataManager();
 	}
 
-	if (datamanager.saveUser(user)) {
-	    model.addAttribute("message", "Utilisateur ajoute");
-	    session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
-	    session.setAttribute("sesusername", user.getUsername());
-	} else {
-	    // Complexe : soit on passe d'une certaine facon le XMLReader au
-	    // Validator,
-	    // soit on fait la validation ici
-
-	    // model.addAttribute("message", "Utilisateur deja present");
-	    // model.addAttribute("error", "Utilisateur deja present");
-	    result.addError(new ObjectError("user", "Utilisateur deja existant"));
-
-	    model.addAttribute("error", result.getAllErrors());
-
-	    model.addAttribute("user", viewmodel);
-	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
-	    throw new InvalidFormExceptions();
+	public BLUser(DataManager dm) {
+		datamanager = dm;
 	}
-    }
 
-    public void connect(String username, String pWord, ProxyModel model, ProxyHttpSession session) {
-	if (!DAAuthentication.isLogged(session)) {
-	    boolean userIsOk = false;
-	    User user = datamanager.findUser(username);
-	    if (user != null) {
-		if (user.getPassword().equals(pWord)) {
-		    userIsOk = true;
-		    session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
-		    session.setAttribute("sesusername", username);
+	public void createUser(User user, UserViewModel viewmodel, ProxyModel model, BindingResult result,
+			ProxyHttpSession session) throws InvalidFormExceptions {
+
+		if (result.hasErrors()) {
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("error", result.getAllErrors());
+			throw new InvalidFormExceptions();
 		}
-	    }
 
-	    if (!userIsOk) {
-		model.addAttribute("loginError", "La combinaison pseudo/mot de passe est invalide");
-	    }
-	}
-    }
+		if (datamanager.saveUser(user)) {
+			model.addAttribute("message", "Utilisateur ajoute");
+			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
+			session.setAttribute("sesusername", user.getUsername());
+		} else {
+			// Complexe : soit on passe d'une certaine facon le XMLReader au
+			// Validator,
+			// soit on fait la validation ici
 
-    public void disconnect(ProxyHttpSession session) {
-	session.invalidate();
-    }
+			// model.addAttribute("message", "Utilisateur deja present");
+			// model.addAttribute("error", "Utilisateur deja present");
+			result.addError(new ObjectError("user", "Utilisateur deja existant"));
 
-    public void setUserInfo(ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
-	if (!DAAuthentication.isLogged(session))
-	    throw new UnauthorizedException();
+			model.addAttribute("error", result.getAllErrors());
 
-	User user = datamanager.findUser((String) session.getAttribute("sesusername"));
-	model.addAttribute("user", UserConverter.convert(user));
-    }
-
-    public void editUser(UserViewModel viewUser, BindingResult result, ProxyModel model,
-	    ProxyHttpSession session) throws InvalidFormExceptions {
-	if (result.hasErrors()) {
-	    model.addAttribute("user", viewUser);
-	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("error", result.getAllErrors());
-	    throw new InvalidFormExceptions();
+			model.addAttribute("user", viewmodel);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
+			throw new InvalidFormExceptions();
+		}
 	}
 
-	datamanager.editUser(UserConverter.convert(viewUser));
-    }
+	public void connect(String username, String pWord, ProxyModel model, ProxyHttpSession session) {
+		if (!DAAuthentication.isLogged(session)) {
+			boolean userIsOk = false;
+			User user = datamanager.findUser(username);
+			if (user != null) {
+				if (user.getPassword().equals(pWord)) {
+					userIsOk = true;
+					session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
+					session.setAttribute("sesusername", username);
+				}
+			}
+
+			if (!userIsOk) {
+				model.addAttribute("loginError", "La combinaison pseudo/mot de passe est invalide");
+			}
+		}
+	}
+
+	public void disconnect(ProxyHttpSession session) {
+		session.invalidate();
+	}
+
+	public void setUserInfo(ProxyModel model, ProxyHttpSession session) throws UnauthorizedException {
+		if (!DAAuthentication.isLogged(session))
+			throw new UnauthorizedException();
+
+		User user = datamanager.findUser((String) session.getAttribute("sesusername"));
+		model.addAttribute("user", UserConverter.convert(user));
+	}
+
+	public void editUser(UserViewModel viewUser, BindingResult result, ProxyModel model,
+			ProxyHttpSession session) throws InvalidFormExceptions {
+		if (result.hasErrors()) {
+			model.addAttribute("user", viewUser);
+			model.addAttribute("typeList", TicketType.values());
+			model.addAttribute("error", result.getAllErrors());
+			throw new InvalidFormExceptions();
+		}
+
+		datamanager.editUser(UserConverter.convert(viewUser));
+	}
 }

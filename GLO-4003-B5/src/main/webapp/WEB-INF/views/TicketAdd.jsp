@@ -4,7 +4,6 @@
 <html>
 <head>
 </head>
-	
 	<h1>Ajouter un Billet</h1><hr>
 	<div class="error"> 
 		<c:forEach var="objectError" items="${error}">
@@ -38,6 +37,4 @@
 		<br>
         <p><button class="btn" type="submit">Ajouter un billet</button></p>
     </form:form>
-    
-    
 </html>
