@@ -74,3 +74,36 @@ function post_add_qte(path, method) {
 	document.body.appendChild(form);
 	form.submit();
 }
+
+//Add tickets to the basket (create form to handle that stuff)
+function AddTickets(path, idToGetNbTickets, ticketLikeThisOne)
+{
+	var strNbToBuy = document.getElementById(idToGetNbTickets).value;
+	
+	if ( !(strNbToBuy % 1 === 0) /*isNotInt*/ )
+	{
+		return;
+	}
+	
+	var form = document.createElement("form");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", path);
+
+
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "nbSimilarTickets");
+	hiddenField.setAttribute("value", strNbToBuy);
+	form.appendChild(hiddenField);
+
+
+	var hiddenField2 = document.createElement("input");
+	hiddenField2.setAttribute("type", "hidden");
+	hiddenField2.setAttribute("name", "ticketId");
+	hiddenField2.setAttribute("value", ticketLikeThisOne);
+	form.appendChild(hiddenField2);
+
+
+	document.body.appendChild(form);
+	form.submit();
+}
