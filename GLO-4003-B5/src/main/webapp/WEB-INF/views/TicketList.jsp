@@ -6,22 +6,6 @@
 <title>Liste de billets en vente</title>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
 <script type="text/javascript">
-					function strRemoveFromEndCharUntilSlash(str)
-					{
-						str = str.substr(0, str.lastIndexOf("/") + 1 );
-						
-						return str;
-					}
-					function updateUrl(itId)
-					{
-						//alert(itId);
-						//return;
-						//alert("id = " + itId);
-						var selectedValue =  document.getElementById("nbTicketsList" + itId).value
-						var oldHref = document.getElementById("idTicketsAdd" + itId).href; 
-						var newUrl = strRemoveFromEndCharUntilSlash(oldHref) + selectedValue;
-						document.getElementById("idTicketsAdd" + itId).href = newUrl;
-					}
 					function AddTickets(path, idToGetNbTickets, ticketLikeThisOne)
 					{
 						var strNbToBuy = document.getElementById(idToGetNbTickets).value;
@@ -95,8 +79,7 @@
 										<!--<c:set var="tmpSize" value="${ticketSubList.size()}" />-->
 										<select
 										id="nbTicketsList<c:out value="${counterTicketGroup}"/>"
-										name="nbTicketsList<c:out value="${counterTicketGroup}"/>"
-										onchange="updateUrl(<c:out value="${counterTicketGroup}"/>)">
+										name="nbTicketsList<c:out value="${counterTicketGroup}"/>">
 											<c:forEach var="i" begin="1" end="${ticketSubList.size()}">
 												<option value="<c:out value="${i}"/>"><c:out
 														value="${i}" /></option>

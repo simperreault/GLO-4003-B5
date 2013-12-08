@@ -50,7 +50,7 @@ public class EventController {
 	public String event(@PathVariable String id, Model model, HttpSession session, @RequestParam(value = "confirmation", defaultValue = "") String confirmation) {
 		domaine.getTicketsEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
 		if (confirmation.equals("1"))
-			model.addAttribute("confirmationMsg", "Le billet a bien été ajouté à votre panier");
+			model.addAttribute("confirmationMsg", "Le(s) billet(s) a/ont bien été ajouté(s) à votre panier");
 		return Page.TicketList.toString();
 	}
 
