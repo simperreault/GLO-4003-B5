@@ -5,6 +5,11 @@
 <head>
 <title>Liste de billets en vente</title>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
+<script>
+$(document).ready(function(){
+	    $("#errorMsg").slideToggle("slow");
+	    $("#confirmationMsg").slideToggle("slow");
+	});</script>
 <script type="text/javascript">
 					function strRemoveFromEndCharUntilSlash(str)
 					{
@@ -60,11 +65,8 @@
 	<div class="container">
 		<h1>Liste de billets en vente</h1>
 		<hr>
-		<div id="confirmation"
-			style="display: none; background-color: #316e66;">
-			<p>Le billet a été ajouté à votre panier</p>
-		</div>
-		<div id="message" class="error">${errorMsg}</div>
+		<div id="confirmationMsg" class="confirmation" style="display: none;">${confirmationMsg}</div>
+		<div id="errorMsg" class="error" style="display: none;">${errorMsg}</div>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>

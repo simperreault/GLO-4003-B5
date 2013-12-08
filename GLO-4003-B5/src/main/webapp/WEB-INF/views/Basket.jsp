@@ -12,7 +12,7 @@
 	<div class="container">
 		<h1>Panier d'achat</h1>
 		<hr>
-		<div id="message" class="error">${message}</div>
+		<div id="message" class="error">${errorMsg}</div>
 		<div class="row">
 			<table id="hor-minimalist-b">
 				<thead>

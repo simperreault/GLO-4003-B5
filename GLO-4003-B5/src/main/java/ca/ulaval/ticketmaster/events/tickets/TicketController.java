@@ -1,5 +1,6 @@
 package ca.ulaval.ticketmaster.events.tickets;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -69,13 +70,14 @@ public class TicketController {
 	@RequestMapping(value = "/addBasket/{eventId}", method = RequestMethod.POST)
 	public String addToBasketMultiple(@PathVariable String eventId,
 			@RequestParam("ticketId") String ticketId,
-			@RequestParam("nbSimilarTickets") String nbSimilarTickets, Model model, HttpSession session) {
+			@RequestParam("nbSimilarTickets") String nbSimilarTickets, Model model, HttpSession session, 
+			HttpServletRequest request) {
 		try {
 			basket.addMultipleTicketsToBasket(eventId, ticketId, nbSimilarTickets,
 					ProxyModel.create(model), ProxyHttpSession.create(session));
 		} catch (UnauthenticatedException e) {
 			return Page.TicketList.toString();
-		}
+		}		
 		return "redirect:/event/" + eventId;
 	}
 

@@ -33,6 +33,11 @@ input:focus {
 	text-align:left;
 }
 
+.confirmation {	
+	color:green;
+	text-align:left;
+}
+
 /*------------------------------ Sprites ------------------------------*/
 #navigation li, #navigation li a:hover, #navigation li.selected a {
 	background-image: url(../images/bg-menu.png);

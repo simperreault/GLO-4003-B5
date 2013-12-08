@@ -87,7 +87,7 @@ public class PurchaseController {
 			domaine.copyToBasket(eventId, ticketId, amount, ProxyModel.create(model),
 					ProxyHttpSession.create(session));
 		} catch (UnauthenticatedException e) {
-			model.addAttribute("errorMsg", e.getErrorMsg());
+			//model.addAttribute("errorMsg", e.getErrorMsg());
 			return Page.Home.toString();
 		}
 

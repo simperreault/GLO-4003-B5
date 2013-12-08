@@ -52,6 +52,7 @@ public class BLEvent {
 	}
 
 	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
+		System.out.println("idEvent : " + idEvent);
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(idEvent)));
 	}

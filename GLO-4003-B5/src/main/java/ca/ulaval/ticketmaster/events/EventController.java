@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.ulaval.ticketmaster.events.model.EventViewModel;
 import ca.ulaval.ticketmaster.events.model.SearchViewModel;
@@ -53,8 +54,10 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String Event(@PathVariable String id, Model model, HttpSession session) {
+	public String EventConfirm(@PathVariable String id, Model model, HttpSession session, @RequestParam(value = "confirmation", defaultValue = "") String confirmation) {
 		domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
+		if (confirmation.equals("1"))
+			model.addAttribute("confirmationMsg", "Le billet a bien été ajouté à votre panier");
 		return Page.TicketList.toString();
 	}
 
