@@ -22,12 +22,11 @@
 					<td>
 						<input type="password" name="password"/>
 					</td>
-									</tr>
+				</tr>
 				<tr>
 					<td class="error" >
 						${loginError}
 					</td>
-
 			        <td>
 			            <input class="btn" type="submit" value="Se connecter"/>
 					</td>
@@ -44,7 +43,7 @@
 	<c:when test = "${not empty sesusername }">
 		Bonjour, <%= session.getAttribute( "sesusername" ) %>
 		<div>
-		<a href="#">Mon profil</a><br>
+		<a href="/user/index">Mon profil</a><br>
 		<a href="<c:url value="/user/disconnect" />" class="btn">Déconnexion</a>
 		</div>
 	</c:when>

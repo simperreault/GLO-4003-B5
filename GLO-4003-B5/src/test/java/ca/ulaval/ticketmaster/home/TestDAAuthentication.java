@@ -1,11 +1,13 @@
 package ca.ulaval.ticketmaster.home;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpSession;
+
 import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 
 @RunWith(MockitoJUnitRunner.class)

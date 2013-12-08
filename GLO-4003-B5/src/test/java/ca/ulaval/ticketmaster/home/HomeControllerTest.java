@@ -1,11 +1,6 @@
 package ca.ulaval.ticketmaster.home;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.when;
-
-import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,14 +8,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-//import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.home.HomeController;
-import ca.ulaval.ticketmaster.users.model.User;
-import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
+//import org.springframework.mock.web.MockHttpSession;
 
 
 @RunWith(MockitoJUnitRunner.class)

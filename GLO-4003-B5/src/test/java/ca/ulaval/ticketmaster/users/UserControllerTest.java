@@ -18,7 +18,6 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-import ca.ulaval.ticketmaster.users.UserController;
 import ca.ulaval.ticketmaster.users.model.User;
 import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 

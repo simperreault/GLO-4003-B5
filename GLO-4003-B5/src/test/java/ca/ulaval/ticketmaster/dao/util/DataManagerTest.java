@@ -1,9 +1,13 @@
 package ca.ulaval.ticketmaster.dao.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,13 +15,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import static org.mockito.Mockito.when;
-
 import org.mockito.runners.MockitoJUnitRunner;
 
 import ca.ulaval.ticketmaster.events.model.Event;
-import ca.ulaval.ticketmaster.events.model.SportType;
 import ca.ulaval.ticketmaster.events.tickets.model.Ticket;
 import ca.ulaval.ticketmaster.events.tickets.model.TicketType;
 import ca.ulaval.ticketmaster.users.model.User;
