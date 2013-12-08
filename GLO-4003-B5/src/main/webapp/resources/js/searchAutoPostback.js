@@ -75,7 +75,7 @@ function post_add_qte(path, method) {
 	form.submit();
 }
 
-//Add tickets to the basket (create form to handle that stuff)
+//Add tickets to the basket (create form to handle that stuff; they will be searched)
 function AddTickets(path, idToGetNbTickets, ticketLikeThisOne)
 {
 	var strNbToBuy = document.getElementById(idToGetNbTickets).value;
