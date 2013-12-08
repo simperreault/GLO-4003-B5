@@ -48,7 +48,7 @@ public class EventController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String event(@PathVariable String id, Model model, HttpSession session, @RequestParam(value = "confirmation", defaultValue = "") String confirmation) {
-		domaine.getTickedEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
+		domaine.getTicketsEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
 		if (confirmation.equals("1"))
 			model.addAttribute("confirmationMsg", "Le billet a bien été ajouté à votre panier");
 		return Page.TicketList.toString();
@@ -56,7 +56,7 @@ public class EventController {
 
 	@RequestMapping(value = "/{id1}/{id2}", method = RequestMethod.GET)
 	public String detail(@PathVariable String id1, @PathVariable String id2, Model model) {
-		domaine.getTickedEvent(id1, id2, ProxyModel.create(model));
+		domaine.getTicketsEvent(id1, id2, ProxyModel.create(model));
 		return Page.Detail.toString();
 	}
 

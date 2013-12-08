@@ -50,13 +50,13 @@ public class BLEvent {
 		model.addAttribute("dayList", days);
 	}
 
-	public void getTickedEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
+	public void getTicketsEvent(String idEvent, ProxyModel model, ProxyHttpSession session) {
 		System.out.println("idEvent : " + idEvent);
 		model.addAttribute("eventID", UUID.fromString(idEvent));
 		model.addAttribute("ticketList", searchEngine.regroupSimilarTickets(UUID.fromString(idEvent)));
 	}
 
-	public void getTickedEvent(String idEvent1, String idEvent2, ProxyModel model) {
+	public void getTicketsEvent(String idEvent1, String idEvent2, ProxyModel model) {
 		model.addAttribute("ticket",
 				datamanager.findTicket(UUID.fromString(idEvent1), UUID.fromString(idEvent2)));
 	}
