@@ -40,12 +40,6 @@ public class BLUser {
 			session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 			session.setAttribute("sesusername", user.getUsername());
 		} else {
-			// Complexe : soit on passe d'une certaine facon le XMLReader au
-			// Validator,
-			// soit on fait la validation ici
-
-			// model.addAttribute("message", "Utilisateur deja present");
-			// model.addAttribute("error", "Utilisateur deja present");
 			result.addError(new ObjectError("user", "Utilisateur deja existant"));
 
 			model.addAttribute("error", result.getAllErrors());

@@ -51,31 +51,7 @@ public class UserControllerTest {
 
     }
 
-    /*
-     * @Test public void testCreateUserPOST() { //Je test directement dans le
-     * domaine, puisque le controlleur ne fait qu'un appel .. ?
-     * 
-     * HttpSession httpSession = new MockHttpSession();
-     * 
-     * UserViewModel viewModel = new UserViewModel();
-     * viewModel.setUsername("bob");
-     * 
-     * BindingResult result = mock(BindingResult.class);
-     * 
-     * User user = UserConverter.convert(viewModel);
-     * 
-     * when(datamanager.saveUser(user)).thenReturn(true);
-     * 
-     * String ret = domaine.createUser(user, viewModel, model, result,
-     * httpSession);
-     * 
-     * 
-     * //assertEquals(model.get("sesusername"), viewModel.getUsername());
-     * assertEquals(httpSession.getAttribute("sesusername"),
-     * user.getUsername()); assertEquals(ret, "Home");
-     * 
-     * }
-     */
+    
     @Test
     public void testLoginGET() {
 
@@ -98,9 +74,7 @@ public class UserControllerTest {
 
 	when(datamanager.findUser(adminUsername)).thenReturn(admin);
 
-	// FOQQWEQEFQOF
-	// when(httpSession.setAttribute("sesusername",
-	// admin.getAccessLevel().toString()).thenReturn("bob"));
+
 
 	String ret = controller.Login(adminUsername, admin.getPassword(), model, httpSession, null);
 
@@ -109,8 +83,6 @@ public class UserControllerTest {
 	assertNotNull(httpSession.getAttribute("sesusername"));
 	assertNotNull(httpSession.getAttribute("sesacceslevel"));
 
-	// assertNotNull(model.get("sesacceslevel"));
-	// assertNotNull(model.get("sesusername"));
 
     }
 

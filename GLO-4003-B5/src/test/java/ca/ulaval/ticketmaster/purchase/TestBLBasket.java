@@ -71,7 +71,6 @@ public class TestBLBasket {
 
 	private void setAdmin(ProxyHttpSession session) {
 		session.setAttribute("sesacceslevel", "Admin");
-		// session.setAttribute(name, value);
 	}
 
 	private Ticket makeTicket(Event event) {
