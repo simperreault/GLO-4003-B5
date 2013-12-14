@@ -29,7 +29,7 @@ import ca.ulaval.ticketmaster.users.model.UserViewModel;
 public class UserController {
 
     // private static final Logger logger =
-    // LoggerFactory.getLogger(HomeController.class);
+    // LoggerFactory.getLogger(UserController.class);
     private BLUser domaine;
 
     public UserController() {
@@ -95,15 +95,14 @@ public class UserController {
     @RequestMapping(value = { "/disconnect" }, method = RequestMethod.GET)
     public String Disconnect(Model model, HttpSession session, HttpServletRequest request) {
 	domaine.disconnect(ProxyHttpSession.create(session));
-	return "redirect:" + request.getHeader("Referer");
+	return "redirect:/";
     }
 
     @RequestMapping(value = { "/connect" }, method = RequestMethod.POST)
     public String Login(@RequestParam("username") String username, @RequestParam("password") String password,
 	    Model model, HttpSession session, HttpServletRequest request) {
 	domaine.connect(username, password, ProxyModel.create(model), ProxyHttpSession.create(session));
-	return "redirect:" + request.getHeader("Referer");
-
+	return "redirect:" + request.getHeader("Referer").split("\\?")[0];
     }
 
 }

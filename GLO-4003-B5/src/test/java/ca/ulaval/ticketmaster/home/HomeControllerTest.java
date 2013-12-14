@@ -11,15 +11,14 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import ca.ulaval.ticketmaster.dao.util.DataManager;
-//import org.springframework.mock.web.MockHttpSession;
 
+//import org.springframework.mock.web.MockHttpSession;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
 
     @Mock
     public DataManager datamanager;
-
 
     @InjectMocks
     public HomeController controller;

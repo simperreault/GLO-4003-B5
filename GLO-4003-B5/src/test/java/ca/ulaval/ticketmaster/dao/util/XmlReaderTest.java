@@ -118,16 +118,17 @@ public class XmlReaderTest {
 
     }
 
-	@Test
-	public void testReadTransaction() throws Exception {
-		XmlReader x = new XmlReader(DATA_FILE);
-		assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
-		List<Ticket> l = x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21337"), "CarloBoutet");
-		assertNotNull(l);
-		assertEquals(l.size(),3);
-		assertEquals(l.get(0).getType(),TicketType.RESERVED);
-		assertNull(x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21111"), "CarloBoutet"));
-		
-	}
+    @Test
+    public void testReadTransaction() throws Exception {
+	XmlReader x = new XmlReader(DATA_FILE);
+	assertEquals(x.connect("src/test/resources/testDataXmlReader.xml"), true);
+	List<Ticket> l = x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21337"),
+		"CarloBoutet");
+	assertNotNull(l);
+	assertEquals(l.size(), 3);
+	assertEquals(l.get(0).getType(), TicketType.RESERVED);
+	assertNull(x.readTransaction(UUID.fromString("35552428-cf10-45f1-83d5-3fffc2a21111"), "CarloBoutet"));
+
+    }
 
 }

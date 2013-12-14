@@ -13,24 +13,24 @@ import ca.ulaval.ticketmaster.springproxy.ProxyHttpSession;
 @RunWith(MockitoJUnitRunner.class)
 public class TestDAAuthentication {
 
-	private ProxyHttpSession session;
+    private ProxyHttpSession session;
 
-	@Before
-	public void setUp() {
-		session = ProxyHttpSession.create(new MockHttpSession());
-	}
+    @Before
+    public void setUp() {
+	session = ProxyHttpSession.create(new MockHttpSession());
+    }
 
-	@Test
-	public void isAdmin() {
-		assertEquals(false, DAAuthentication.isAdmin(session));
-		session.setAttribute("sesacceslevel", "Admin");
-		assertEquals(true, DAAuthentication.isAdmin(session));
-	}
+    @Test
+    public void isAdmin() {
+	assertEquals(false, DAAuthentication.isAdmin(session));
+	session.setAttribute("sesacceslevel", "Admin");
+	assertEquals(true, DAAuthentication.isAdmin(session));
+    }
 
-	@Test
-	public void isLogged() {
-		assertEquals(false, DAAuthentication.isAdmin(session));
-		session.setAttribute("sesacceslevel", "Admin");
-		assertEquals(true, DAAuthentication.isAdmin(session));
-	}
+    @Test
+    public void isLogged() {
+	assertEquals(false, DAAuthentication.isAdmin(session));
+	session.setAttribute("sesacceslevel", "Admin");
+	assertEquals(true, DAAuthentication.isAdmin(session));
+    }
 }
