@@ -15,10 +15,10 @@
 		<h3>Site réalisé par :</h3>
 		Alexis Légaré-Julien<br>
 		Benjamin Pelletier<br>
-		Charl-Philip Boutet<br>
-		Ghita Ouliz<br>
+		Charlphillip Boutet<br>
 		Mathieu Bolduc<br>
-		Alexis Légaré-Julien<br>
+		Simon Perreault<br>
+		Rhita Ouliz<br>
 		dans le cadre du cours <a href="http://www2.ulaval.ca/les-etudes/cours/repertoire/detailsCours/glo-4003-architecture-logicielle.html">GLO-4003</a>
 	</div>
 </body>
