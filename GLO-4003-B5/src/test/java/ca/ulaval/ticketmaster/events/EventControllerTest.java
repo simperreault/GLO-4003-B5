@@ -45,7 +45,7 @@ public class EventControllerTest {
 	}
 	@Test
 	public void TestEvent() {
-		assertEquals(controller.event(null, null,null, null), Page.TicketList.toString());
+		assertEquals(controller.event(null, null,null, null, null), Page.TicketList.toString());
 	}
 	@Test
 	public void TestDetail() {

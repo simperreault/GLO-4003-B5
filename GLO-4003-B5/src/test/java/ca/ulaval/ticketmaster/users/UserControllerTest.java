@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
@@ -13,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.mock.web.MockHttpServletRequest;
 //import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.validation.support.BindingAwareModelMap;
@@ -115,8 +117,9 @@ public class UserControllerTest {
     public void testFailLoginWithUnexistingUser() {
 
 	HttpSession httpSession = new MockHttpSession();
+	HttpServletRequest request = new MockHttpServletRequest();
 
-	String ret = controller.Login("HEY!!", "hey", model, httpSession, null);
+	String ret = controller.Login("HEY!!", "hey", model, httpSession, request);
 
 	assertEquals(ret, "Home");
 

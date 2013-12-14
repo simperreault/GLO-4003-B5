@@ -38,40 +38,34 @@ public class XmlWriter {
     public XmlWriter() {
 	connect(DATA_FILE);
     }
-/*
-    public static void main(String[] args){
-    	try{
-    	XmlWriter test = new XmlWriter();
-    	UUID eventId1 = UUID.randomUUID();
-    	UUID eventId2 = UUID.randomUUID();
-    	UUID transactionId = UUID.randomUUID();
-    	String user = "CarloBoutet";
-    	// Créer une event de test
-    	Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013");
-    	Date time = new SimpleDateFormat("H:mm").parse("13:30");
-    	Event event1 = EventFactory.CreateExistingEvent(eventId1, true, SportType.FOOTBALL, "M", "Rouge et or",
-    		"Vert et or", "Québec", "Bell", date, time, 0, 0);
 
-    	Event event2 = EventFactory.CreateExistingEvent(eventId2, true, SportType.FOOTBALL, "M", "Rouge et or",
-        		"Vert et or", "Québec", "Bell", date, time, 0, 0);
-    	
-    	Ticket tTest = TicketFactory.CreateTicket(event1, TicketType.RESERVED, "A", "16", "", 30.00, 0);
-    	event1.addTicketToList(tTest);
-    	
-    	Ticket tTest2 = TicketFactory.CreateTicket(event2, TicketType.RESERVED, "A", "16", "", 30.00, 0);
-    	event2.addTicketToList(tTest2);
-    	List<Ticket> ticketList = new ArrayList<Ticket>();
-    	ticketList.add(tTest);
-    	ticketList.add(tTest2);
-    	boolean mytestbrah = test.writeTransaction(transactionId, ticketList, user);
-    	System.out.println(mytestbrah);
-    	} catch (Exception e) {
-    	    // TODO Auto-generated catch block
-    	    e.printStackTrace();
-    		
-    	}
-    }
-    */
+    /*
+     * public static void main(String[] args){ try{ XmlWriter test = new
+     * XmlWriter(); UUID eventId1 = UUID.randomUUID(); UUID eventId2 =
+     * UUID.randomUUID(); UUID transactionId = UUID.randomUUID(); String user =
+     * "CarloBoutet"; // Créer une event de test Date date = new
+     * SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse("30/09/2013"); Date
+     * time = new SimpleDateFormat("H:mm").parse("13:30"); Event event1 =
+     * EventFactory.CreateExistingEvent(eventId1, true, SportType.FOOTBALL, "M",
+     * "Rouge et or", "Vert et or", "Québec", "Bell", date, time, 0, 0);
+     * 
+     * Event event2 = EventFactory.CreateExistingEvent(eventId2, true,
+     * SportType.FOOTBALL, "M", "Rouge et or", "Vert et or", "Québec", "Bell",
+     * date, time, 0, 0);
+     * 
+     * Ticket tTest = TicketFactory.CreateTicket(event1, TicketType.RESERVED,
+     * "A", "16", "", 30.00, 0); event1.addTicketToList(tTest);
+     * 
+     * Ticket tTest2 = TicketFactory.CreateTicket(event2, TicketType.RESERVED,
+     * "A", "16", "", 30.00, 0); event2.addTicketToList(tTest2); List<Ticket>
+     * ticketList = new ArrayList<Ticket>(); ticketList.add(tTest);
+     * ticketList.add(tTest2); boolean mytestbrah =
+     * test.writeTransaction(transactionId, ticketList, user);
+     * System.out.println(mytestbrah); } catch (Exception e) { // TODO
+     * Auto-generated catch block e.printStackTrace();
+     * 
+     * } }
+     */
     public boolean connect(String _filePath) {
 	xmlFile = new File(_filePath);
 	if (xmlFile.canRead() & xmlFile.canWrite()) {
@@ -215,53 +209,54 @@ public class XmlWriter {
 	return true;
     }
 
-    public boolean writeTransaction(UUID _transactionId , List<Ticket> _ticketsToBuy , String user){
-    	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    	try {
+    public boolean writeTransaction(UUID _transactionId, List<Ticket> _ticketsToBuy, String user) {
+	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	try {
 
-    	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-    	    // xmlDoc = dBuilder.newDocument();
-    	    xmlDoc = dBuilder.parse(xmlFile);
-    	    // Trouver l'emplacement pour ajouter la transaction
-    	    Element rootElementList = (Element) (xmlDoc.getElementsByTagName("TransactionList").item(0));
-    	    // Cree le header de la transaction
-    	    Element rootTransactionElement = xmlDoc.createElement("Transaction");
-    	    rootTransactionElement.setAttribute("id", _transactionId.toString());
-    	    rootTransactionElement.setAttribute("user", user);
-    	    rootElementList.appendChild(rootTransactionElement);
-    	    //compter le nombre d'event présent dans la transaction
-    	    List<UUID> eventList = new ArrayList<UUID>();
-    	    for (Iterator<Ticket> it = _ticketsToBuy.iterator(); it.hasNext();) {
-    			Ticket currentTicket = it.next();
-    			if(! eventList.contains(currentTicket.getEvent().getId())){
-    				eventList.add(currentTicket.getEvent().getId());
-    			}
-    		}
-    	    // Creer le contenu de la transaction (chaque event avec ses billets)
-    	    for (Iterator<UUID> it = eventList.iterator(); it.hasNext();) {
-    	    	 UUID eventID = it.next();
-    	    	 Element eventElement = xmlDoc.createElement("Event");
-    	    	 eventElement.setAttribute("id", eventID.toString());
-    	    	 rootTransactionElement.appendChild(eventElement);
-    	    	 //creer les tickets associés aux events
-    	    	 for (Iterator<Ticket> itT = _ticketsToBuy.iterator(); itT.hasNext();) {
-    	    		 Ticket currentTicket = itT.next();
-    	    		 if(eventID.equals(currentTicket.getEvent().getId())){
-    	    			 Element ticketElement = xmlDoc.createElement("Ticket");
-    	    			 ticketElement.setAttribute("id", currentTicket.getId().toString());
-    	    	    	 eventElement.appendChild(ticketElement);
-    	    		 }
-    	    	 }
-    	    }
-    	    saveDataToFile();
+	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	    // xmlDoc = dBuilder.newDocument();
+	    xmlDoc = dBuilder.parse(xmlFile);
+	    // Trouver l'emplacement pour ajouter la transaction
+	    Element rootElementList = (Element) (xmlDoc.getElementsByTagName("TransactionList").item(0));
+	    // Cree le header de la transaction
+	    Element rootTransactionElement = xmlDoc.createElement("Transaction");
+	    rootTransactionElement.setAttribute("id", _transactionId.toString());
+	    rootTransactionElement.setAttribute("user", user);
+	    rootElementList.appendChild(rootTransactionElement);
+	    // compter le nombre d'event présent dans la transaction
+	    List<UUID> eventList = new ArrayList<UUID>();
+	    for (Iterator<Ticket> it = _ticketsToBuy.iterator(); it.hasNext();) {
+		Ticket currentTicket = it.next();
+		if (!eventList.contains(currentTicket.getEvent().getId())) {
+		    eventList.add(currentTicket.getEvent().getId());
+		}
+	    }
+	    // Creer le contenu de la transaction (chaque event avec ses
+	    // billets)
+	    for (Iterator<UUID> it = eventList.iterator(); it.hasNext();) {
+		UUID eventID = it.next();
+		Element eventElement = xmlDoc.createElement("Event");
+		eventElement.setAttribute("id", eventID.toString());
+		rootTransactionElement.appendChild(eventElement);
+		// creer les tickets associés aux events
+		for (Iterator<Ticket> itT = _ticketsToBuy.iterator(); itT.hasNext();) {
+		    Ticket currentTicket = itT.next();
+		    if (eventID.equals(currentTicket.getEvent().getId())) {
+			Element ticketElement = xmlDoc.createElement("Ticket");
+			ticketElement.setAttribute("id", currentTicket.getId().toString());
+			eventElement.appendChild(ticketElement);
+		    }
+		}
+	    }
+	    saveDataToFile();
 
-    	} catch (Exception e) {
-    	    e.printStackTrace();
-    	    return false;
-    	}
-    	return true;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    return false;
+	}
+	return true;
     }
-    
+
     public boolean writeUser(User _user) {
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	try {
@@ -383,19 +378,18 @@ public class XmlWriter {
 	    if (myTicketElement == null) {
 		throw new Exception("Ticket non existant dans le fichier");
 	    }
-	    //regarder pour faire l'update des tickets available
-	    if(myTicketElement.getAttribute("owner").equals("")){
-	    	//si le billet est disponnible en vente
-	    	if (! _ticket.getOwner().equals("")){
-	    		_ticket.getEvent().setTicketsAvailable(_ticket.getEvent().getTicketsAvailable() - 1);
-	    	}
-	    }
-	    else{
-	    	//si le billet est disponnible en revente
-	    	if (_ticket.getResellprice() != 0){
-	    		_ticket.getEvent().setTicketsAvailable(_ticket.getEvent().getTicketsAvailable() - 1);
-	    		_ticket.setResellprice(0);
-	    	}
+	    // regarder pour faire l'update des tickets available
+	    if (myTicketElement.getAttribute("owner").equals("")) {
+		// si le billet est disponnible en vente
+		if (!_ticket.getOwner().equals("")) {
+		    _ticket.getEvent().setTicketsAvailable(_ticket.getEvent().getTicketsAvailable() - 1);
+		}
+	    } else {
+		// si le billet est disponnible en revente
+		if (_ticket.getResellprice() != 0) {
+		    _ticket.getEvent().setTicketsAvailable(_ticket.getEvent().getTicketsAvailable() - 1);
+		    _ticket.setResellprice(0);
+		}
 	    }
 	    myTicketElement.setAttribute("type", _ticket.getType().name());
 	    myTicketElement.setAttribute("section", _ticket.getSection());
