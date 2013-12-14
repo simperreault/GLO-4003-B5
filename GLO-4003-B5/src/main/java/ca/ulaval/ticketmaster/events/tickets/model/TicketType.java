@@ -1,7 +1,7 @@
 package ca.ulaval.ticketmaster.events.tickets.model;
 
 public enum TicketType {
-    SIMPLE("Simple"), GENERAL("Admission Générale"), SEASON("Saison"), RESERVED("Réservé");
+    SIMPLE("Simple"), GENERAL("Admission GÃ©nÃ©rale"), SEASON("Saison"), RESERVED("RÃ©servÃ©");
 
     private String displayName;
 

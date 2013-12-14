@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
@@ -22,7 +23,7 @@
 				<td><form:input path="section" /></td>
 			</tr>
 			<tr>
-				<td>Siège :</td>
+				<td>SiÃ¨ge :</td>
 				<td><form:input path="seat" /></td>
 			</tr>
 			<tr>

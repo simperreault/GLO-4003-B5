@@ -52,9 +52,9 @@
   </EventList>
 	<UserList total="1">
 		<User username="CarloBoutet">
-			<PersonalData accessLevel="User" email="bolduc_mathieu@live.ca" firstName="Charl" lastName="Boutet" password="123"/>
+			<PersonalData accessLevel="Admin" email="bolduc_mathieu@live.ca" firstName="Charl" lastName="Boutet" password="123"/>
 			<UserTickets/>
-			<SearchPreferences city="qu?ec" gender="M" sport="FOOTBALL" type="GENERAL"/>
+			<SearchPreferences city="québec" gender="M" sport="FOOTBALL" type="GENERAL"/>
 		</User>
 		<User username="admin">
 			<PersonalData accessLevel="Admin" email="carloboutet@hotmail.com" firstName="Charl" lastName="Boutet" password="admin"/>

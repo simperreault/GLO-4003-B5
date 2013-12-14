@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -43,8 +44,8 @@
 				<div id="navigation">
 					<ul>
 						<li><a href="/Home">Accueil</a></li>
-						<li><a href="/event/list">Événements</a></li>
-						<li><a href="/about">À propos</a></li>
+						<li><a href="/event/list">Ã‰vÃ¨nements</a></li>
+						<li><a href="/about">Ã€ propos</a></li>
 						<li><a href="/contact">Contact</a></li>
 						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>
@@ -67,8 +68,8 @@
 				<div>
 					<ul class="navigation">
 						<li><a href="/Home">Accueil</a></li>
-						<li><a href="/event/list">Événements</a></li>
-						<li><a href="/about">À propos</a></li>
+						<li><a href="/event/list">Ã‰vÃ¨nements</a></li>
+						<li><a href="/about">Ã€Â€ propos</a></li>
 						<li><a href="/contact">Contact</a></li>
 						<li><a href="/purchase/Basket">Panier</a></li>
 					</ul>

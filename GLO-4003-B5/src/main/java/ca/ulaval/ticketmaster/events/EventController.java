@@ -54,10 +54,10 @@ public class EventController {
 	    @RequestParam(value = "error", defaultValue = "") String error) {
 	domaine.getTicketsEvent(id, ProxyModel.create(model), ProxyHttpSession.create(session));
 	if (confirmation.equals("1"))
-	    model.addAttribute("confirmationMsg", "Le(s) billet(s) a/ont bien été ajouté(s) à votre panier");
+	    model.addAttribute("confirmationMsg", "Le(s) billet(s) a/ont bien Ã©tÃ© ajoutÃ©(s) Ã  votre panier");
 	if (error.equals("1"))
 	    model.addAttribute("errorMsg",
-		    "Vous devez être authentifié pour ajouter des billets à votre panier.");
+		    "Vous devez Ãªtre authentifiÃ© pour ajouter des billets Ã  votre panier.");
 
 	return Page.TicketList.toString();
     }

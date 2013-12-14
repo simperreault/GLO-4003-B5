@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
@@ -12,10 +13,10 @@
 			<td>Sport : </td><td>${ticket.event.sport} &nbsp; ${ticket.event.gender}</td>
 		</tr>
 		<tr>
-			<td>Équipe domicile : </td><td>${ticket.event.homeTeam}</td>
+			<td>Ã‰quipe domicile : </td><td>${ticket.event.homeTeam}</td>
 		</tr>
 		<tr>
-			<td>Équipe visiteurs : </td><td>${ticket.event.visitorsTeam}</td>
+			<td>Ã‰quipe visiteurs : </td><td>${ticket.event.visitorsTeam}</td>
 		</tr>
 		<tr>
 			<td>Endroit : </td><td>${ticket.event.location}, ${ticket.event.stadium}</td>

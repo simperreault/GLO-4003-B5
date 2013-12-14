@@ -44,7 +44,7 @@ public class MailUtil {
 	setupMailInfos(msg);
 	msg.setTo(_receiver.getEmail());
 	msg.setText("Cher " + _receiver.getFirstName() + " " + _receiver.getLastName()
-		+ ",\r\n merci d'avoir passé votre commande. Votre numéro de confirmation est le "
+		+ ",\r\n merci d'avoir passÃ© votre commande. Votre numÃ©ro de confirmation est le "
 		+ _transactionId.toString() + ". \r\n" + getInvoiceString(_buyList)
 		+ "Au plaisir de vous revoir!");
 	try {

@@ -36,7 +36,7 @@ public class BLBasket {
     }
 
     // a cause du cast d'un objet vers arraylist<Ticket> je n'ai pas
-    // trouvé de solution pour enlever le warning
+    // trouvï¿½ de solution pour enlever le warning
     @SuppressWarnings("unchecked")
     public String addToBasket(String eventId, String ticketId, ProxyHttpSession session) {
 	if (DAAuthentication.isLogged(session)) {
@@ -140,16 +140,16 @@ public class BLBasket {
 	    List<Ticket> freeTicket = searchEngine.filterListWithList(similarTicket, ticketDisplay.get(i));
 	    if (freeTicket.size() < amount - ticketDisplay.get(i).size()) {
 		model.addAttribute("errorMsg", "Erreur : Il ne reste que " + freeTicket.size()
-			+ " billets de cette catégorie");
+			+ " billets de cette catï¿½gorie");
 	    } else {
 		for (int j = 0; j < amount - ticketDisplay.get(i).size(); ++j) {
 		    basket.add(freeTicket.get(j));
 		}
 		this.setBasket(basket, session);
 		if (amount == 1)
-		    model.addAttribute("ConfirmationMsg", "Le billet a ete ajoute à votre panier");
+		    model.addAttribute("ConfirmationMsg", "Le billet a ete ajoute Ã  votre panier");
 		else if (amount > 1)
-		    model.addAttribute("ConfirmationMsg", "Les billets ont ete ajoutes à votre panier");
+		    model.addAttribute("ConfirmationMsg", "Les billets ont ete ajoutes Ã  votre panier");
 
 		System.out.println("Amount : " + amount);
 	    }

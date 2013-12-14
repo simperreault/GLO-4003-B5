@@ -5,7 +5,7 @@ public class UnauthorizedException extends DAException {
     private static final long serialVersionUID = -1370773613146187183L;
 
     public UnauthorizedException() {
-	super("Vous n'avez pas les autorisations nécessaires pour accéder à cette page");
+	super("Vous n'avez pas les autorisations nï¿½cessaires pour accÃ©der Ã  cette page");
     }
 
     public UnauthorizedException(String errorMsg) {

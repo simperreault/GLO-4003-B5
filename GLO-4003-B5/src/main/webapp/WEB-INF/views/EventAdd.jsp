@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
@@ -18,7 +19,7 @@
 		});
 	</script>
 
-	<h1>Ajouter un Évènement</h1><hr>
+	<h1>Ajouter un Ã‰vÃ¨nement</h1><hr>
 	<p style="color:red;"> 
 		<c:forEach var="objectError" items="${error}">
 			<c:out value="${objectError.getDefaultMessage()}"></c:out> <br />
@@ -27,10 +28,10 @@
 	<form:form method="post" class="form-horizontal" modelAttribute="event">
 		<table>
 			<tr>
-				<td>Catégorie :</td>
+				<td>CatÃ©gorie :</td>
 				<td><form:select path="gender">
     					<form:option value="M" label="Masculin" />
-    					<form:option value="F" label="Féminin" />
+    					<form:option value="F" label="FÃ©minin" />
     				</form:select></td>
 			</tr>
 			<tr>
@@ -38,11 +39,11 @@
 				<td><form:select path="sport" items="${sportList}" /></td>
 			</tr>
 			<tr>
-				<td>Équipe maison :</td>
+				<td>Ã‰quipe maison :</td>
 				<td><form:input path="homeTeam" /></td>
 			</tr>
 			<tr>
-				<td>Équipe visiteur :</td>
+				<td>Ã‰quipe visiteur :</td>
 				<td><form:input path="visitorsTeam" /></td>
 			</tr>
 			<tr>
@@ -59,6 +60,6 @@
 			</tr>
 		</table>
 		<br>
-        <p><button class="btn" type="submit">Créer l'événement</button></p>
+        <p><button class="btn" type="submit">CrÃ©er l'Ã©vÃ©nement</button></p>
     </form:form>
 </html>

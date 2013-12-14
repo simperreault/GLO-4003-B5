@@ -1,16 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="true"%>
 <html>
-<meta name="foo" content="test">
 <head>
 <script src="<c:url value="/resources/js/searchAutoPostback.js" />"></script>
-<title>Liste des événements à venir</title>
+<title>Liste des Ã©vÃ©nements Ã  venir</title>
 </head>
 <body>
 	<div class="container">
-		<h1>Liste des événements à venir</h1>
+		<h1>Liste des Ã©vÃ©nements Ã  venir</h1>
 		<hr>
 		<div class="row">
 			<form:form method="post" class="form-horizontal"
@@ -19,10 +19,10 @@
 					<thead>
 						<tr>
 							<th>Sport</th>
-							<th>Catégorie</th>
+							<th>CatÃ©gorie</th>
 							<th>Endroit</th>
 							<th>Date</th>
-							<th>Équipes</th>
+							<th>Ã‰quipes</th>
 							<th>Billets</th>
 							<th colspan="2"></th>
 						</tr>
@@ -64,7 +64,7 @@
 								</c:if>
 						</c:forEach>
 						<c:if test="${EventList.size() == 0}">
-						<tr><td colspan="8">Aucun événement n'a été trouvé</td></tr>
+						<tr><td colspan="8">Aucun Ã©vÃ©nement n'a Ã©tÃ© trouvÃ©</td></tr>
 					</c:if>
 					</tbody>
 				</table>
@@ -73,7 +73,7 @@
 		<c:if test="${sesacceslevel == 'Admin'}">
 			<div class="row">
 				<a href="<c:url value="/event/add" />" class="btn">Ajouter un
-					événement</a>
+					Ã©vÃ©nement</a>
 			</div>
 		</c:if>
 	</div>

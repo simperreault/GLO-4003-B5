@@ -28,9 +28,6 @@ import ca.ulaval.ticketmaster.springproxy.ProxyModel;
 @RequestMapping(value = "/purchase")
 public class PurchaseController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(HomeController.class);
-
     private BLBasket domaine;
 
     public PurchaseController() {
@@ -64,7 +61,7 @@ public class PurchaseController {
 	} catch (InvalidFormExceptions e) {
 	    return Page.Purchase.toString();
 	} catch (InvalidPurchaseException e) {
-	    return Page.Purchase.toString(); // return "redirect:/Purchase"; !?
+	    return Page.Purchase.toString();
 	}
 
 	return "redirect:/purchase/Confirmation";

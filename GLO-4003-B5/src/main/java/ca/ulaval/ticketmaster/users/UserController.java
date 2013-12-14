@@ -25,11 +25,8 @@ import ca.ulaval.ticketmaster.users.model.UserViewModel;
  */
 @Controller
 @RequestMapping(value = "/user")
-// @SessionAttributes
 public class UserController {
 
-    // private static final Logger logger =
-    // LoggerFactory.getLogger(UserController.class);
     private BLUser domaine;
 
     public UserController() {

@@ -49,7 +49,7 @@ public aspect LogBoughtTicketAspect {
 		UUID transactionId = (UUID)thisJoinPoint.getArgs()[1];
 		ArrayList<Ticket> ticketList = (ArrayList<Ticket>)thisJoinPoint.getArgs()[2];
 
-		LogBoughtTicketAspect.log("Envoi du courriel de confirmation à l'utilisateur '" + user.getUsername()
+		LogBoughtTicketAspect.log("Envoi du courriel de confirmation Ã  l'utilisateur '" + user.getUsername()
 				+ "' (email='" + user.getEmail() + "') avec transactionId = '" + transactionId 
 				+ "', les billets :\n" + Arrays.toString(ticketList.toArray()));
 	}

@@ -25,11 +25,8 @@ import ca.ulaval.ticketmaster.springproxy.ProxyModel;
  */
 @Controller
 @RequestMapping(value = "/ticket")
-// TODO Move what is related to ticket in EventController here
 public class TicketController {
 
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(TicketController.class);
 	private BLTicket domain;
 	private BLBasket basket;
 

@@ -3,16 +3,16 @@ package ca.ulaval.ticketmaster.purchase.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class PurchaseViewModel {
-    @NotEmpty(message = "Veuillez indiquer un prénom")
+    @NotEmpty(message = "Veuillez indiquer un prÃ©nom")
     public String firstName;
     @NotEmpty(message = "Veuillez indiquer un nom de famille")
     public String lastName;
     @NotEmpty(message = "Veuillez indiquer une adresse")
     public String adress;
     public PaymentType paymentType;
-    @NotEmpty(message = "Veuillez indiquer un numéro de carte de crédit")
+    @NotEmpty(message = "Veuillez indiquer un numÃ©ro de carte de crÃ©dit")
     public String cardNumber;
-    @NotEmpty(message = "Veuillez indiquer le numéro de vérification")
+    @NotEmpty(message = "Veuillez indiquer le numÃ©ro de vÃ©rification")
     public String verificationNumber;
 
     public String getFirstName() {

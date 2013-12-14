@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
@@ -25,7 +24,7 @@
 					<!-- ; border:solid -->
 					<table id="Purchaseform">
 						<tr>
-							<td>Prénom :</td>
+							<td>PrÃ©nom :</td>
 							<td><form:input path="firstName" /></td>
 						</tr>
 						<tr>
@@ -41,11 +40,11 @@
 							<td><form:select path="paymentType" items="${paymentType}" /></td>
 						</tr>
 						<tr>
-							<td>Numero de carte de crédit :</td>
+							<td>Numero de carte de crÃ©dit :</td>
 							<td><form:input path="cardNumber" /></td>
 						</tr>
 						<tr>
-							<td>Numéro de vérification :</td>
+							<td>NumÃ©ro de vÃ©rification :</td>
 							<td><form:input path="verificationNumber" /></td>
 						</tr>
 					</table>
@@ -57,7 +56,7 @@
 								<th>Sport</th>
 								<th>Date</th>
 								<th>Endroit</th>
-								<th>Quantité</th>
+								<th>QuantitÃ©</th>
 								<th>Prix</th>
 							</tr>
 						</thead>

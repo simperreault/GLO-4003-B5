@@ -7,11 +7,9 @@ import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
 public class UserViewModel {
 
-    // TODO : msemble de quoi a faire avec le public + setters/getters = ...
-    @NotEmpty(message = "Le nom d'usager doit etre present")
-    // @CheckUserNotPresent
+    @NotEmpty(message = "Le nom d'usager doit etre présent")
     public String username;
-    @NotEmpty(message = "Un mot de passe doit etre present")
+    @NotEmpty(message = "Un mot de passe doit etre présent")
     public String password;
     public String firstName;
     public String lastName;

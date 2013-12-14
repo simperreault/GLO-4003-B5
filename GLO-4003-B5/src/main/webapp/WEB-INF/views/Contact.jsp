@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -14,9 +15,9 @@
 		<table style="width: 100%">
 			<tr>
 				<td style="width: 50%">
-					<h3>Université Laval</h3> 2325, rue de l'Université<br> Québec
-					(Québec) G1V 0A6 Canada <br> 418 656-2131<br> 1 877
-					785-2825<br> <br> <b>Renseignements généraux</b><br>
+					<h3>UniversitÃ© Laval</h3> 2325, rue de l'UniversitÃ©<br> QuÃ©bec
+					(QuÃ©bec) G1V 0A6 Canada <br> 418 656-2131<br> 1 877
+					785-2825<br> <br> <b>Renseignements gÃ©nÃ©raux</b><br>
 					418-656-3333<br> renseignements@ulaval.ca<br>
 				</td>
 				<td style="width: 50%"><iframe

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -11,7 +12,7 @@
 	<h1>Confirmation</h1>
 	<hr>
 	<div>
-		<p>L'achat a été effectué avec succès. Un courriel de confirmation vous a été envoyé.</p>
+		<p>L'achat a Ã©tÃ© effectuÃ© avec succÃ¨s. Un courriel de confirmation vous a Ã©tÃ© envoyÃ©.</p>
 	</div>
 </body>
 </html>

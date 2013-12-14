@@ -32,10 +32,6 @@ public class TicketTest {
 	assertNotNull(t.getId());
     }
 
-    /*
-     * public void TestsetId() { Ticket t = new Ticket(); UUID id =
-     * UUID.randomUUID(); t.setId(id); assertEquals(t.getId(),id); }
-     */
     @Test
     public void TestgetType() {
 	Ticket t = new ReservedTicket();
@@ -91,17 +87,4 @@ public class TicketTest {
 	t.setOwner("bob");
 	assertEquals(t.getOwner(), "bob");
     }
-    /**
-     * @Test public void TestgetPrice() { Ticket t = new Ticket(1);
-     *       t.setPrice(12.12); assertEquals(t.getPrice(), 12.12); }
-     * 
-     *       public void TestsetPrice() { Ticket t = new Ticket(1);
-     *       t.setPrice(12.12); assertEquals(t.getPrice(), 12.12); }
-     * 
-     * 
-     *       public double getResellprice() { return resellprice; } public void
-     *       setResellprice(double resellprice) { this.resellprice =
-     *       resellprice; } public Event getEvent() { return event; } public
-     *       void setEvent(Event event) { this.event = event; }
-     */
 }

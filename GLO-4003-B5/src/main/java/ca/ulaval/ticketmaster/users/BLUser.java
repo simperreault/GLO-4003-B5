@@ -41,13 +41,13 @@ public class BLUser {
 	    session.setAttribute("sesacceslevel", user.getAccessLevel().toString());
 	    session.setAttribute("sesusername", user.getUsername());
 	} else {
-	    result.addError(new ObjectError("user", "Utilisateur deja existant"));
+	    result.addError(new ObjectError("user", "Utilisateur déja existant"));
 
 	    model.addAttribute("error", result.getAllErrors());
 
 	    model.addAttribute("user", viewmodel);
 	    model.addAttribute("typeList", TicketType.values());
-	    model.addAttribute("errorMsg", "Une erreur c'est produite lors de la cr�ation du compte");
+	    model.addAttribute("errorMsg", "Une erreur c'est produite lors de la création du compte");
 	    throw new InvalidFormExceptions();
 	}
     }
@@ -90,7 +90,7 @@ public class BLUser {
 	    model.addAttribute("error", result.getAllErrors());
 	    throw new InvalidFormExceptions();
 	}
-	
+
 	User user = UserConverter.convert(viewUser);
 	if (session.getAttribute("sesacceslevel").equals(AccessLevel.Admin.toString()))
 	    user.setAccessLevel(AccessLevel.Admin);

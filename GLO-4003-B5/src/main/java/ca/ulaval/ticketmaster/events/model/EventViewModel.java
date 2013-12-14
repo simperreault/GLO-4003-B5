@@ -13,9 +13,9 @@ public class EventViewModel {
     public SportType sport;
     @CheckGender
     public String gender;
-    @NotEmpty(message = "'Équipe maison' ne doit pas etre vide.")
+    @NotEmpty(message = "'Ã©quipe maison' ne doit pas etre vide.")
     public String homeTeam;
-    @NotEmpty(message = "'Équipe visiteur' ne doit pas etre vide.")
+    @NotEmpty(message = "'Ã©quipe visiteur' ne doit pas etre vide.")
     public String visitorsTeam;
     @NotEmpty(message = "'Endroit' ne doit pas etre vide.")
     public String location;

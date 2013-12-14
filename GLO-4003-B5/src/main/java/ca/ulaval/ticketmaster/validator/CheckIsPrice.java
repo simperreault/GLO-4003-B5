@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface CheckIsPrice {
 
-    String message() default "Doit être Numérique, différent de 0 et positif.";
+    String message() default "Doit Ãªtre NumÃ©rique, diffÃ©rent de 0 et positif.";
 
     Class<?>[] groups() default {};
 

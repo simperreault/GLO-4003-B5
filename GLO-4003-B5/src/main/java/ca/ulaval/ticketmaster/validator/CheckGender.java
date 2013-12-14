@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface CheckGender {
 
-    String message() default "Doit être Masculin ou Féminin.";
+    String message() default "Doit Ãªtre Masculin ou FÃ©minin.";
 
     Class<?>[] groups() default {};
 

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -10,7 +11,7 @@
 	<h1>Accueil</h1>
 	<hr>
 	<div>
-		<p>Bienvenue sur le système de billeterie de l'Université Laval !</p>
+		<p>Bienvenue sur le systÃ¨me de billeterie de l'UniversitÃ© Laval !</p>
 	</div>
 </body>
 </html>

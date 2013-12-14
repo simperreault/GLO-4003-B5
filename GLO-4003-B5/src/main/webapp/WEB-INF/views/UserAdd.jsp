@@ -1,10 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false" %>
 <html>
 <head>
 </head>
-	<h1>Créer un compte utilisateur</h1><hr>
+	<h1>CrÃ©er un compte utilisateur</h1><hr>
 	<p style="color:red;"> 
 		<c:forEach var="objectError" items="${error}">
 			<c:out value="${objectError.getDefaultMessage()}"></c:out> <br />
@@ -22,7 +23,7 @@
 				<td><form:input path="password" type="password"/></td>
 			</tr>
 			<tr>
-				<td>Prénom :</td>
+				<td>PrÃ©nom :</td>
 				<td><form:input path="firstName" /></td>
 			</tr>
 			<tr>
@@ -34,19 +35,19 @@
 				<td><form:input path="email" /></td>
 			</tr>
 			<tr>
-				<td>Sport préféré :</td>
+				<td>Sport prÃ©fÃ©rÃ© :</td>
 				<td><form:input path="favSport" /></td>
 			</tr>
 			<tr>
-				<td>Genre préféré :</td>
+				<td>Genre prÃ©fÃ©rÃ© :</td>
 				<td><form:input path="favGender" /></td>
 			</tr>
 			<tr>
-				<td>Type préféré :</td>
+				<td>Type prÃ©fÃ©rÃ© :</td>
 				<td><form:select path="favType" items="${typeList}" /></td>
 			</tr>
 			<tr>
-				<td>Endroit préféré :</td>
+				<td>Endroit prÃ©fÃ©rÃ© :</td>
 				<td><form:input path="favLocation" /></td>
 			</tr>
 		</table>
