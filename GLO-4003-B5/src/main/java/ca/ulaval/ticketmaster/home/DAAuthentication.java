@@ -5,7 +5,7 @@ import ca.ulaval.ticketmaster.users.model.User.AccessLevel;
 
 public class DAAuthentication {
     public static boolean isAdmin(ProxyHttpSession session) {
-	if (session.getAttribute("sesacceslevel") == AccessLevel.Admin)
+	if (session.getAttribute("sesacceslevel") == AccessLevel.Admin.toString())
 	    return true;
 	return false;
     }
